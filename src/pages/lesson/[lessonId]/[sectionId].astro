@@ -120,7 +120,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
                       <input
                         type="text"
                         class="answer-input"
-                        placeholder="Japanese or romaji..."
+                        placeholder="Type your answer..."
                         autocomplete="off"
                       />
                       <button class="submit-btn">Check</button>
@@ -177,7 +177,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
                     <input
                       type="text"
                       class="answer-input"
-                      placeholder="Japanese or romaji..."
+                      placeholder="Type your answer..."
                       autocomplete="off"
                     />
                     <button class="submit-btn">Check</button>
@@ -413,6 +413,9 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
         const left = MAX_ATTEMPTS - attemptsUsed;
         fb.textContent = `Incorrect — ${left} ${left === 1 ? 'attempt' : 'attempts'} left`;
         fb.className = 'feedback retry';
+        card.classList.remove('shake');
+        void (card as HTMLElement).offsetWidth;
+        card.classList.add('shake');
       }
 
       updateScore();
@@ -513,7 +516,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
       // Unhide all, reset state
       panel.querySelectorAll('.question-card').forEach((card) => {
         (card as HTMLElement).style.display = '';
-        card.classList.remove('answered-correct', 'answered-incorrect', 'pool-hidden');
+        card.classList.remove('answered-correct', 'answered-incorrect', 'pool-hidden', 'shake');
         setAttempts(card, 0);
         const fb = card.querySelector('.feedback') as HTMLElement;
         if (fb) { fb.classList.add('hidden'); fb.textContent = ''; fb.className = 'feedback hidden'; }
@@ -598,8 +601,16 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   }
 
   /* Panels */
-  .tab-panel { display: none; }
+  .tab-panel {
+    display: none;
+    animation: panel-in 0.3s ease;
+  }
   .tab-panel.active { display: block; }
+
+  @keyframes panel-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   /* Video */
   .video-area { margin-bottom: 2rem; }
@@ -668,10 +679,39 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   .question-card.answered-correct {
     border-color: var(--success);
     box-shadow: 0 0 12px rgba(42, 161, 152, 0.1);
+    animation: answer-correct 0.4s ease;
   }
   .question-card.answered-incorrect {
     border-color: var(--error);
     box-shadow: 0 0 12px rgba(220, 50, 47, 0.08);
+    animation: answer-incorrect 0.4s ease;
+  }
+  .question-card.shake {
+    animation: answer-shake 0.35s ease;
+  }
+
+  @keyframes answer-correct {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.015); box-shadow: 0 0 20px rgba(42, 161, 152, 0.25); }
+    100% { transform: scale(1); }
+  }
+  @keyframes answer-incorrect {
+    0% { transform: translateX(0); }
+    15% { transform: translateX(-6px); }
+    30% { transform: translateX(6px); }
+    45% { transform: translateX(-4px); }
+    60% { transform: translateX(4px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes answer-shake {
+    0% { transform: translateX(0); }
+    15% { transform: translateX(-4px); }
+    30% { transform: translateX(4px); }
+    45% { transform: translateX(-3px); }
+    60% { transform: translateX(3px); }
+    75% { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
   }
 
   .question-number {
@@ -716,11 +756,27 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     background: rgba(42, 161, 152, 0.1);
     border-color: var(--success);
     color: var(--success);
+    animation: opt-correct 0.3s ease;
   }
   .option-btn.selected-incorrect {
     background: rgba(220, 50, 47, 0.08);
     border-color: var(--error);
     color: var(--error);
+    animation: opt-incorrect 0.3s ease;
+  }
+
+  @keyframes opt-correct {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+  }
+  @keyframes opt-incorrect {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-3px); }
+    40% { transform: translateX(3px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
   }
 
   .input-group { display: flex; gap: 0.5rem; margin-bottom: 0.8rem; }
@@ -778,10 +834,20 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     margin-top: 0.3rem;
   }
 
-  .feedback { font-weight: 600; font-size: 0.95rem; margin-top: 0.5rem; }
+  .feedback {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    animation: fade-in 0.25s ease;
+  }
   .feedback.correct { color: var(--success); }
   .feedback.incorrect { color: var(--error); }
   .feedback.retry { color: var(--text-muted); font-style: italic; font-weight: 500; }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   .hidden { display: none; }
 
