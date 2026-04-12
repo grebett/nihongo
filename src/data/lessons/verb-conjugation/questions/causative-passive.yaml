@@ -85,7 +85,7 @@ causative-passive-ichidan:
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to causative-passive form
     answers:
       - 出させられる
-      - ださせられる
+      - でさせられる
       - desaserareru
     display: "<ruby>出<rt>で</rt></ruby>させられる"
     hint: Drop る, add させられる
