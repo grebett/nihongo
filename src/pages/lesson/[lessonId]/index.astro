@@ -32,7 +32,7 @@ const allPartIds = lesson.sections.flatMap((s) =>
     {lesson.sections.map((section, i) => {
       const qCount = section.parts.reduce((sum, part) => sum + (questions[part.id]?.length ?? 0), 0);
       return (
-        <a href={`${import.meta.env.BASE_URL}lesson/${lesson.id}/${section.id}`} class="section-card" data-section-id={section.id}>
+        <a href={`${import.meta.env.BASE_URL}/lesson/${lesson.id}/${section.id}`} class="section-card" data-section-id={section.id}>
           <span class="section-number">{String(i + 1).padStart(2, '0')}</span>
           <div class="section-info">
             <h2>{section.title}</h2>

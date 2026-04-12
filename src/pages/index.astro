@@ -9,7 +9,7 @@ const lessons = getAllLessons();
   <h1>Lessons</h1>
   <div class="lessons">
     {lessons.map((lesson) => (
-      <a href={`${import.meta.env.BASE_URL}lesson/${lesson.id}`} class="lesson-card">
+      <a href={`${import.meta.env.BASE_URL}/lesson/${lesson.id}`} class="lesson-card">
         <img
           src={`https://i.ytimg.com/vi/${lesson.videoId}/mqdefault.jpg`}
           alt={lesson.title}
