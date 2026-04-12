@@ -5,11 +5,11 @@ import { getAllLessons } from '../scripts/lessons';
 const lessons = getAllLessons();
 ---
 
-<Layout title="Home">
+<Layout title="Home" sakura>
   <h1>Lessons</h1>
   <div class="lessons">
     {lessons.map((lesson) => (
-      <a href={`/lesson/${lesson.id}`} class="lesson-card">
+      <a href={`${import.meta.env.BASE_URL}lesson/${lesson.id}`} class="lesson-card">
         <img
           src={`https://i.ytimg.com/vi/${lesson.videoId}/mqdefault.jpg`}
           alt={lesson.title}
@@ -28,39 +28,56 @@ const lessons = getAllLessons();
   </div>
 
   <style>
-    h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
 
     .lessons { display: flex; flex-direction: column; gap: 1rem; }
 
     .lesson-card {
       display: flex;
       gap: 1.2rem;
-      padding: 1rem;
+      padding: 1.1rem;
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
       color: var(--text);
-      transition: border-color 0.2s;
+      box-shadow: 0 1px 3px var(--card-shadow);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
     }
-    .lesson-card:hover { border-color: var(--accent); }
+    .lesson-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px var(--card-shadow-hover);
+      transform: translateY(-1px);
+    }
 
     .thumbnail {
       width: 200px;
       height: 112px;
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: 6px;
       flex-shrink: 0;
     }
 
-    .lesson-info h2 { font-size: 1.2rem; margin-bottom: 0.4rem; }
-    .lesson-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+    .lesson-info { display: flex; flex-direction: column; justify-content: center; }
+    .lesson-info h2 { font-size: 1.15rem; margin-bottom: 0.4rem; font-weight: 700; }
+    .lesson-info p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.6rem; }
 
     .meta { display: flex; gap: 1rem; }
     .source, .section-count {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--accent);
       font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 600px) {
+      .lesson-card { flex-direction: column; }
+      .thumbnail { width: 100%; height: auto; aspect-ratio: 16/9; }
     }
   </style>
 </Layout>

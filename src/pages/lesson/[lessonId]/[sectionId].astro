@@ -26,7 +26,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
 ---
 
 <Layout title={`${section.title} - ${lesson.title}`}>
-  <a href={`/lesson/${lesson.id}`} class="back">&larr; {lesson.title}</a>
+  <a href={`${import.meta.env.BASE_URL}lesson/${lesson.id}`} class="back">&larr; {lesson.title}</a>
 
   <header class="section-header">
     <span class="section-number">Section {sectionIndex + 1} / {totalSections}</span>
@@ -204,12 +204,12 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   <!-- Navigation -->
   <nav class="section-nav">
     {prevSection ? (
-      <a href={`/lesson/${lesson.id}/${prevSection.id}`} class="nav-link prev">
+      <a href={`${import.meta.env.BASE_URL}lesson/${lesson.id}/${prevSection.id}`} class="nav-link prev">
         &larr; {prevSection.title}
       </a>
     ) : <span />}
     {nextSection ? (
-      <a href={`/lesson/${lesson.id}/${nextSection.id}`} class="nav-link next">
+      <a href={`${import.meta.env.BASE_URL}lesson/${lesson.id}/${nextSection.id}`} class="nav-link next">
         {nextSection.title} &rarr;
       </a>
     ) : <span />}
@@ -541,23 +541,32 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
 
 <style>
   .back {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     color: var(--text-muted);
     text-decoration: none;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.15s;
   }
   .back:hover { color: var(--accent); }
 
   .section-header { margin-bottom: 1.5rem; }
   .section-number {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--accent);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
   }
-  .section-header h1 { font-size: 1.5rem; margin: 0.3rem 0; }
+  .section-header h1 {
+    font-size: 1.5rem;
+    margin: 0.3rem 0;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
   .description { color: var(--text-muted); }
 
   /* Tabs */
@@ -574,7 +583,8 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.15s;
@@ -597,8 +607,9 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   .video-container {
     position: relative;
     padding-bottom: 56.25%;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
+    border: 1px solid var(--border);
   }
   .video-container iframe {
     position: absolute;
@@ -611,13 +622,19 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     padding: 0.45rem 1rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.15s;
   }
-  .replay-btn:hover { border-color: var(--accent); color: var(--text); }
+  .replay-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
 
   /* Quiz */
   .quiz-section { margin-top: 1rem; }
@@ -627,15 +644,16 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     align-items: center;
     margin-bottom: 1.2rem;
   }
-  .quiz-header h2 { font-size: 1.3rem; }
+  .quiz-header h2 { font-size: 1.25rem; font-weight: 800; }
   .score {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--accent);
     background: var(--bg-card);
     padding: 0.4rem 1rem;
     border-radius: 20px;
     border: 1px solid var(--border);
+    letter-spacing: 0.02em;
   }
 
   .questions-list { display: flex; flex-direction: column; gap: 1rem; }
@@ -643,21 +661,29 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   .question-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 1.2rem;
-    transition: border-color 0.2s;
+    box-shadow: 0 1px 3px var(--card-shadow);
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
-  .question-card.answered-correct { border-color: var(--success); }
-  .question-card.answered-incorrect { border-color: var(--error); }
+  .question-card.answered-correct {
+    border-color: var(--success);
+    box-shadow: 0 0 12px rgba(42, 161, 152, 0.1);
+  }
+  .question-card.answered-incorrect {
+    border-color: var(--error);
+    box-shadow: 0 0 12px rgba(220, 50, 47, 0.08);
+  }
 
   .question-number {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
+    letter-spacing: 0.06em;
     margin-bottom: 0.4rem;
   }
-  .question-text { font-size: 1.05rem; margin-bottom: 1rem; }
+  .question-text { font-size: 1.05rem; margin-bottom: 1rem; font-weight: 500; }
 
   .options {
     display: grid;
@@ -669,20 +695,24 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     padding: 0.7rem 1rem;
     background: var(--bg-input);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--text);
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.15s;
   }
-  .option-btn:hover { border-color: var(--accent); }
+  .option-btn:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-elevated);
+  }
   .option-btn.selected-correct {
-    background: rgba(78, 205, 196, 0.2);
+    background: rgba(42, 161, 152, 0.1);
     border-color: var(--success);
     color: var(--success);
   }
   .option-btn.selected-incorrect {
-    background: rgba(255, 107, 107, 0.2);
+    background: rgba(220, 50, 47, 0.08);
     border-color: var(--error);
     color: var(--error);
   }
@@ -693,33 +723,46 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     padding: 0.7rem 1rem;
     background: var(--bg-input);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--text);
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
     outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
-  .answer-input:focus { border-color: var(--accent); }
+  .answer-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+  }
 
   .submit-btn {
     padding: 0.7rem 1.2rem;
     background: var(--accent);
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     color: white;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background 0.15s, box-shadow 0.15s;
   }
-  .submit-btn:hover { background: var(--accent-hover); }
+  .submit-btn:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 0 16px var(--accent-glow);
+  }
 
   .hint { margin-bottom: 0.5rem; }
   .hint-btn {
     background: none;
     border: none;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
     cursor: pointer;
     text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
   }
   .hint-btn:hover { color: var(--text); }
   .hint-text {
@@ -732,7 +775,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   .feedback { font-weight: 600; font-size: 0.95rem; margin-top: 0.5rem; }
   .feedback.correct { color: var(--success); }
   .feedback.incorrect { color: var(--error); }
-  .feedback.retry { color: var(--text-muted); font-style: italic; }
+  .feedback.retry { color: var(--text-muted); font-style: italic; font-weight: 500; }
 
   .hidden { display: none; }
 
@@ -741,13 +784,19 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     padding: 0.7rem 1.5rem;
     background: transparent;
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.15s;
   }
-  .reset-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .reset-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
 
   /* Results summary */
   .results-summary {
@@ -755,7 +804,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     padding: 1.5rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
   }
   .results-header {
     display: flex;
@@ -764,7 +813,8 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     margin-bottom: 1rem;
   }
   .results-header h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    font-weight: 800;
     color: var(--text);
     margin: 0;
   }
@@ -774,19 +824,19 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     gap: 0.75rem;
   }
   .results-score {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--text);
   }
   .results-pct {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
   }
-  .results-pct.perfect { background: rgba(78, 205, 196, 0.2); color: var(--success); }
-  .results-pct.good { background: rgba(240, 192, 64, 0.2); color: #f0c040; }
-  .results-pct.low { background: rgba(255, 107, 107, 0.2); color: var(--error); }
+  .results-pct.perfect { background: rgba(42, 161, 152, 0.12); color: var(--success); }
+  .results-pct.good { background: rgba(181, 137, 0, 0.12); color: var(--gold); }
+  .results-pct.low { background: rgba(220, 50, 47, 0.1); color: var(--error); }
 
   .results-perfect {
     color: var(--success);
@@ -796,6 +846,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   .results-label {
     color: var(--text-muted);
     font-size: 0.85rem;
+    font-weight: 500;
     margin-bottom: 0.6rem;
   }
   .results-list {
@@ -809,8 +860,8 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     gap: 1rem;
     align-items: baseline;
     padding: 0.6rem 0.8rem;
-    background: rgba(255, 107, 107, 0.08);
-    border-radius: 6px;
+    background: rgba(220, 50, 47, 0.05);
+    border-radius: 8px;
     font-size: 0.95rem;
   }
   .results-q { color: var(--text-muted); }
@@ -827,7 +878,8 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   .nav-link {
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 500;
     padding: 0.5rem 0;
     transition: color 0.15s;
   }
@@ -836,5 +888,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
 
   @media (max-width: 600px) {
     .options { grid-template-columns: 1fr; }
+    .tabs { overflow-x: auto; }
+    .tab { padding: 0.6rem 1rem; font-size: 0.85rem; white-space: nowrap; }
   }
 </style>

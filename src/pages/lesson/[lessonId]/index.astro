@@ -20,7 +20,7 @@ const allPartIds = lesson.sections.flatMap((s) =>
 ---
 
 <Layout title={lesson.title}>
-  <a href="/" class="back">&larr; All lessons</a>
+  <a href={import.meta.env.BASE_URL} class="back">&larr; All lessons</a>
 
   <header class="lesson-header">
     <h1>{lesson.title}</h1>
@@ -32,7 +32,7 @@ const allPartIds = lesson.sections.flatMap((s) =>
     {lesson.sections.map((section, i) => {
       const qCount = section.parts.reduce((sum, part) => sum + (questions[part.id]?.length ?? 0), 0);
       return (
-        <a href={`/lesson/${lesson.id}/${section.id}`} class="section-card" data-section-id={section.id}>
+        <a href={`${import.meta.env.BASE_URL}lesson/${lesson.id}/${section.id}`} class="section-card" data-section-id={section.id}>
           <span class="section-number">{String(i + 1).padStart(2, '0')}</span>
           <div class="section-info">
             <h2>{section.title}</h2>
@@ -112,10 +112,10 @@ const allPartIds = lesson.sections.flatMap((s) =>
     const pct = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
     statsEl.innerHTML = `
       <div class="stats-row">
-        <div class="stat"><span class="stat-value">${results.size}</span><span class="stat-label">sections completed</span></div>
-        <div class="stat"><span class="stat-value">${totalCorrect}/${totalQuestions}</span><span class="stat-label">correct answers</span></div>
-        <div class="stat"><span class="stat-value">${pct}%</span><span class="stat-label">accuracy</span></div>
-        <div class="stat"><span class="stat-value">${allWrong.length}</span><span class="stat-label">to review</span></div>
+        <div class="stat"><span class="stat-value">${results.size}</span> <span class="stat-label">sections completed</span></div>
+        <div class="stat"><span class="stat-value">${totalCorrect} / ${totalQuestions}</span> <span class="stat-label">correct answers</span></div>
+        <div class="stat"><span class="stat-value">${pct}%</span> <span class="stat-label">accuracy</span></div>
+        <div class="stat"><span class="stat-value">${allWrong.length}</span> <span class="stat-label">to review</span></div>
       </div>
     `;
 
@@ -170,18 +170,32 @@ const allPartIds = lesson.sections.flatMap((s) =>
 
 <style>
   .back {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     color: var(--text-muted);
     text-decoration: none;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.15s;
   }
   .back:hover { color: var(--accent); }
 
   .lesson-header { margin-bottom: 2rem; }
-  .lesson-header h1 { font-size: 1.6rem; margin-bottom: 0.4rem; }
+  .lesson-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
   .description { color: var(--text-muted); margin-bottom: 0.3rem; }
-  .source { color: var(--text-muted); font-size: 0.85rem; }
+  .source {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    opacity: 0.7;
+  }
 
   .sections-grid {
     display: flex;
@@ -196,25 +210,31 @@ const allPartIds = lesson.sections.flatMap((s) =>
     padding: 1rem 1.2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     text-decoration: none;
     color: var(--text);
-    transition: border-color 0.2s;
+    box-shadow: 0 1px 3px var(--card-shadow);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   }
-  .section-card:hover { border-color: var(--accent); }
+  .section-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px var(--card-shadow-hover);
+    transform: translateY(-1px);
+  }
 
   .section-number {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 800;
     color: var(--accent);
     font-variant-numeric: tabular-nums;
     flex-shrink: 0;
     width: 2rem;
-    padding-top: 0.1rem;
+    padding-top: 0.15rem;
+    opacity: 0.8;
   }
 
   .section-info { flex: 1; }
-  .section-info h2 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .section-info h2 { font-size: 1.05rem; margin-bottom: 0.3rem; font-weight: 700; }
   .section-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem; }
 
   .section-meta {
@@ -222,14 +242,16 @@ const allPartIds = lesson.sections.flatMap((s) =>
     gap: 1rem;
     font-size: 0.75rem;
     color: var(--text-muted);
+    font-weight: 500;
   }
 
   .section-score {
     font-weight: 700;
     margin-left: auto;
+    font-size: 0.8rem;
   }
   .section-score.score-perfect { color: var(--success); }
-  .section-score.score-good { color: #f0c040; }
+  .section-score.score-good { color: var(--gold); }
   .section-score.score-low { color: var(--error); }
 
   /* Global results */
@@ -238,15 +260,20 @@ const allPartIds = lesson.sections.flatMap((s) =>
     padding-top: 2rem;
     border-top: 1px solid var(--border);
   }
-  .global-results.empty { opacity: 0.6; }
-  .global-results h2 { font-size: 1.4rem; margin-bottom: 1.2rem; }
+  .global-results.empty { opacity: 0.5; }
+  .global-results h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
 
   .no-results { color: var(--text-muted); font-size: 0.9rem; }
   .all-correct { color: var(--success); font-weight: 600; }
 
   .stats-row {
     display: flex;
-    gap: 1.5rem;
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
   }
@@ -256,23 +283,32 @@ const allPartIds = lesson.sections.flatMap((s) =>
     padding: 0.8rem 1.2rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     min-width: 100px;
+    flex: 1;
+    transition: border-color 0.2s;
   }
+  .stat:hover { border-color: var(--border-hover); }
   .stat-value {
+    display: block;
     font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--accent);
   }
   .stat-label {
-    font-size: 0.75rem;
+    display: block;
+    font-size: 0.72rem;
     color: var(--text-muted);
     margin-top: 0.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
   .global-results-wrong h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-bottom: 0.8rem;
+    font-weight: 700;
   }
 
   .global-wrong-list {
@@ -288,7 +324,7 @@ const allPartIds = lesson.sections.flatMap((s) =>
     padding: 0.6rem 0.8rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 0.9rem;
   }
   .gw-question { color: var(--text-muted); }
@@ -299,13 +335,18 @@ const allPartIds = lesson.sections.flatMap((s) =>
     padding: 0.6rem 1.2rem;
     background: transparent;
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--text-muted);
     font-size: 0.85rem;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.15s;
   }
-  .clear-results-btn:hover { border-color: var(--error); color: var(--error); }
+  .clear-results-btn:hover {
+    border-color: var(--error);
+    color: var(--error);
+    box-shadow: 0 0 12px rgba(220, 50, 47, 0.08);
+  }
 
   .hidden { display: none; }
 </style>
