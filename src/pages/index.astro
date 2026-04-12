@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAllLessons } from '../scripts/lessons';
+
+const lessons = getAllLessons();
+---
+
+<Layout title="Home">
+  <h1>Lessons</h1>
+  <div class="lessons">
+    {lessons.map((lesson) => (
+      <a href={`/lesson/${lesson.id}`} class="lesson-card">
+        <img
+          src={`https://i.ytimg.com/vi/${lesson.videoId}/mqdefault.jpg`}
+          alt={lesson.title}
+          class="thumbnail"
+        />
+        <div class="lesson-info">
+          <h2>{lesson.title}</h2>
+          <p>{lesson.description}</p>
+          <div class="meta">
+            <span class="source">{lesson.source}</span>
+            <span class="section-count">{lesson.sections.length} sections</span>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <style>
+    h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+
+    .lessons { display: flex; flex-direction: column; gap: 1rem; }
+
+    .lesson-card {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    .lesson-card:hover { border-color: var(--accent); }
+
+    .thumbnail {
+      width: 200px;
+      height: 112px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .lesson-info h2 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+    .lesson-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+
+    .meta { display: flex; gap: 1rem; }
+    .source, .section-count {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+</Layout>

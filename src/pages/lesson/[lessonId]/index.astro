@@ -1,0 +1,100 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getAllLessons, getQuestions } from '../../../scripts/lessons';
+
+export function getStaticPaths() {
+  const lessons = getAllLessons();
+  return lessons.map((lesson) => ({
+    params: { lessonId: lesson.id },
+    props: { lesson },
+  }));
+}
+
+const { lesson } = Astro.props;
+const questions = getQuestions(lesson.id);
+---
+
+<Layout title={lesson.title}>
+  <a href="/" class="back">&larr; All lessons</a>
+
+  <header class="lesson-header">
+    <h1>{lesson.title}</h1>
+    <p class="description">{lesson.description}</p>
+    <p class="source">Source: {lesson.source}</p>
+  </header>
+
+  <div class="sections-grid">
+    {lesson.sections.map((section, i) => {
+      const qCount = questions[section.id]?.length ?? 0;
+      return (
+        <a href={`/lesson/${lesson.id}/${section.id}`} class="section-card">
+          <span class="section-number">{String(i + 1).padStart(2, '0')}</span>
+          <div class="section-info">
+            <h2>{section.title}</h2>
+            <p>{section.description}</p>
+            <div class="section-meta">
+              <span>{section.chapters.length} {section.chapters.length === 1 ? 'chapter' : 'chapters'}</span>
+              <span>{qCount} {qCount === 1 ? 'question' : 'questions'}</span>
+            </div>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+</Layout>
+
+<style>
+  .back {
+    display: inline-block;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  .back:hover { color: var(--accent); }
+
+  .lesson-header { margin-bottom: 2rem; }
+  .lesson-header h1 { font-size: 1.6rem; margin-bottom: 0.4rem; }
+  .description { color: var(--text-muted); margin-bottom: 0.3rem; }
+  .source { color: var(--text-muted); font-size: 0.85rem; }
+
+  .sections-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .section-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .section-card:hover { border-color: var(--accent); }
+
+  .section-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    width: 2rem;
+    padding-top: 0.1rem;
+  }
+
+  .section-info h2 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .section-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem; }
+
+  .section-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+</style>

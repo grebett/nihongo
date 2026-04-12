@@ -1,0 +1,768 @@
+verb-groups:
+  - type: multiple-choice
+    question: "How many verb groups exist in modern Japanese?"
+    options: ["One", "Two (+ irregulars)", "Three", "Five"]
+    answer: 1
+    hint: "Ichidan and Godan, plus two irregular verbs (する and 来る)"
+  - type: multiple-choice
+    question: "What does 'ichidan' (一段) literally mean?"
+    options: ["Five stages", "One stage", "First verb", "Simple form"]
+    answer: 1
+    hint: "There's only one stage of conjugation — just drop る and add the ending"
+  - type: multiple-choice
+    question: "What does 'godan' (五段) literally mean?"
+    options: ["One stage", "Two stages", "Five stages", "Ten stages"]
+    answer: 2
+    hint: "Conjugation depends on five vowel sounds (a, i, u, e, o)"
+  - type: multiple-choice
+    question: "Which of these is an ichidan verb?"
+    options: ["飲む (nomu)", "書く (kaku)", "食べる (taberu)", "話す (hanasu)"]
+    answer: 2
+    hint: "Ichidan verbs end in -eru or -iru"
+
+dictionary-form-ichidan:
+  - type: multiple-choice
+    question: "The dictionary form can be used for which situations?"
+    options: ["Only present tense", "Only future tense", "Present, habitual, and future", "Only past tense"]
+    answer: 2
+    hint: "I eat sushi (now) / I eat sushi (regularly) / I will eat sushi (future)"
+  - type: free-input
+    question: "What is the dictionary form of 'to eat'?"
+    answers: ["食べる", "たべる", "taberu"]
+    hint: "An ichidan verb ending in -eru"
+  - type: free-input
+    question: "What is the dictionary form of 'to look/see'?"
+    answers: ["見る", "みる", "miru"]
+    hint: "An ichidan verb ending in -iru"
+  - type: multiple-choice
+    question: "How do you conjugate ichidan verbs from dictionary form?"
+    options: ["Change the last vowel", "Drop る and add the new ending", "Add after the verb", "Change the whole verb"]
+    answer: 1
+    hint: "One stage — just drop る and add"
+
+dictionary-form-godan:
+  - type: free-input
+    question: "What is the dictionary form of 'to drink'?"
+    answers: ["飲む", "のむ", "nomu"]
+    hint: "A godan verb ending in む"
+  - type: free-input
+    question: "What is the dictionary form of 'to write'?"
+    answers: ["書く", "かく", "kaku"]
+    hint: "A godan verb ending in く"
+  - type: free-input
+    question: "What is the dictionary form of 'to read'?"
+    answers: ["読む", "よむ", "yomu"]
+    hint: "A godan verb ending in む"
+  - type: multiple-choice
+    question: "Godan verbs conjugate based on:"
+    options: ["Just dropping る", "Five vowel sounds (a, i, u, e, o)", "Adding ます directly", "Changing the first syllable"]
+    answer: 1
+    hint: "The う-row (dictionary) changes to あ, い, え, お rows depending on the form"
+
+polite-form-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu - to eat) to polite form"
+    answers: ["食べます", "たべます", "tabemasu"]
+    hint: "Drop る, add ます"
+  - type: free-input
+    question: "Convert 見る (miru - to look) to polite form"
+    answers: ["見ます", "みます", "mimasu"]
+    hint: "Drop る, add ます"
+  - type: free-input
+    question: "Convert 起きる (okiru - to wake up) to polite form"
+    answers: ["起きます", "おきます", "okimasu"]
+    hint: "Drop る, add ます"
+
+polite-form-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu - to drink) to polite form"
+    answers: ["飲みます", "のみます", "nomimasu"]
+    hint: "む → み (i-row), then add ます"
+  - type: free-input
+    question: "Convert 聞く (kiku - to listen) to polite form"
+    answers: ["聞きます", "ききます", "kikimasu"]
+    hint: "く → き (i-row), then add ます"
+  - type: free-input
+    question: "Convert 持つ (motsu - to hold) to polite form"
+    answers: ["持ちます", "もちます", "mochimasu"]
+    hint: "つ → ち (i-row), then add ます"
+  - type: free-input
+    question: "Convert 読む (yomu - to read) to polite form"
+    answers: ["読みます", "よみます", "yomimasu"]
+    hint: "む → み (i-row), then add ます"
+  - type: multiple-choice
+    question: "For godan verbs, what sound row do you change to before adding ます?"
+    options: ["あ-row (a)", "い-row (i)", "う-row (u)", "え-row (e)"]
+    answer: 1
+    hint: "む→み, く→き, す→し, つ→ち, etc."
+
+polite-form-irregular:
+  - type: free-input
+    question: "Convert する (suru - to do) to polite form"
+    answers: ["します", "shimasu"]
+    hint: "Irregular — する becomes します"
+  - type: free-input
+    question: "Convert 来る (kuru - to come) to polite form"
+    answers: ["来ます", "きます", "kimasu"]
+    hint: "Irregular — く changes to き, then add ます"
+  - type: multiple-choice
+    question: "Why are する and 来る called irregular?"
+    options: ["They are rarely used", "They don't follow ichidan or godan rules", "They can't be conjugated", "They are only used in casual speech"]
+    answer: 1
+    hint: "They have their own unique conjugation patterns"
+
+masu-stem-ichidan:
+  - type: free-input
+    question: "What is the masu stem of 見る (miru)?"
+    answers: ["見", "み", "mi"]
+    hint: "Drop ます from 見ます → 見"
+  - type: free-input
+    question: "What is the masu stem of 食べる (taberu)?"
+    answers: ["食べ", "たべ", "tabe"]
+    hint: "Drop ます from 食べます → 食べ"
+  - type: multiple-choice
+    question: "For ichidan verbs, the masu stem is the same as:"
+    options: ["The dictionary form", "The dictionary form minus る", "The te-form", "The nai-form"]
+    answer: 1
+    hint: "食べる → 食べ, 見る → 見"
+
+masu-stem-godan:
+  - type: free-input
+    question: "What is the masu stem of 読む (yomu)?"
+    answers: ["読み", "よみ", "yomi"]
+    hint: "Drop ます from 読みます → 読み"
+  - type: free-input
+    question: "What is the masu stem of 聞く (kiku)?"
+    answers: ["聞き", "きき", "kiki"]
+    hint: "Drop ます from 聞きます → 聞き"
+  - type: multiple-choice
+    question: "The masu stem + たい expresses:"
+    options: ["Ability to do something", "Want to do something", "Must do something", "Should do something"]
+    answer: 1
+    hint: "読みたい = want to read"
+  - type: multiple-choice
+    question: "The masu stem + やすい expresses:"
+    options: ["Hard to do", "Easy to do", "Want to do", "Able to do"]
+    answer: 1
+    hint: "読みやすい = easy to read"
+
+masu-stem-irregular:
+  - type: free-input
+    question: "What is the masu stem of 来る (kuru)?"
+    answers: ["き", "ki"]
+    hint: "来ます → き"
+  - type: free-input
+    question: "What is the masu stem of する (suru)?"
+    answers: ["し", "shi"]
+    hint: "します → し"
+  - type: free-input
+    question: "How do you say 'want to do' using する?"
+    answers: ["したい", "shitai"]
+    hint: "Masu stem し + たい"
+
+te-form-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to te-form"
+    answers: ["食べて", "たべて", "tabete"]
+    hint: "Drop る, add て"
+  - type: free-input
+    question: "Convert 見る (miru) to te-form"
+    answers: ["見て", "みて", "mite"]
+    hint: "Drop る, add て"
+  - type: multiple-choice
+    question: "The te-form can be used to:"
+    options: ["Only make requests", "Only express past tense", "Connect sentences, make requests, and more", "Only talk about habits"]
+    answer: 2
+    hint: "見て (look!), 食べてください (please eat), 食べて寝た (ate and slept)"
+
+te-form-godan:
+  - type: free-input
+    question: "Convert 書く (kaku - to write) to te-form"
+    answers: ["書いて", "かいて", "kaite"]
+    hint: "く → いて"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu - to swim) to te-form"
+    answers: ["泳いで", "およいで", "oyoide"]
+    hint: "ぐ → いで"
+  - type: free-input
+    question: "Convert 話す (hanasu - to speak) to te-form"
+    answers: ["話して", "はなして", "hanashite"]
+    hint: "す → して"
+  - type: free-input
+    question: "Convert 飲む (nomu - to drink) to te-form"
+    answers: ["飲んで", "のんで", "nonde"]
+    hint: "む → んで"
+  - type: free-input
+    question: "Convert 遊ぶ (asobu - to play) to te-form"
+    answers: ["遊んで", "あそんで", "asonde"]
+    hint: "ぶ → んで"
+  - type: free-input
+    question: "Convert 死ぬ (shinu - to die) to te-form"
+    answers: ["死んで", "しんで", "shinde"]
+    hint: "ぬ → んで"
+  - type: free-input
+    question: "Convert 待つ (matsu - to wait) to te-form"
+    answers: ["待って", "まって", "matte"]
+    hint: "つ → って"
+  - type: free-input
+    question: "Convert 買う (kau - to buy) to te-form"
+    answers: ["買って", "かって", "katte"]
+    hint: "う → って"
+  - type: multiple-choice
+    question: "Which godan endings become んで in te-form?"
+    options: ["く and ぐ", "む, ぶ, and ぬ", "す", "う, つ, and る"]
+    answer: 1
+    hint: "飲む→飲んで, 遊ぶ→遊んで, 死ぬ→死んで"
+
+te-form-irregular:
+  - type: free-input
+    question: "Convert する (suru) to te-form"
+    answers: ["して", "shite"]
+    hint: "Masu stem し + て"
+  - type: free-input
+    question: "Convert 来る (kuru) to te-form"
+    answers: ["来て", "きて", "kite"]
+    hint: "Masu stem き + て"
+  - type: multiple-choice
+    question: "A する verb (noun + する) follows the same te-form rule. What is the te-form of 勉強する (benkyousuru)?"
+    options: ["勉強して", "勉強すて", "勉強しって", "勉強さて"]
+    answer: 0
+    hint: "Just conjugate the する part → して"
+
+past-tense-ichidan:
+  - type: free-input
+    question: "Convert 見る (miru) to past tense"
+    answers: ["見た", "みた", "mita"]
+    hint: "Te-form 見て → replace て with た"
+  - type: free-input
+    question: "Convert 食べる (taberu) to past tense"
+    answers: ["食べた", "たべた", "tabeta"]
+    hint: "Te-form 食べて → replace て with た"
+  - type: free-input
+    question: "What is the polite past of 食べる?"
+    answers: ["食べました", "たべました", "tabemashita"]
+    hint: "Replace ます with ました"
+
+past-tense-godan:
+  - type: multiple-choice
+    question: "How do you form past tense from te-form?"
+    options: ["Add た after て", "Replace て with た (and で with だ)", "Add ました", "Change the verb stem"]
+    answer: 1
+    hint: "書いて→書いた, 飲んで→飲んだ"
+  - type: free-input
+    question: "Convert 書く (kaku) to past tense"
+    answers: ["書いた", "かいた", "kaita"]
+    hint: "書いて → 書いた"
+  - type: free-input
+    question: "Convert 飲む (nomu) to past tense"
+    answers: ["飲んだ", "のんだ", "nonda"]
+    hint: "飲んで → 飲んだ (で→だ)"
+  - type: free-input
+    question: "Convert 待つ (matsu) to past tense"
+    answers: ["待った", "まった", "matta"]
+    hint: "待って → 待った"
+  - type: free-input
+    question: "Convert 読む (yomu) to past tense"
+    answers: ["読んだ", "よんだ", "yonda"]
+    hint: "読んで → 読んだ"
+
+past-tense-irregular:
+  - type: free-input
+    question: "Convert 来る (kuru) to past tense"
+    answers: ["来た", "きた", "kita"]
+    hint: "来て → 来た — careful, it's きた not きった!"
+  - type: free-input
+    question: "Convert する (suru) to past tense"
+    answers: ["した", "shita"]
+    hint: "して → した"
+  - type: free-input
+    question: "What is the polite past of 来る?"
+    answers: ["来ました", "きました", "kimashita"]
+    hint: "Masu stem き + ました"
+
+continuous-form-ichidan:
+  - type: multiple-choice
+    question: "The continuous form expresses:"
+    options: ["Past actions", "Ongoing actions or states", "Future plans", "Commands"]
+    answer: 1
+    hint: "勉強している = I am studying (ongoing action)"
+  - type: free-input
+    question: "How do you say 'is eating' using 食べる?"
+    answers: ["食べている", "たべている", "tabeteiru"]
+    hint: "Te-form 食べて + いる"
+  - type: free-input
+    question: "How do you say 'is looking' using 見る?"
+    answers: ["見ている", "みている", "miteiru"]
+    hint: "Te-form 見て + いる"
+
+continuous-form-godan:
+  - type: free-input
+    question: "How do you say 'is drinking' using 飲む?"
+    answers: ["飲んでいる", "のんでいる", "nondeiru"]
+    hint: "Te-form 飲んで + いる"
+  - type: free-input
+    question: "How do you say 'is listening' using 聞く?"
+    answers: ["聞いている", "きいている", "kiiteiru"]
+    hint: "Te-form 聞いて + いる"
+  - type: multiple-choice
+    question: "In casual speech, ている is often contracted to:"
+    options: ["てる", "たる", "とる", "てく"]
+    answer: 0
+    hint: "飲んでいる → 飲んでる"
+
+continuous-form-irregular:
+  - type: free-input
+    question: "How do you say 'is doing' using する?"
+    answers: ["している", "shiteiru"]
+    hint: "して + いる"
+  - type: free-input
+    question: "How do you say 'is coming' using 来る?"
+    answers: ["来ている", "きている", "kiteiru"]
+    hint: "来て + いる"
+  - type: free-input
+    question: "What is the casual contraction of している?"
+    answers: ["してる", "shiteru"]
+    hint: "Drop the い"
+
+negative-form-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to negative form"
+    answers: ["食べない", "たべない", "tabenai"]
+    hint: "Drop る, add ない"
+  - type: free-input
+    question: "Convert 見る (miru) to negative form"
+    answers: ["見ない", "みない", "minai"]
+    hint: "Drop る, add ない"
+  - type: free-input
+    question: "Convert 起きる (okiru - to wake up) to negative form"
+    answers: ["起きない", "おきない", "okinai"]
+    hint: "Drop る, add ない"
+  - type: multiple-choice
+    question: "The negative form can be used for:"
+    options: ["Only present actions", "Only future actions", "Habits, present, and future actions", "Only past actions"]
+    answer: 2
+    hint: "I don't eat meat (habit) / I'm not eating now / I won't eat tomorrow"
+
+negative-form-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu) to negative form"
+    answers: ["飲まない", "のまない", "nomanai"]
+    hint: "む → ま (a-row), add ない"
+  - type: free-input
+    question: "Convert 書く (kaku) to negative form"
+    answers: ["書かない", "かかない", "kakanai"]
+    hint: "く → か (a-row), add ない"
+  - type: free-input
+    question: "Convert 聞く (kiku) to negative form"
+    answers: ["聞かない", "きかない", "kikanai"]
+    hint: "く → か (a-row), add ない"
+  - type: free-input
+    question: "Convert 話す (hanasu) to negative form"
+    answers: ["話さない", "はなさない", "hanasanai"]
+    hint: "す → さ (a-row), add ない"
+  - type: free-input
+    question: "Convert 待つ (matsu) to negative form"
+    answers: ["待たない", "またない", "matanai"]
+    hint: "つ → た (a-row), add ない"
+
+negative-form-irregular:
+  - type: free-input
+    question: "Convert する (suru) to negative form"
+    answers: ["しない", "shinai"]
+    hint: "する → しない"
+  - type: free-input
+    question: "Convert 来る (kuru) to negative form"
+    answers: ["来ない", "こない", "konai"]
+    hint: "く changes to こ, add ない"
+  - type: free-input
+    question: "What is the negative of ある (aru - to exist)?"
+    answers: ["ない", "nai"]
+    hint: "Special exception — ある simply becomes ない"
+  - type: free-input
+    question: "What is the polite negative of ある?"
+    answers: ["ありません", "arimasen"]
+    hint: "ある → あります → ありません"
+
+past-negative-ichidan:
+  - type: free-input
+    question: "Convert 見る (miru) to past negative"
+    answers: ["見なかった", "みなかった", "minakatta"]
+    hint: "見ない → replace ない with なかった"
+  - type: free-input
+    question: "Convert 食べる (taberu) to past negative"
+    answers: ["食べなかった", "たべなかった", "tabenakatta"]
+    hint: "食べない → 食べなかった"
+  - type: free-input
+    question: "What is the polite past negative of 食べる?"
+    answers: ["食べませんでした", "たべませんでした", "tabemasendeshita"]
+    hint: "食べません + でした"
+
+past-negative-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu) to past negative"
+    answers: ["飲まなかった", "のまなかった", "nomanakatta"]
+    hint: "飲まない → 飲まなかった"
+  - type: free-input
+    question: "Convert 言う (iu - to say) to past negative"
+    answers: ["言わなかった", "いわなかった", "iwanakatta"]
+    hint: "言わない → 言わなかった"
+  - type: free-input
+    question: "Convert 書く (kaku) to past negative"
+    answers: ["書かなかった", "かかなかった", "kakanakatta"]
+    hint: "書かない → 書かなかった"
+
+past-negative-irregular:
+  - type: free-input
+    question: "Convert する (suru) to past negative"
+    answers: ["しなかった", "shinakatta"]
+    hint: "しない → しなかった"
+  - type: free-input
+    question: "Convert 来る (kuru) to past negative"
+    answers: ["来なかった", "こなかった", "konakatta"]
+    hint: "来ない → 来なかった"
+
+passive-form-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to passive form"
+    answers: ["食べられる", "たべられる", "taberareru"]
+    hint: "Drop る, add られる"
+  - type: free-input
+    question: "Convert 見る (miru) to passive form"
+    answers: ["見られる", "みられる", "mirareru"]
+    hint: "Drop る, add られる"
+  - type: multiple-choice
+    question: "The passive form can express:"
+    options: ["Only regretful actions", "Only neutral statements", "Regretful, neutral, or respectful/honorific statements", "Only commands"]
+    answer: 2
+    hint: "It has three nuances depending on context"
+
+passive-form-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu) to passive form"
+    answers: ["飲まれる", "のまれる", "nomareru"]
+    hint: "む → ま (a-row), add れる"
+  - type: free-input
+    question: "Convert 書く (kaku) to passive form"
+    answers: ["書かれる", "かかれる", "kakareru"]
+    hint: "く → か (a-row), add れる"
+  - type: free-input
+    question: "Convert 聞く (kiku) to passive form"
+    answers: ["聞かれる", "きかれる", "kikareru"]
+    hint: "く → か (a-row), add れる"
+
+passive-form-irregular:
+  - type: free-input
+    question: "Convert する (suru) to passive form"
+    answers: ["される", "sareru"]
+    hint: "する → される"
+  - type: free-input
+    question: "Convert 来る (kuru) to passive form"
+    answers: ["来られる", "こられる", "korareru"]
+    hint: "く → こ, add られる"
+
+causative-form-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to causative form"
+    answers: ["食べさせる", "たべさせる", "tabesaseru"]
+    hint: "Drop る, add させる"
+  - type: free-input
+    question: "Convert 見る (miru) to causative form"
+    answers: ["見させる", "みさせる", "misaseru"]
+    hint: "Drop る, add させる"
+  - type: multiple-choice
+    question: "The causative form can mean:"
+    options: ["Only 'to make someone do'", "Only 'to let someone do'", "Both 'make' and 'let' (depends on context)", "To be able to do"]
+    answer: 2
+    hint: "食べさせる = make eat OR let eat"
+
+causative-form-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu) to causative form"
+    answers: ["飲ませる", "のませる", "nomaseru"]
+    hint: "む → ま (a-row), add せる"
+  - type: free-input
+    question: "Convert 聞く (kiku) to causative form"
+    answers: ["聞かせる", "きかせる", "kikaseru"]
+    hint: "く → か (a-row), add せる"
+  - type: free-input
+    question: "Convert 待つ (matsu) to causative form"
+    answers: ["待たせる", "またせる", "mataseru"]
+    hint: "つ → た (a-row), add せる"
+  - type: free-input
+    question: "Convert 言う (iu - to say) to causative form"
+    answers: ["言わせる", "いわせる", "iwaseru"]
+    hint: "う → わ (a-row), add せる"
+
+causative-form-irregular:
+  - type: free-input
+    question: "Convert する (suru) to causative form"
+    answers: ["させる", "saseru"]
+    hint: "する → させる"
+  - type: free-input
+    question: "Convert 来る (kuru) to causative form"
+    answers: ["来させる", "こさせる", "kosaseru"]
+    hint: "く → こ, add させる — careful, it's こさせる not きさせる!"
+
+causative-passive-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to causative-passive form"
+    answers: ["食べさせられる", "たべさせられる", "tabesaserareru"]
+    hint: "Drop る, add させられる"
+  - type: multiple-choice
+    question: "'食べさせられる' means:"
+    options: ["I eat", "I make someone eat", "I was made to eat", "I can eat"]
+    answer: 2
+    hint: "Causative (make do) + passive (by someone) = was made to do"
+
+causative-passive-godan:
+  - type: free-input
+    question: "Convert 聞く (kiku) to causative-passive form"
+    answers: ["聞かされる", "聞かせられる", "きかされる", "きかせられる", "kikasareru", "kikaserareru"]
+    hint: "Both 聞かされる (short) and 聞かせられる (full) are correct"
+  - type: free-input
+    question: "Convert 待つ (matsu) to causative-passive form"
+    answers: ["待たせられる", "待たされる", "またせられる", "またされる", "mataserareru", "matasareru"]
+    hint: "待たせられる (full form) — was made to wait"
+  - type: free-input
+    question: "Convert 飲む (nomu) to causative-passive form"
+    answers: ["飲ませられる", "飲まされる", "のませられる", "のまされる", "nomaserareru", "nomasareru"]
+    hint: "飲ませられる — was made to drink"
+
+causative-passive-irregular:
+  - type: free-input
+    question: "Convert する (suru) to causative-passive form"
+    answers: ["させられる", "saserareru"]
+    hint: "させる (causative) → させられる (causative-passive)"
+  - type: free-input
+    question: "Convert 来る (kuru) to causative-passive form"
+    answers: ["来させられる", "こさせられる", "kosaserareru"]
+    hint: "来させる → 来させられる — extremely rare in practice!"
+
+imperative-form-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to imperative form"
+    answers: ["食べろ", "たべろ", "tabero"]
+    hint: "Replace る with ろ"
+  - type: free-input
+    question: "Convert 見る (miru) to imperative form"
+    answers: ["見ろ", "みろ", "miro"]
+    hint: "Replace る with ろ — 見ろ! (Look!)"
+  - type: free-input
+    question: "Convert 止める (yameru - to stop) to imperative form"
+    answers: ["止めろ", "やめろ", "yamero"]
+    hint: "Replace る with ろ — やめろ! (Stop it!)"
+  - type: multiple-choice
+    question: "The imperative form is:"
+    options: ["A polite request", "A very strong/forceful command", "A suggestion", "A question"]
+    answer: 1
+    hint: "Use te-form + ください for polite requests instead"
+
+imperative-form-godan:
+  - type: free-input
+    question: "Convert 言う (iu - to say) to imperative form"
+    answers: ["言え", "いえ", "ie"]
+    hint: "Change to え-row — 言え! (Say it!)"
+  - type: free-input
+    question: "Convert 聞く (kiku) to imperative form"
+    answers: ["聞け", "きけ", "kike"]
+    hint: "く → け (e-row) — 聞け! (Listen!)"
+  - type: free-input
+    question: "Convert 待つ (matsu) to imperative form"
+    answers: ["待て", "まて", "mate"]
+    hint: "つ → て (e-row) — 待て! (Wait!)"
+  - type: free-input
+    question: "Convert 飲む (nomu) to imperative form"
+    answers: ["飲め", "のめ", "nome"]
+    hint: "む → め (e-row) — 飲め! (Drink!)"
+
+imperative-form-irregular:
+  - type: free-input
+    question: "What is the imperative form of 来る (kuru)?"
+    answers: ["来い", "こい", "koi"]
+    hint: "来る → 来い (こい) — Come!"
+  - type: free-input
+    question: "What is the imperative form of する (suru)?"
+    answers: ["しろ", "shiro"]
+    hint: "する → しろ — Do it!"
+
+conditional-ba-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to ba-form"
+    answers: ["食べれば", "たべれば", "tabereba"]
+    hint: "Drop る, add れば"
+  - type: free-input
+    question: "Convert 出る (deru - to leave) to ba-form"
+    answers: ["出れば", "でれば", "dereba"]
+    hint: "Drop る, add れば — 出れば (if you leave)"
+  - type: multiple-choice
+    question: "The ba-form is used for:"
+    options: ["Commands", "Past actions", "Hypothetical conditions (if/when)", "Ongoing actions"]
+    answer: 2
+    hint: "出れば = if/when you leave"
+
+conditional-ba-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu) to ba-form"
+    answers: ["飲めば", "のめば", "nomeba"]
+    hint: "む → め (e-row), add ば"
+  - type: free-input
+    question: "Convert 言う (iu) to ba-form"
+    answers: ["言えば", "いえば", "ieba"]
+    hint: "う → え (e-row), add ば"
+  - type: free-input
+    question: "Convert 聞く (kiku) to ba-form"
+    answers: ["聞けば", "きけば", "kikeba"]
+    hint: "く → け (e-row), add ば"
+  - type: multiple-choice
+    question: "The ba-form conjugation for godan verbs is the same as which form + ば?"
+    options: ["Dictionary form", "Polite form", "Imperative form", "Te-form"]
+    answer: 2
+    hint: "聞け (imperative) + ば = 聞けば (conditional)"
+
+conditional-ba-irregular:
+  - type: free-input
+    question: "Convert する (suru) to ba-form"
+    answers: ["すれば", "sureba"]
+    hint: "Replace る with れば"
+  - type: free-input
+    question: "Convert 来る (kuru) to ba-form"
+    answers: ["来れば", "くれば", "kureba"]
+    hint: "Replace る with れば"
+  - type: free-input
+    question: "How do you say 'What should I do?' using する + ば?"
+    answers: ["どうすればいい", "dousurebaii"]
+    hint: "どう (how) + すれば (if do) + いい (good) = what would be good if I did"
+
+conditional-tara-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to tara-form"
+    answers: ["食べたら", "たべたら", "tabetara"]
+    hint: "Past tense 食べた + ら"
+  - type: free-input
+    question: "Convert 見る (miru) to tara-form"
+    answers: ["見たら", "みたら", "mitara"]
+    hint: "Past tense 見た + ら"
+  - type: multiple-choice
+    question: "The tara-form can express:"
+    options: ["Only hypotheticals", "Only 'after'", "Hypotheticals, actual conditions, and 'after'", "Only past events"]
+    answer: 2
+    hint: "夏が来たら = if/when/after summer comes"
+
+conditional-tara-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu) to tara-form"
+    answers: ["飲んだら", "のんだら", "nondara"]
+    hint: "Past tense 飲んだ + ら"
+  - type: free-input
+    question: "Convert 書く (kaku) to tara-form"
+    answers: ["書いたら", "かいたら", "kaitara"]
+    hint: "Past tense 書いた + ら"
+  - type: free-input
+    question: "Convert 死ぬ (shinu - to die) to tara-form"
+    answers: ["死んだら", "しんだら", "shindara"]
+    hint: "Past tense 死んだ + ら"
+
+conditional-tara-irregular:
+  - type: free-input
+    question: "Convert する (suru) to tara-form"
+    answers: ["したら", "shitara"]
+    hint: "Past tense した + ら"
+  - type: free-input
+    question: "Convert 来る (kuru) to tara-form"
+    answers: ["来たら", "きたら", "kitara"]
+    hint: "Past tense 来た + ら"
+
+potential-form-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to potential form"
+    answers: ["食べられる", "たべられる", "taberareru"]
+    hint: "Drop る, add られる"
+  - type: free-input
+    question: "Convert 見る (miru) to potential form"
+    answers: ["見られる", "みられる", "mirareru"]
+    hint: "Drop る, add られる"
+  - type: multiple-choice
+    question: "For ichidan verbs, the potential form is identical to:"
+    options: ["The causative form", "The passive form", "The imperative form", "The te-form"]
+    answer: 1
+    hint: "食べられる = can eat OR is eaten — context decides!"
+
+potential-form-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu) to potential form"
+    answers: ["飲める", "のめる", "nomeru"]
+    hint: "む → め (e-row), add る"
+  - type: free-input
+    question: "Convert 書く (kaku) to potential form"
+    answers: ["書ける", "かける", "kakeru"]
+    hint: "く → け (e-row), add る"
+  - type: free-input
+    question: "Convert 行く (iku - to go) to potential form"
+    answers: ["行ける", "いける", "ikeru"]
+    hint: "く → け (e-row), add る — 行ける! (I can go!)"
+  - type: free-input
+    question: "Convert 話す (hanasu) to potential form"
+    answers: ["話せる", "はなせる", "hanaseru"]
+    hint: "す → せ (e-row), add る"
+
+potential-form-irregular:
+  - type: free-input
+    question: "What is the potential form of する (suru)?"
+    answers: ["できる", "dekiru"]
+    hint: "Completely different word! する → できる (to be able to do)"
+  - type: free-input
+    question: "Convert 来る (kuru) to potential form"
+    answers: ["来られる", "こられる", "korareru"]
+    hint: "く → こ, add られる"
+  - type: multiple-choice
+    question: "Why is the potential of する special?"
+    options: ["It uses the same form as passive", "It uses the same form as causative", "It becomes a completely different word (できる)", "It can't be conjugated"]
+    answer: 2
+    hint: "できる is often learned as a separate verb, but it is actually the potential of する"
+
+volitional-form-ichidan:
+  - type: free-input
+    question: "Convert 食べる (taberu) to volitional form"
+    answers: ["食べよう", "たべよう", "tabeyou", "tabeyoo"]
+    hint: "Drop る, add よう"
+  - type: free-input
+    question: "Convert 見る (miru) to volitional form"
+    answers: ["見よう", "みよう", "miyou", "miyoo"]
+    hint: "Drop る, add よう"
+  - type: multiple-choice
+    question: "The volitional form is often translated as:"
+    options: ["Must do", "Let's do / I will do", "Don't do", "Please do"]
+    answer: 1
+    hint: "食べよう = Let's eat! Shows will or volition."
+
+volitional-form-godan:
+  - type: free-input
+    question: "Convert 飲む (nomu) to volitional form"
+    answers: ["飲もう", "のもう", "nomou", "nomoo"]
+    hint: "む → も (o-row), add う"
+  - type: free-input
+    question: "Convert 行く (iku) to volitional form"
+    answers: ["行こう", "いこう", "ikou", "ikoo"]
+    hint: "く → こ (o-row), add う — 行こう! (Let's go!)"
+  - type: free-input
+    question: "Convert 待つ (matsu) to volitional form"
+    answers: ["待とう", "まとう", "matou", "matoo"]
+    hint: "つ → と (o-row), add う"
+  - type: free-input
+    question: "What is the polite volitional of 行く?"
+    answers: ["行きましょう", "いきましょう", "ikimashou", "ikimashoo"]
+    hint: "Masu stem 行き + ましょう"
+
+volitional-form-irregular:
+  - type: free-input
+    question: "Convert する (suru) to volitional form"
+    answers: ["しよう", "shiyou", "shiyoo"]
+    hint: "する → しよう"
+  - type: free-input
+    question: "Convert 来る (kuru) to volitional form"
+    answers: ["来よう", "こよう", "koyou", "koyoo"]
+    hint: "く → こ, add よう"
+  - type: free-input
+    question: "How do you say 'What should I do?' using the volitional?"
+    answers: ["どうしよう", "doushiyou", "doushiyoo"]
+    hint: "どう (how/what) + しよう (shall do)"

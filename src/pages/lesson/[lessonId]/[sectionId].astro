@@ -1,0 +1,501 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getAllLessons, getQuestions } from '../../../scripts/lessons';
+import type { Section, Question } from '../../../scripts/lessons';
+
+export function getStaticPaths() {
+  const lessons = getAllLessons();
+  return lessons.flatMap((lesson) => {
+    const questions = getQuestions(lesson.id);
+    return lesson.sections.map((section, idx) => ({
+      params: { lessonId: lesson.id, sectionId: section.id },
+      props: {
+        lesson,
+        section,
+        sectionQuestions: questions[section.id] ?? [],
+        sectionIndex: idx,
+        totalSections: lesson.sections.length,
+        prevSection: idx > 0 ? lesson.sections[idx - 1] : null,
+        nextSection: idx < lesson.sections.length - 1 ? lesson.sections[idx + 1] : null,
+      },
+    }));
+  });
+}
+
+const { lesson, section, sectionQuestions, sectionIndex, totalSections, prevSection, nextSection } = Astro.props;
+const firstChapter = section.chapters[0];
+---
+
+<Layout title={`${section.title} - ${lesson.title}`}>
+  <a href={`/lesson/${lesson.id}`} class="back">&larr; {lesson.title}</a>
+
+  <header class="section-header">
+    <span class="section-number">Section {sectionIndex + 1} / {totalSections}</span>
+    <h1>{section.title}</h1>
+    <p class="description">{section.description}</p>
+  </header>
+
+  <!-- Video with chapter navigation -->
+  <div class="video-area">
+    <div class="video-container">
+      <iframe
+        id="video-player"
+        src={`https://www.youtube.com/embed/${lesson.videoId}?start=${firstChapter.startTime}&end=${firstChapter.endTime}`}
+        title={section.title}
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    {section.chapters.length > 1 && (
+      <div class="chapter-nav">
+        {section.chapters.map((ch, i) => (
+          <button
+            class={`chapter-btn ${i === 0 ? 'active' : ''}`}
+            data-video-id={lesson.videoId}
+            data-start={ch.startTime}
+            data-end={ch.endTime}
+          >
+            {ch.title}
+          </button>
+        ))}
+      </div>
+    )}
+
+    <button
+      class="replay-btn"
+      id="replay-btn"
+      data-video-id={lesson.videoId}
+      data-start={firstChapter.startTime}
+      data-end={firstChapter.endTime}
+    >
+      Replay chapter
+    </button>
+  </div>
+
+  <!-- Questions -->
+  {sectionQuestions.length > 0 && (
+    <section class="quiz-section">
+      <div class="quiz-header">
+        <h2>Practice</h2>
+        <div class="score" id="score">0 / {sectionQuestions.length}</div>
+      </div>
+
+      <div id="questions">
+        {sectionQuestions.map((q: Question, i: number) => (
+          <div class="question-card" data-index={i} data-type={q.type} data-answer={q.type === 'multiple-choice' ? q.answer : JSON.stringify(q.answers)}>
+            <div class="question-number">Q{i + 1}</div>
+            <p class="question-text">{q.question}</p>
+
+            {q.type === 'multiple-choice' && q.options && (
+              <div class="options">
+                {q.options.map((opt: string, j: number) => (
+                  <button class="option-btn" data-option={j}>{opt}</button>
+                ))}
+              </div>
+            )}
+
+            {q.type === 'free-input' && (
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="answer-input"
+                  placeholder="Type your answer (Japanese or romaji)..."
+                  autocomplete="off"
+                />
+                <button class="submit-btn">Check</button>
+              </div>
+            )}
+
+            <div class="hint" data-hint={q.hint}>
+              <button class="hint-btn">Show hint</button>
+              <p class="hint-text hidden">{q.hint}</p>
+            </div>
+
+            <div class="feedback hidden"></div>
+          </div>
+        ))}
+      </div>
+
+      <button id="reset-btn" class="reset-btn">Reset all</button>
+    </section>
+  )}
+
+  <!-- Navigation -->
+  <nav class="section-nav">
+    {prevSection ? (
+      <a href={`/lesson/${lesson.id}/${prevSection.id}`} class="nav-link prev">
+        &larr; {prevSection.title}
+      </a>
+    ) : <span />}
+    {nextSection ? (
+      <a href={`/lesson/${lesson.id}/${nextSection.id}`} class="nav-link next">
+        {nextSection.title} &rarr;
+      </a>
+    ) : <span />}
+  </nav>
+</Layout>
+
+<script>
+  import { romajiToHiragana } from '../../../scripts/romaji';
+
+  // Chapter navigation
+  document.querySelectorAll('.chapter-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const el = btn as HTMLElement;
+      const videoId = el.dataset.videoId;
+      const start = el.dataset.start;
+      const end = el.dataset.end;
+      const iframe = document.getElementById('video-player') as HTMLIFrameElement;
+      if (iframe && videoId && start) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?start=${start}&end=${end}&autoplay=1`;
+      }
+      document.querySelectorAll('.chapter-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Replay
+  document.getElementById('replay-btn')?.addEventListener('click', () => {
+    const el = document.getElementById('replay-btn') as HTMLElement;
+    const iframe = document.getElementById('video-player') as HTMLIFrameElement;
+    if (iframe && el.dataset.videoId) {
+      iframe.src = `https://www.youtube.com/embed/${el.dataset.videoId}?start=${el.dataset.start}&end=${el.dataset.end}&autoplay=1`;
+    }
+  });
+
+  // Quiz logic
+  let correct = 0;
+  const total = document.querySelectorAll('.question-card').length;
+
+  function updateScore() {
+    const el = document.getElementById('score');
+    if (el) el.textContent = `${correct} / ${total}`;
+  }
+
+  function showFeedback(card: Element, isCorrect: boolean, correctAnswer?: string) {
+    const fb = card.querySelector('.feedback') as HTMLElement;
+    if (!fb) return;
+    fb.classList.remove('hidden');
+    if (isCorrect) {
+      fb.textContent = 'Correct!';
+      fb.className = 'feedback correct';
+      card.classList.add('answered-correct');
+    } else {
+      fb.textContent = correctAnswer ? `Incorrect — ${correctAnswer}` : 'Incorrect';
+      fb.className = 'feedback incorrect';
+      card.classList.add('answered-incorrect');
+    }
+  }
+
+  // Multiple choice
+  document.querySelectorAll('.option-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.question-card') as HTMLElement;
+      if (!card || card.classList.contains('answered-correct') || card.classList.contains('answered-incorrect')) return;
+
+      const correctIdx = parseInt(card.dataset.answer || '0');
+      const chosenIdx = parseInt((btn as HTMLElement).dataset.option || '0');
+
+      if (chosenIdx === correctIdx) {
+        btn.classList.add('selected-correct');
+        correct++;
+      } else {
+        btn.classList.add('selected-incorrect');
+        card.querySelectorAll('.option-btn').forEach((b) => {
+          if (parseInt((b as HTMLElement).dataset.option || '0') === correctIdx) {
+            b.classList.add('selected-correct');
+          }
+        });
+      }
+
+      showFeedback(card, chosenIdx === correctIdx);
+      updateScore();
+    });
+  });
+
+  // Free input
+  document.querySelectorAll('.submit-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.question-card') as HTMLElement;
+      if (!card || card.classList.contains('answered-correct') || card.classList.contains('answered-incorrect')) return;
+
+      const input = card.querySelector('.answer-input') as HTMLInputElement;
+      if (!input || !input.value.trim()) return;
+
+      const userInput = input.value.trim();
+      const acceptedAnswers: string[] = JSON.parse(card.dataset.answer || '[]');
+      const converted = romajiToHiragana(userInput);
+
+      const isCorrect = acceptedAnswers.some(
+        (a) => a === userInput || a === converted || a.toLowerCase() === userInput.toLowerCase()
+      );
+
+      if (isCorrect) correct++;
+      showFeedback(card, isCorrect, isCorrect ? undefined : acceptedAnswers[0]);
+      updateScore();
+    });
+  });
+
+  // Enter key
+  document.querySelectorAll('.answer-input').forEach((input) => {
+    input.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Enter') {
+        const card = input.closest('.question-card');
+        (card?.querySelector('.submit-btn') as HTMLElement)?.click();
+      }
+    });
+  });
+
+  // Hints
+  document.querySelectorAll('.hint-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const hintText = btn.parentElement?.querySelector('.hint-text');
+      if (hintText) {
+        hintText.classList.toggle('hidden');
+        btn.textContent = hintText.classList.contains('hidden') ? 'Show hint' : 'Hide hint';
+      }
+    });
+  });
+
+  // Reset
+  document.getElementById('reset-btn')?.addEventListener('click', () => {
+    correct = 0;
+    updateScore();
+    document.querySelectorAll('.question-card').forEach((card) => {
+      card.classList.remove('answered-correct', 'answered-incorrect');
+      const fb = card.querySelector('.feedback') as HTMLElement;
+      if (fb) { fb.classList.add('hidden'); fb.textContent = ''; }
+      card.querySelectorAll('.option-btn').forEach((b) => b.classList.remove('selected-correct', 'selected-incorrect'));
+      const input = card.querySelector('.answer-input') as HTMLInputElement;
+      if (input) input.value = '';
+      const hintText = card.querySelector('.hint-text');
+      const hintBtn = card.querySelector('.hint-btn');
+      if (hintText) hintText.classList.add('hidden');
+      if (hintBtn) hintBtn.textContent = 'Show hint';
+    });
+  });
+</script>
+
+<style>
+  .back {
+    display: inline-block;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  .back:hover { color: var(--accent); }
+
+  .section-header { margin-bottom: 1.5rem; }
+  .section-number {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .section-header h1 { font-size: 1.5rem; margin: 0.3rem 0; }
+  .description { color: var(--text-muted); }
+
+  .video-area { margin-bottom: 2rem; }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+
+  .chapter-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .chapter-btn {
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .chapter-btn:hover { border-color: var(--accent); color: var(--text); }
+  .chapter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  .replay-btn {
+    margin-top: 0.75rem;
+    padding: 0.45rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .replay-btn:hover { border-color: var(--accent); color: var(--text); }
+
+  /* Quiz styles */
+  .quiz-section { margin-top: 1rem; }
+  .quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+  .quiz-header h2 { font-size: 1.3rem; }
+  .score {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--bg-card);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+
+  #questions { display: flex; flex-direction: column; gap: 1rem; }
+
+  .question-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    transition: border-color 0.2s;
+  }
+  .question-card.answered-correct { border-color: var(--success); }
+  .question-card.answered-incorrect { border-color: var(--error); }
+
+  .question-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .question-text { font-size: 1.05rem; margin-bottom: 1rem; }
+
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .option-btn {
+    padding: 0.7rem 1rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .option-btn:hover { border-color: var(--accent); }
+  .option-btn.selected-correct {
+    background: rgba(78, 205, 196, 0.2);
+    border-color: var(--success);
+    color: var(--success);
+  }
+  .option-btn.selected-incorrect {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: var(--error);
+    color: var(--error);
+  }
+
+  .input-group { display: flex; gap: 0.5rem; margin-bottom: 0.8rem; }
+  .answer-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+  }
+  .answer-input:focus { border-color: var(--accent); }
+
+  .submit-btn {
+    padding: 0.7rem 1.2rem;
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .submit-btn:hover { background: var(--accent-hover); }
+
+  .hint { margin-bottom: 0.5rem; }
+  .hint-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .hint-btn:hover { color: var(--text); }
+  .hint-text {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 0.3rem;
+  }
+
+  .feedback { font-weight: 600; font-size: 0.95rem; margin-top: 0.5rem; }
+  .feedback.correct { color: var(--success); }
+  .feedback.incorrect { color: var(--error); }
+
+  .hidden { display: none; }
+
+  .reset-btn {
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .reset-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Navigation */
+  .section-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    transition: color 0.15s;
+  }
+  .nav-link:hover { color: var(--accent); }
+  .nav-link.next { text-align: right; }
+
+  @media (max-width: 600px) {
+    .options { grid-template-columns: 1fr; }
+  }
+</style>
