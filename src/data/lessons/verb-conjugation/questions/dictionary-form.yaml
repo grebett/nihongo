@@ -14,6 +14,7 @@ dictionary-form-ichidan:
       - 食べる
       - たべる
       - taberu
+    display: "<ruby>食<rt>た</rt></ruby>べる"
     hint: An ichidan verb ending in -eru
   - type: free-input
     question: What is the dictionary form of 'to look/see'?
@@ -21,6 +22,7 @@ dictionary-form-ichidan:
       - 見る
       - みる
       - miru
+    display: "<ruby>見<rt>み</rt></ruby>る"
     hint: An ichidan verb ending in -iru
   - type: multiple-choice
     question: How do you conjugate ichidan verbs from dictionary form?
@@ -37,6 +39,7 @@ dictionary-form-ichidan:
       - 寝る
       - ねる
       - neru
+    display: "<ruby>寝<rt>ね</rt></ruby>る"
     hint: An ichidan verb ending in -eru
   - type: free-input
     question: What is the dictionary form of 'to wake up'?
@@ -44,6 +47,7 @@ dictionary-form-ichidan:
       - 起きる
       - おきる
       - okiru
+    display: "<ruby>起<rt>お</rt></ruby>きる"
     hint: An ichidan verb ending in -iru
   - type: free-input
     question: What is the dictionary form of 'to teach'?
@@ -51,6 +55,7 @@ dictionary-form-ichidan:
       - 教える
       - おしえる
       - oshieru
+    display: "<ruby>教<rt>おし</rt></ruby>える"
     hint: An ichidan verb ending in -eru
   - type: free-input
     question: What is the dictionary form of 'to open'?
@@ -58,6 +63,7 @@ dictionary-form-ichidan:
       - 開ける
       - あける
       - akeru
+    display: "<ruby>開<rt>あ</rt></ruby>ける"
     hint: An ichidan verb ending in -eru
   - type: free-input
     question: What is the dictionary form of 'to close'?
@@ -65,6 +71,7 @@ dictionary-form-ichidan:
       - 閉める
       - しめる
       - shimeru
+    display: "<ruby>閉<rt>し</rt></ruby>める"
     hint: An ichidan verb ending in -eru
   - type: free-input
     question: What is the dictionary form of 'to wear (upper body)'?
@@ -72,6 +79,7 @@ dictionary-form-ichidan:
       - 着る
       - きる
       - kiru
+    display: "<ruby>着<rt>き</rt></ruby>る"
     hint: An ichidan verb ending in -iru
   - type: free-input
     question: What is the dictionary form of 'to shower/bathe'?
@@ -79,6 +87,7 @@ dictionary-form-ichidan:
       - 浴びる
       - あびる
       - abiru
+    display: "<ruby>浴<rt>あ</rt></ruby>びる"
     hint: An ichidan verb ending in -iru
   - type: free-input
     question: What is the dictionary form of 'to exit/go out'?
@@ -86,6 +95,7 @@ dictionary-form-ichidan:
       - 出る
       - でる
       - deru
+    display: "<ruby>出<rt>で</rt></ruby>る"
     hint: An ichidan verb ending in -eru
   - type: free-input
     question: What is the dictionary form of 'to believe'?
@@ -93,6 +103,7 @@ dictionary-form-ichidan:
       - 信じる
       - しんじる
       - shinjiru
+    display: "<ruby>信<rt>しん</rt></ruby>じる"
     hint: An ichidan verb ending in -iru
   - type: free-input
     question: What is the dictionary form of 'to feel'?
@@ -100,6 +111,7 @@ dictionary-form-ichidan:
       - 感じる
       - かんじる
       - kanjiru
+    display: "<ruby>感<rt>かん</rt></ruby>じる"
     hint: An ichidan verb ending in -iru
   - type: free-input
     question: What is the dictionary form of 'to get off/descend'?
@@ -107,6 +119,7 @@ dictionary-form-ichidan:
       - 降りる
       - おりる
       - oriru
+    display: "<ruby>降<rt>お</rt></ruby>りる"
     hint: An ichidan verb ending in -iru
   - type: free-input
     question: What is the dictionary form of 'to borrow'?
@@ -114,6 +127,7 @@ dictionary-form-ichidan:
       - 借りる
       - かりる
       - kariru
+    display: "<ruby>借<rt>か</rt></ruby>りる"
     hint: An ichidan verb ending in -iru
   - type: multiple-choice
     question: What remains when you remove る from an ichidan verb?
@@ -148,6 +162,7 @@ dictionary-form-ichidan:
       - 食べ
       - たべ
       - tabe
+    display: "<ruby>食<rt>た</rt></ruby>べ"
     hint: Remove る from the ichidan verb to get the stem
 dictionary-form-godan:
   - type: free-input
@@ -156,6 +171,7 @@ dictionary-form-godan:
       - 飲む
       - のむ
       - nomu
+    display: "<ruby>飲<rt>の</rt></ruby>む"
     hint: A godan verb ending in む
   - type: free-input
     question: What is the dictionary form of 'to write'?
@@ -163,6 +179,7 @@ dictionary-form-godan:
       - 書く
       - かく
       - kaku
+    display: "<ruby>書<rt>か</rt></ruby>く"
     hint: A godan verb ending in く
   - type: free-input
     question: What is the dictionary form of 'to read'?
@@ -170,6 +187,7 @@ dictionary-form-godan:
       - 読む
       - よむ
       - yomu
+    display: "<ruby>読<rt>よ</rt></ruby>む"
     hint: A godan verb ending in む
   - type: multiple-choice
     question: "Godan verbs conjugate based on:"
@@ -186,6 +204,7 @@ dictionary-form-godan:
       - 泳ぐ
       - およぐ
       - oyogu
+    display: "<ruby>泳<rt>およ</rt></ruby>ぐ"
     hint: A godan verb ending in ぐ
   - type: free-input
     question: What is the dictionary form of 'to play'?
@@ -193,6 +212,7 @@ dictionary-form-godan:
       - 遊ぶ
       - あそぶ
       - asobu
+    display: "<ruby>遊<rt>あそ</rt></ruby>ぶ"
     hint: A godan verb ending in ぶ
   - type: free-input
     question: What is the dictionary form of 'to walk'?
@@ -200,6 +220,7 @@ dictionary-form-godan:
       - 歩く
       - あるく
       - aruku
+    display: "<ruby>歩<rt>ある</rt></ruby>く"
     hint: A godan verb ending in く
   - type: free-input
     question: What is the dictionary form of 'to buy'?
@@ -207,6 +228,7 @@ dictionary-form-godan:
       - 買う
       - かう
       - kau
+    display: "<ruby>買<rt>か</rt></ruby>う"
     hint: A godan verb ending in う
   - type: free-input
     question: What is the dictionary form of 'to speak'?
@@ -214,6 +236,7 @@ dictionary-form-godan:
       - 話す
       - はなす
       - hanasu
+    display: "<ruby>話<rt>はな</rt></ruby>す"
     hint: A godan verb ending in す
   - type: free-input
     question: What is the dictionary form of 'to wait'?
@@ -221,6 +244,7 @@ dictionary-form-godan:
       - 待つ
       - まつ
       - matsu
+    display: "<ruby>待<rt>ま</rt></ruby>つ"
     hint: A godan verb ending in つ
   - type: free-input
     question: What is the dictionary form of 'to die'?
@@ -228,6 +252,7 @@ dictionary-form-godan:
       - 死ぬ
       - しぬ
       - shinu
+    display: "<ruby>死<rt>し</rt></ruby>ぬ"
     hint: The only common godan verb ending in ぬ
   - type: free-input
     question: What is the dictionary form of 'to return/go home'?
@@ -235,6 +260,7 @@ dictionary-form-godan:
       - 帰る
       - かえる
       - kaeru
+    display: "<ruby>帰<rt>かえ</rt></ruby>る"
     hint: A godan verb ending in る — careful, this one looks like ichidan but is not
   - type: free-input
     question: What is the dictionary form of 'to make/create'?
@@ -242,6 +268,7 @@ dictionary-form-godan:
       - 作る
       - つくる
       - tsukuru
+    display: "<ruby>作<rt>つく</rt></ruby>る"
     hint: A godan verb ending in る
   - type: free-input
     question: What is the dictionary form of 'to send'?
@@ -249,6 +276,7 @@ dictionary-form-godan:
       - 送る
       - おくる
       - okuru
+    display: "<ruby>送<rt>おく</rt></ruby>る"
     hint: A godan verb ending in る
   - type: free-input
     question: What is the dictionary form of 'to laugh/smile'?
@@ -256,6 +284,7 @@ dictionary-form-godan:
       - 笑う
       - わらう
       - warau
+    display: "<ruby>笑<rt>わら</rt></ruby>う"
     hint: A godan verb ending in う
   - type: free-input
     question: What is the dictionary form of 'to stand'?
@@ -263,6 +292,7 @@ dictionary-form-godan:
       - 立つ
       - たつ
       - tatsu
+    display: "<ruby>立<rt>た</rt></ruby>つ"
     hint: A godan verb ending in つ
   - type: multiple-choice
     question: Which row of the kana chart does the dictionary form of godan verbs always end in?
@@ -297,6 +327,7 @@ dictionary-form-godan:
       - 使う
       - つかう
       - tsukau
+    display: "<ruby>使<rt>つか</rt></ruby>う"
     hint: A godan verb ending in う
 dictionary-form-test:
   - type: multiple-choice
@@ -350,6 +381,7 @@ dictionary-form-test:
       - 泳ぐ
       - およぐ
       - oyogu
+    display: "<ruby>泳<rt>およ</rt></ruby>ぐ"
     hint: A godan verb ending in ぐ
   - type: free-input
     question: What is the dictionary form of 'to play'?
@@ -357,6 +389,7 @@ dictionary-form-test:
       - 遊ぶ
       - あそぶ
       - asobu
+    display: "<ruby>遊<rt>あそ</rt></ruby>ぶ"
     hint: A godan verb ending in ぶ
   - type: multiple-choice
     question: Which ending is shared by both godan and ichidan verbs?
@@ -379,6 +412,7 @@ dictionary-form-test:
       - 来る
       - くる
       - kuru
+    display: "<ruby>来<rt>く</rt></ruby>る"
     hint: One of the two irregular verbs
   - type: multiple-choice
     question: How can you tell <ruby>起<rt>お</rt></ruby>きる is ichidan and not godan?
@@ -404,6 +438,7 @@ dictionary-form-test:
       - 話す
       - はなす
       - hanasu
+    display: "<ruby>話<rt>はな</rt></ruby>す"
     hint: A godan verb ending in す
   - type: multiple-choice
     question: Which statement about dictionary form is true?
@@ -420,6 +455,7 @@ dictionary-form-test:
       - 料理する
       - りょうりする
       - ryourisuru
+    display: "<ruby>料理<rt>りょうり</rt></ruby>する"
     hint: A noun + する (irregular) verb
   - type: multiple-choice
     question: <ruby>歩<rt>ある</rt></ruby>く (aruku) belongs to which verb group?
@@ -436,6 +472,7 @@ dictionary-form-test:
       - 閉める
       - しめる
       - shimeru
+    display: "<ruby>閉<rt>し</rt></ruby>める"
     hint: An ichidan verb ending in -eru
   - type: free-input
     question: What is the dictionary form of 'to sit'?
@@ -443,6 +480,7 @@ dictionary-form-test:
       - 座る
       - すわる
       - suwaru
+    display: "<ruby>座<rt>すわ</rt></ruby>る"
     hint: A godan verb ending in る — the vowel before る is a, not i or e
   - type: free-input
     question: What is the dictionary form of 'to use'?
@@ -450,6 +488,7 @@ dictionary-form-test:
       - 使う
       - つかう
       - tsukau
+    display: "<ruby>使<rt>つか</rt></ruby>う"
     hint: A godan verb ending in う
   - type: multiple-choice
     question: Which verb is ichidan?

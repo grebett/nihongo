@@ -5,6 +5,7 @@ conditional-tara-ichidan:
       - 食べたら
       - たべたら
       - tabetara
+    display: "<ruby>食<rt>た</rt></ruby>べたら"
     hint: Past tense 食べた + ら
   - type: free-input
     question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to tara-form
@@ -12,6 +13,7 @@ conditional-tara-ichidan:
       - 見たら
       - みたら
       - mitara
+    display: "<ruby>見<rt>み</rt></ruby>たら"
     hint: Past tense 見た + ら
   - type: multiple-choice
     question: "The tara-form can express:"
@@ -28,6 +30,7 @@ conditional-tara-ichidan:
       - 寝たら
       - ねたら
       - netara
+    display: "<ruby>寝<rt>ね</rt></ruby>たら"
     hint: Past tense 寝た + ら
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru) to tara-form
@@ -35,6 +38,7 @@ conditional-tara-ichidan:
       - 起きたら
       - おきたら
       - okitara
+    display: "<ruby>起<rt>お</rt></ruby>きたら"
     hint: Past tense 起きた + ら
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru) to tara-form
@@ -42,6 +46,7 @@ conditional-tara-ichidan:
       - 教えたら
       - おしえたら
       - oshietara
+    display: "<ruby>教<rt>おし</rt></ruby>えたら"
     hint: Past tense 教えた + ら
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to tara-form
@@ -49,6 +54,7 @@ conditional-tara-ichidan:
       - 開けたら
       - あけたら
       - aketara
+    display: "<ruby>開<rt>あ</rt></ruby>けたら"
     hint: Past tense 開けた + ら
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to tara-form
@@ -56,6 +62,7 @@ conditional-tara-ichidan:
       - 閉めたら
       - しめたら
       - shimetara
+    display: "<ruby>閉<rt>し</rt></ruby>めたら"
     hint: Past tense 閉めた + ら
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
@@ -72,6 +79,7 @@ conditional-tara-ichidan:
       - 浴びたら
       - あびたら
       - abitara
+    display: "<ruby>浴<rt>あ</rt></ruby>びたら"
     hint: Past tense 浴びた + ら
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to leave) to tara-form
@@ -79,6 +87,7 @@ conditional-tara-ichidan:
       - 出たら
       - でたら
       - detara
+    display: "<ruby>出<rt>で</rt></ruby>たら"
     hint: Past tense 出た + ら
   - type: free-input
     question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to tara-form
@@ -86,6 +95,7 @@ conditional-tara-ichidan:
       - 信じたら
       - しんじたら
       - shinjitara
+    display: "<ruby>信<rt>しん</rt></ruby>じたら"
     hint: Past tense 信じた + ら
   - type: free-input
     question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to tara-form
@@ -93,6 +103,7 @@ conditional-tara-ichidan:
       - 降りたら
       - おりたら
       - oritara
+    display: "<ruby>降<rt>お</rt></ruby>りたら"
     hint: Past tense 降りた + ら
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow)?
@@ -109,6 +120,7 @@ conditional-tara-ichidan:
       - 考えたら
       - かんがえたら
       - kangaetara
+    display: "<ruby>考<rt>かんが</rt></ruby>えたら"
     hint: Past tense 考えた + ら
   - type: free-input
     question: Convert <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to memorize) to tara-form
@@ -116,6 +128,7 @@ conditional-tara-ichidan:
       - 覚えたら
       - おぼえたら
       - oboetara
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えたら"
     hint: Past tense 覚えた + ら
   - type: free-input
     question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to tara-form
@@ -123,6 +136,7 @@ conditional-tara-ichidan:
       - 答えたら
       - こたえたら
       - kotaetara
+    display: "<ruby>答<rt>こた</rt></ruby>えたら"
     hint: Past tense 答えた + ら
   - type: free-input
     question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to tara-form
@@ -130,6 +144,7 @@ conditional-tara-ichidan:
       - 調べたら
       - しらべたら
       - shirabetara
+    display: "<ruby>調<rt>しら</rt></ruby>べたら"
     hint: Past tense 調べた + ら
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget)?
@@ -146,6 +161,7 @@ conditional-tara-ichidan:
       - 感じたら
       - かんじたら
       - kanjitara
+    display: "<ruby>感<rt>かん</rt></ruby>じたら"
     hint: Past tense 感じた + ら
 conditional-tara-godan:
   - type: free-input
@@ -154,6 +170,7 @@ conditional-tara-godan:
       - 飲んだら
       - のんだら
       - nondara
+    display: "<ruby>飲<rt>の</rt></ruby>んだら"
     hint: Past tense 飲んだ + ら
   - type: free-input
     question: Convert <ruby>書<rt>か</rt></ruby>く (kaku) to tara-form
@@ -161,6 +178,7 @@ conditional-tara-godan:
       - 書いたら
       - かいたら
       - kaitara
+    display: "<ruby>書<rt>か</rt></ruby>いたら"
     hint: Past tense 書いた + ら
   - type: free-input
     question: Convert <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) to tara-form
@@ -168,6 +186,7 @@ conditional-tara-godan:
       - 死んだら
       - しんだら
       - shindara
+    display: "<ruby>死<rt>し</rt></ruby>んだら"
     hint: Past tense 死んだ + ら
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu) to tara-form
@@ -175,6 +194,7 @@ conditional-tara-godan:
       - 泳いだら
       - およいだら
       - oyoidara
+    display: "<ruby>泳<rt>およ</rt></ruby>いだら"
     hint: Past tense 泳いだ + ら
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu) to tara-form
@@ -182,6 +202,7 @@ conditional-tara-godan:
       - 話したら
       - はなしたら
       - hanashitara
+    display: "<ruby>話<rt>はな</rt></ruby>したら"
     hint: Past tense 話した + ら
   - type: free-input
     question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu) to tara-form
@@ -189,6 +210,7 @@ conditional-tara-godan:
       - 遊んだら
       - あそんだら
       - asondara
+    display: "<ruby>遊<rt>あそ</rt></ruby>んだら"
     hint: Past tense 遊んだ + ら
   - type: free-input
     question: Convert <ruby>買<rt>か</rt></ruby>う (kau) to tara-form
@@ -196,6 +218,7 @@ conditional-tara-godan:
       - 買ったら
       - かったら
       - kattara
+    display: "<ruby>買<rt>か</rt></ruby>ったら"
     hint: Past tense 買った + ら
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to tara-form
@@ -203,6 +226,7 @@ conditional-tara-godan:
       - 読んだら
       - よんだら
       - yondara
+    display: "<ruby>読<rt>よ</rt></ruby>んだら"
     hint: Past tense 読んだ + ら (む uses んだ in past)
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) to tara-form
@@ -210,6 +234,7 @@ conditional-tara-godan:
       - 待ったら
       - まったら
       - mattara
+    display: "<ruby>待<rt>ま</rt></ruby>ったら"
     hint: Past tense 待った + ら
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>聞<rt>き</rt></ruby>く (kiku - to listen)?
@@ -226,6 +251,7 @@ conditional-tara-godan:
       - 帰ったら
       - かえったら
       - kaettara
+    display: "<ruby>帰<rt>かえ</rt></ruby>ったら"
     hint: Godan る → past った + ら
   - type: free-input
     question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to tara-form
@@ -233,6 +259,7 @@ conditional-tara-godan:
       - 立ったら
       - たったら
       - tattara
+    display: "<ruby>立<rt>た</rt></ruby>ったら"
     hint: Past tense 立った + ら
   - type: free-input
     question: Convert <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk) to tara-form
@@ -240,6 +267,7 @@ conditional-tara-godan:
       - 歩いたら
       - あるいたら
       - aruitara
+    display: "<ruby>歩<rt>ある</rt></ruby>いたら"
     hint: Past tense 歩いた + ら (く uses いた in past)
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit)?
@@ -256,6 +284,7 @@ conditional-tara-godan:
       - 送ったら
       - おくったら
       - okuttara
+    display: "<ruby>送<rt>おく</rt></ruby>ったら"
     hint: Past tense 送った + ら
   - type: free-input
     question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to tara-form
@@ -263,6 +292,7 @@ conditional-tara-godan:
       - 作ったら
       - つくったら
       - tsukuttara
+    display: "<ruby>作<rt>つく</rt></ruby>ったら"
     hint: Past tense 作った + ら
   - type: free-input
     question: Convert <ruby>使<rt>つか</rt></ruby>う (tsukau - to use) to tara-form
@@ -270,6 +300,7 @@ conditional-tara-godan:
       - 使ったら
       - つかったら
       - tsukattara
+    display: "<ruby>使<rt>つか</rt></ruby>ったら"
     hint: Past tense 使った + ら (う uses った in past)
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off)?
@@ -286,6 +317,7 @@ conditional-tara-godan:
       - 押したら
       - おしたら
       - oshitara
+    display: "<ruby>押<rt>お</rt></ruby>したら"
     hint: Past tense 押した + ら (す uses した in past)
   - type: free-input
     question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to tara-form
@@ -293,6 +325,7 @@ conditional-tara-godan:
       - 持ったら
       - もったら
       - mottara
+    display: "<ruby>持<rt>も</rt></ruby>ったら"
     hint: Past tense 持った + ら
 conditional-tara-irregular:
   - type: free-input
@@ -307,6 +340,7 @@ conditional-tara-irregular:
       - 来たら
       - きたら
       - kitara
+    display: "<ruby>来<rt>き</rt></ruby>たら"
     hint: Past tense 来た + ら
   - type: free-input
     question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to tara-form
@@ -314,6 +348,7 @@ conditional-tara-irregular:
       - 勉強したら
       - べんきょうしたら
       - benkyoushitara
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>したら"
     hint: Past tense 勉強した + ら
   - type: free-input
     question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru) to tara-form
@@ -321,6 +356,7 @@ conditional-tara-irregular:
       - 料理したら
       - りょうりしたら
       - ryourishitara
+    display: "<ruby>料理<rt>りょうり</rt></ruby>したら"
     hint: Past tense 料理した + ら
   - type: free-input
     question: Convert <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise) to tara-form
@@ -328,6 +364,7 @@ conditional-tara-irregular:
       - 運動したら
       - うんどうしたら
       - undoushitara
+    display: "<ruby>運動<rt>うんどう</rt></ruby>したら"
     hint: Past tense 運動した + ら
   - type: free-input
     question: Convert <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice) to tara-form
@@ -335,6 +372,7 @@ conditional-tara-irregular:
       - 練習したら
       - れんしゅうしたら
       - renshuushitara
+    display: "<ruby>練習<rt>れんしゅう</rt></ruby>したら"
     hint: Past tense 練習した + ら
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>来<rt>く</rt></ruby>る (kuru)?
@@ -351,6 +389,7 @@ conditional-tara-irregular:
       - 説明したら
       - せつめいしたら
       - setsumeishitara
+    display: "<ruby>説明<rt>せつめい</rt></ruby>したら"
     hint: Past tense 説明した + ら
   - type: multiple-choice
     question: Which sentence correctly uses the tara-form? "If you study, you'll understand."
@@ -367,6 +406,7 @@ conditional-tara-irregular:
       - 注意したら
       - ちゅういしたら
       - chuuishitara
+    display: "<ruby>注意<rt>ちゅうい</rt></ruby>したら"
     hint: Past tense 注意した + ら
   - type: free-input
     question: Convert <ruby>我慢<rt>がまん</rt></ruby>する (gamansuru - to endure) to tara-form
@@ -374,6 +414,7 @@ conditional-tara-irregular:
       - 我慢したら
       - がまんしたら
       - gamanshitara
+    display: "<ruby>我慢<rt>がまん</rt></ruby>したら"
     hint: Past tense 我慢した + ら
   - type: multiple-choice
     question: Which is the correct tara-form of する?
@@ -390,6 +431,7 @@ conditional-tara-irregular:
       - 紹介したら
       - しょうかいしたら
       - shoukaishitara
+    display: "<ruby>紹介<rt>しょうかい</rt></ruby>したら"
     hint: Past tense 紹介した + ら
   - type: free-input
     question: Convert <ruby>準備<rt>じゅんび</rt></ruby>する (junbisuru - to prepare) to tara-form
@@ -397,6 +439,7 @@ conditional-tara-irregular:
       - 準備したら
       - じゅんびしたら
       - junbishitara
+    display: "<ruby>準備<rt>じゅんび</rt></ruby>したら"
     hint: Past tense 準備した + ら
   - type: multiple-choice
     question: What is the key difference between tara-form and ba-form?
@@ -413,6 +456,7 @@ conditional-tara-irregular:
       - 掃除したら
       - そうじしたら
       - soujishitara
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>したら"
     hint: Past tense 掃除した + ら
   - type: free-input
     question: Convert <ruby>確認<rt>かくにん</rt></ruby>する (kakuninsuru - to confirm) to tara-form
@@ -420,6 +464,7 @@ conditional-tara-irregular:
       - 確認したら
       - かくにんしたら
       - kakuninshitara
+    display: "<ruby>確認<rt>かくにん</rt></ruby>したら"
     hint: Past tense 確認した + ら
   - type: free-input
     question: Convert <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact) to tara-form
@@ -427,6 +472,7 @@ conditional-tara-irregular:
       - 連絡したら
       - れんらくしたら
       - renrakushitara
+    display: "<ruby>連絡<rt>れんらく</rt></ruby>したら"
     hint: Past tense 連絡した + ら
   - type: free-input
     question: Convert <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk) to tara-form
@@ -434,6 +480,7 @@ conditional-tara-irregular:
       - 散歩したら
       - さんぽしたら
       - sanposhitara
+    display: "<ruby>散歩<rt>さんぽ</rt></ruby>したら"
     hint: Past tense 散歩した + ら
   - type: multiple-choice
     question: How would you say "When he comes" using <ruby>来<rt>く</rt></ruby>る tara-form?
@@ -451,6 +498,7 @@ conditional-tara-test:
       - 食べたら
       - たべたら
       - tabetara
+    display: "<ruby>食<rt>た</rt></ruby>べたら"
     hint: Past 食べた + ら
   - type: free-input
     question: Tara-form of <ruby>書<rt>か</rt></ruby>く?
@@ -458,6 +506,7 @@ conditional-tara-test:
       - 書いたら
       - かいたら
       - kaitara
+    display: "<ruby>書<rt>か</rt></ruby>いたら"
     hint: Past 書いた + ら
   - type: free-input
     question: Tara-form of する?
@@ -480,6 +529,7 @@ conditional-tara-test:
       - 見たら
       - みたら
       - mitara
+    display: "<ruby>見<rt>み</rt></ruby>たら"
     hint: Past 見た + ら
   - type: free-input
     question: Tara-form of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
@@ -487,6 +537,7 @@ conditional-tara-test:
       - 飲んだら
       - のんだら
       - nondara
+    display: "<ruby>飲<rt>の</rt></ruby>んだら"
     hint: Past 飲んだ + ら (む uses んだ in past)
   - type: free-input
     question: Tara-form of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
@@ -494,6 +545,7 @@ conditional-tara-test:
       - 読んだら
       - よんだら
       - yondara
+    display: "<ruby>読<rt>よ</rt></ruby>んだら"
     hint: Past 読んだ + ら (む uses んだ in past)
   - type: free-input
     question: Tara-form of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
@@ -501,6 +553,7 @@ conditional-tara-test:
       - 来たら
       - きたら
       - kitara
+    display: "<ruby>来<rt>き</rt></ruby>たら"
     hint: Past 来た (きた) + ら
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
@@ -517,6 +570,7 @@ conditional-tara-test:
       - 話したら
       - はなしたら
       - hanashitara
+    display: "<ruby>話<rt>はな</rt></ruby>したら"
     hint: Past 話した + ら
   - type: free-input
     question: Tara-form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
@@ -524,6 +578,7 @@ conditional-tara-test:
       - 遊んだら
       - あそんだら
       - asondara
+    display: "<ruby>遊<rt>あそ</rt></ruby>んだら"
     hint: Past of ぶ verbs uses んだ → 遊んだ + ら
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
@@ -540,6 +595,7 @@ conditional-tara-test:
       - 買ったら
       - かったら
       - kattara
+    display: "<ruby>買<rt>か</rt></ruby>ったら"
     hint: Past of う verbs uses った → 買った + ら
   - type: free-input
     question: Tara-form of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
@@ -547,6 +603,7 @@ conditional-tara-test:
       - 勉強したら
       - べんきょうしたら
       - benkyoushitara
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>したら"
     hint: "する verb: した + ら"
   - type: free-input
     question: Tara-form of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)?
@@ -554,6 +611,7 @@ conditional-tara-test:
       - 走ったら
       - はしったら
       - hashittara
+    display: "<ruby>走<rt>はし</rt></ruby>ったら"
     hint: Godan verb! Past 走った + ら
   - type: free-input
     question: Tara-form of <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up)?
@@ -561,6 +619,7 @@ conditional-tara-test:
       - 起きたら
       - おきたら
       - okitara
+    display: "<ruby>起<rt>お</rt></ruby>きたら"
     hint: "Ichidan: past 起きた + ら"
   - type: free-input
     question: Tara-form of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home)?
@@ -568,6 +627,7 @@ conditional-tara-test:
       - 帰ったら
       - かえったら
       - kaettara
+    display: "<ruby>帰<rt>かえ</rt></ruby>ったら"
     hint: "Godan: past 帰った + ら"
   - type: multiple-choice
     question: Which is the correct tara-form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -584,6 +644,7 @@ conditional-tara-test:
       - 使ったら
       - つかったら
       - tsukattara
+    display: "<ruby>使<rt>つか</rt></ruby>ったら"
     hint: "Past of う verbs uses った → 使った + ら"
   - type: free-input
     question: Tara-form of <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)?
@@ -591,4 +652,5 @@ conditional-tara-test:
       - 閉めたら
       - しめたら
       - shimetara
+    display: "<ruby>閉<rt>し</rt></ruby>めたら"
     hint: "Ichidan: past 閉めた + ら"

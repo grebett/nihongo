@@ -5,6 +5,7 @@ te-form-ichidan:
       - 食べて
       - たべて
       - tabete
+    display: "<ruby>食<rt>た</rt></ruby>べて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to te-form
@@ -12,6 +13,7 @@ te-form-ichidan:
       - 見て
       - みて
       - mite
+    display: "<ruby>見<rt>み</rt></ruby>て"
     hint: Drop る, add て
   - type: multiple-choice
     question: "The te-form can be used to:"
@@ -28,6 +30,7 @@ te-form-ichidan:
       - 寝て
       - ねて
       - nete
+    display: "<ruby>寝<rt>ね</rt></ruby>て"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to te-form
@@ -35,6 +38,7 @@ te-form-ichidan:
       - 起きて
       - おきて
       - okite
+    display: "<ruby>起<rt>お</rt></ruby>きて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to te-form
@@ -42,6 +46,7 @@ te-form-ichidan:
       - 教えて
       - おしえて
       - oshiete
+    display: "<ruby>教<rt>おし</rt></ruby>えて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to te-form
@@ -49,6 +54,7 @@ te-form-ichidan:
       - 開けて
       - あけて
       - akete
+    display: "<ruby>開<rt>あ</rt></ruby>けて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to te-form
@@ -56,6 +62,7 @@ te-form-ichidan:
       - 閉めて
       - しめて
       - shimete
+    display: "<ruby>閉<rt>し</rt></ruby>めて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to te-form
@@ -63,6 +70,7 @@ te-form-ichidan:
       - 着て
       - きて
       - kite
+    display: "<ruby>着<rt>き</rt></ruby>て"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to shower) to te-form
@@ -70,6 +78,7 @@ te-form-ichidan:
       - 浴びて
       - あびて
       - abite
+    display: "<ruby>浴<rt>あ</rt></ruby>びて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to te-form
@@ -77,6 +86,7 @@ te-form-ichidan:
       - 出て
       - でて
       - dete
+    display: "<ruby>出<rt>で</rt></ruby>て"
     hint: Drop る, add て
   - type: multiple-choice
     question: What is the te-form of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
@@ -93,6 +103,7 @@ te-form-ichidan:
       - 降りて
       - おりて
       - orite
+    display: "<ruby>降<rt>お</rt></ruby>りて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to te-form
@@ -100,6 +111,7 @@ te-form-ichidan:
       - 借りて
       - かりて
       - karite
+    display: "<ruby>借<rt>か</rt></ruby>りて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to te-form
@@ -107,6 +119,7 @@ te-form-ichidan:
       - 答えて
       - こたえて
       - kotaete
+    display: "<ruby>答<rt>こた</rt></ruby>えて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to te-form
@@ -114,6 +127,7 @@ te-form-ichidan:
       - 調べて
       - しらべて
       - shirabete
+    display: "<ruby>調<rt>しら</rt></ruby>べて"
     hint: Drop る, add て
   - type: multiple-choice
     question: What is the te-form of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
@@ -130,6 +144,7 @@ te-form-ichidan:
       - 覚えて
       - おぼえて
       - oboete
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えて"
     hint: Drop る, add て
   - type: free-input
     question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to te-form
@@ -137,6 +152,7 @@ te-form-ichidan:
       - 忘れて
       - わすれて
       - wasurete
+    display: "<ruby>忘<rt>わす</rt></ruby>れて"
     hint: Drop る, add て
   - type: multiple-choice
     question: What is the te-form of <ruby>出<rt>で</rt></ruby>かける (dekakeru - to go out)?
@@ -154,6 +170,7 @@ te-form-godan:
       - 書いて
       - かいて
       - kaite
+    display: "<ruby>書<rt>か</rt></ruby>いて"
     hint: く → いて
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to te-form
@@ -161,6 +178,7 @@ te-form-godan:
       - 泳いで
       - およいで
       - oyoide
+    display: "<ruby>泳<rt>およ</rt></ruby>いで"
     hint: ぐ → いで
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to te-form
@@ -168,6 +186,7 @@ te-form-godan:
       - 話して
       - はなして
       - hanashite
+    display: "<ruby>話<rt>はな</rt></ruby>して"
     hint: す → して
   - type: free-input
     question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu - to drink) to te-form
@@ -175,6 +194,7 @@ te-form-godan:
       - 飲んで
       - のんで
       - nonde
+    display: "<ruby>飲<rt>の</rt></ruby>んで"
     hint: む → んで
   - type: free-input
     question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to te-form
@@ -182,6 +202,7 @@ te-form-godan:
       - 遊んで
       - あそんで
       - asonde
+    display: "<ruby>遊<rt>あそ</rt></ruby>んで"
     hint: ぶ → んで
   - type: free-input
     question: Convert <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) to te-form
@@ -189,6 +210,7 @@ te-form-godan:
       - 死んで
       - しんで
       - shinde
+    display: "<ruby>死<rt>し</rt></ruby>んで"
     hint: ぬ → んで
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) to te-form
@@ -196,6 +218,7 @@ te-form-godan:
       - 待って
       - まって
       - matte
+    display: "<ruby>待<rt>ま</rt></ruby>って"
     hint: つ → って
   - type: free-input
     question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to te-form
@@ -203,6 +226,7 @@ te-form-godan:
       - 買って
       - かって
       - katte
+    display: "<ruby>買<rt>か</rt></ruby>って"
     hint: う → って
   - type: multiple-choice
     question: Which godan endings become んで in te-form?
@@ -219,6 +243,7 @@ te-form-godan:
       - 走って
       - はしって
       - hashitte
+    display: "<ruby>走<rt>はし</rt></ruby>って"
     hint: Godan る → って
   - type: free-input
     question: Convert <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk) to te-form
@@ -226,6 +251,7 @@ te-form-godan:
       - 歩いて
       - あるいて
       - aruite
+    display: "<ruby>歩<rt>ある</rt></ruby>いて"
     hint: く → いて
   - type: free-input
     question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to te-form
@@ -233,6 +259,7 @@ te-form-godan:
       - 立って
       - たって
       - tatte
+    display: "<ruby>立<rt>た</rt></ruby>って"
     hint: つ → って
   - type: free-input
     question: Convert <ruby>笑<rt>わら</rt></ruby>う (warau - to laugh) to te-form
@@ -240,6 +267,7 @@ te-form-godan:
       - 笑って
       - わらって
       - waratte
+    display: "<ruby>笑<rt>わら</rt></ruby>って"
     hint: う → って
   - type: free-input
     question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to te-form (Godan!)
@@ -247,6 +275,7 @@ te-form-godan:
       - 送って
       - おくって
       - okutte
+    display: "<ruby>送<rt>おく</rt></ruby>って"
     hint: Godan る → って
   - type: free-input
     question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to te-form (Godan!)
@@ -254,6 +283,7 @@ te-form-godan:
       - 作って
       - つくって
       - tsukutte
+    display: "<ruby>作<rt>つく</rt></ruby>って"
     hint: Godan る → って
   - type: free-input
     question: Convert <ruby>使<rt>つか</rt></ruby>う (tsukau - to use) to te-form
@@ -261,6 +291,7 @@ te-form-godan:
       - 使って
       - つかって
       - tsukatte
+    display: "<ruby>使<rt>つか</rt></ruby>って"
     hint: う → って
   - type: multiple-choice
     question: What is the te-form of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off)?
@@ -277,6 +308,7 @@ te-form-godan:
       - 持って
       - もって
       - motte
+    display: "<ruby>持<rt>も</rt></ruby>って"
     hint: つ → って
   - type: free-input
     question: Convert <ruby>乗<rt>の</rt></ruby>る (noru - to ride) to te-form (Godan!)
@@ -284,6 +316,7 @@ te-form-godan:
       - 乗って
       - のって
       - notte
+    display: "<ruby>乗<rt>の</rt></ruby>って"
     hint: Godan る → って
   - type: multiple-choice
     question: What is the te-form of <ruby>消<rt>け</rt></ruby>す (kesu - to turn off)?
@@ -307,6 +340,7 @@ te-form-irregular:
       - 来て
       - きて
       - kite
+    display: "<ruby>来<rt>き</rt></ruby>て"
     hint: Masu stem き + て
   - type: multiple-choice
     question: A する verb (noun + する) follows the same te-form rule. What is the te-form of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru)?
@@ -323,6 +357,7 @@ te-form-irregular:
       - 料理して
       - りょうりして
       - ryourishite
+    display: "<ruby>料理<rt>りょうり</rt></ruby>して"
     hint: する verb — して
   - type: multiple-choice
     question: What is the te-form of <ruby>行<rt>い</rt></ruby>く (iku - to go)?
@@ -339,6 +374,7 @@ te-form-irregular:
       - 運動して
       - うんどうして
       - undoushite
+    display: "<ruby>運動<rt>うんどう</rt></ruby>して"
     hint: する verb — して
   - type: free-input
     question: Convert <ruby>旅行<rt>りょこう</rt></ruby>する (ryokousuru - to travel) to te-form
@@ -346,6 +382,7 @@ te-form-irregular:
       - 旅行して
       - りょこうして
       - ryokoushite
+    display: "<ruby>旅行<rt>りょこう</rt></ruby>して"
     hint: する verb — して
   - type: multiple-choice
     question: What is the te-form of <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk)?
@@ -362,6 +399,7 @@ te-form-irregular:
       - 掃除して
       - そうじして
       - soujishite
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>して"
     hint: する verb — して
   - type: free-input
     question: Convert <ruby>洗濯<rt>せんたく</rt></ruby>する (sentakusuru - to do laundry) to te-form
@@ -369,6 +407,7 @@ te-form-irregular:
       - 洗濯して
       - せんたくして
       - sentakushite
+    display: "<ruby>洗濯<rt>せんたく</rt></ruby>して"
     hint: する verb — して
   - type: multiple-choice
     question: Which of the following is the correct te-form of <ruby>来<rt>く</rt></ruby>る (kuru)?
@@ -385,6 +424,7 @@ te-form-irregular:
       - 電話して
       - でんわして
       - denwashite
+    display: "<ruby>電話<rt>でんわ</rt></ruby>して"
     hint: する verb — して
   - type: free-input
     question: Convert <ruby>心配<rt>しんぱい</rt></ruby>する (shinpaisuru - to worry) to te-form
@@ -392,6 +432,7 @@ te-form-irregular:
       - 心配して
       - しんぱいして
       - shinpaishite
+    display: "<ruby>心配<rt>しんぱい</rt></ruby>して"
     hint: する verb — して
   - type: multiple-choice
     question: "<ruby>行<rt>い</rt></ruby>く (iku) is irregular in te-form. Why is it <ruby>行<rt>い</rt></ruby>って and not <ruby>行<rt>い</rt></ruby>いて?"
@@ -408,6 +449,7 @@ te-form-irregular:
       - 買い物して
       - かいものして
       - kaimonoshite
+    display: "<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>して"
     hint: する verb — して
   - type: free-input
     question: Convert <ruby>紹介<rt>しょうかい</rt></ruby>する (shoukaisuru - to introduce) to te-form
@@ -415,6 +457,7 @@ te-form-irregular:
       - 紹介して
       - しょうかいして
       - shoukaishite
+    display: "<ruby>紹介<rt>しょうかい</rt></ruby>して"
     hint: する verb — して
   - type: multiple-choice
     question: What is the te-form of <ruby>結婚<rt>けっこん</rt></ruby>する (kekkonsuru - to marry)?
@@ -431,6 +474,7 @@ te-form-irregular:
       - 練習して
       - れんしゅうして
       - renshuushite
+    display: "<ruby>練習<rt>れんしゅう</rt></ruby>して"
     hint: する verb — して
   - type: free-input
     question: Convert <ruby>準備<rt>じゅんび</rt></ruby>する (junbisuru - to prepare) to te-form
@@ -438,6 +482,7 @@ te-form-irregular:
       - 準備して
       - じゅんびして
       - junbishite
+    display: "<ruby>準備<rt>じゅんび</rt></ruby>して"
     hint: する verb — して
   - type: free-input
     question: Convert <ruby>卒業<rt>そつぎょう</rt></ruby>する (sotsugyousuru - to graduate) to te-form
@@ -445,6 +490,7 @@ te-form-irregular:
       - 卒業して
       - そつぎょうして
       - sotsugyoushite
+    display: "<ruby>卒業<rt>そつぎょう</rt></ruby>して"
     hint: する verb — して
 te-form-test:
   - type: free-input
@@ -453,6 +499,7 @@ te-form-test:
       - 帰って
       - かえって
       - kaette
+    display: "<ruby>帰<rt>かえ</rt></ruby>って"
     hint: Godan る → って
   - type: free-input
     question: Te-form of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)? (Godan!)
@@ -460,6 +507,7 @@ te-form-test:
       - 走って
       - はしって
       - hashitte
+    display: "<ruby>走<rt>はし</rt></ruby>って"
     hint: Godan る → って
   - type: free-input
     question: Te-form of <ruby>行<rt>い</rt></ruby>く (iku - to go)?
@@ -467,6 +515,7 @@ te-form-test:
       - 行って
       - いって
       - itte
+    display: "<ruby>行<rt>い</rt></ruby>って"
     hint: Exception! 行く → 行って (not 行いて)
   - type: multiple-choice
     question: Which te-form is WRONG?
@@ -483,6 +532,7 @@ te-form-test:
       - 勉強して
       - べんきょうして
       - benkyoushite
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>して"
     hint: する → して
   - type: free-input
     question: Te-form of <ruby>食<rt>た</rt></ruby>べる (taberu - to eat)?
@@ -490,6 +540,7 @@ te-form-test:
       - 食べて
       - たべて
       - tabete
+    display: "<ruby>食<rt>た</rt></ruby>べて"
     hint: "Ichidan: drop る, add て"
   - type: free-input
     question: Te-form of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
@@ -497,6 +548,7 @@ te-form-test:
       - 飲んで
       - のんで
       - nonde
+    display: "<ruby>飲<rt>の</rt></ruby>んで"
     hint: "Godan: む → んで"
   - type: free-input
     question: Te-form of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
@@ -504,6 +556,7 @@ te-form-test:
       - 来て
       - きて
       - kite
+    display: "<ruby>来<rt>き</rt></ruby>て"
     hint: "Irregular: き + て"
   - type: free-input
     question: Te-form of <ruby>書<rt>か</rt></ruby>く (kaku - to write)?
@@ -511,6 +564,7 @@ te-form-test:
       - 書いて
       - かいて
       - kaite
+    display: "<ruby>書<rt>か</rt></ruby>いて"
     hint: "Godan: く → いて"
   - type: free-input
     question: Te-form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
@@ -518,6 +572,7 @@ te-form-test:
       - 遊んで
       - あそんで
       - asonde
+    display: "<ruby>遊<rt>あそ</rt></ruby>んで"
     hint: "Godan: ぶ → んで"
   - type: multiple-choice
     question: Which te-form is correct for <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
@@ -534,6 +589,7 @@ te-form-test:
       - 待って
       - まって
       - matte
+    display: "<ruby>待<rt>ま</rt></ruby>って"
     hint: "Godan: つ → って"
   - type: free-input
     question: Te-form of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
@@ -541,6 +597,7 @@ te-form-test:
       - 見て
       - みて
       - mite
+    display: "<ruby>見<rt>み</rt></ruby>て"
     hint: "Ichidan: drop る, add て"
   - type: free-input
     question: Te-form of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
@@ -548,6 +605,7 @@ te-form-test:
       - 買って
       - かって
       - katte
+    display: "<ruby>買<rt>か</rt></ruby>って"
     hint: "Godan: う → って"
   - type: multiple-choice
     question: Te-form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) ends in で instead of て. Why?
@@ -564,6 +622,7 @@ te-form-test:
       - 教えて
       - おしえて
       - oshiete
+    display: "<ruby>教<rt>おし</rt></ruby>えて"
     hint: "Ichidan: drop る, add て"
   - type: free-input
     question: Te-form of <ruby>送<rt>おく</rt></ruby>る (okuru - to send)? (Godan!)
@@ -571,6 +630,7 @@ te-form-test:
       - 送って
       - おくって
       - okutte
+    display: "<ruby>送<rt>おく</rt></ruby>って"
     hint: "Godan: る → って"
   - type: multiple-choice
     question: Which te-form is correct for <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -587,6 +647,7 @@ te-form-test:
       - 覚えて
       - おぼえて
       - oboete
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えて"
     hint: "Ichidan: drop る, add て"
   - type: free-input
     question: Te-form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
@@ -594,4 +655,5 @@ te-form-test:
       - 使って
       - つかって
       - tsukatte
+    display: "<ruby>使<rt>つか</rt></ruby>って"
     hint: "Godan: う → って"

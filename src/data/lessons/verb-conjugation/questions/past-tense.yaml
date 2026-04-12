@@ -5,6 +5,7 @@ past-tense-ichidan:
       - 見た
       - みた
       - mita
+    display: "<ruby>見<rt>み</rt></ruby>た"
     hint: Te-form 見て → replace て with た
   - type: free-input
     question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu) to past tense
@@ -12,6 +13,7 @@ past-tense-ichidan:
       - 食べた
       - たべた
       - tabeta
+    display: "<ruby>食<rt>た</rt></ruby>べた"
     hint: Te-form 食べて → replace て with た
   - type: free-input
     question: What is the polite past of <ruby>食<rt>た</rt></ruby>べる?
@@ -19,6 +21,7 @@ past-tense-ichidan:
       - 食べました
       - たべました
       - tabemashita
+    display: "<ruby>食<rt>た</rt></ruby>べました"
     hint: Replace ます with ました
   - type: free-input
     question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru - to sleep) to past tense
@@ -26,6 +29,7 @@ past-tense-ichidan:
       - 寝た
       - ねた
       - neta
+    display: "<ruby>寝<rt>ね</rt></ruby>た"
     hint: Te-form 寝て → replace て with た
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to past tense
@@ -33,6 +37,7 @@ past-tense-ichidan:
       - 教えた
       - おしえた
       - oshieta
+    display: "<ruby>教<rt>おし</rt></ruby>えた"
     hint: Te-form 教えて → replace て with た
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to past tense
@@ -40,6 +45,7 @@ past-tense-ichidan:
       - 起きた
       - おきた
       - okita
+    display: "<ruby>起<rt>お</rt></ruby>きた"
     hint: Te-form 起きて → replace て with た
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to past tense
@@ -47,6 +53,7 @@ past-tense-ichidan:
       - 開けた
       - あけた
       - aketa
+    display: "<ruby>開<rt>あ</rt></ruby>けた"
     hint: Te-form 開けて → replace て with た
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to past tense
@@ -54,6 +61,7 @@ past-tense-ichidan:
       - 閉めた
       - しめた
       - shimeta
+    display: "<ruby>閉<rt>し</rt></ruby>めた"
     hint: Te-form 閉めて → replace て with た
   - type: free-input
     question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to past tense
@@ -61,6 +69,7 @@ past-tense-ichidan:
       - 着た
       - きた
       - kita
+    display: "<ruby>着<rt>き</rt></ruby>た"
     hint: Te-form 着て → replace て with た
   - type: free-input
     question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to shower) to past tense
@@ -68,6 +77,7 @@ past-tense-ichidan:
       - 浴びた
       - あびた
       - abita
+    display: "<ruby>浴<rt>あ</rt></ruby>びた"
     hint: Te-form 浴びて → replace て with た
   - type: multiple-choice
     question: What is the past tense of <ruby>出<rt>で</rt></ruby>る (deru - to go out)?
@@ -84,6 +94,7 @@ past-tense-ichidan:
       - 降りた
       - おりた
       - orita
+    display: "<ruby>降<rt>お</rt></ruby>りた"
     hint: Te-form 降りて → replace て with た
   - type: free-input
     question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to past tense
@@ -91,6 +102,7 @@ past-tense-ichidan:
       - 借りた
       - かりた
       - karita
+    display: "<ruby>借<rt>か</rt></ruby>りた"
     hint: Te-form 借りて → replace て with た
   - type: free-input
     question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to past tense
@@ -98,6 +110,7 @@ past-tense-ichidan:
       - 調べた
       - しらべた
       - shirabeta
+    display: "<ruby>調<rt>しら</rt></ruby>べた"
     hint: Te-form 調べて → replace て with た
   - type: multiple-choice
     question: What is the past tense of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
@@ -114,6 +127,7 @@ past-tense-ichidan:
       - 覚えた
       - おぼえた
       - oboeta
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えた"
     hint: Te-form 覚えて → replace て with た
   - type: free-input
     question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to past tense
@@ -121,6 +135,7 @@ past-tense-ichidan:
       - 忘れた
       - わすれた
       - wasureta
+    display: "<ruby>忘<rt>わす</rt></ruby>れた"
     hint: Te-form 忘れて → replace て with た
   - type: free-input
     question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to past tense
@@ -128,6 +143,7 @@ past-tense-ichidan:
       - 答えた
       - こたえた
       - kotaeta
+    display: "<ruby>答<rt>こた</rt></ruby>えた"
     hint: Te-form 答えて → replace て with た
   - type: multiple-choice
     question: What is the past tense of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
@@ -144,6 +160,7 @@ past-tense-ichidan:
       - 出かけた
       - でかけた
       - dekaketa
+    display: "<ruby>出<rt>で</rt></ruby>かけた"
     hint: Te-form 出かけて → replace て with た
 past-tense-godan:
   - type: multiple-choice
@@ -161,6 +178,7 @@ past-tense-godan:
       - 書いた
       - かいた
       - kaita
+    display: "<ruby>書<rt>か</rt></ruby>いた"
     hint: 書いて → 書いた
   - type: free-input
     question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to past tense
@@ -168,6 +186,7 @@ past-tense-godan:
       - 飲んだ
       - のんだ
       - nonda
+    display: "<ruby>飲<rt>の</rt></ruby>んだ"
     hint: 飲んで → 飲んだ (で→だ)
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to past tense
@@ -175,6 +194,7 @@ past-tense-godan:
       - 待った
       - まった
       - matta
+    display: "<ruby>待<rt>ま</rt></ruby>った"
     hint: 待って → 待った
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu) to past tense
@@ -182,6 +202,7 @@ past-tense-godan:
       - 読んだ
       - よんだ
       - yonda
+    display: "<ruby>読<rt>よ</rt></ruby>んだ"
     hint: 読んで → 読んだ
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to past tense
@@ -189,6 +210,7 @@ past-tense-godan:
       - 泳いだ
       - およいだ
       - oyoida
+    display: "<ruby>泳<rt>およ</rt></ruby>いだ"
     hint: 泳いで → 泳いだ (で→だ)
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to past tense
@@ -196,6 +218,7 @@ past-tense-godan:
       - 話した
       - はなした
       - hanashita
+    display: "<ruby>話<rt>はな</rt></ruby>した"
     hint: 話して → 話した
   - type: free-input
     question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to past tense
@@ -203,6 +226,7 @@ past-tense-godan:
       - 遊んだ
       - あそんだ
       - asonda
+    display: "<ruby>遊<rt>あそ</rt></ruby>んだ"
     hint: 遊んで → 遊んだ (で→だ)
   - type: free-input
     question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to past tense
@@ -210,6 +234,7 @@ past-tense-godan:
       - 買った
       - かった
       - katta
+    display: "<ruby>買<rt>か</rt></ruby>った"
     hint: 買って → 買った
   - type: free-input
     question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run) to past tense (Godan!)
@@ -217,6 +242,7 @@ past-tense-godan:
       - 走った
       - はしった
       - hashitta
+    display: "<ruby>走<rt>はし</rt></ruby>った"
     hint: Godan る → った
   - type: free-input
     question: Convert <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk) to past tense
@@ -224,6 +250,7 @@ past-tense-godan:
       - 歩いた
       - あるいた
       - aruita
+    display: "<ruby>歩<rt>ある</rt></ruby>いた"
     hint: く → いた
   - type: free-input
     question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to past tense
@@ -231,6 +258,7 @@ past-tense-godan:
       - 立った
       - たった
       - tatta
+    display: "<ruby>立<rt>た</rt></ruby>った"
     hint: つ → った
   - type: free-input
     question: Convert <ruby>笑<rt>わら</rt></ruby>う (warau - to laugh) to past tense
@@ -238,6 +266,7 @@ past-tense-godan:
       - 笑った
       - わらった
       - waratta
+    display: "<ruby>笑<rt>わら</rt></ruby>った"
     hint: う → った
   - type: multiple-choice
     question: What is the past tense of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -254,6 +283,7 @@ past-tense-godan:
       - 送った
       - おくった
       - okutta
+    display: "<ruby>送<rt>おく</rt></ruby>った"
     hint: Godan る → った
   - type: free-input
     question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to past tense (Godan!)
@@ -261,6 +291,7 @@ past-tense-godan:
       - 作った
       - つくった
       - tsukutta
+    display: "<ruby>作<rt>つく</rt></ruby>った"
     hint: Godan る → った
   - type: free-input
     question: Convert <ruby>使<rt>つか</rt></ruby>う (tsukau - to use) to past tense
@@ -268,6 +299,7 @@ past-tense-godan:
       - 使った
       - つかった
       - tsukatta
+    display: "<ruby>使<rt>つか</rt></ruby>った"
     hint: う → った
   - type: multiple-choice
     question: What is the past tense of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off)?
@@ -284,6 +316,7 @@ past-tense-godan:
       - 持った
       - もった
       - motta
+    display: "<ruby>持<rt>も</rt></ruby>った"
     hint: つ → った
   - type: free-input
     question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to past tense (Godan!)
@@ -291,6 +324,7 @@ past-tense-godan:
       - 帰った
       - かえった
       - kaetta
+    display: "<ruby>帰<rt>かえ</rt></ruby>った"
     hint: Godan る → った
 past-tense-irregular:
   - type: free-input
@@ -299,6 +333,7 @@ past-tense-irregular:
       - 来た
       - きた
       - kita
+    display: "<ruby>来<rt>き</rt></ruby>た"
     hint: 来て → 来た — careful, it's きた not きった!
   - type: free-input
     question: Convert する (suru) to past tense
@@ -312,6 +347,7 @@ past-tense-irregular:
       - 来ました
       - きました
       - kimashita
+    display: "<ruby>来<rt>き</rt></ruby>ました"
     hint: Masu stem き + ました
   - type: free-input
     question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to past tense
@@ -319,6 +355,7 @@ past-tense-irregular:
       - 勉強した
       - べんきょうした
       - benkyoushita
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>した"
     hint: して → した
   - type: free-input
     question: What is the polite past of する?
@@ -341,6 +378,7 @@ past-tense-irregular:
       - 運動した
       - うんどうした
       - undoushita
+    display: "<ruby>運動<rt>うんどう</rt></ruby>した"
     hint: する verb — した
   - type: free-input
     question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook) to past tense
@@ -348,6 +386,7 @@ past-tense-irregular:
       - 料理した
       - りょうりした
       - ryourishita
+    display: "<ruby>料理<rt>りょうり</rt></ruby>した"
     hint: する verb — した
   - type: multiple-choice
     question: What is the past tense of <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk)?
@@ -364,6 +403,7 @@ past-tense-irregular:
       - 旅行した
       - りょこうした
       - ryokoushita
+    display: "<ruby>旅行<rt>りょこう</rt></ruby>した"
     hint: する verb — した
   - type: free-input
     question: Convert <ruby>掃除<rt>そうじ</rt></ruby>する (soujisuru - to clean) to past tense
@@ -371,6 +411,7 @@ past-tense-irregular:
       - 掃除した
       - そうじした
       - soujishita
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>した"
     hint: する verb — した
   - type: free-input
     question: What is the polite past of <ruby>勉強<rt>べんきょう</rt></ruby>する?
@@ -378,6 +419,7 @@ past-tense-irregular:
       - 勉強しました
       - べんきょうしました
       - benkyoushimashita
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>しました"
     hint: 勉強します → 勉強しました
   - type: multiple-choice
     question: Which of the following is the correct past tense of <ruby>来<rt>く</rt></ruby>る (kuru)?
@@ -394,6 +436,7 @@ past-tense-irregular:
       - 電話した
       - でんわした
       - denwashita
+    display: "<ruby>電話<rt>でんわ</rt></ruby>した"
     hint: する verb — した
   - type: free-input
     question: Convert <ruby>心配<rt>しんぱい</rt></ruby>する (shinpaisuru - to worry) to past tense
@@ -401,6 +444,7 @@ past-tense-irregular:
       - 心配した
       - しんぱいした
       - shinpaishita
+    display: "<ruby>心配<rt>しんぱい</rt></ruby>した"
     hint: する verb — した
   - type: multiple-choice
     question: "<ruby>行<rt>い</rt></ruby>く (iku) is irregular in past tense. Why is it <ruby>行<rt>い</rt></ruby>った and not <ruby>行<rt>い</rt></ruby>いた?"
@@ -417,6 +461,7 @@ past-tense-irregular:
       - 買い物した
       - かいものした
       - kaimonoshita
+    display: "<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>した"
     hint: する verb — した
   - type: free-input
     question: Convert <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice) to past tense
@@ -424,6 +469,7 @@ past-tense-irregular:
       - 練習した
       - れんしゅうした
       - renshuushita
+    display: "<ruby>練習<rt>れんしゅう</rt></ruby>した"
     hint: する verb — した
   - type: multiple-choice
     question: What is the polite past tense of <ruby>来<rt>く</rt></ruby>る (kuru)?
@@ -440,6 +486,7 @@ past-tense-irregular:
       - 卒業した
       - そつぎょうした
       - sotsugyoushita
+    display: "<ruby>卒業<rt>そつぎょう</rt></ruby>した"
     hint: する verb — した
 past-tense-test:
   - type: free-input
@@ -448,6 +495,7 @@ past-tense-test:
       - 泳いだ
       - およいだ
       - oyoida
+    display: "<ruby>泳<rt>およ</rt></ruby>いだ"
     hint: ぐ → いだ
   - type: free-input
     question: Past tense of <ruby>走<rt>はし</rt></ruby>る (hashiru)? (Godan!)
@@ -455,6 +503,7 @@ past-tense-test:
       - 走った
       - はしった
       - hashitta
+    display: "<ruby>走<rt>はし</rt></ruby>った"
     hint: Godan る → った
   - type: free-input
     question: Polite past of <ruby>飲<rt>の</rt></ruby>む (nomu)?
@@ -462,6 +511,7 @@ past-tense-test:
       - 飲みました
       - のみました
       - nomimashita
+    display: "<ruby>飲<rt>の</rt></ruby>みました"
     hint: 飲みます → 飲みました
   - type: free-input
     question: Past tense of <ruby>勉強<rt>べんきょう</rt></ruby>する?
@@ -469,6 +519,7 @@ past-tense-test:
       - 勉強した
       - べんきょうした
       - benkyoushita
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>した"
     hint: した
   - type: free-input
     question: Past tense of <ruby>食<rt>た</rt></ruby>べる (taberu - to eat)?
@@ -476,6 +527,7 @@ past-tense-test:
       - 食べた
       - たべた
       - tabeta
+    display: "<ruby>食<rt>た</rt></ruby>べた"
     hint: "Ichidan: drop る, add た"
   - type: free-input
     question: Past tense of <ruby>書<rt>か</rt></ruby>く (kaku - to write)?
@@ -483,6 +535,7 @@ past-tense-test:
       - 書いた
       - かいた
       - kaita
+    display: "<ruby>書<rt>か</rt></ruby>いた"
     hint: "Godan: く → いた"
   - type: free-input
     question: Past tense of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
@@ -490,6 +543,7 @@ past-tense-test:
       - 来た
       - きた
       - kita
+    display: "<ruby>来<rt>き</rt></ruby>た"
     hint: "Irregular: きた"
   - type: free-input
     question: Past tense of する (suru - to do)?
@@ -503,6 +557,7 @@ past-tense-test:
       - 飲んだ
       - のんだ
       - nonda
+    display: "<ruby>飲<rt>の</rt></ruby>んだ"
     hint: "Godan: む → んだ"
   - type: free-input
     question: Past tense of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
@@ -510,6 +565,7 @@ past-tense-test:
       - 待った
       - まった
       - matta
+    display: "<ruby>待<rt>ま</rt></ruby>った"
     hint: "Godan: つ → った"
   - type: multiple-choice
     question: Which past tense form is correct for <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
@@ -526,6 +582,7 @@ past-tense-test:
       - 見た
       - みた
       - mita
+    display: "<ruby>見<rt>み</rt></ruby>た"
     hint: "Ichidan: drop る, add た"
   - type: free-input
     question: Polite past of <ruby>見<rt>み</rt></ruby>る (miru)?
@@ -533,6 +590,7 @@ past-tense-test:
       - 見ました
       - みました
       - mimashita
+    display: "<ruby>見<rt>み</rt></ruby>ました"
     hint: 見ます → 見ました
   - type: free-input
     question: Past tense of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
@@ -540,6 +598,7 @@ past-tense-test:
       - 話した
       - はなした
       - hanashita
+    display: "<ruby>話<rt>はな</rt></ruby>した"
     hint: "Godan: す → した"
   - type: multiple-choice
     question: "Past tense of <ruby>買<rt>か</rt></ruby>う (kau - to buy) is:"
@@ -556,6 +615,7 @@ past-tense-test:
       - 教えました
       - おしえました
       - oshiemashita
+    display: "<ruby>教<rt>おし</rt></ruby>えました"
     hint: 教えます → 教えました
   - type: free-input
     question: Past tense of <ruby>送<rt>おく</rt></ruby>る (okuru - to send)? (Godan!)
@@ -563,6 +623,7 @@ past-tense-test:
       - 送った
       - おくった
       - okutta
+    display: "<ruby>送<rt>おく</rt></ruby>った"
     hint: "Godan: る → った"
   - type: multiple-choice
     question: Which past tense form is correct for <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -579,6 +640,7 @@ past-tense-test:
       - 行った
       - いった
       - itta
+    display: "<ruby>行<rt>い</rt></ruby>った"
     hint: "Exception: 行く → 行った (not 行いた)"
   - type: free-input
     question: Past tense of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to remember)?
@@ -586,4 +648,5 @@ past-tense-test:
       - 覚えた
       - おぼえた
       - oboeta
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えた"
     hint: "Ichidan: drop る, add た"

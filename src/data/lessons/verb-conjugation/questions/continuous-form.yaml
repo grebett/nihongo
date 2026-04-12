@@ -14,6 +14,7 @@ continuous-form-ichidan:
       - 食べている
       - たべている
       - tabeteiru
+    display: "<ruby>食<rt>た</rt></ruby>べている"
     hint: Te-form 食べて + いる
   - type: free-input
     question: How do you say 'is looking' using <ruby>見<rt>み</rt></ruby>る?
@@ -21,6 +22,7 @@ continuous-form-ichidan:
       - 見ている
       - みている
       - miteiru
+    display: "<ruby>見<rt>み</rt></ruby>ている"
     hint: Te-form 見て + いる
   - type: free-input
     question: How do you say 'is sleeping' using <ruby>寝<rt>ね</rt></ruby>る?
@@ -28,6 +30,7 @@ continuous-form-ichidan:
       - 寝ている
       - ねている
       - neteiru
+    display: "<ruby>寝<rt>ね</rt></ruby>ている"
     hint: Te-form 寝て + いる
   - type: free-input
     question: How do you say 'is teaching' using <ruby>教<rt>おし</rt></ruby>える?
@@ -35,6 +38,7 @@ continuous-form-ichidan:
       - 教えている
       - おしえている
       - oshieteiru
+    display: "<ruby>教<rt>おし</rt></ruby>えている"
     hint: Te-form 教えて + いる
   - type: free-input
     question: What is the polite continuous form of <ruby>食<rt>た</rt></ruby>べる?
@@ -42,6 +46,7 @@ continuous-form-ichidan:
       - 食べています
       - たべています
       - tabeteimasu
+    display: "<ruby>食<rt>た</rt></ruby>べています"
     hint: Te-form 食べて + います
   - type: free-input
     question: How do you say 'is waking up' using <ruby>起<rt>お</rt></ruby>きる?
@@ -49,6 +54,7 @@ continuous-form-ichidan:
       - 起きている
       - おきている
       - okiteiru
+    display: "<ruby>起<rt>お</rt></ruby>きている"
     hint: Te-form 起きて + いる
   - type: free-input
     question: How do you say 'is opening' using <ruby>開<rt>あ</rt></ruby>ける?
@@ -56,6 +62,7 @@ continuous-form-ichidan:
       - 開けている
       - あけている
       - aketeiru
+    display: "<ruby>開<rt>あ</rt></ruby>けている"
     hint: Te-form 開けて + いる
   - type: free-input
     question: How do you say 'is closing' using <ruby>閉<rt>し</rt></ruby>める?
@@ -63,6 +70,7 @@ continuous-form-ichidan:
       - 閉めている
       - しめている
       - shimeteiru
+    display: "<ruby>閉<rt>し</rt></ruby>めている"
     hint: Te-form 閉めて + いる
   - type: multiple-choice
     question: What is the continuous form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
@@ -79,6 +87,7 @@ continuous-form-ichidan:
       - 出かけている
       - でかけている
       - dekaketeiru
+    display: "<ruby>出<rt>で</rt></ruby>かけている"
     hint: Te-form 出かけて + いる
   - type: free-input
     question: How do you say 'is answering' using <ruby>答<rt>こた</rt></ruby>える?
@@ -86,6 +95,7 @@ continuous-form-ichidan:
       - 答えている
       - こたえている
       - kotaeteiru
+    display: "<ruby>答<rt>こた</rt></ruby>えている"
     hint: Te-form 答えて + いる
   - type: multiple-choice
     question: What does <ruby>出<rt>で</rt></ruby>ている mean?
@@ -102,6 +112,7 @@ continuous-form-ichidan:
       - 調べている
       - しらべている
       - shirabeteiru
+    display: "<ruby>調<rt>しら</rt></ruby>べている"
     hint: Te-form 調べて + いる
   - type: free-input
     question: How do you say 'is thinking' using <ruby>考<rt>かんが</rt></ruby>える?
@@ -109,6 +120,7 @@ continuous-form-ichidan:
       - 考えている
       - かんがえている
       - kangaeteiru
+    display: "<ruby>考<rt>かんが</rt></ruby>えている"
     hint: Te-form 考えて + いる
   - type: multiple-choice
     question: Which is the polite continuous form of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to remember)?
@@ -125,6 +137,7 @@ continuous-form-ichidan:
       - 感じている
       - かんじている
       - kanjiteiru
+    display: "<ruby>感<rt>かん</rt></ruby>じている"
     hint: Te-form 感じて + いる
   - type: free-input
     question: How do you say 'is getting off' using <ruby>降<rt>お</rt></ruby>りる?
@@ -132,6 +145,7 @@ continuous-form-ichidan:
       - 降りている
       - おりている
       - oriteiru
+    display: "<ruby>降<rt>お</rt></ruby>りている"
     hint: Te-form 降りて + いる
   - type: free-input
     question: How do you say 'is borrowing' using <ruby>借<rt>か</rt></ruby>りる?
@@ -139,6 +153,7 @@ continuous-form-ichidan:
       - 借りている
       - かりている
       - kariteiru
+    display: "<ruby>借<rt>か</rt></ruby>りている"
     hint: Te-form 借りて + いる
   - type: multiple-choice
     question: What does <ruby>忘<rt>わす</rt></ruby>れている mean?
@@ -156,6 +171,7 @@ continuous-form-godan:
       - 飲んでいる
       - のんでいる
       - nondeiru
+    display: "<ruby>飲<rt>の</rt></ruby>んでいる"
     hint: Te-form 飲んで + いる
   - type: free-input
     question: How do you say 'is listening' using <ruby>聞<rt>き</rt></ruby>く?
@@ -163,6 +179,7 @@ continuous-form-godan:
       - 聞いている
       - きいている
       - kiiteiru
+    display: "<ruby>聞<rt>き</rt></ruby>いている"
     hint: Te-form 聞いて + いる
   - type: multiple-choice
     question: "In casual speech, ている is often contracted to:"
@@ -179,6 +196,7 @@ continuous-form-godan:
       - 泳いでいる
       - およいでいる
       - oyoideiru
+    display: "<ruby>泳<rt>およ</rt></ruby>いでいる"
     hint: Te-form 泳いで + いる
   - type: free-input
     question: How do you say 'is walking' using <ruby>歩<rt>ある</rt></ruby>く?
@@ -186,6 +204,7 @@ continuous-form-godan:
       - 歩いている
       - あるいている
       - aruiteiru
+    display: "<ruby>歩<rt>ある</rt></ruby>いている"
     hint: Te-form 歩いて + いる
   - type: free-input
     question: How do you say 'is speaking' using <ruby>話<rt>はな</rt></ruby>す?
@@ -193,6 +212,7 @@ continuous-form-godan:
       - 話している
       - はなしている
       - hanashiteiru
+    display: "<ruby>話<rt>はな</rt></ruby>している"
     hint: Te-form 話して + いる
   - type: free-input
     question: How do you say 'is reading' using <ruby>読<rt>よ</rt></ruby>む?
@@ -200,6 +220,7 @@ continuous-form-godan:
       - 読んでいる
       - よんでいる
       - yondeiru
+    display: "<ruby>読<rt>よ</rt></ruby>んでいる"
     hint: Te-form 読んで + いる
   - type: free-input
     question: How do you say 'is waiting' using <ruby>待<rt>ま</rt></ruby>つ?
@@ -207,6 +228,7 @@ continuous-form-godan:
       - 待っている
       - まっている
       - matteiru
+    display: "<ruby>待<rt>ま</rt></ruby>っている"
     hint: Te-form 待って + いる
   - type: free-input
     question: How do you say 'is buying' using <ruby>買<rt>か</rt></ruby>う?
@@ -214,6 +236,7 @@ continuous-form-godan:
       - 買っている
       - かっている
       - katteiru
+    display: "<ruby>買<rt>か</rt></ruby>っている"
     hint: "Te-form 買って + いる (う verbs: う→って)"
   - type: multiple-choice
     question: What does <ruby>知<rt>し</rt></ruby>っている mean?
@@ -230,6 +253,7 @@ continuous-form-godan:
       - 遊んでいる
       - あそんでいる
       - asondeiru
+    display: "<ruby>遊<rt>あそ</rt></ruby>んでいる"
     hint: Te-form 遊んで + いる
   - type: free-input
     question: How do you say 'is running' using <ruby>走<rt>はし</rt></ruby>る?
@@ -237,6 +261,7 @@ continuous-form-godan:
       - 走っている
       - はしっている
       - hashitteiru
+    display: "<ruby>走<rt>はし</rt></ruby>っている"
     hint: Te-form 走って + いる
   - type: free-input
     question: How do you say 'is going home' using <ruby>帰<rt>かえ</rt></ruby>る?
@@ -244,6 +269,7 @@ continuous-form-godan:
       - 帰っている
       - かえっている
       - kaetteiru
+    display: "<ruby>帰<rt>かえ</rt></ruby>っている"
     hint: Te-form 帰って + いる
   - type: multiple-choice
     question: Which is the correct continuous form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -260,6 +286,7 @@ continuous-form-godan:
       - 立っている
       - たっている
       - tatteiru
+    display: "<ruby>立<rt>た</rt></ruby>っている"
     hint: Te-form 立って + いる. Also expresses the state "is standing"
   - type: free-input
     question: How do you say 'is making' using <ruby>作<rt>つく</rt></ruby>る?
@@ -267,6 +294,7 @@ continuous-form-godan:
       - 作っている
       - つくっている
       - tsukutteiru
+    display: "<ruby>作<rt>つく</rt></ruby>っている"
     hint: Te-form 作って + いる
   - type: free-input
     question: How do you say 'is using' using <ruby>使<rt>つか</rt></ruby>う?
@@ -274,6 +302,7 @@ continuous-form-godan:
       - 使っている
       - つかっている
       - tsukatteiru
+    display: "<ruby>使<rt>つか</rt></ruby>っている"
     hint: "Te-form 使って + いる (う verbs: う→って)"
   - type: multiple-choice
     question: What is the polite continuous form of <ruby>送<rt>おく</rt></ruby>る (okuru - to send)?
@@ -290,6 +319,7 @@ continuous-form-godan:
       - 笑っている
       - わらっている
       - waratteiru
+    display: "<ruby>笑<rt>わら</rt></ruby>っている"
     hint: "Te-form 笑って + いる (う verbs: う→って)"
   - type: free-input
     question: How do you say 'is sitting' using <ruby>座<rt>すわ</rt></ruby>る?
@@ -297,6 +327,7 @@ continuous-form-godan:
       - 座っている
       - すわっている
       - suwatteiru
+    display: "<ruby>座<rt>すわ</rt></ruby>っている"
     hint: Te-form 座って + いる. Also expresses the state "is sitting"
 continuous-form-irregular:
   - type: free-input
@@ -311,6 +342,7 @@ continuous-form-irregular:
       - 来ている
       - きている
       - kiteiru
+    display: "<ruby>来<rt>き</rt></ruby>ている"
     hint: 来て + いる
   - type: free-input
     question: What is the casual contraction of している?
@@ -324,6 +356,7 @@ continuous-form-irregular:
       - 勉強している
       - べんきょうしている
       - benkyoushiteiru
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>している"
     hint: 勉強して + いる
   - type: free-input
     question: How do you say 'is cooking' using <ruby>料理<rt>りょうり</rt></ruby>する?
@@ -331,6 +364,7 @@ continuous-form-irregular:
       - 料理している
       - りょうりしている
       - ryourishiteiru
+    display: "<ruby>料理<rt>りょうり</rt></ruby>している"
     hint: 料理して + いる
   - type: free-input
     question: What is the casual contraction of <ruby>来<rt>き</rt></ruby>ている?
@@ -338,6 +372,7 @@ continuous-form-irregular:
       - 来てる
       - きてる
       - kiteru
+    display: "<ruby>来<rt>き</rt></ruby>てる"
     hint: Drop the い
   - type: multiple-choice
     question: What is the polite continuous form of する?
@@ -354,6 +389,7 @@ continuous-form-irregular:
       - 運動している
       - うんどうしている
       - undoushiteiru
+    display: "<ruby>運動<rt>うんどう</rt></ruby>している"
     hint: 運動して + いる
   - type: free-input
     question: How do you say 'is cleaning' using <ruby>掃除<rt>そうじ</rt></ruby>する?
@@ -361,6 +397,7 @@ continuous-form-irregular:
       - 掃除している
       - そうじしている
       - soujishiteiru
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>している"
     hint: 掃除して + いる
   - type: multiple-choice
     question: What does <ruby>来<rt>き</rt></ruby>ている mean?
@@ -377,6 +414,7 @@ continuous-form-irregular:
       - 来ています
       - きています
       - kiteimasu
+    display: "<ruby>来<rt>き</rt></ruby>ています"
     hint: 来て + います
   - type: free-input
     question: How do you say 'is shopping' using <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>する?
@@ -384,6 +422,7 @@ continuous-form-irregular:
       - 買い物している
       - かいものしている
       - kaimonoshiteiru
+    display: "<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>している"
     hint: 買い物して + いる
   - type: free-input
     question: How do you say 'is traveling' using <ruby>旅行<rt>りょこう</rt></ruby>する?
@@ -391,6 +430,7 @@ continuous-form-irregular:
       - 旅行している
       - りょこうしている
       - ryokoushiteiru
+    display: "<ruby>旅行<rt>りょこう</rt></ruby>している"
     hint: 旅行して + いる
   - type: multiple-choice
     question: Which is the casual contraction of <ruby>勉強<rt>べんきょう</rt></ruby>している?
@@ -407,6 +447,7 @@ continuous-form-irregular:
       - 運転している
       - うんてんしている
       - untenshiteiru
+    display: "<ruby>運転<rt>うんてん</rt></ruby>している"
     hint: 運転して + いる
   - type: free-input
     question: How do you say 'is washing' using <ruby>洗濯<rt>せんたく</rt></ruby>する?
@@ -414,6 +455,7 @@ continuous-form-irregular:
       - 洗濯している
       - せんたくしている
       - sentakushiteiru
+    display: "<ruby>洗濯<rt>せんたく</rt></ruby>している"
     hint: 洗濯して + いる
   - type: free-input
     question: What is the casual contraction of <ruby>料理<rt>りょうり</rt></ruby>している?
@@ -421,6 +463,7 @@ continuous-form-irregular:
       - 料理してる
       - りょうりしてる
       - ryourishiteru
+    display: "<ruby>料理<rt>りょうり</rt></ruby>してる"
     hint: Drop the い from している → してる
   - type: multiple-choice
     question: What is the polite continuous form of <ruby>運動<rt>うんどう</rt></ruby>する?
@@ -437,6 +480,7 @@ continuous-form-irregular:
       - 練習している
       - れんしゅうしている
       - renshuushiteiru
+    display: "<ruby>練習<rt>れんしゅう</rt></ruby>している"
     hint: 練習して + いる
   - type: free-input
     question: How do you say 'is explaining' using <ruby>説明<rt>せつめい</rt></ruby>する?
@@ -444,6 +488,7 @@ continuous-form-irregular:
       - 説明している
       - せつめいしている
       - setsumeishiteiru
+    display: "<ruby>説明<rt>せつめい</rt></ruby>している"
     hint: 説明して + いる
 continuous-form-test:
   - type: free-input
@@ -452,6 +497,7 @@ continuous-form-test:
       - 走っている
       - はしっている
       - hashitteiru
+    display: "<ruby>走<rt>はし</rt></ruby>っている"
     hint: 走って + いる
   - type: free-input
     question: How do you say 'is studying' using <ruby>勉強<rt>べんきょう</rt></ruby>する?
@@ -459,6 +505,7 @@ continuous-form-test:
       - 勉強している
       - べんきょうしている
       - benkyoushiteiru
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>している"
     hint: 勉強して + いる
   - type: free-input
     question: Casual contraction of <ruby>食<rt>た</rt></ruby>べている?
@@ -466,6 +513,7 @@ continuous-form-test:
       - 食べてる
       - たべてる
       - tabeteru
+    display: "<ruby>食<rt>た</rt></ruby>べてる"
     hint: Drop the い
   - type: free-input
     question: How do you say 'is waiting' using <ruby>待<rt>ま</rt></ruby>つ?
@@ -473,6 +521,7 @@ continuous-form-test:
       - 待っている
       - まっている
       - matteiru
+    display: "<ruby>待<rt>ま</rt></ruby>っている"
     hint: 待って + いる
   - type: free-input
     question: How do you say 'is eating' using <ruby>食<rt>た</rt></ruby>べる?
@@ -480,6 +529,7 @@ continuous-form-test:
       - 食べている
       - たべている
       - tabeteiru
+    display: "<ruby>食<rt>た</rt></ruby>べている"
     hint: 食べて + いる
   - type: free-input
     question: How do you say 'is drinking' using <ruby>飲<rt>の</rt></ruby>む?
@@ -487,6 +537,7 @@ continuous-form-test:
       - 飲んでいる
       - のんでいる
       - nondeiru
+    display: "<ruby>飲<rt>の</rt></ruby>んでいる"
     hint: 飲んで + いる
   - type: free-input
     question: How do you say 'is writing' using <ruby>書<rt>か</rt></ruby>く?
@@ -494,6 +545,7 @@ continuous-form-test:
       - 書いている
       - かいている
       - kaiteiru
+    display: "<ruby>書<rt>か</rt></ruby>いている"
     hint: 書いて + いる
   - type: free-input
     question: How do you say 'is coming' using <ruby>来<rt>く</rt></ruby>る?
@@ -501,6 +553,7 @@ continuous-form-test:
       - 来ている
       - きている
       - kiteiru
+    display: "<ruby>来<rt>き</rt></ruby>ている"
     hint: 来て + いる
   - type: free-input
     question: How do you say 'is swimming' using <ruby>泳<rt>およ</rt></ruby>ぐ?
@@ -508,6 +561,7 @@ continuous-form-test:
       - 泳いでいる
       - およいでいる
       - oyoideiru
+    display: "<ruby>泳<rt>およ</rt></ruby>いでいる"
     hint: 泳いで + いる
   - type: multiple-choice
     question: What is the polite continuous form of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
@@ -524,6 +578,7 @@ continuous-form-test:
       - 遊んでいる
       - あそんでいる
       - asondeiru
+    display: "<ruby>遊<rt>あそ</rt></ruby>んでいる"
     hint: 遊んで + いる
   - type: free-input
     question: Casual contraction of <ruby>飲<rt>の</rt></ruby>んでいる?
@@ -531,6 +586,7 @@ continuous-form-test:
       - 飲んでる
       - のんでる
       - nonderu
+    display: "<ruby>飲<rt>の</rt></ruby>んでる"
     hint: Drop the い
   - type: free-input
     question: How do you say 'is teaching' using <ruby>教<rt>おし</rt></ruby>える?
@@ -538,6 +594,7 @@ continuous-form-test:
       - 教えている
       - おしえている
       - oshieteiru
+    display: "<ruby>教<rt>おし</rt></ruby>えている"
     hint: 教えて + いる
   - type: multiple-choice
     question: Which continuous form is correct for <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
@@ -560,6 +617,7 @@ continuous-form-test:
       - 歩いている
       - あるいている
       - aruiteiru
+    display: "<ruby>歩<rt>ある</rt></ruby>いている"
     hint: 歩いて + いる
   - type: free-input
     question: How do you say 'is sitting' using <ruby>座<rt>すわ</rt></ruby>る?
@@ -567,6 +625,7 @@ continuous-form-test:
       - 座っている
       - すわっている
       - suwatteiru
+    display: "<ruby>座<rt>すわ</rt></ruby>っている"
     hint: 座って + いる. Also expresses the state "is sitting"
   - type: multiple-choice
     question: What does <ruby>知<rt>し</rt></ruby>っている mean?
@@ -583,6 +642,7 @@ continuous-form-test:
       - 調べている
       - しらべている
       - shirabeteiru
+    display: "<ruby>調<rt>しら</rt></ruby>べている"
     hint: Te-form 調べて + いる
   - type: free-input
     question: How do you say 'is exercising' using <ruby>運動<rt>うんどう</rt></ruby>する?
@@ -590,4 +650,5 @@ continuous-form-test:
       - 運動している
       - うんどうしている
       - undoushiteiru
+    display: "<ruby>運動<rt>うんどう</rt></ruby>している"
     hint: 運動して + いる

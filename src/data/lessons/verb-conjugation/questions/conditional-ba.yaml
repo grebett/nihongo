@@ -5,6 +5,7 @@ conditional-ba-ichidan:
       - 食べれば
       - たべれば
       - tabereba
+    display: "<ruby>食<rt>た</rt></ruby>べれば"
     hint: Drop る, add れば
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to leave) to ba-form
@@ -12,6 +13,7 @@ conditional-ba-ichidan:
       - 出れば
       - でれば
       - dereba
+    display: "<ruby>出<rt>で</rt></ruby>れば"
     hint: Drop る, add れば — 出れば (if you leave)
   - type: multiple-choice
     question: "The ba-form is used for:"
@@ -28,6 +30,7 @@ conditional-ba-ichidan:
       - 見れば
       - みれば
       - mireba
+    display: "<ruby>見<rt>み</rt></ruby>れば"
     hint: Drop る, add れば
   - type: free-input
     question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru) to ba-form
@@ -35,6 +38,7 @@ conditional-ba-ichidan:
       - 寝れば
       - ねれば
       - nereba
+    display: "<ruby>寝<rt>ね</rt></ruby>れば"
     hint: Drop る, add れば — if you sleep
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru) to ba-form
@@ -42,6 +46,7 @@ conditional-ba-ichidan:
       - 起きれば
       - おきれば
       - okireba
+    display: "<ruby>起<rt>お</rt></ruby>きれば"
     hint: Drop る, add れば — if you wake up
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to ba-form
@@ -49,6 +54,7 @@ conditional-ba-ichidan:
       - 教えれば
       - おしえれば
       - oshiereba
+    display: "<ruby>教<rt>おし</rt></ruby>えれば"
     hint: Drop る, add れば — if you teach
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to ba-form
@@ -56,6 +62,7 @@ conditional-ba-ichidan:
       - 開ければ
       - あければ
       - akereba
+    display: "<ruby>開<rt>あ</rt></ruby>ければ"
     hint: Drop る, add れば — if you open
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to ba-form
@@ -63,6 +70,7 @@ conditional-ba-ichidan:
       - 閉めれば
       - しめれば
       - shimereba
+    display: "<ruby>閉<rt>し</rt></ruby>めれば"
     hint: Drop る, add れば — if you close
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
@@ -79,6 +87,7 @@ conditional-ba-ichidan:
       - 浴びれば
       - あびれば
       - abireba
+    display: "<ruby>浴<rt>あ</rt></ruby>びれば"
     hint: Drop る, add れば — if you shower
   - type: free-input
     question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to ba-form
@@ -86,6 +95,7 @@ conditional-ba-ichidan:
       - 信じれば
       - しんじれば
       - shinjireba
+    display: "<ruby>信<rt>しん</rt></ruby>じれば"
     hint: Drop る, add れば — if you believe
   - type: free-input
     question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to ba-form
@@ -93,6 +103,7 @@ conditional-ba-ichidan:
       - 降りれば
       - おりれば
       - orireba
+    display: "<ruby>降<rt>お</rt></ruby>りれば"
     hint: Drop る, add れば — if you get off
   - type: free-input
     question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to ba-form
@@ -100,6 +111,7 @@ conditional-ba-ichidan:
       - 借りれば
       - かりれば
       - karireba
+    display: "<ruby>借<rt>か</rt></ruby>りれば"
     hint: Drop る, add れば — if you borrow
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
@@ -116,6 +128,7 @@ conditional-ba-ichidan:
       - 覚えれば
       - おぼえれば
       - oboereba
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えれば"
     hint: Drop る, add れば — if you memorize
   - type: free-input
     question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to ba-form
@@ -123,6 +136,7 @@ conditional-ba-ichidan:
       - 答えれば
       - こたえれば
       - kotaereba
+    display: "<ruby>答<rt>こた</rt></ruby>えれば"
     hint: Drop る, add れば — if you answer
   - type: free-input
     question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to ba-form
@@ -130,6 +144,7 @@ conditional-ba-ichidan:
       - 調べれば
       - しらべれば
       - shirabereba
+    display: "<ruby>調<rt>しら</rt></ruby>べれば"
     hint: Drop る, add れば — if you investigate
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel)?
@@ -146,6 +161,7 @@ conditional-ba-ichidan:
       - 忘れれば
       - わすれれば
       - wasurereba
+    display: "<ruby>忘<rt>わす</rt></ruby>れれば"
     hint: Drop る, add れば — if you forget
 conditional-ba-godan:
   - type: free-input
@@ -154,6 +170,7 @@ conditional-ba-godan:
       - 飲めば
       - のめば
       - nomeba
+    display: "<ruby>飲<rt>の</rt></ruby>めば"
     hint: む → め (e-row), add ば
   - type: free-input
     question: Convert <ruby>言<rt>い</rt></ruby>う (iu) to ba-form
@@ -161,6 +178,7 @@ conditional-ba-godan:
       - 言えば
       - いえば
       - ieba
+    display: "<ruby>言<rt>い</rt></ruby>えば"
     hint: う → え (e-row), add ば
   - type: free-input
     question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku) to ba-form
@@ -168,6 +186,7 @@ conditional-ba-godan:
       - 聞けば
       - きけば
       - kikeba
+    display: "<ruby>聞<rt>き</rt></ruby>けば"
     hint: く → け (e-row), add ば
   - type: multiple-choice
     question: The ba-form conjugation for godan verbs is the same as which form + ば?
@@ -184,6 +203,7 @@ conditional-ba-godan:
       - 泳げば
       - およげば
       - oyogeba
+    display: "<ruby>泳<rt>およ</rt></ruby>げば"
     hint: ぐ → げ (e-row), add ば
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu) to ba-form
@@ -191,6 +211,7 @@ conditional-ba-godan:
       - 話せば
       - はなせば
       - hanaseba
+    display: "<ruby>話<rt>はな</rt></ruby>せば"
     hint: す → せ (e-row), add ば
   - type: free-input
     question: Convert <ruby>買<rt>か</rt></ruby>う (kau) to ba-form
@@ -198,6 +219,7 @@ conditional-ba-godan:
       - 買えば
       - かえば
       - kaeba
+    display: "<ruby>買<rt>か</rt></ruby>えば"
     hint: う → え (e-row), add ば
   - type: free-input
     question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru) to ba-form (Godan!)
@@ -205,6 +227,7 @@ conditional-ba-godan:
       - 走れば
       - はしれば
       - hashireba
+    display: "<ruby>走<rt>はし</rt></ruby>れば"
     hint: Godan る → れ (e-row), add ば
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to ba-form
@@ -212,6 +235,7 @@ conditional-ba-godan:
       - 読めば
       - よめば
       - yomeba
+    display: "<ruby>読<rt>よ</rt></ruby>めば"
     hint: む → め (e-row), add ば
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) to ba-form
@@ -219,6 +243,7 @@ conditional-ba-godan:
       - 待てば
       - まてば
       - mateba
+    display: "<ruby>待<rt>ま</rt></ruby>てば"
     hint: つ → て (e-row), add ば
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
@@ -235,6 +260,7 @@ conditional-ba-godan:
       - 死ねば
       - しねば
       - shineba
+    display: "<ruby>死<rt>し</rt></ruby>ねば"
     hint: ぬ → ね (e-row), add ば
   - type: free-input
     question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to ba-form (Godan!)
@@ -242,6 +268,7 @@ conditional-ba-godan:
       - 帰れば
       - かえれば
       - kaereba
+    display: "<ruby>帰<rt>かえ</rt></ruby>れば"
     hint: Godan る → れ (e-row), add ば
   - type: free-input
     question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to ba-form
@@ -249,6 +276,7 @@ conditional-ba-godan:
       - 立てば
       - たてば
       - tateba
+    display: "<ruby>立<rt>た</rt></ruby>てば"
     hint: つ → て (e-row), add ば
   - type: free-input
     question: Convert <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk) to ba-form
@@ -256,6 +284,7 @@ conditional-ba-godan:
       - 歩けば
       - あるけば
       - arukeba
+    display: "<ruby>歩<rt>ある</rt></ruby>けば"
     hint: く → け (e-row), add ば
   - type: free-input
     question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to ba-form
@@ -263,6 +292,7 @@ conditional-ba-godan:
       - 送れば
       - おくれば
       - okureba
+    display: "<ruby>送<rt>おく</rt></ruby>れば"
     hint: る → れ (e-row), add ば
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>押<rt>お</rt></ruby>す (osu - to push)?
@@ -279,6 +309,7 @@ conditional-ba-godan:
       - 作れば
       - つくれば
       - tsukureba
+    display: "<ruby>作<rt>つく</rt></ruby>れば"
     hint: る → れ (e-row), add ば
   - type: free-input
     question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to ba-form
@@ -286,6 +317,7 @@ conditional-ba-godan:
       - 持てば
       - もてば
       - moteba
+    display: "<ruby>持<rt>も</rt></ruby>てば"
     hint: つ → て (e-row), add ば
   - type: free-input
     question: Convert <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit) to ba-form
@@ -293,6 +325,7 @@ conditional-ba-godan:
       - 座れば
       - すわれば
       - suwareba
+    display: "<ruby>座<rt>すわ</rt></ruby>れば"
     hint: る → れ (e-row), add ば
 conditional-ba-irregular:
   - type: free-input
@@ -307,6 +340,7 @@ conditional-ba-irregular:
       - 来れば
       - くれば
       - kureba
+    display: "<ruby>来<rt>く</rt></ruby>れば"
     hint: Replace る with れば
   - type: free-input
     question: How do you say 'What should I do?' using する + ば?
@@ -320,6 +354,7 @@ conditional-ba-irregular:
       - 勉強すれば
       - べんきょうすれば
       - benkyousureba
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>すれば"
     hint: する → すれば
   - type: free-input
     question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru) to ba-form
@@ -327,6 +362,7 @@ conditional-ba-irregular:
       - 料理すれば
       - りょうりすれば
       - ryourisureba
+    display: "<ruby>料理<rt>りょうり</rt></ruby>すれば"
     hint: する → すれば
   - type: free-input
     question: Convert <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise) to ba-form
@@ -334,6 +370,7 @@ conditional-ba-irregular:
       - 運動すれば
       - うんどうすれば
       - undousureba
+    display: "<ruby>運動<rt>うんどう</rt></ruby>すれば"
     hint: する → すれば — if you exercise
   - type: free-input
     question: Convert <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice) to ba-form
@@ -341,6 +378,7 @@ conditional-ba-irregular:
       - 練習すれば
       - れんしゅうすれば
       - renshuusureba
+    display: "<ruby>練習<rt>れんしゅう</rt></ruby>すれば"
     hint: する → すれば — if you practice
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>来<rt>く</rt></ruby>る (kuru)?
@@ -357,6 +395,7 @@ conditional-ba-irregular:
       - 説明すれば
       - せつめいすれば
       - setsumeisureba
+    display: "<ruby>説明<rt>せつめい</rt></ruby>すれば"
     hint: する → すれば — if you explain
   - type: multiple-choice
     question: Which sentence correctly uses the ba-form? "If you study, you will pass."
@@ -373,6 +412,7 @@ conditional-ba-irregular:
       - 注意すれば
       - ちゅういすれば
       - chuuisureba
+    display: "<ruby>注意<rt>ちゅうい</rt></ruby>すれば"
     hint: する → すれば — if you pay attention
   - type: free-input
     question: Convert <ruby>我慢<rt>がまん</rt></ruby>する (gamansuru - to endure) to ba-form
@@ -380,6 +420,7 @@ conditional-ba-irregular:
       - 我慢すれば
       - がまんすれば
       - gamansureba
+    display: "<ruby>我慢<rt>がまん</rt></ruby>すれば"
     hint: する → すれば — if you endure
   - type: multiple-choice
     question: Which is the correct ba-form of する?
@@ -396,6 +437,7 @@ conditional-ba-irregular:
       - 紹介すれば
       - しょうかいすれば
       - shoukaisureba
+    display: "<ruby>紹介<rt>しょうかい</rt></ruby>すれば"
     hint: する → すれば — if you introduce
   - type: free-input
     question: Convert <ruby>準備<rt>じゅんび</rt></ruby>する (junbisuru - to prepare) to ba-form
@@ -403,6 +445,7 @@ conditional-ba-irregular:
       - 準備すれば
       - じゅんびすれば
       - junbisureba
+    display: "<ruby>準備<rt>じゅんび</rt></ruby>すれば"
     hint: する → すれば — if you prepare
   - type: multiple-choice
     question: The ba-form emphasizes which aspect of a conditional?
@@ -419,6 +462,7 @@ conditional-ba-irregular:
       - 掃除すれば
       - そうじすれば
       - soujisureba
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>すれば"
     hint: する → すれば — if you clean
   - type: free-input
     question: Convert <ruby>確認<rt>かくにん</rt></ruby>する (kakuninsuru - to confirm) to ba-form
@@ -426,6 +470,7 @@ conditional-ba-irregular:
       - 確認すれば
       - かくにんすれば
       - kakuninsureba
+    display: "<ruby>確認<rt>かくにん</rt></ruby>すれば"
     hint: する → すれば — if you confirm
   - type: free-input
     question: Convert <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact) to ba-form
@@ -433,6 +478,7 @@ conditional-ba-irregular:
       - 連絡すれば
       - れんらくすれば
       - renrakusureba
+    display: "<ruby>連絡<rt>れんらく</rt></ruby>すれば"
     hint: する → すれば — if you contact
   - type: multiple-choice
     question: How would you say "If he comes" using <ruby>来<rt>く</rt></ruby>る ba-form?
@@ -450,6 +496,7 @@ conditional-ba-test:
       - 食べれば
       - たべれば
       - tabereba
+    display: "<ruby>食<rt>た</rt></ruby>べれば"
     hint: "Ichidan: れば"
   - type: free-input
     question: Ba-form of <ruby>書<rt>か</rt></ruby>く?
@@ -457,6 +504,7 @@ conditional-ba-test:
       - 書けば
       - かけば
       - kakeba
+    display: "<ruby>書<rt>か</rt></ruby>けば"
     hint: "Godan: く → け, add ば"
   - type: free-input
     question: Ba-form of する?
@@ -470,6 +518,7 @@ conditional-ba-test:
       - 来れば
       - くれば
       - kureba
+    display: "<ruby>来<rt>く</rt></ruby>れば"
     hint: くれば
   - type: free-input
     question: Ba-form of <ruby>見<rt>み</rt></ruby>る (miru - to see)?
@@ -477,6 +526,7 @@ conditional-ba-test:
       - 見れば
       - みれば
       - mireba
+    display: "<ruby>見<rt>み</rt></ruby>れば"
     hint: "Ichidan: drop る, add れば"
   - type: free-input
     question: Ba-form of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
@@ -484,6 +534,7 @@ conditional-ba-test:
       - 飲めば
       - のめば
       - nomeba
+    display: "<ruby>飲<rt>の</rt></ruby>めば"
     hint: "Godan: む → め (e-row), add ば"
   - type: free-input
     question: Ba-form of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
@@ -491,6 +542,7 @@ conditional-ba-test:
       - 読めば
       - よめば
       - yomeba
+    display: "<ruby>読<rt>よ</rt></ruby>めば"
     hint: "Godan: む → め (e-row), add ば"
   - type: free-input
     question: Ba-form of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
@@ -498,6 +550,7 @@ conditional-ba-test:
       - 話せば
       - はなせば
       - hanaseba
+    display: "<ruby>話<rt>はな</rt></ruby>せば"
     hint: "Godan: す → せ (e-row), add ば"
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
@@ -514,6 +567,7 @@ conditional-ba-test:
       - 遊べば
       - あそべば
       - asobeba
+    display: "<ruby>遊<rt>あそ</rt></ruby>べば"
     hint: "Godan: ぶ → べ (e-row), add ば"
   - type: free-input
     question: Ba-form of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
@@ -521,6 +575,7 @@ conditional-ba-test:
       - 待てば
       - まてば
       - mateba
+    display: "<ruby>待<rt>ま</rt></ruby>てば"
     hint: "Godan: つ → て (e-row), add ば"
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
@@ -537,6 +592,7 @@ conditional-ba-test:
       - 走れば
       - はしれば
       - hashireba
+    display: "<ruby>走<rt>はし</rt></ruby>れば"
     hint: Godan verb! る → れ (e-row), add ば
   - type: free-input
     question: Ba-form of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
@@ -544,6 +600,7 @@ conditional-ba-test:
       - 勉強すれば
       - べんきょうすれば
       - benkyousureba
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>すれば"
     hint: "する verb: する → すれば"
   - type: free-input
     question: Ba-form of <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up)?
@@ -551,6 +608,7 @@ conditional-ba-test:
       - 起きれば
       - おきれば
       - okireba
+    display: "<ruby>起<rt>お</rt></ruby>きれば"
     hint: "Ichidan: drop る, add れば"
   - type: multiple-choice
     question: For godan verbs, the ba-form uses which vowel row before ば?
@@ -567,6 +625,7 @@ conditional-ba-test:
       - 閉めれば
       - しめれば
       - shimereba
+    display: "<ruby>閉<rt>し</rt></ruby>めれば"
     hint: "Ichidan: drop る, add れば"
   - type: free-input
     question: Ba-form of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home)?
@@ -574,6 +633,7 @@ conditional-ba-test:
       - 帰れば
       - かえれば
       - kaereba
+    display: "<ruby>帰<rt>かえ</rt></ruby>れば"
     hint: "Godan: る → れ (e-row), add ば"
   - type: multiple-choice
     question: Which is the correct ba-form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -590,4 +650,5 @@ conditional-ba-test:
       - 立てば
       - たてば
       - tateba
+    display: "<ruby>立<rt>た</rt></ruby>てば"
     hint: "Godan: つ → て (e-row), add ば"

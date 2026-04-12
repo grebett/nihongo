@@ -5,6 +5,7 @@ potential-form-ichidan:
       - 食べられる
       - たべられる
       - taberareru
+    display: "<ruby>食<rt>た</rt></ruby>べられる"
     hint: Drop る, add られる
   - type: free-input
     question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to potential form
@@ -12,6 +13,7 @@ potential-form-ichidan:
       - 見られる
       - みられる
       - mirareru
+    display: "<ruby>見<rt>み</rt></ruby>られる"
     hint: Drop る, add られる
   - type: multiple-choice
     question: "For ichidan verbs, the potential form is identical to:"
@@ -28,6 +30,7 @@ potential-form-ichidan:
       - 寝られる
       - ねられる
       - nerareru
+    display: "<ruby>寝<rt>ね</rt></ruby>られる"
     hint: Drop る, add られる — can sleep
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru) to potential form
@@ -35,6 +38,7 @@ potential-form-ichidan:
       - 起きられる
       - おきられる
       - okirareru
+    display: "<ruby>起<rt>お</rt></ruby>きられる"
     hint: Drop る, add られる — can wake up
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru) to potential form
@@ -42,6 +46,7 @@ potential-form-ichidan:
       - 教えられる
       - おしえられる
       - oshierareru
+    display: "<ruby>教<rt>おし</rt></ruby>えられる"
     hint: Drop る, add られる — can teach
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru) to potential form
@@ -49,6 +54,7 @@ potential-form-ichidan:
       - 開けられる
       - あけられる
       - akerareru
+    display: "<ruby>開<rt>あ</rt></ruby>けられる"
     hint: Drop る, add られる — can open
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru) to potential form
@@ -56,6 +62,7 @@ potential-form-ichidan:
       - 閉められる
       - しめられる
       - shimerareru
+    display: "<ruby>閉<rt>し</rt></ruby>められる"
     hint: Drop る, add られる — can close
   - type: free-input
     question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to potential form
@@ -63,6 +70,7 @@ potential-form-ichidan:
       - 着られる
       - きられる
       - kirareru
+    display: "<ruby>着<rt>き</rt></ruby>られる"
     hint: Drop る, add られる — can wear
   - type: multiple-choice
     question: What is the colloquial (ra-nuki) potential of <ruby>食<rt>た</rt></ruby>べる?
@@ -79,6 +87,7 @@ potential-form-ichidan:
       - 浴びられる
       - あびられる
       - abirareru
+    display: "<ruby>浴<rt>あ</rt></ruby>びられる"
     hint: Drop る, add られる — can shower
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to potential form
@@ -86,6 +95,7 @@ potential-form-ichidan:
       - 出られる
       - でられる
       - derareru
+    display: "<ruby>出<rt>で</rt></ruby>られる"
     hint: Drop る, add られる — can go out
   - type: multiple-choice
     question: What is the potential form of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
@@ -102,6 +112,7 @@ potential-form-ichidan:
       - 降りられる
       - おりられる
       - orirareru
+    display: "<ruby>降<rt>お</rt></ruby>りられる"
     hint: Drop る, add られる — can get off
   - type: free-input
     question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to potential form
@@ -109,6 +120,7 @@ potential-form-ichidan:
       - 借りられる
       - かりられる
       - karirareru
+    display: "<ruby>借<rt>か</rt></ruby>りられる"
     hint: Drop る, add られる — can borrow
   - type: multiple-choice
     question: Which of the following is NOT a valid potential form?
@@ -125,6 +137,7 @@ potential-form-ichidan:
       - 答えられる
       - こたえられる
       - kotaerareru
+    display: "<ruby>答<rt>こた</rt></ruby>えられる"
     hint: Drop る, add られる — can answer
   - type: free-input
     question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to potential form
@@ -132,6 +145,7 @@ potential-form-ichidan:
       - 調べられる
       - しらべられる
       - shiraberareru
+    display: "<ruby>調<rt>しら</rt></ruby>べられる"
     hint: Drop る, add られる — can investigate
   - type: free-input
     question: Convert <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to memorize) to potential form
@@ -139,6 +153,7 @@ potential-form-ichidan:
       - 覚えられる
       - おぼえられる
       - oboerareru
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えられる"
     hint: Drop る, add られる — can memorize
   - type: multiple-choice
     question: Why can ichidan potential be confusing?
@@ -156,6 +171,7 @@ potential-form-godan:
       - 飲める
       - のめる
       - nomeru
+    display: "<ruby>飲<rt>の</rt></ruby>める"
     hint: む → め (e-row), add る
   - type: free-input
     question: Convert <ruby>書<rt>か</rt></ruby>く (kaku) to potential form
@@ -163,6 +179,7 @@ potential-form-godan:
       - 書ける
       - かける
       - kakeru
+    display: "<ruby>書<rt>か</rt></ruby>ける"
     hint: く → け (e-row), add る
   - type: free-input
     question: Convert <ruby>行<rt>い</rt></ruby>く (iku - to go) to potential form
@@ -170,6 +187,7 @@ potential-form-godan:
       - 行ける
       - いける
       - ikeru
+    display: "<ruby>行<rt>い</rt></ruby>ける"
     hint: く → け (e-row), add る — 行ける! (I can go!)
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu) to potential form
@@ -177,6 +195,7 @@ potential-form-godan:
       - 話せる
       - はなせる
       - hanaseru
+    display: "<ruby>話<rt>はな</rt></ruby>せる"
     hint: す → せ (e-row), add る
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu) to potential form
@@ -184,6 +203,7 @@ potential-form-godan:
       - 泳げる
       - およげる
       - oyogeru
+    display: "<ruby>泳<rt>およ</rt></ruby>げる"
     hint: ぐ → げ (e-row), add る — can swim
   - type: free-input
     question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru) to potential form (Godan!)
@@ -191,6 +211,7 @@ potential-form-godan:
       - 走れる
       - はしれる
       - hashireru
+    display: "<ruby>走<rt>はし</rt></ruby>れる"
     hint: Godan る → れ (e-row), add る — can run
   - type: free-input
     question: Convert <ruby>買<rt>か</rt></ruby>う (kau) to potential form
@@ -198,6 +219,7 @@ potential-form-godan:
       - 買える
       - かえる
       - kaeru
+    display: "<ruby>買<rt>か</rt></ruby>える"
     hint: う → え (e-row), add る — can buy
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu) to potential form
@@ -205,6 +227,7 @@ potential-form-godan:
       - 読める
       - よめる
       - yomeru
+    display: "<ruby>読<rt>よ</rt></ruby>める"
     hint: む → め (e-row), add る — can read
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to potential form
@@ -212,6 +235,7 @@ potential-form-godan:
       - 待てる
       - まてる
       - materu
+    display: "<ruby>待<rt>ま</rt></ruby>てる"
     hint: つ → て (e-row), add る — can wait
   - type: multiple-choice
     question: What is the potential form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
@@ -228,6 +252,7 @@ potential-form-godan:
       - 死ねる
       - しねる
       - shineru
+    display: "<ruby>死<rt>し</rt></ruby>ねる"
     hint: ぬ → ね (e-row), add る — the only -nu godan verb!
   - type: free-input
     question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to potential form (Godan!)
@@ -235,6 +260,7 @@ potential-form-godan:
       - 帰れる
       - かえれる
       - kaereru
+    display: "<ruby>帰<rt>かえ</rt></ruby>れる"
     hint: Godan る → れ (e-row), add る — can return home
   - type: multiple-choice
     question: What is the potential form of <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk)?
@@ -251,6 +277,7 @@ potential-form-godan:
       - 座れる
       - すわれる
       - suwareru
+    display: "<ruby>座<rt>すわ</rt></ruby>れる"
     hint: Godan る → れ (e-row), add る — can sit
   - type: free-input
     question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to potential form
@@ -258,6 +285,7 @@ potential-form-godan:
       - 持てる
       - もてる
       - moteru
+    display: "<ruby>持<rt>も</rt></ruby>てる"
     hint: つ → て (e-row), add る — can hold
   - type: free-input
     question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to potential form
@@ -265,6 +293,7 @@ potential-form-godan:
       - 送れる
       - おくれる
       - okureru
+    display: "<ruby>送<rt>おく</rt></ruby>れる"
     hint: Godan る → れ (e-row), add る — can send
   - type: multiple-choice
     question: The godan potential form itself conjugates like which verb type?
@@ -281,6 +310,7 @@ potential-form-godan:
       - 作れる
       - つくれる
       - tsukureru
+    display: "<ruby>作<rt>つく</rt></ruby>れる"
     hint: Godan る → れ (e-row), add る — can make
   - type: free-input
     question: Convert <ruby>乗<rt>の</rt></ruby>る (noru - to ride) to potential form
@@ -288,6 +318,7 @@ potential-form-godan:
       - 乗れる
       - のれる
       - noreru
+    display: "<ruby>乗<rt>の</rt></ruby>れる"
     hint: Godan る → れ (e-row), add る — can ride
   - type: multiple-choice
     question: What is the potential form of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off clothes)?
@@ -311,6 +342,7 @@ potential-form-irregular:
       - 来られる
       - こられる
       - korareru
+    display: "<ruby>来<rt>こ</rt></ruby>られる"
     hint: く → こ, add られる
   - type: multiple-choice
     question: Why is the potential of する special?
@@ -327,6 +359,7 @@ potential-form-irregular:
       - 勉強できる
       - べんきょうできる
       - benkyoudekiru
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>できる"
     hint: する → できる — 勉強できる
   - type: free-input
     question: How do you say 'can cook' using <ruby>料理<rt>りょうり</rt></ruby>する?
@@ -334,6 +367,7 @@ potential-form-irregular:
       - 料理できる
       - りょうりできる
       - ryouridekiru
+    display: "<ruby>料理<rt>りょうり</rt></ruby>できる"
     hint: する → できる — 料理できる
   - type: free-input
     question: How do you say 'can exercise' using <ruby>運動<rt>うんどう</rt></ruby>する?
@@ -341,6 +375,7 @@ potential-form-irregular:
       - 運動できる
       - うんどうできる
       - undoudekiru
+    display: "<ruby>運動<rt>うんどう</rt></ruby>できる"
     hint: する → できる — 運動できる
   - type: multiple-choice
     question: What is the potential form of <ruby>来<rt>く</rt></ruby>る in casual (ra-nuki) speech?
@@ -357,6 +392,7 @@ potential-form-irregular:
       - 掃除できる
       - そうじできる
       - soujidekiru
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>できる"
     hint: する → できる — 掃除できる
   - type: free-input
     question: How do you say 'can drive' using <ruby>運転<rt>うんてん</rt></ruby>する?
@@ -364,6 +400,7 @@ potential-form-irregular:
       - 運転できる
       - うんてんできる
       - untendekiru
+    display: "<ruby>運転<rt>うんてん</rt></ruby>できる"
     hint: する → できる — 運転できる
   - type: multiple-choice
     question: The potential of <ruby>来<rt>く</rt></ruby>る (こられる) is identical to which other form?
@@ -380,6 +417,7 @@ potential-form-irregular:
       - 旅行できる
       - りょこうできる
       - ryokoudekiru
+    display: "<ruby>旅行<rt>りょこう</rt></ruby>できる"
     hint: する → できる — 旅行できる
   - type: free-input
     question: How do you say 'can shop' using <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>する?
@@ -387,6 +425,7 @@ potential-form-irregular:
       - 買い物できる
       - かいものできる
       - kaimonodekiru
+    display: "<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>できる"
     hint: する → できる — 買い物できる
   - type: multiple-choice
     question: Which verb does できる itself conjugate as?
@@ -403,6 +442,7 @@ potential-form-irregular:
       - 洗濯できる
       - せんたくできる
       - sentakudekiru
+    display: "<ruby>洗濯<rt>せんたく</rt></ruby>できる"
     hint: する → できる — 洗濯できる
   - type: free-input
     question: What is the negative potential of する? (cannot do)
@@ -425,6 +465,7 @@ potential-form-irregular:
       - 暗記できる
       - あんきできる
       - ankidekiru
+    display: "<ruby>暗記<rt>あんき</rt></ruby>できる"
     hint: する → できる — 暗記できる
   - type: free-input
     question: How do you say 'can translate' using <ruby>翻訳<rt>ほんやく</rt></ruby>する?
@@ -432,6 +473,7 @@ potential-form-irregular:
       - 翻訳できる
       - ほんやくできる
       - honyakudekiru
+    display: "<ruby>翻訳<rt>ほんやく</rt></ruby>できる"
     hint: する → できる — 翻訳できる
   - type: multiple-choice
     question: What is the negative potential of <ruby>来<rt>く</rt></ruby>る? (cannot come)
@@ -448,6 +490,7 @@ potential-form-irregular:
       - 予約できる
       - よやくできる
       - yoyakudekiru
+    display: "<ruby>予約<rt>よやく</rt></ruby>できる"
     hint: する → できる — 予約できる
 potential-form-test:
   - type: free-input
@@ -456,6 +499,7 @@ potential-form-test:
       - 食べられる
       - たべられる
       - taberareru
+    display: "<ruby>食<rt>た</rt></ruby>べられる"
     hint: "Ichidan: られる (same as passive!)"
   - type: free-input
     question: Potential of <ruby>書<rt>か</rt></ruby>く? (can write)
@@ -463,6 +507,7 @@ potential-form-test:
       - 書ける
       - かける
       - kakeru
+    display: "<ruby>書<rt>か</rt></ruby>ける"
     hint: "Godan: く → け, add る"
   - type: free-input
     question: Potential of する?
@@ -476,6 +521,7 @@ potential-form-test:
       - 来られる
       - こられる
       - korareru
+    display: "<ruby>来<rt>こ</rt></ruby>られる"
     hint: こられる
   - type: multiple-choice
     question: For godan verbs, the potential form is different from passive. What about ichidan?
@@ -492,6 +538,7 @@ potential-form-test:
       - 読める
       - よめる
       - yomeru
+    display: "<ruby>読<rt>よ</rt></ruby>める"
     hint: "Godan: む → め, add る"
   - type: free-input
     question: Potential of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)? (can drink)
@@ -499,6 +546,7 @@ potential-form-test:
       - 飲める
       - のめる
       - nomeru
+    display: "<ruby>飲<rt>の</rt></ruby>める"
     hint: "Godan: む → め, add る"
   - type: free-input
     question: Potential of <ruby>見<rt>み</rt></ruby>る (miru - to see)? (can see)
@@ -506,6 +554,7 @@ potential-form-test:
       - 見られる
       - みられる
       - mirareru
+    display: "<ruby>見<rt>み</rt></ruby>られる"
     hint: "Ichidan: られる (same as passive!)"
   - type: free-input
     question: Potential of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)? (can speak)
@@ -513,6 +562,7 @@ potential-form-test:
       - 話せる
       - はなせる
       - hanaseru
+    display: "<ruby>話<rt>はな</rt></ruby>せる"
     hint: "Godan: す → せ, add る"
   - type: multiple-choice
     question: Which is the correct potential form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
@@ -529,6 +579,7 @@ potential-form-test:
       - 遊べる
       - あそべる
       - asoberu
+    display: "<ruby>遊<rt>あそ</rt></ruby>べる"
     hint: "Godan: ぶ → べ, add る"
   - type: multiple-choice
     question: Which is the correct potential form of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
@@ -545,6 +596,7 @@ potential-form-test:
       - 買える
       - かえる
       - kaeru
+    display: "<ruby>買<rt>か</rt></ruby>える"
     hint: "Godan: う → え, add る"
   - type: free-input
     question: Potential of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)? (can run)
@@ -552,6 +604,7 @@ potential-form-test:
       - 走れる
       - はしれる
       - hashireru
+    display: "<ruby>走<rt>はし</rt></ruby>れる"
     hint: Godan verb! る → れ, add る
   - type: free-input
     question: Potential of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)? (can study)
@@ -559,6 +612,7 @@ potential-form-test:
       - 勉強できる
       - べんきょうできる
       - benkyoudekiru
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>できる"
     hint: "する verb: する → できる"
   - type: multiple-choice
     question: How does the potential form differ between godan and ichidan verbs?
@@ -575,6 +629,7 @@ potential-form-test:
       - 開けられる
       - あけられる
       - akerareru
+    display: "<ruby>開<rt>あ</rt></ruby>けられる"
     hint: "Ichidan: drop る, add られる"
   - type: multiple-choice
     question: Which is the correct potential form of <ruby>切<rt>き</rt></ruby>る (kiru - to cut, Godan)?
@@ -591,6 +646,7 @@ potential-form-test:
       - 運転できる
       - うんてんできる
       - untendekiru
+    display: "<ruby>運転<rt>うんてん</rt></ruby>できる"
     hint: "する verb: する → できる"
   - type: multiple-choice
     question: Which verb has a completely unique potential form that is a different word entirely?

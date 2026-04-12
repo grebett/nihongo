@@ -5,6 +5,7 @@ causative-passive-ichidan:
       - 食べさせられる
       - たべさせられる
       - tabesaserareru
+    display: "<ruby>食<rt>た</rt></ruby>べさせられる"
     hint: Drop る, add させられる
   - type: multiple-choice
     question: "'<ruby>食<rt>た</rt></ruby>べさせられる' means:"
@@ -21,6 +22,7 @@ causative-passive-ichidan:
       - 見させられる
       - みさせられる
       - misaserareru
+    display: "<ruby>見<rt>み</rt></ruby>させられる"
     hint: Drop る, add させられる
   - type: free-input
     question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru) to causative-passive form
@@ -28,6 +30,7 @@ causative-passive-ichidan:
       - 寝させられる
       - ねさせられる
       - nesaserareru
+    display: "<ruby>寝<rt>ね</rt></ruby>させられる"
     hint: Drop る, add させられる — was made to sleep
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to causative-passive form
@@ -35,6 +38,7 @@ causative-passive-ichidan:
       - 起きさせられる
       - おきさせられる
       - okisaserareru
+    display: "<ruby>起<rt>お</rt></ruby>きさせられる"
     hint: Drop る, add させられる — was made to wake up
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to causative-passive form
@@ -42,6 +46,7 @@ causative-passive-ichidan:
       - 教えさせられる
       - おしえさせられる
       - oshiesaserareru
+    display: "<ruby>教<rt>おし</rt></ruby>えさせられる"
     hint: Drop る, add させられる
   - type: multiple-choice
     question: What is the causative-passive form of <ruby>開<rt>あ</rt></ruby>ける (akeru - to open)?
@@ -58,6 +63,7 @@ causative-passive-ichidan:
       - 閉めさせられる
       - しめさせられる
       - shimesaserareru
+    display: "<ruby>閉<rt>し</rt></ruby>めさせられる"
     hint: Drop る, add させられる
   - type: free-input
     question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to causative-passive form
@@ -65,6 +71,7 @@ causative-passive-ichidan:
       - 着させられる
       - きさせられる
       - kisaserareru
+    display: "<ruby>着<rt>き</rt></ruby>させられる"
     hint: Drop る, add させられる — was made to wear
   - type: free-input
     question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to shower) to causative-passive form
@@ -72,6 +79,7 @@ causative-passive-ichidan:
       - 浴びさせられる
       - あびさせられる
       - abisaserareru
+    display: "<ruby>浴<rt>あ</rt></ruby>びさせられる"
     hint: Drop る, add させられる
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to causative-passive form
@@ -79,6 +87,7 @@ causative-passive-ichidan:
       - 出させられる
       - ださせられる
       - desaserareru
+    display: "<ruby>出<rt>で</rt></ruby>させられる"
     hint: Drop る, add させられる
   - type: multiple-choice
     question: What is the causative-passive form of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
@@ -95,6 +104,7 @@ causative-passive-ichidan:
       - 感じさせられる
       - かんじさせられる
       - kanjisaserareru
+    display: "<ruby>感<rt>かん</rt></ruby>じさせられる"
     hint: Drop る, add させられる
   - type: free-input
     question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to causative-passive form
@@ -102,6 +112,7 @@ causative-passive-ichidan:
       - 降りさせられる
       - おりさせられる
       - orisaserareru
+    display: "<ruby>降<rt>お</rt></ruby>りさせられる"
     hint: Drop る, add させられる — was made to get off
   - type: free-input
     question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to causative-passive form
@@ -109,6 +120,7 @@ causative-passive-ichidan:
       - 借りさせられる
       - かりさせられる
       - karisaserareru
+    display: "<ruby>借<rt>か</rt></ruby>りさせられる"
     hint: Drop る, add させられる
   - type: free-input
     question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to causative-passive form
@@ -116,6 +128,7 @@ causative-passive-ichidan:
       - 答えさせられる
       - こたえさせられる
       - kotaesaserareru
+    display: "<ruby>答<rt>こた</rt></ruby>えさせられる"
     hint: Drop る, add させられる — was made to answer
   - type: multiple-choice
     question: What is the causative-passive form of <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate)?
@@ -132,6 +145,7 @@ causative-passive-ichidan:
       - 覚えさせられる
       - おぼえさせられる
       - oboesaserareru
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えさせられる"
     hint: Drop る, add させられる
   - type: free-input
     question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to causative-passive form
@@ -139,6 +153,7 @@ causative-passive-ichidan:
       - 忘れさせられる
       - わすれさせられる
       - wasuresaserareru
+    display: "<ruby>忘<rt>わす</rt></ruby>れさせられる"
     hint: Drop る, add させられる
   - type: free-input
     question: Convert <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think) to causative-passive form
@@ -146,6 +161,7 @@ causative-passive-ichidan:
       - 考えさせられる
       - かんがえさせられる
       - kangaesaserareru
+    display: "<ruby>考<rt>かんが</rt></ruby>えさせられる"
     hint: Drop る, add させられる — was made to think
 causative-passive-godan:
   - type: free-input
@@ -157,6 +173,7 @@ causative-passive-godan:
       - きかせられる
       - kikasareru
       - kikaserareru
+    display: "<ruby>聞<rt>き</rt></ruby>かされる"
     hint: Both 聞かされる (short) and 聞かせられる (full) are correct
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to causative-passive form
@@ -167,6 +184,7 @@ causative-passive-godan:
       - またされる
       - mataserareru
       - matasareru
+    display: "<ruby>待<rt>ま</rt></ruby>たせられる"
     hint: 待たせられる (full form) — was made to wait
   - type: free-input
     question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to causative-passive form
@@ -177,6 +195,7 @@ causative-passive-godan:
       - のまされる
       - nomaserareru
       - nomasareru
+    display: "<ruby>飲<rt>の</rt></ruby>ませられる"
     hint: 飲ませられる — was made to drink
   - type: free-input
     question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru) to causative-passive form (Godan!)
@@ -187,6 +206,7 @@ causative-passive-godan:
       - はしらされる
       - hashiraserareru
       - hashirasareru
+    display: "<ruby>走<rt>はし</rt></ruby>らせられる"
     hint: Godan る → ら, add せられる — was made to run
   - type: free-input
     question: Convert <ruby>書<rt>か</rt></ruby>く (kaku) to causative-passive form
@@ -197,6 +217,7 @@ causative-passive-godan:
       - かかされる
       - kakaserareru
       - kakasareru
+    display: "<ruby>書<rt>か</rt></ruby>かせられる"
     hint: く → か, add せられる — was made to write
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu) to causative-passive form
@@ -207,6 +228,7 @@ causative-passive-godan:
       - およがされる
       - oyogaserareru
       - oyogasareru
+    display: "<ruby>泳<rt>およ</rt></ruby>がせられる"
     hint: ぐ → が, add せられる — was made to swim
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to causative-passive form
@@ -217,6 +239,7 @@ causative-passive-godan:
       - よまされる
       - yomaserareru
       - yomasareru
+    display: "<ruby>読<rt>よ</rt></ruby>ませられる"
     hint: む → ま, add せられる — was made to read
   - type: free-input
     question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to causative-passive form
@@ -227,6 +250,7 @@ causative-passive-godan:
       - あそばされる
       - asobaserareru
       - asobasareru
+    display: "<ruby>遊<rt>あそ</rt></ruby>ばせられる"
     hint: ぶ → ば, add せられる — was made to play
   - type: multiple-choice
     question: What is the causative-passive form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -246,6 +270,7 @@ causative-passive-godan:
       - あるかされる
       - arukaserareru
       - arukasareru
+    display: "<ruby>歩<rt>ある</rt></ruby>かせられる"
     hint: く → か, add せられる — was made to walk
   - type: free-input
     question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home) to causative-passive form
@@ -256,6 +281,7 @@ causative-passive-godan:
       - かえらされる
       - kaeraserareru
       - kaerasareru
+    display: "<ruby>帰<rt>かえ</rt></ruby>らせられる"
     hint: Godan る → ら, add せられる — was made to return
   - type: multiple-choice
     question: What is the causative-passive form of <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand)?
@@ -275,6 +301,7 @@ causative-passive-godan:
       - もたされる
       - motaserareru
       - motasareru
+    display: "<ruby>持<rt>も</rt></ruby>たせられる"
     hint: つ → た, add せられる — was made to hold
   - type: free-input
     question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to causative-passive form
@@ -285,6 +312,7 @@ causative-passive-godan:
       - おくらされる
       - okuraserareru
       - okurasareru
+    display: "<ruby>送<rt>おく</rt></ruby>らせられる"
     hint: Godan る → ら, add せられる — was made to send
   - type: free-input
     question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to causative-passive form
@@ -295,6 +323,7 @@ causative-passive-godan:
       - つくらされる
       - tsukuraserareru
       - tsukurasareru
+    display: "<ruby>作<rt>つく</rt></ruby>らせられる"
     hint: Godan る → ら, add せられる — was made to make
   - type: multiple-choice
     question: What is the causative-passive form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
@@ -314,6 +343,7 @@ causative-passive-godan:
       - わらわされる
       - warawaserareru
       - warawasareru
+    display: "<ruby>笑<rt>わら</rt></ruby>わせられる"
     hint: う → わ, add せられる — was made to laugh
   - type: free-input
     question: Convert <ruby>乗<rt>の</rt></ruby>る (noru - to ride) to causative-passive form
@@ -324,6 +354,7 @@ causative-passive-godan:
       - のらされる
       - noraserareru
       - norasareru
+    display: "<ruby>乗<rt>の</rt></ruby>らせられる"
     hint: Godan る → ら, add せられる — was made to ride
   - type: free-input
     question: Convert <ruby>言<rt>い</rt></ruby>う (iu - to say) to causative-passive form
@@ -334,6 +365,7 @@ causative-passive-godan:
       - いわされる
       - iwaserareru
       - iwasareru
+    display: "<ruby>言<rt>い</rt></ruby>わせられる"
     hint: う → わ, add せられる — was made to say
   - type: multiple-choice
     question: Which is the shortened causative-passive of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
@@ -357,6 +389,7 @@ causative-passive-irregular:
       - 来させられる
       - こさせられる
       - kosaserareru
+    display: "<ruby>来<rt>こ</rt></ruby>させられる"
     hint: 来させる → 来させられる — extremely rare in practice!
   - type: free-input
     question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to causative-passive form
@@ -364,6 +397,7 @@ causative-passive-irregular:
       - 勉強させられる
       - べんきょうさせられる
       - benkyousaserareru
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>させられる"
     hint: させる → させられる — was made to study
   - type: multiple-choice
     question: The causative-passive form combines which two forms?
@@ -380,6 +414,7 @@ causative-passive-irregular:
       - 料理させられる
       - りょうりさせられる
       - ryourisaserareru
+    display: "<ruby>料理<rt>りょうり</rt></ruby>させられる"
     hint: する → させられる — was made to cook
   - type: free-input
     question: Convert <ruby>運転<rt>うんてん</rt></ruby>する (untensuru - to drive) to causative-passive form
@@ -387,6 +422,7 @@ causative-passive-irregular:
       - 運転させられる
       - うんてんさせられる
       - untensaserareru
+    display: "<ruby>運転<rt>うんてん</rt></ruby>させられる"
     hint: する → させられる — was made to drive
   - type: multiple-choice
     question: What is the causative-passive form of <ruby>紹介<rt>しょうかい</rt></ruby>する (shoukaisuru - to introduce)?
@@ -403,6 +439,7 @@ causative-passive-irregular:
       - 説明させられる
       - せつめいさせられる
       - setsumeisaserareru
+    display: "<ruby>説明<rt>せつめい</rt></ruby>させられる"
     hint: する → させられる — was made to explain
   - type: free-input
     question: Convert <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact) to causative-passive form
@@ -410,6 +447,7 @@ causative-passive-irregular:
       - 連絡させられる
       - れんらくさせられる
       - renrakusaserareru
+    display: "<ruby>連絡<rt>れんらく</rt></ruby>させられる"
     hint: する → させられる — was made to contact
   - type: multiple-choice
     question: "The causative-passive of <ruby>来<rt>く</rt></ruby>る (kuru) uses which reading of <ruby>来<rt>く</rt></ruby>?"
@@ -426,6 +464,7 @@ causative-passive-irregular:
       - 心配させられる
       - しんぱいさせられる
       - shinpaisaserareru
+    display: "<ruby>心配<rt>しんぱい</rt></ruby>させられる"
     hint: する → させられる — was made to worry
   - type: free-input
     question: Convert <ruby>発見<rt>はっけん</rt></ruby>する (hakkensuru - to discover) to causative-passive form
@@ -433,6 +472,7 @@ causative-passive-irregular:
       - 発見させられる
       - はっけんさせられる
       - hakkensaserareru
+    display: "<ruby>発見<rt>はっけん</rt></ruby>させられる"
     hint: する → させられる
   - type: free-input
     question: Convert <ruby>利用<rt>りよう</rt></ruby>する (riyousuru - to utilize) to causative-passive form
@@ -440,6 +480,7 @@ causative-passive-irregular:
       - 利用させられる
       - りようさせられる
       - riyousaserareru
+    display: "<ruby>利用<rt>りよう</rt></ruby>させられる"
     hint: する → させられる
   - type: multiple-choice
     question: Which is the correct causative-passive of <ruby>来<rt>く</rt></ruby>る (kuru)?
@@ -456,6 +497,7 @@ causative-passive-irregular:
       - 招待させられる
       - しょうたいさせられる
       - shoutaisaserareru
+    display: "<ruby>招待<rt>しょうたい</rt></ruby>させられる"
     hint: する → させられる — was made to invite
   - type: free-input
     question: Convert <ruby>期待<rt>きたい</rt></ruby>する (kitaisuru - to expect) to causative-passive form
@@ -463,6 +505,7 @@ causative-passive-irregular:
       - 期待させられる
       - きたいさせられる
       - kitaisaserareru
+    display: "<ruby>期待<rt>きたい</rt></ruby>させられる"
     hint: する → させられる
   - type: free-input
     question: Convert <ruby>感動<rt>かんどう</rt></ruby>する (kandousuru - to be moved) to causative-passive form
@@ -470,6 +513,7 @@ causative-passive-irregular:
       - 感動させられる
       - かんどうさせられる
       - kandousaserareru
+    display: "<ruby>感動<rt>かんどう</rt></ruby>させられる"
     hint: する → させられる — was made to feel moved
   - type: multiple-choice
     question: How many irregular verbs are there in Japanese?
@@ -486,6 +530,7 @@ causative-passive-irregular:
       - 翻訳させられる
       - ほんやくさせられる
       - honyakusaserareru
+    display: "<ruby>翻訳<rt>ほんやく</rt></ruby>させられる"
     hint: する → させられる — was made to translate
   - type: free-input
     question: Convert <ruby>注意<rt>ちゅうい</rt></ruby>する (chuuisuru - to warn) to causative-passive form
@@ -493,6 +538,7 @@ causative-passive-irregular:
       - 注意させられる
       - ちゅういさせられる
       - chuuisaserareru
+    display: "<ruby>注意<rt>ちゅうい</rt></ruby>させられる"
     hint: する → させられる — was made to give a warning
 causative-passive-test:
   - type: free-input
@@ -501,6 +547,7 @@ causative-passive-test:
       - 食べさせられる
       - たべさせられる
       - tabesaserareru
+    display: "<ruby>食<rt>た</rt></ruby>べさせられる"
     hint: "Ichidan: させられる"
   - type: free-input
     question: Causative-passive of <ruby>飲<rt>の</rt></ruby>む? (was made to drink)
@@ -511,6 +558,7 @@ causative-passive-test:
       - のまされる
       - nomaserareru
       - nomasareru
+    display: "<ruby>飲<rt>の</rt></ruby>ませられる"
     hint: Both full and short forms are accepted
   - type: free-input
     question: Causative-passive of する?
@@ -524,6 +572,7 @@ causative-passive-test:
       - 来させられる
       - こさせられる
       - kosaserareru
+    display: "<ruby>来<rt>こ</rt></ruby>させられる"
     hint: "Irregular: こさせられる"
   - type: free-input
     question: Causative-passive of <ruby>見<rt>み</rt></ruby>る? (was made to see)
@@ -531,6 +580,7 @@ causative-passive-test:
       - 見させられる
       - みさせられる
       - misaserareru
+    display: "<ruby>見<rt>み</rt></ruby>させられる"
     hint: "Ichidan: させられる"
   - type: free-input
     question: Causative-passive of <ruby>書<rt>か</rt></ruby>く? (was made to write)
@@ -541,6 +591,7 @@ causative-passive-test:
       - かかされる
       - kakaserareru
       - kakasareru
+    display: "<ruby>書<rt>か</rt></ruby>かせられる"
     hint: Both full (かかせられる) and short (かかされる) forms accepted
   - type: free-input
     question: Causative-passive of <ruby>読<rt>よ</rt></ruby>む? (was made to read)
@@ -551,6 +602,7 @@ causative-passive-test:
       - よまされる
       - yomaserareru
       - yomasareru
+    display: "<ruby>読<rt>よ</rt></ruby>ませられる"
     hint: Both full and short forms accepted
   - type: multiple-choice
     question: Which is the correct causative-passive of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
@@ -570,6 +622,7 @@ causative-passive-test:
       - およがされる
       - oyogaserareru
       - oyogasareru
+    display: "<ruby>泳<rt>およ</rt></ruby>がせられる"
     hint: ぐ → が, then せられる or される
   - type: free-input
     question: Causative-passive of <ruby>待<rt>ま</rt></ruby>つ? (was made to wait)
@@ -580,6 +633,7 @@ causative-passive-test:
       - またされる
       - mataserareru
       - matasareru
+    display: "<ruby>待<rt>ま</rt></ruby>たせられる"
     hint: つ → た, then せられる or される
   - type: multiple-choice
     question: What does the causative-passive form express?
@@ -599,6 +653,7 @@ causative-passive-test:
       - あそばされる
       - asobaserareru
       - asobasareru
+    display: "<ruby>遊<rt>あそ</rt></ruby>ばせられる"
     hint: ぶ → ば, then せられる or される
   - type: multiple-choice
     question: Which godan verbs CANNOT use the short causative-passive form (e.g. ~される instead of ~せられる)?
@@ -615,6 +670,7 @@ causative-passive-test:
       - 勉強させられる
       - べんきょうさせられる
       - benkyousaserareru
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>させられる"
     hint: "する verb: する → させられる"
   - type: free-input
     question: Causative-passive of <ruby>走<rt>はし</rt></ruby>る? (was made to run)
@@ -625,6 +681,7 @@ causative-passive-test:
       - はしらされる
       - hashiraserareru
       - hashirasareru
+    display: "<ruby>走<rt>はし</rt></ruby>らせられる"
     hint: 走る is godan! る → ら, then せられる or される
   - type: free-input
     question: Causative-passive of <ruby>起<rt>お</rt></ruby>きる? (was made to wake up)
@@ -632,6 +689,7 @@ causative-passive-test:
       - 起きさせられる
       - おきさせられる
       - okisaserareru
+    display: "<ruby>起<rt>お</rt></ruby>きさせられる"
     hint: "Ichidan: させられる"
   - type: free-input
     question: Causative-passive of <ruby>送<rt>おく</rt></ruby>る? (was made to send)
@@ -642,6 +700,7 @@ causative-passive-test:
       - おくらされる
       - okuraserareru
       - okurasareru
+    display: "<ruby>送<rt>おく</rt></ruby>らせられる"
     hint: "Godan: る → ら, then せられる or される"
   - type: free-input
     question: Causative-passive of <ruby>閉<rt>し</rt></ruby>める? (was made to close)
@@ -649,6 +708,7 @@ causative-passive-test:
       - 閉めさせられる
       - しめさせられる
       - shimesaserareru
+    display: "<ruby>閉<rt>し</rt></ruby>めさせられる"
     hint: "Ichidan: drop る, add させられる"
   - type: multiple-choice
     question: Which is the correct causative-passive of <ruby>笑<rt>わら</rt></ruby>う (warau - to laugh)?
@@ -665,4 +725,5 @@ causative-passive-test:
       - 連絡させられる
       - れんらくさせられる
       - renrakusaserareru
+    display: "<ruby>連絡<rt>れんらく</rt></ruby>させられる"
     hint: "する verb: する → させられる"

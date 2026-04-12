@@ -24,6 +24,7 @@ export interface Question {
   options?: string[];
   answer?: number;
   answers?: string[];
+  display?: string;
   hint: string;
 }
 

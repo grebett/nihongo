@@ -103,7 +103,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
 
             <div class="questions-list">
               {partQuestions.map((q: Question, qi: number) => (
-                <div class="question-card" data-type={q.type} data-answer={q.type === 'multiple-choice' ? q.answer : JSON.stringify(q.answers)}>
+                <div class="question-card" data-type={q.type} data-answer={q.type === 'multiple-choice' ? q.answer : JSON.stringify(q.answers)} data-display={q.display || ''}>
                   <div class="question-number">Q{qi + 1}</div>
                   <p class="question-text" set:html={q.question} />
 
@@ -303,9 +303,14 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     if (card.dataset.type === 'multiple-choice') {
       const idx = parseInt(card.dataset.answer || '0');
       const btns = card.querySelectorAll('.option-btn');
-      return btns[idx]?.textContent?.trim() || '';
+      return btns[idx]?.innerHTML?.trim() || '';
     } else {
+      // Use display field (ruby-annotated) if available
+      if (card.dataset.display) return card.dataset.display;
       const answers: string[] = JSON.parse(card.dataset.answer || '[]');
+      if (answers.length >= 2 && answers[0] !== answers[1]) {
+        return `${answers[0]} (${answers[1]})`;
+      }
       return answers[0] || '';
     }
   }
@@ -396,14 +401,14 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
       fb.classList.remove('hidden');
 
       if (isCorrect) {
-        fb.textContent = 'Correct!';
+        fb.innerHTML = 'Correct!';
         fb.className = 'feedback correct';
         card.classList.add('answered-correct');
         correct++;
         answered++;
       } else if (attemptsUsed >= MAX_ATTEMPTS) {
         const answer = correctAnswer || getCorrectAnswerText(card as HTMLElement);
-        fb.textContent = `Answer: ${answer}`;
+        fb.innerHTML = `Answer: ${answer}`;
         fb.className = 'feedback incorrect';
         card.classList.add('answered-incorrect');
         const questionText = card.querySelector('.question-text')?.innerHTML || '';
@@ -411,7 +416,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
         answered++;
       } else {
         const left = MAX_ATTEMPTS - attemptsUsed;
-        fb.textContent = `Incorrect — ${left} ${left === 1 ? 'attempt' : 'attempts'} left`;
+        fb.innerHTML = `Incorrect — ${left} ${left === 1 ? 'attempt' : 'attempts'} left`;
         fb.className = 'feedback retry';
         card.classList.remove('shake');
         void (card as HTMLElement).offsetWidth;
@@ -476,7 +481,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
         if (isCorrect) {
           showFeedback(card, true, attempts);
         } else if (attempts >= MAX_ATTEMPTS) {
-          showFeedback(card, false, attempts, acceptedAnswers[0]);
+          showFeedback(card, false, attempts);
         } else {
           showFeedback(card, false, attempts);
           input.value = '';

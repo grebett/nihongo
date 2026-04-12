@@ -6,6 +6,7 @@ volitional-form-ichidan:
       - たべよう
       - tabeyou
       - tabeyoo
+    display: "<ruby>食<rt>た</rt></ruby>べよう"
     hint: Drop る, add よう
   - type: free-input
     question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to volitional form
@@ -14,6 +15,7 @@ volitional-form-ichidan:
       - みよう
       - miyou
       - miyoo
+    display: "<ruby>見<rt>み</rt></ruby>よう"
     hint: Drop る, add よう
   - type: multiple-choice
     question: "The volitional form is often translated as:"
@@ -31,6 +33,7 @@ volitional-form-ichidan:
       - ねよう
       - neyou
       - neyoo
+    display: "<ruby>寝<rt>ね</rt></ruby>よう"
     hint: Drop る, add よう — let's sleep
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to volitional form
@@ -39,6 +42,7 @@ volitional-form-ichidan:
       - おきよう
       - okiyou
       - okiyoo
+    display: "<ruby>起<rt>お</rt></ruby>きよう"
     hint: Drop る, add よう — let's wake up
   - type: free-input
     question: What is the polite volitional of <ruby>食<rt>た</rt></ruby>べる?
@@ -47,6 +51,7 @@ volitional-form-ichidan:
       - たべましょう
       - tabemashou
       - tabemashoo
+    display: "<ruby>食<rt>た</rt></ruby>べましょう"
     hint: Masu stem 食べ + ましょう
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to volitional form
@@ -55,6 +60,7 @@ volitional-form-ichidan:
       - おしえよう
       - oshieyou
       - oshieyoo
+    display: "<ruby>教<rt>おし</rt></ruby>えよう"
     hint: Drop る, add よう — let's teach
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to volitional form
@@ -63,6 +69,7 @@ volitional-form-ichidan:
       - あけよう
       - akeyou
       - akeyoo
+    display: "<ruby>開<rt>あ</rt></ruby>けよう"
     hint: Drop る, add よう — let's open
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to volitional form
@@ -71,6 +78,7 @@ volitional-form-ichidan:
       - しめよう
       - shimeyou
       - shimeyoo
+    display: "<ruby>閉<rt>し</rt></ruby>めよう"
     hint: Drop る, add よう — let's close
   - type: multiple-choice
     question: What is the volitional form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
@@ -88,6 +96,7 @@ volitional-form-ichidan:
       - あびよう
       - abiyou
       - abiyoo
+    display: "<ruby>浴<rt>あ</rt></ruby>びよう"
     hint: Drop る, add よう — let's shower
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to volitional form
@@ -96,6 +105,7 @@ volitional-form-ichidan:
       - でよう
       - deyou
       - deyoo
+    display: "<ruby>出<rt>で</rt></ruby>よう"
     hint: Drop る, add よう — let's go out
   - type: free-input
     question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to volitional form
@@ -104,6 +114,7 @@ volitional-form-ichidan:
       - おりよう
       - oriyou
       - oriyoo
+    display: "<ruby>降<rt>お</rt></ruby>りよう"
     hint: Drop る, add よう — let's get off
   - type: multiple-choice
     question: What is the volitional form of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
@@ -121,6 +132,7 @@ volitional-form-ichidan:
       - かりよう
       - kariyou
       - kariyoo
+    display: "<ruby>借<rt>か</rt></ruby>りよう"
     hint: Drop る, add よう — let's borrow
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>かける (dekakeru - to go out/leave) to volitional form
@@ -129,6 +141,7 @@ volitional-form-ichidan:
       - でかけよう
       - dekakeyou
       - dekakeyoo
+    display: "<ruby>出<rt>で</rt></ruby>かけよう"
     hint: Drop る, add よう — let's head out
   - type: free-input
     question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to volitional form
@@ -137,6 +150,7 @@ volitional-form-ichidan:
       - しらべよう
       - shirabeyou
       - shirabeyoo
+    display: "<ruby>調<rt>しら</rt></ruby>べよう"
     hint: Drop る, add よう — let's investigate
   - type: multiple-choice
     question: What is the volitional form of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
@@ -154,6 +168,7 @@ volitional-form-ichidan:
       - おぼえよう
       - oboeyou
       - oboeyoo
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えよう"
     hint: Drop る, add よう — let's memorize
   - type: free-input
     question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to volitional form
@@ -162,6 +177,7 @@ volitional-form-ichidan:
       - わすれよう
       - wasureyou
       - wasureyoo
+    display: "<ruby>忘<rt>わす</rt></ruby>れよう"
     hint: Drop る, add よう — let's forget
 volitional-form-godan:
   - type: free-input
@@ -171,6 +187,7 @@ volitional-form-godan:
       - のもう
       - nomou
       - nomoo
+    display: "<ruby>飲<rt>の</rt></ruby>もう"
     hint: む → も (o-row), add う
   - type: free-input
     question: Convert <ruby>行<rt>い</rt></ruby>く (iku) to volitional form
@@ -179,6 +196,7 @@ volitional-form-godan:
       - いこう
       - ikou
       - ikoo
+    display: "<ruby>行<rt>い</rt></ruby>こう"
     hint: く → こ (o-row), add う — 行こう! (Let's go!)
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to volitional form
@@ -187,6 +205,7 @@ volitional-form-godan:
       - まとう
       - matou
       - matoo
+    display: "<ruby>待<rt>ま</rt></ruby>とう"
     hint: つ → と (o-row), add う
   - type: free-input
     question: What is the polite volitional of <ruby>行<rt>い</rt></ruby>く?
@@ -195,6 +214,7 @@ volitional-form-godan:
       - いきましょう
       - ikimashou
       - ikimashoo
+    display: "<ruby>行<rt>い</rt></ruby>きましょう"
     hint: Masu stem 行き + ましょう
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to volitional form
@@ -203,6 +223,7 @@ volitional-form-godan:
       - およごう
       - oyogou
       - oyogoo
+    display: "<ruby>泳<rt>およ</rt></ruby>ごう"
     hint: ぐ → ご (o-row), add う — let's swim!
   - type: free-input
     question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to volitional form
@@ -211,6 +232,7 @@ volitional-form-godan:
       - あそぼう
       - asobou
       - asoboo
+    display: "<ruby>遊<rt>あそ</rt></ruby>ぼう"
     hint: ぶ → ぼ (o-row), add う — let's play!
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to volitional form
@@ -219,6 +241,7 @@ volitional-form-godan:
       - はなそう
       - hanasou
       - hanasoo
+    display: "<ruby>話<rt>はな</rt></ruby>そう"
     hint: す → そ (o-row), add う — let's talk!
   - type: free-input
     question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to volitional form
@@ -227,6 +250,7 @@ volitional-form-godan:
       - かおう
       - kaou
       - kaoo
+    display: "<ruby>買<rt>か</rt></ruby>おう"
     hint: う → お (o-row), add う — let's buy!
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to volitional form
@@ -235,6 +259,7 @@ volitional-form-godan:
       - よもう
       - yomou
       - yomoo
+    display: "<ruby>読<rt>よ</rt></ruby>もう"
     hint: む → も (o-row), add う — let's read!
   - type: free-input
     question: Convert <ruby>書<rt>か</rt></ruby>く (kaku - to write) to volitional form
@@ -243,6 +268,7 @@ volitional-form-godan:
       - かこう
       - kakou
       - kakoo
+    display: "<ruby>書<rt>か</rt></ruby>こう"
     hint: く → こ (o-row), add う — let's write!
   - type: multiple-choice
     question: What is the volitional form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -260,6 +286,7 @@ volitional-form-godan:
       - はしろう
       - hashirou
       - hashiroo
+    display: "<ruby>走<rt>はし</rt></ruby>ろう"
     hint: Godan る → ろ (o-row), add う — let's run!
   - type: free-input
     question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return, Godan!) to volitional form
@@ -268,6 +295,7 @@ volitional-form-godan:
       - かえろう
       - kaerou
       - kaeroo
+    display: "<ruby>帰<rt>かえ</rt></ruby>ろう"
     hint: Godan る → ろ (o-row), add う — let's go home!
   - type: multiple-choice
     question: What is the volitional form of <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk)?
@@ -285,6 +313,7 @@ volitional-form-godan:
       - すわろう
       - suwarou
       - suwaroo
+    display: "<ruby>座<rt>すわ</rt></ruby>ろう"
     hint: Godan る → ろ (o-row), add う — let's sit!
   - type: free-input
     question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to volitional form
@@ -293,6 +322,7 @@ volitional-form-godan:
       - つくろう
       - tsukurou
       - tsukuroo
+    display: "<ruby>作<rt>つく</rt></ruby>ろう"
     hint: Godan る → ろ (o-row), add う — let's make it!
   - type: free-input
     question: Convert <ruby>乗<rt>の</rt></ruby>る (noru - to ride) to volitional form
@@ -301,6 +331,7 @@ volitional-form-godan:
       - のろう
       - norou
       - noroo
+    display: "<ruby>乗<rt>の</rt></ruby>ろう"
     hint: Godan る → ろ (o-row), add う — let's ride!
   - type: multiple-choice
     question: What is the volitional form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
@@ -318,6 +349,7 @@ volitional-form-godan:
       - きこう
       - kikou
       - kikoo
+    display: "<ruby>聞<rt>き</rt></ruby>こう"
     hint: く → こ (o-row), add う — let's listen!
   - type: free-input
     question: Convert <ruby>消<rt>け</rt></ruby>す (kesu - to turn off/erase) to volitional form
@@ -326,6 +358,7 @@ volitional-form-godan:
       - けそう
       - kesou
       - kesoo
+    display: "<ruby>消<rt>け</rt></ruby>そう"
     hint: す → そ (o-row), add う — let's turn it off!
 volitional-form-irregular:
   - type: free-input
@@ -342,6 +375,7 @@ volitional-form-irregular:
       - こよう
       - koyou
       - koyoo
+    display: "<ruby>来<rt>こ</rt></ruby>よう"
     hint: く → こ, add よう
   - type: free-input
     question: How do you say 'What should I do?' using the volitional?
@@ -357,6 +391,7 @@ volitional-form-irregular:
       - べんきょうしよう
       - benkyoushiyou
       - benkyoushiyoo
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>しよう"
     hint: する → しよう — let's study!
   - type: free-input
     question: What is the polite volitional of <ruby>来<rt>く</rt></ruby>る?
@@ -365,6 +400,7 @@ volitional-form-irregular:
       - きましょう
       - kimashou
       - kimashoo
+    display: "<ruby>来<rt>き</rt></ruby>ましょう"
     hint: Masu stem き + ましょう
   - type: free-input
     question: What is the polite volitional of する?
@@ -380,6 +416,7 @@ volitional-form-irregular:
       - うんどうしよう
       - undoushiyou
       - undoushiyoo
+    display: "<ruby>運動<rt>うんどう</rt></ruby>しよう"
     hint: する → しよう — 運動しよう!
   - type: free-input
     question: How do you say 'let's cook' using <ruby>料理<rt>りょうり</rt></ruby>する?
@@ -388,6 +425,7 @@ volitional-form-irregular:
       - りょうりしよう
       - ryourishiyou
       - ryourishiyoo
+    display: "<ruby>料理<rt>りょうり</rt></ruby>しよう"
     hint: する → しよう — 料理しよう!
   - type: multiple-choice
     question: "What does しようと<ruby>思<rt>おも</rt></ruby>う mean?"
@@ -405,6 +443,7 @@ volitional-form-irregular:
       - そうじしよう
       - soujishiyou
       - soujishiyoo
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>しよう"
     hint: する → しよう — 掃除しよう!
   - type: free-input
     question: How do you say 'let's drive' using <ruby>運転<rt>うんてん</rt></ruby>する?
@@ -413,6 +452,7 @@ volitional-form-irregular:
       - うんてんしよう
       - untenshiyou
       - untenshiyoo
+    display: "<ruby>運転<rt>うんてん</rt></ruby>しよう"
     hint: する → しよう — 運転しよう!
   - type: multiple-choice
     question: "What does <ruby>来<rt>く</rt></ruby>る become in the volitional form?"
@@ -430,6 +470,7 @@ volitional-form-irregular:
       - りょこうしよう
       - ryokoushiyou
       - ryokoushiyoo
+    display: "<ruby>旅行<rt>りょこう</rt></ruby>しよう"
     hint: する → しよう — 旅行しよう!
   - type: free-input
     question: How do you say 'let's shop' using <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>する?
@@ -438,6 +479,7 @@ volitional-form-irregular:
       - かいものしよう
       - kaimonoshiyou
       - kaimonoshiyoo
+    display: "<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>しよう"
     hint: する → しよう — 買い物しよう!
   - type: multiple-choice
     question: "What does こようと<ruby>思<rt>おも</rt></ruby>う mean?"
@@ -455,6 +497,7 @@ volitional-form-irregular:
       - せんたくしよう
       - sentakushiyou
       - sentakushiyoo
+    display: "<ruby>洗濯<rt>せんたく</rt></ruby>しよう"
     hint: する → しよう — 洗濯しよう!
   - type: free-input
     question: How do you say 'let's reserve' using <ruby>予約<rt>よやく</rt></ruby>する?
@@ -463,6 +506,7 @@ volitional-form-irregular:
       - よやくしよう
       - yoyakushiyou
       - yoyakushiyoo
+    display: "<ruby>予約<rt>よやく</rt></ruby>しよう"
     hint: する → しよう — 予約しよう!
   - type: multiple-choice
     question: "Which pattern expresses internal will or intention?"
@@ -480,6 +524,7 @@ volitional-form-irregular:
       - ほんやくしよう
       - honyakushiyou
       - honyakushiyoo
+    display: "<ruby>翻訳<rt>ほんやく</rt></ruby>しよう"
     hint: する → しよう — 翻訳しよう!
   - type: free-input
     question: How do you say 'let's memorize' using <ruby>暗記<rt>あんき</rt></ruby>する?
@@ -488,6 +533,7 @@ volitional-form-irregular:
       - あんきしよう
       - ankishiyou
       - ankishiyoo
+    display: "<ruby>暗記<rt>あんき</rt></ruby>しよう"
     hint: する → しよう — 暗記しよう!
 volitional-form-test:
   - type: free-input
@@ -497,6 +543,7 @@ volitional-form-test:
       - たべよう
       - tabeyou
       - tabeyoo
+    display: "<ruby>食<rt>た</rt></ruby>べよう"
     hint: "Ichidan: よう"
   - type: free-input
     question: Volitional of <ruby>書<rt>か</rt></ruby>く?
@@ -505,6 +552,7 @@ volitional-form-test:
       - かこう
       - kakou
       - kakoo
+    display: "<ruby>書<rt>か</rt></ruby>こう"
     hint: "Godan: く → こ (o-row), add う"
   - type: free-input
     question: Volitional of する?
@@ -527,6 +575,7 @@ volitional-form-test:
       - こよう
       - koyou
       - koyoo
+    display: "<ruby>来<rt>こ</rt></ruby>よう"
     hint: こよう
   - type: free-input
     question: Volitional of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
@@ -535,6 +584,7 @@ volitional-form-test:
       - よもう
       - yomou
       - yomoo
+    display: "<ruby>読<rt>よ</rt></ruby>もう"
     hint: "Godan: む → も (o-row), add う"
   - type: free-input
     question: Volitional of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
@@ -543,6 +593,7 @@ volitional-form-test:
       - のもう
       - nomou
       - nomoo
+    display: "<ruby>飲<rt>の</rt></ruby>もう"
     hint: "Godan: む → も (o-row), add う"
   - type: free-input
     question: Volitional of <ruby>見<rt>み</rt></ruby>る (miru - to see)?
@@ -551,6 +602,7 @@ volitional-form-test:
       - みよう
       - miyou
       - miyoo
+    display: "<ruby>見<rt>み</rt></ruby>よう"
     hint: "Ichidan: drop る, add よう"
   - type: free-input
     question: Volitional of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
@@ -559,6 +611,7 @@ volitional-form-test:
       - はなそう
       - hanasou
       - hanasoo
+    display: "<ruby>話<rt>はな</rt></ruby>そう"
     hint: "Godan: す → そ (o-row), add う"
   - type: multiple-choice
     question: Which is the correct volitional of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
@@ -576,6 +629,7 @@ volitional-form-test:
       - あそぼう
       - asobou
       - asoboo
+    display: "<ruby>遊<rt>あそ</rt></ruby>ぼう"
     hint: "Godan: ぶ → ぼ (o-row), add う"
   - type: free-input
     question: Volitional of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
@@ -584,6 +638,7 @@ volitional-form-test:
       - まとう
       - matou
       - matoo
+    display: "<ruby>待<rt>ま</rt></ruby>とう"
     hint: "Godan: つ → と (o-row), add う"
   - type: multiple-choice
     question: Which is the correct volitional of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
@@ -601,6 +656,7 @@ volitional-form-test:
       - はしろう
       - hashirou
       - hashiroo
+    display: "<ruby>走<rt>はし</rt></ruby>ろう"
     hint: Godan verb! る → ろ (o-row), add う
   - type: free-input
     question: Volitional of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
@@ -609,6 +665,7 @@ volitional-form-test:
       - べんきょうしよう
       - benkyoushiyou
       - benkyoushiyoo
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>しよう"
     hint: "する verb: する → しよう"
   - type: multiple-choice
     question: For godan verbs, the volitional form uses which vowel row before う?
@@ -626,6 +683,7 @@ volitional-form-test:
       - あけよう
       - akeyou
       - akeyoo
+    display: "<ruby>開<rt>あ</rt></ruby>けよう"
     hint: "Ichidan: drop る, add よう"
   - type: multiple-choice
     question: Which is the correct volitional of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return, Godan)?
@@ -643,6 +701,7 @@ volitional-form-test:
       - りょうりしよう
       - ryourishiyou
       - ryourishiyoo
+    display: "<ruby>料理<rt>りょうり</rt></ruby>しよう"
     hint: "する verb: する → しよう"
   - type: multiple-choice
     question: "What does <ruby>食<rt>た</rt></ruby>べようと<ruby>思<rt>おも</rt></ruby>う mean?"

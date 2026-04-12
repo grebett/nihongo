@@ -5,6 +5,7 @@ masu-stem-ichidan:
       - 見
       - み
       - mi
+    display: "<ruby>見<rt>み</rt></ruby>"
     hint: Drop ます from 見ます → 見
   - type: free-input
     question: What is the masu stem of <ruby>食<rt>た</rt></ruby>べる (taberu)?
@@ -12,6 +13,7 @@ masu-stem-ichidan:
       - 食べ
       - たべ
       - tabe
+    display: "<ruby>食<rt>た</rt></ruby>べ"
     hint: Drop ます from 食べます → 食べ
   - type: multiple-choice
     question: "For ichidan verbs, the masu stem is the same as:"
@@ -28,6 +30,7 @@ masu-stem-ichidan:
       - 寝
       - ね
       - ne
+    display: "<ruby>寝<rt>ね</rt></ruby>"
     hint: Drop ます from 寝ます → 寝
   - type: free-input
     question: What is the masu stem of <ruby>教<rt>おし</rt></ruby>える (oshieru)?
@@ -35,6 +38,7 @@ masu-stem-ichidan:
       - 教え
       - おしえ
       - oshie
+    display: "<ruby>教<rt>おし</rt></ruby>え"
     hint: Drop ます from 教えます → 教え
   - type: free-input
     question: What is the masu stem of <ruby>起<rt>お</rt></ruby>きる (okiru)?
@@ -42,6 +46,7 @@ masu-stem-ichidan:
       - 起き
       - おき
       - oki
+    display: "<ruby>起<rt>お</rt></ruby>き"
     hint: Drop ます from 起きます → 起き
   - type: free-input
     question: What is the masu stem of <ruby>開<rt>あ</rt></ruby>ける (akeru)?
@@ -49,6 +54,7 @@ masu-stem-ichidan:
       - 開け
       - あけ
       - ake
+    display: "<ruby>開<rt>あ</rt></ruby>け"
     hint: Drop ます from 開けます → 開け
   - type: free-input
     question: What is the masu stem of <ruby>閉<rt>し</rt></ruby>める (shimeru)?
@@ -56,6 +62,7 @@ masu-stem-ichidan:
       - 閉め
       - しめ
       - shime
+    display: "<ruby>閉<rt>し</rt></ruby>め"
     hint: Drop ます from 閉めます → 閉め
   - type: free-input
     question: What is the masu stem of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
@@ -63,6 +70,7 @@ masu-stem-ichidan:
       - 着
       - き
       - ki
+    display: "<ruby>着<rt>き</rt></ruby>"
     hint: Drop ます from 着ます → 着
   - type: free-input
     question: What is the masu stem of <ruby>浴<rt>あ</rt></ruby>びる (abiru)?
@@ -70,6 +78,7 @@ masu-stem-ichidan:
       - 浴び
       - あび
       - abi
+    display: "<ruby>浴<rt>あ</rt></ruby>び"
     hint: Drop ます from 浴びます → 浴び
   - type: free-input
     question: What is the masu stem of <ruby>出<rt>で</rt></ruby>る (deru)?
@@ -77,6 +86,7 @@ masu-stem-ichidan:
       - 出
       - で
       - de
+    display: "<ruby>出<rt>で</rt></ruby>"
     hint: Drop ます from 出ます → 出
   - type: multiple-choice
     question: What is the masu stem of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
@@ -93,6 +103,7 @@ masu-stem-ichidan:
       - 降り
       - おり
       - ori
+    display: "<ruby>降<rt>お</rt></ruby>り"
     hint: Drop ます from 降ります → 降り
   - type: free-input
     question: What is the masu stem of <ruby>借<rt>か</rt></ruby>りる (kariru)?
@@ -100,6 +111,7 @@ masu-stem-ichidan:
       - 借り
       - かり
       - kari
+    display: "<ruby>借<rt>か</rt></ruby>り"
     hint: Drop ます from 借ります → 借り
   - type: multiple-choice
     question: What is the masu stem of <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate)?
@@ -116,6 +128,7 @@ masu-stem-ichidan:
       - 考え
       - かんがえ
       - kangae
+    display: "<ruby>考<rt>かんが</rt></ruby>え"
     hint: Drop ます from 考えます → 考え
   - type: free-input
     question: What is the masu stem of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru)?
@@ -123,6 +136,7 @@ masu-stem-ichidan:
       - 覚え
       - おぼえ
       - oboe
+    display: "<ruby>覚<rt>おぼ</rt></ruby>え"
     hint: Drop ます from 覚えます → 覚え
   - type: free-input
     question: How do you say 'want to wake up' using <ruby>起<rt>お</rt></ruby>きる?
@@ -130,6 +144,7 @@ masu-stem-ichidan:
       - 起きたい
       - おきたい
       - okitai
+    display: "<ruby>起<rt>お</rt></ruby>きたい"
     hint: Masu stem 起き + たい
   - type: multiple-choice
     question: How do you say 'easy to teach' using <ruby>教<rt>おし</rt></ruby>える?
@@ -146,6 +161,7 @@ masu-stem-ichidan:
       - 忘れ
       - わすれ
       - wasure
+    display: "<ruby>忘<rt>わす</rt></ruby>れ"
     hint: Drop ます from 忘れます → 忘れ
 masu-stem-godan:
   - type: free-input
@@ -154,6 +170,7 @@ masu-stem-godan:
       - 読み
       - よみ
       - yomi
+    display: "<ruby>読<rt>よ</rt></ruby>み"
     hint: Drop ます from 読みます → 読み
   - type: free-input
     question: What is the masu stem of <ruby>聞<rt>き</rt></ruby>く (kiku)?
@@ -161,6 +178,7 @@ masu-stem-godan:
       - 聞き
       - きき
       - kiki
+    display: "<ruby>聞<rt>き</rt></ruby>き"
     hint: Drop ます from 聞きます → 聞き
   - type: multiple-choice
     question: "The masu stem + たい expresses:"
@@ -186,6 +204,7 @@ masu-stem-godan:
       - 泳ぎ
       - およぎ
       - oyogi
+    display: "<ruby>泳<rt>およ</rt></ruby>ぎ"
     hint: Drop ます from 泳ぎます → 泳ぎ
   - type: free-input
     question: What is the masu stem of <ruby>話<rt>はな</rt></ruby>す (hanasu)?
@@ -193,6 +212,7 @@ masu-stem-godan:
       - 話し
       - はなし
       - hanashi
+    display: "<ruby>話<rt>はな</rt></ruby>し"
     hint: Drop ます from 話します → 話し
   - type: free-input
     question: What is the masu stem of <ruby>買<rt>か</rt></ruby>う (kau)?
@@ -200,6 +220,7 @@ masu-stem-godan:
       - 買い
       - かい
       - kai
+    display: "<ruby>買<rt>か</rt></ruby>い"
     hint: Drop ます from 買います → 買い
   - type: free-input
     question: How do you say 'want to swim' using <ruby>泳<rt>およ</rt></ruby>ぐ?
@@ -207,6 +228,7 @@ masu-stem-godan:
       - 泳ぎたい
       - およぎたい
       - oyogitai
+    display: "<ruby>泳<rt>およ</rt></ruby>ぎたい"
     hint: Masu stem 泳ぎ + たい
   - type: free-input
     question: What is the masu stem of <ruby>待<rt>ま</rt></ruby>つ (matsu)?
@@ -214,6 +236,7 @@ masu-stem-godan:
       - 待ち
       - まち
       - machi
+    display: "<ruby>待<rt>ま</rt></ruby>ち"
     hint: Drop ます from 待ちます → 待ち
   - type: free-input
     question: What is the masu stem of <ruby>走<rt>はし</rt></ruby>る (hashiru)?
@@ -221,6 +244,7 @@ masu-stem-godan:
       - 走り
       - はしり
       - hashiri
+    display: "<ruby>走<rt>はし</rt></ruby>り"
     hint: Drop ます from 走ります → 走り (Godan verb!)
   - type: free-input
     question: What is the masu stem of <ruby>帰<rt>かえ</rt></ruby>る (kaeru)?
@@ -228,6 +252,7 @@ masu-stem-godan:
       - 帰り
       - かえり
       - kaeri
+    display: "<ruby>帰<rt>かえ</rt></ruby>り"
     hint: Drop ます from 帰ります → 帰り (Godan verb!)
   - type: free-input
     question: What is the masu stem of <ruby>死<rt>し</rt></ruby>ぬ (shinu)?
@@ -235,6 +260,7 @@ masu-stem-godan:
       - 死に
       - しに
       - shini
+    display: "<ruby>死<rt>し</rt></ruby>に"
     hint: Drop ます from 死にます → 死に
   - type: multiple-choice
     question: What is the masu stem of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
@@ -251,6 +277,7 @@ masu-stem-godan:
       - 座り
       - すわり
       - suwari
+    display: "<ruby>座<rt>すわ</rt></ruby>り"
     hint: Drop ます from 座ります → 座り
   - type: free-input
     question: What is the masu stem of <ruby>送<rt>おく</rt></ruby>る (okuru)?
@@ -258,6 +285,7 @@ masu-stem-godan:
       - 送り
       - おくり
       - okuri
+    display: "<ruby>送<rt>おく</rt></ruby>り"
     hint: Drop ます from 送ります → 送り
   - type: free-input
     question: How do you say 'want to buy' using <ruby>買<rt>か</rt></ruby>う?
@@ -265,6 +293,7 @@ masu-stem-godan:
       - 買いたい
       - かいたい
       - kaitai
+    display: "<ruby>買<rt>か</rt></ruby>いたい"
     hint: Masu stem 買い + たい
   - type: multiple-choice
     question: What is the masu stem of <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand)?
@@ -281,6 +310,7 @@ masu-stem-godan:
       - 作り
       - つくり
       - tsukuri
+    display: "<ruby>作<rt>つく</rt></ruby>り"
     hint: Drop ます from 作ります → 作り
   - type: free-input
     question: How do you say 'easy to use' using <ruby>使<rt>つか</rt></ruby>う?
@@ -288,6 +318,7 @@ masu-stem-godan:
       - 使いやすい
       - つかいやすい
       - tsukaiyasui
+    display: "<ruby>使<rt>つか</rt></ruby>いやすい"
     hint: Masu stem 使い + やすい
   - type: free-input
     question: What is the masu stem of <ruby>乗<rt>の</rt></ruby>る (noru)?
@@ -295,6 +326,7 @@ masu-stem-godan:
       - 乗り
       - のり
       - nori
+    display: "<ruby>乗<rt>の</rt></ruby>り"
     hint: Drop ます from 乗ります → 乗り
 masu-stem-irregular:
   - type: free-input
@@ -321,6 +353,7 @@ masu-stem-irregular:
       - 来たい
       - きたい
       - kitai
+    display: "<ruby>来<rt>き</rt></ruby>たい"
     hint: Masu stem き + たい
   - type: free-input
     question: How do you say 'want to study' using <ruby>勉強<rt>べんきょう</rt></ruby>する?
@@ -328,6 +361,7 @@ masu-stem-irregular:
       - 勉強したい
       - べんきょうしたい
       - benkyoushitai
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>したい"
     hint: Masu stem 勉強し + たい
   - type: multiple-choice
     question: What is the ます form of <ruby>来<rt>く</rt></ruby>る (kuru)?
@@ -359,6 +393,7 @@ masu-stem-irregular:
       - 来にくい
       - きにくい
       - kinikui
+    display: "<ruby>来<rt>き</rt></ruby>にくい"
     hint: Masu stem き + にくい
   - type: free-input
     question: What is the masu stem of <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise)?
@@ -366,6 +401,7 @@ masu-stem-irregular:
       - 運動し
       - うんどうし
       - undoushi
+    display: "<ruby>運動<rt>うんどう</rt></ruby>し"
     hint: する verb — stem is し
   - type: free-input
     question: How do you say 'want to exercise' using <ruby>運動<rt>うんどう</rt></ruby>する?
@@ -373,6 +409,7 @@ masu-stem-irregular:
       - 運動したい
       - うんどうしたい
       - undoushitai
+    display: "<ruby>運動<rt>うんどう</rt></ruby>したい"
     hint: Masu stem 運動し + たい
   - type: multiple-choice
     question: What is the masu stem of <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook)?
@@ -395,6 +432,7 @@ masu-stem-irregular:
       - 旅行し
       - りょこうし
       - ryokoushi
+    display: "<ruby>旅行<rt>りょこう</rt></ruby>し"
     hint: する verb — stem is し
   - type: free-input
     question: How do you say 'want to travel' using <ruby>旅行<rt>りょこう</rt></ruby>する?
@@ -402,6 +440,7 @@ masu-stem-irregular:
       - 旅行したい
       - りょこうしたい
       - ryokoushitai
+    display: "<ruby>旅行<rt>りょこう</rt></ruby>したい"
     hint: Masu stem 旅行し + たい
   - type: multiple-choice
     question: How do you say 'easy to come' using <ruby>来<rt>く</rt></ruby>る?
@@ -418,6 +457,7 @@ masu-stem-irregular:
       - 散歩し
       - さんぽし
       - sanposhi
+    display: "<ruby>散歩<rt>さんぽ</rt></ruby>し"
     hint: する verb — stem is し
   - type: free-input
     question: How do you say 'hard to do' using する?
@@ -440,6 +480,7 @@ masu-stem-irregular:
       - 来すぎる
       - きすぎる
       - kisugiru
+    display: "<ruby>来<rt>き</rt></ruby>すぎる"
     hint: Masu stem き + すぎる
 masu-stem-test:
   - type: free-input
@@ -448,6 +489,7 @@ masu-stem-test:
       - 走り
       - はしり
       - hashiri
+    display: "<ruby>走<rt>はし</rt></ruby>り"
     hint: 走ります → 走り
   - type: free-input
     question: How do you say 'want to come' using <ruby>来<rt>く</rt></ruby>る?
@@ -455,6 +497,7 @@ masu-stem-test:
       - 来たい
       - きたい
       - kitai
+    display: "<ruby>来<rt>き</rt></ruby>たい"
     hint: Masu stem き + たい
   - type: free-input
     question: How do you say 'easy to eat' using <ruby>食<rt>た</rt></ruby>べる?
@@ -462,6 +505,7 @@ masu-stem-test:
       - 食べやすい
       - たべやすい
       - tabeyasui
+    display: "<ruby>食<rt>た</rt></ruby>べやすい"
     hint: Masu stem 食べ + やすい
   - type: free-input
     question: How do you say 'hard to read' using <ruby>読<rt>よ</rt></ruby>む?
@@ -469,6 +513,7 @@ masu-stem-test:
       - 読みにくい
       - よみにくい
       - yominikui
+    display: "<ruby>読<rt>よ</rt></ruby>みにくい"
     hint: Masu stem 読み + にくい
   - type: free-input
     question: Masu stem of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
@@ -476,6 +521,7 @@ masu-stem-test:
       - 飲み
       - のみ
       - nomi
+    display: "<ruby>飲<rt>の</rt></ruby>み"
     hint: 飲みます → 飲み
   - type: free-input
     question: Masu stem of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
@@ -483,6 +529,7 @@ masu-stem-test:
       - 見
       - み
       - mi
+    display: "<ruby>見<rt>み</rt></ruby>"
     hint: "Ichidan: drop ます from 見ます → 見"
   - type: free-input
     question: Masu stem of する (suru - to do)?
@@ -496,6 +543,7 @@ masu-stem-test:
       - 書きたい
       - かきたい
       - kakitai
+    display: "<ruby>書<rt>か</rt></ruby>きたい"
     hint: Masu stem 書き + たい
   - type: free-input
     question: How do you say 'want to swim' using <ruby>泳<rt>およ</rt></ruby>ぐ?
@@ -503,6 +551,7 @@ masu-stem-test:
       - 泳ぎたい
       - およぎたい
       - oyogitai
+    display: "<ruby>泳<rt>およ</rt></ruby>ぎたい"
     hint: Masu stem 泳ぎ + たい
   - type: multiple-choice
     question: What is the masu stem of <ruby>話<rt>はな</rt></ruby>す (hanasu)?
@@ -519,6 +568,7 @@ masu-stem-test:
       - 飲みやすい
       - のみやすい
       - nomiyasui
+    display: "<ruby>飲<rt>の</rt></ruby>みやすい"
     hint: Masu stem 飲み + やすい
   - type: free-input
     question: How do you say 'hard to walk' using <ruby>歩<rt>ある</rt></ruby>く?
@@ -526,6 +576,7 @@ masu-stem-test:
       - 歩きにくい
       - あるきにくい
       - arukinikui
+    display: "<ruby>歩<rt>ある</rt></ruby>きにくい"
     hint: Masu stem 歩き + にくい
   - type: multiple-choice
     question: What does masu stem + すぎる express?
@@ -542,6 +593,7 @@ masu-stem-test:
       - 勉強したい
       - べんきょうしたい
       - benkyoushitai
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>したい"
     hint: Masu stem 勉強し + たい
   - type: free-input
     question: How do you say 'easy to see' using <ruby>見<rt>み</rt></ruby>る?
@@ -549,6 +601,7 @@ masu-stem-test:
       - 見やすい
       - みやすい
       - miyasui
+    display: "<ruby>見<rt>み</rt></ruby>やすい"
     hint: Masu stem 見 + やすい
   - type: multiple-choice
     question: What is the masu stem of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
@@ -565,6 +618,7 @@ masu-stem-test:
       - 作りにくい
       - つくりにくい
       - tsukurinikui
+    display: "<ruby>作<rt>つく</rt></ruby>りにくい"
     hint: Masu stem 作り + にくい
   - type: free-input
     question: Masu stem of <ruby>開<rt>あ</rt></ruby>ける (akeru - to open)?
@@ -572,6 +626,7 @@ masu-stem-test:
       - 開け
       - あけ
       - ake
+    display: "<ruby>開<rt>あ</rt></ruby>け"
     hint: "Ichidan: drop ます from 開けます → 開け"
   - type: multiple-choice
     question: How do you say 'want to wait' using <ruby>待<rt>ま</rt></ruby>つ?
@@ -588,4 +643,5 @@ masu-stem-test:
       - 乗りやすい
       - のりやすい
       - noriyasui
+    display: "<ruby>乗<rt>の</rt></ruby>りやすい"
     hint: Masu stem 乗り + やすい

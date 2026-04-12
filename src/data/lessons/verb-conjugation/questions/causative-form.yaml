@@ -5,6 +5,7 @@ causative-form-ichidan:
       - 食べさせる
       - たべさせる
       - tabesaseru
+    display: "<ruby>食<rt>た</rt></ruby>べさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to causative form
@@ -12,6 +13,7 @@ causative-form-ichidan:
       - 見させる
       - みさせる
       - misaseru
+    display: "<ruby>見<rt>み</rt></ruby>させる"
     hint: Drop る, add させる
   - type: multiple-choice
     question: "The causative form can mean:"
@@ -28,6 +30,7 @@ causative-form-ichidan:
       - 寝させる
       - ねさせる
       - nesaseru
+    display: "<ruby>寝<rt>ね</rt></ruby>させる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to causative form
@@ -35,6 +38,7 @@ causative-form-ichidan:
       - 起きさせる
       - おきさせる
       - okisaseru
+    display: "<ruby>起<rt>お</rt></ruby>きさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to causative form
@@ -42,6 +46,7 @@ causative-form-ichidan:
       - 教えさせる
       - おしえさせる
       - oshiesaseru
+    display: "<ruby>教<rt>おし</rt></ruby>えさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to causative form
@@ -49,6 +54,7 @@ causative-form-ichidan:
       - 開けさせる
       - あけさせる
       - akesaseru
+    display: "<ruby>開<rt>あ</rt></ruby>けさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to causative form
@@ -56,6 +62,7 @@ causative-form-ichidan:
       - 閉めさせる
       - しめさせる
       - shimesaseru
+    display: "<ruby>閉<rt>し</rt></ruby>めさせる"
     hint: Drop る, add させる
   - type: multiple-choice
     question: What is the causative form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
@@ -72,6 +79,7 @@ causative-form-ichidan:
       - 浴びさせる
       - あびさせる
       - abisaseru
+    display: "<ruby>浴<rt>あ</rt></ruby>びさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to causative form
@@ -79,6 +87,7 @@ causative-form-ichidan:
       - 出させる
       - でさせる
       - desaseru
+    display: "<ruby>出<rt>で</rt></ruby>させる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to causative form
@@ -86,6 +95,7 @@ causative-form-ichidan:
       - 信じさせる
       - しんじさせる
       - shinjisaseru
+    display: "<ruby>信<rt>しん</rt></ruby>じさせる"
     hint: Drop る, add させる
   - type: multiple-choice
     question: What is the causative form of <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel)?
@@ -102,6 +112,7 @@ causative-form-ichidan:
       - 降りさせる
       - おりさせる
       - orisaseru
+    display: "<ruby>降<rt>お</rt></ruby>りさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to causative form
@@ -109,6 +120,7 @@ causative-form-ichidan:
       - 借りさせる
       - かりさせる
       - karisaseru
+    display: "<ruby>借<rt>か</rt></ruby>りさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to causative form
@@ -116,6 +128,7 @@ causative-form-ichidan:
       - 答えさせる
       - こたえさせる
       - kotaesaseru
+    display: "<ruby>答<rt>こた</rt></ruby>えさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to causative form
@@ -123,6 +136,7 @@ causative-form-ichidan:
       - 調べさせる
       - しらべさせる
       - shirabesaseru
+    display: "<ruby>調<rt>しら</rt></ruby>べさせる"
     hint: Drop る, add させる
   - type: multiple-choice
     question: What is the causative form of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to remember)?
@@ -139,6 +153,7 @@ causative-form-ichidan:
       - 忘れさせる
       - わすれさせる
       - wasuresaseru
+    display: "<ruby>忘<rt>わす</rt></ruby>れさせる"
     hint: Drop る, add させる
   - type: free-input
     question: Convert <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think) to causative form
@@ -146,6 +161,7 @@ causative-form-ichidan:
       - 考えさせる
       - かんがえさせる
       - kangaesaseru
+    display: "<ruby>考<rt>かんが</rt></ruby>えさせる"
     hint: Drop る, add させる
 causative-form-godan:
   - type: free-input
@@ -154,6 +170,7 @@ causative-form-godan:
       - 飲ませる
       - のませる
       - nomaseru
+    display: "<ruby>飲<rt>の</rt></ruby>ませる"
     hint: む → ま (a-row), add せる
   - type: free-input
     question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku) to causative form
@@ -161,6 +178,7 @@ causative-form-godan:
       - 聞かせる
       - きかせる
       - kikaseru
+    display: "<ruby>聞<rt>き</rt></ruby>かせる"
     hint: く → か (a-row), add せる
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to causative form
@@ -168,6 +186,7 @@ causative-form-godan:
       - 待たせる
       - またせる
       - mataseru
+    display: "<ruby>待<rt>ま</rt></ruby>たせる"
     hint: つ → た (a-row), add せる
   - type: free-input
     question: Convert <ruby>言<rt>い</rt></ruby>う (iu - to say) to causative form
@@ -175,6 +194,7 @@ causative-form-godan:
       - 言わせる
       - いわせる
       - iwaseru
+    display: "<ruby>言<rt>い</rt></ruby>わせる"
     hint: う → わ (a-row), add せる
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to causative form
@@ -182,6 +202,7 @@ causative-form-godan:
       - 泳がせる
       - およがせる
       - oyogaseru
+    display: "<ruby>泳<rt>およ</rt></ruby>がせる"
     hint: ぐ → が (a-row), add せる
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to causative form
@@ -189,6 +210,7 @@ causative-form-godan:
       - 話させる
       - はなさせる
       - hanasaseru
+    display: "<ruby>話<rt>はな</rt></ruby>させる"
     hint: す → さ (a-row), add せる
   - type: free-input
     question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run) to causative form (Godan!)
@@ -196,6 +218,7 @@ causative-form-godan:
       - 走らせる
       - はしらせる
       - hashiraseru
+    display: "<ruby>走<rt>はし</rt></ruby>らせる"
     hint: Godan る → ら (a-row), add せる
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to causative form
@@ -203,6 +226,7 @@ causative-form-godan:
       - 読ませる
       - よませる
       - yomaseru
+    display: "<ruby>読<rt>よ</rt></ruby>ませる"
     hint: む → ま (a-row), add せる
   - type: free-input
     question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to causative form
@@ -210,6 +234,7 @@ causative-form-godan:
       - 遊ばせる
       - あそばせる
       - asobaseru
+    display: "<ruby>遊<rt>あそ</rt></ruby>ばせる"
     hint: ぶ → ば (a-row), add せる
   - type: multiple-choice
     question: What is the causative form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -226,6 +251,7 @@ causative-form-godan:
       - 歩かせる
       - あるかせる
       - arukaseru
+    display: "<ruby>歩<rt>ある</rt></ruby>かせる"
     hint: く → か (a-row), add せる
   - type: free-input
     question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home) to causative form
@@ -233,6 +259,7 @@ causative-form-godan:
       - 帰らせる
       - かえらせる
       - kaeraseru
+    display: "<ruby>帰<rt>かえ</rt></ruby>らせる"
     hint: Godan る → ら (a-row), add せる
   - type: multiple-choice
     question: What is the causative form of <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit)?
@@ -249,6 +276,7 @@ causative-form-godan:
       - 持たせる
       - もたせる
       - motaseru
+    display: "<ruby>持<rt>も</rt></ruby>たせる"
     hint: つ → た (a-row), add せる
   - type: free-input
     question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to causative form
@@ -256,6 +284,7 @@ causative-form-godan:
       - 送らせる
       - おくらせる
       - okuraseru
+    display: "<ruby>送<rt>おく</rt></ruby>らせる"
     hint: Godan る → ら (a-row), add せる
   - type: free-input
     question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to causative form
@@ -263,6 +292,7 @@ causative-form-godan:
       - 作らせる
       - つくらせる
       - tsukuraseru
+    display: "<ruby>作<rt>つく</rt></ruby>らせる"
     hint: Godan る → ら (a-row), add せる
   - type: multiple-choice
     question: What is the causative form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
@@ -279,6 +309,7 @@ causative-form-godan:
       - 乗らせる
       - のらせる
       - noraseru
+    display: "<ruby>乗<rt>の</rt></ruby>らせる"
     hint: Godan る → ら (a-row), add せる
   - type: free-input
     question: Convert <ruby>売<rt>う</rt></ruby>る (uru - to sell) to causative form
@@ -286,6 +317,7 @@ causative-form-godan:
       - 売らせる
       - うらせる
       - uraseru
+    display: "<ruby>売<rt>う</rt></ruby>らせる"
     hint: Godan る → ら (a-row), add せる
   - type: multiple-choice
     question: What is the causative form of <ruby>消<rt>け</rt></ruby>す (kesu - to erase/turn off)?
@@ -309,6 +341,7 @@ causative-form-irregular:
       - 来させる
       - こさせる
       - kosaseru
+    display: "<ruby>来<rt>こ</rt></ruby>させる"
     hint: く → こ, add させる — careful, it's こさせる not きさせる!
   - type: free-input
     question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to causative form
@@ -316,6 +349,7 @@ causative-form-irregular:
       - 勉強させる
       - べんきょうさせる
       - benkyousaseru
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>させる"
     hint: する → させる
   - type: free-input
     question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru) to causative form
@@ -323,6 +357,7 @@ causative-form-irregular:
       - 料理させる
       - りょうりさせる
       - ryourisaseru
+    display: "<ruby>料理<rt>りょうり</rt></ruby>させる"
     hint: する → させる
   - type: free-input
     question: Convert <ruby>運転<rt>うんてん</rt></ruby>する (untensuru - to drive) to causative form
@@ -330,6 +365,7 @@ causative-form-irregular:
       - 運転させる
       - うんてんさせる
       - untensaseru
+    display: "<ruby>運転<rt>うんてん</rt></ruby>させる"
     hint: する → させる
   - type: multiple-choice
     question: What is the causative form of <ruby>紹介<rt>しょうかい</rt></ruby>する (shoukaisuru - to introduce)?
@@ -346,6 +382,7 @@ causative-form-irregular:
       - 説明させる
       - せつめいさせる
       - setsumeisaseru
+    display: "<ruby>説明<rt>せつめい</rt></ruby>させる"
     hint: する → させる
   - type: free-input
     question: Convert <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact) to causative form
@@ -353,6 +390,7 @@ causative-form-irregular:
       - 連絡させる
       - れんらくさせる
       - renrakusaseru
+    display: "<ruby>連絡<rt>れんらく</rt></ruby>させる"
     hint: する → させる
   - type: multiple-choice
     question: "The causative of <ruby>来<rt>く</rt></ruby>る (kuru) is こさせる. What reading does <ruby>来<rt>く</rt></ruby>る use in this form?"
@@ -369,6 +407,7 @@ causative-form-irregular:
       - 心配させる
       - しんぱいさせる
       - shinpaisaseru
+    display: "<ruby>心配<rt>しんぱい</rt></ruby>させる"
     hint: する → させる
   - type: free-input
     question: Convert <ruby>発見<rt>はっけん</rt></ruby>する (hakkensuru - to discover) to causative form
@@ -376,6 +415,7 @@ causative-form-irregular:
       - 発見させる
       - はっけんさせる
       - hakkensaseru
+    display: "<ruby>発見<rt>はっけん</rt></ruby>させる"
     hint: する → させる
   - type: free-input
     question: Convert <ruby>利用<rt>りよう</rt></ruby>する (riyousuru - to utilize) to causative form
@@ -383,6 +423,7 @@ causative-form-irregular:
       - 利用させる
       - りようさせる
       - riyousaseru
+    display: "<ruby>利用<rt>りよう</rt></ruby>させる"
     hint: する → させる
   - type: multiple-choice
     question: Which is the correct causative form of <ruby>来<rt>く</rt></ruby>る (kuru)?
@@ -399,6 +440,7 @@ causative-form-irregular:
       - 招待させる
       - しょうたいさせる
       - shoutaisaseru
+    display: "<ruby>招待<rt>しょうたい</rt></ruby>させる"
     hint: する → させる
   - type: free-input
     question: Convert <ruby>期待<rt>きたい</rt></ruby>する (kitaisuru - to expect) to causative form
@@ -406,6 +448,7 @@ causative-form-irregular:
       - 期待させる
       - きたいさせる
       - kitaisaseru
+    display: "<ruby>期待<rt>きたい</rt></ruby>させる"
     hint: する → させる
   - type: free-input
     question: Convert <ruby>感動<rt>かんどう</rt></ruby>する (kandousuru - to be moved/impressed) to causative form
@@ -413,6 +456,7 @@ causative-form-irregular:
       - 感動させる
       - かんどうさせる
       - kandousaseru
+    display: "<ruby>感動<rt>かんどう</rt></ruby>させる"
     hint: する → させる
   - type: multiple-choice
     question: How many irregular verbs exist in Japanese?
@@ -429,6 +473,7 @@ causative-form-irregular:
       - 翻訳させる
       - ほんやくさせる
       - honyakusaseru
+    display: "<ruby>翻訳<rt>ほんやく</rt></ruby>させる"
     hint: する → させる
   - type: free-input
     question: Convert <ruby>注意<rt>ちゅうい</rt></ruby>する (chuuisuru - to warn) to causative form
@@ -436,6 +481,7 @@ causative-form-irregular:
       - 注意させる
       - ちゅういさせる
       - chuuisaseru
+    display: "<ruby>注意<rt>ちゅうい</rt></ruby>させる"
     hint: する → させる
   - type: multiple-choice
     question: "What particle marks the person being made/allowed to do something in a causative sentence?"
@@ -453,6 +499,7 @@ causative-form-test:
       - 食べさせる
       - たべさせる
       - tabesaseru
+    display: "<ruby>食<rt>た</rt></ruby>べさせる"
     hint: "Ichidan: させる"
   - type: free-input
     question: Causative of <ruby>読<rt>よ</rt></ruby>む?
@@ -460,6 +507,7 @@ causative-form-test:
       - 読ませる
       - よませる
       - yomaseru
+    display: "<ruby>読<rt>よ</rt></ruby>ませる"
     hint: "Godan: む → ま, add せる"
   - type: free-input
     question: Causative of する?
@@ -473,6 +521,7 @@ causative-form-test:
       - 来させる
       - こさせる
       - kosaseru
+    display: "<ruby>来<rt>こ</rt></ruby>させる"
     hint: こさせる — not きさせる!
   - type: free-input
     question: Causative of <ruby>見<rt>み</rt></ruby>る (miru - to see)?
@@ -480,6 +529,7 @@ causative-form-test:
       - 見させる
       - みさせる
       - misaseru
+    display: "<ruby>見<rt>み</rt></ruby>させる"
     hint: "Ichidan: drop る, add させる"
   - type: free-input
     question: Causative of <ruby>書<rt>か</rt></ruby>く (kaku - to write)?
@@ -487,6 +537,7 @@ causative-form-test:
       - 書かせる
       - かかせる
       - kakaseru
+    display: "<ruby>書<rt>か</rt></ruby>かせる"
     hint: "Godan: く → か (a-row), add せる"
   - type: free-input
     question: Causative of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
@@ -494,6 +545,7 @@ causative-form-test:
       - 飲ませる
       - のませる
       - nomaseru
+    display: "<ruby>飲<rt>の</rt></ruby>ませる"
     hint: "Godan: む → ま (a-row), add せる"
   - type: free-input
     question: Causative of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
@@ -501,6 +553,7 @@ causative-form-test:
       - 話させる
       - はなさせる
       - hanasaseru
+    display: "<ruby>話<rt>はな</rt></ruby>させる"
     hint: "Godan: す → さ (a-row), add せる"
   - type: multiple-choice
     question: Which is the correct causative form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
@@ -517,6 +570,7 @@ causative-form-test:
       - 遊ばせる
       - あそばせる
       - asobaseru
+    display: "<ruby>遊<rt>あそ</rt></ruby>ばせる"
     hint: "Godan: ぶ → ば (a-row), add せる"
   - type: free-input
     question: Causative of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
@@ -524,6 +578,7 @@ causative-form-test:
       - 待たせる
       - またせる
       - mataseru
+    display: "<ruby>待<rt>ま</rt></ruby>たせる"
     hint: "Godan: つ → た (a-row), add せる"
   - type: multiple-choice
     question: Which is the correct causative form of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)?
@@ -540,6 +595,7 @@ causative-form-test:
       - 勉強させる
       - べんきょうさせる
       - benkyousaseru
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>させる"
     hint: "する verb: する → させる"
   - type: free-input
     question: Causative of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
@@ -547,6 +603,7 @@ causative-form-test:
       - 買わせる
       - かわせる
       - kawaseru
+    display: "<ruby>買<rt>か</rt></ruby>わせる"
     hint: "Godan: う → わ (a-row), add せる"
   - type: multiple-choice
     question: For godan verbs, causative form uses which vowel row before せる?
@@ -563,6 +620,7 @@ causative-form-test:
       - 起きさせる
       - おきさせる
       - okisaseru
+    display: "<ruby>起<rt>お</rt></ruby>きさせる"
     hint: "Ichidan: drop る, add させる"
   - type: free-input
     question: Causative of <ruby>送<rt>おく</rt></ruby>る (okuru - to send)?
@@ -570,6 +628,7 @@ causative-form-test:
       - 送らせる
       - おくらせる
       - okuraseru
+    display: "<ruby>送<rt>おく</rt></ruby>らせる"
     hint: "Godan: る → ら (a-row), add せる"
   - type: free-input
     question: Causative of <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)?
@@ -577,6 +636,7 @@ causative-form-test:
       - 閉めさせる
       - しめさせる
       - shimesaseru
+    display: "<ruby>閉<rt>し</rt></ruby>めさせる"
     hint: "Ichidan: drop る, add させる"
   - type: multiple-choice
     question: Which is the correct causative form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -593,4 +653,5 @@ causative-form-test:
       - 連絡させる
       - れんらくさせる
       - renrakusaseru
+    display: "<ruby>連絡<rt>れんらく</rt></ruby>させる"
     hint: "する verb: する → させる"

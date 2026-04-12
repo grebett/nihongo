@@ -5,6 +5,7 @@ imperative-form-ichidan:
       - 食べろ
       - たべろ
       - tabero
+    display: "<ruby>食<rt>た</rt></ruby>べろ"
     hint: Replace る with ろ
   - type: free-input
     question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to imperative form
@@ -12,6 +13,7 @@ imperative-form-ichidan:
       - 見ろ
       - みろ
       - miro
+    display: "<ruby>見<rt>み</rt></ruby>ろ"
     hint: Replace る with ろ — 見ろ! (Look!)
   - type: free-input
     question: Convert <ruby>止<rt>や</rt></ruby>める (yameru - to stop) to imperative form
@@ -19,6 +21,7 @@ imperative-form-ichidan:
       - 止めろ
       - やめろ
       - yamero
+    display: "<ruby>止<rt>や</rt></ruby>めろ"
     hint: Replace る with ろ — やめろ! (Stop it!)
   - type: multiple-choice
     question: "The imperative form is:"
@@ -35,6 +38,7 @@ imperative-form-ichidan:
       - 寝ろ
       - ねろ
       - nero
+    display: "<ruby>寝<rt>ね</rt></ruby>ろ"
     hint: Replace る with ろ — 寝ろ! (Sleep!)
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to imperative form
@@ -42,6 +46,7 @@ imperative-form-ichidan:
       - 起きろ
       - おきろ
       - okiro
+    display: "<ruby>起<rt>お</rt></ruby>きろ"
     hint: Replace る with ろ — 起きろ! (Wake up!)
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to imperative form
@@ -49,6 +54,7 @@ imperative-form-ichidan:
       - 教えろ
       - おしえろ
       - oshiero
+    display: "<ruby>教<rt>おし</rt></ruby>えろ"
     hint: Replace る with ろ — 教えろ! (Teach!)
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to imperative form
@@ -56,6 +62,7 @@ imperative-form-ichidan:
       - 開けろ
       - あけろ
       - akero
+    display: "<ruby>開<rt>あ</rt></ruby>けろ"
     hint: Replace る with ろ — 開けろ! (Open it!)
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to imperative form
@@ -63,6 +70,7 @@ imperative-form-ichidan:
       - 閉めろ
       - しめろ
       - shimero
+    display: "<ruby>閉<rt>し</rt></ruby>めろ"
     hint: Replace る with ろ — 閉めろ! (Close it!)
   - type: multiple-choice
     question: Which is the correct imperative form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
@@ -79,6 +87,7 @@ imperative-form-ichidan:
       - 浴びろ
       - あびろ
       - abiro
+    display: "<ruby>浴<rt>あ</rt></ruby>びろ"
     hint: Replace る with ろ — 浴びろ! (Take a shower!)
   - type: free-input
     question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to leave/go out) to imperative form
@@ -86,6 +95,7 @@ imperative-form-ichidan:
       - 出ろ
       - でろ
       - dero
+    display: "<ruby>出<rt>で</rt></ruby>ろ"
     hint: Replace る with ろ — 出ろ! (Get out!)
   - type: free-input
     question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to imperative form
@@ -93,6 +103,7 @@ imperative-form-ichidan:
       - 信じろ
       - しんじろ
       - shinjiro
+    display: "<ruby>信<rt>しん</rt></ruby>じろ"
     hint: Replace る with ろ — 信じろ! (Believe!)
   - type: multiple-choice
     question: Which is the correct imperative form of <ruby>降<rt>お</rt></ruby>りる (oriru - to get off)?
@@ -109,6 +120,7 @@ imperative-form-ichidan:
       - 借りろ
       - かりろ
       - kariro
+    display: "<ruby>借<rt>か</rt></ruby>りろ"
     hint: Replace る with ろ — 借りろ! (Borrow it!)
   - type: free-input
     question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to imperative form
@@ -116,6 +128,7 @@ imperative-form-ichidan:
       - 答えろ
       - こたえろ
       - kotaero
+    display: "<ruby>答<rt>こた</rt></ruby>えろ"
     hint: Replace る with ろ — 答えろ! (Answer!)
   - type: free-input
     question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to imperative form
@@ -123,6 +136,7 @@ imperative-form-ichidan:
       - 調べろ
       - しらべろ
       - shirabero
+    display: "<ruby>調<rt>しら</rt></ruby>べろ"
     hint: Replace る with ろ — 調べろ! (Look it up!)
   - type: multiple-choice
     question: Which is the correct imperative form of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
@@ -139,6 +153,7 @@ imperative-form-ichidan:
       - 覚えろ
       - おぼえろ
       - oboero
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えろ"
     hint: Replace る with ろ — 覚えろ! (Memorize it!)
   - type: free-input
     question: Convert <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel) to imperative form
@@ -146,6 +161,7 @@ imperative-form-ichidan:
       - 感じろ
       - かんじろ
       - kanjiro
+    display: "<ruby>感<rt>かん</rt></ruby>じろ"
     hint: Replace る with ろ — 感じろ! (Feel it!)
 imperative-form-godan:
   - type: free-input
@@ -154,6 +170,7 @@ imperative-form-godan:
       - 言え
       - いえ
       - ie
+    display: "<ruby>言<rt>い</rt></ruby>え"
     hint: Change to え-row — 言え! (Say it!)
   - type: free-input
     question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku) to imperative form
@@ -161,6 +178,7 @@ imperative-form-godan:
       - 聞け
       - きけ
       - kike
+    display: "<ruby>聞<rt>き</rt></ruby>け"
     hint: く → け (e-row) — 聞け! (Listen!)
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to imperative form
@@ -168,6 +186,7 @@ imperative-form-godan:
       - 待て
       - まて
       - mate
+    display: "<ruby>待<rt>ま</rt></ruby>て"
     hint: つ → て (e-row) — 待て! (Wait!)
   - type: free-input
     question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to imperative form
@@ -175,6 +194,7 @@ imperative-form-godan:
       - 飲め
       - のめ
       - nome
+    display: "<ruby>飲<rt>の</rt></ruby>め"
     hint: む → め (e-row) — 飲め! (Drink!)
   - type: free-input
     question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run) to imperative form (Godan!)
@@ -182,6 +202,7 @@ imperative-form-godan:
       - 走れ
       - はしれ
       - hashire
+    display: "<ruby>走<rt>はし</rt></ruby>れ"
     hint: Godan る → れ (e-row) — 走れ! (Run!)
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to imperative form
@@ -189,6 +210,7 @@ imperative-form-godan:
       - 泳げ
       - およげ
       - oyoge
+    display: "<ruby>泳<rt>およ</rt></ruby>げ"
     hint: ぐ → げ (e-row) — 泳げ! (Swim!)
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to imperative form
@@ -196,6 +218,7 @@ imperative-form-godan:
       - 話せ
       - はなせ
       - hanase
+    display: "<ruby>話<rt>はな</rt></ruby>せ"
     hint: す → せ (e-row) — 話せ! (Speak!)
   - type: free-input
     question: Convert <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit) to imperative form
@@ -203,6 +226,7 @@ imperative-form-godan:
       - 座れ
       - すわれ
       - suware
+    display: "<ruby>座<rt>すわ</rt></ruby>れ"
     hint: る → れ (e-row) — 座れ! (Sit!)
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to imperative form
@@ -210,6 +234,7 @@ imperative-form-godan:
       - 読め
       - よめ
       - yome
+    display: "<ruby>読<rt>よ</rt></ruby>め"
     hint: む → め (e-row) — 読め! (Read!)
   - type: free-input
     question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to imperative form
@@ -217,6 +242,7 @@ imperative-form-godan:
       - 買え
       - かえ
       - kae
+    display: "<ruby>買<rt>か</rt></ruby>え"
     hint: う → え (e-row) — 買え! (Buy it!)
   - type: multiple-choice
     question: Which is the correct imperative form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
@@ -233,6 +259,7 @@ imperative-form-godan:
       - 死ね
       - しね
       - shine
+    display: "<ruby>死<rt>し</rt></ruby>ね"
     hint: ぬ → ね (e-row) — 死ね! (Die!)
   - type: free-input
     question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to imperative form (Godan!)
@@ -240,6 +267,7 @@ imperative-form-godan:
       - 帰れ
       - かえれ
       - kaere
+    display: "<ruby>帰<rt>かえ</rt></ruby>れ"
     hint: Godan る → れ (e-row) — 帰れ! (Go home!)
   - type: free-input
     question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to imperative form
@@ -247,6 +275,7 @@ imperative-form-godan:
       - 立て
       - たて
       - tate
+    display: "<ruby>立<rt>た</rt></ruby>て"
     hint: つ → て (e-row) — 立て! (Stand up!)
   - type: multiple-choice
     question: Which is the correct imperative form of <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk)?
@@ -263,6 +292,7 @@ imperative-form-godan:
       - 持て
       - もて
       - mote
+    display: "<ruby>持<rt>も</rt></ruby>て"
     hint: つ → て (e-row) — 持て! (Hold it!)
   - type: free-input
     question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to imperative form
@@ -270,6 +300,7 @@ imperative-form-godan:
       - 送れ
       - おくれ
       - okure
+    display: "<ruby>送<rt>おく</rt></ruby>れ"
     hint: る → れ (e-row) — 送れ! (Send it!)
   - type: free-input
     question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to imperative form
@@ -277,6 +308,7 @@ imperative-form-godan:
       - 作れ
       - つくれ
       - tsukure
+    display: "<ruby>作<rt>つく</rt></ruby>れ"
     hint: る → れ (e-row) — 作れ! (Make it!)
   - type: multiple-choice
     question: Which is the correct imperative form of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off)?
@@ -293,6 +325,7 @@ imperative-form-godan:
       - 押せ
       - おせ
       - ose
+    display: "<ruby>押<rt>お</rt></ruby>せ"
     hint: す → せ (e-row) — 押せ! (Push!)
 imperative-form-irregular:
   - type: free-input
@@ -301,6 +334,7 @@ imperative-form-irregular:
       - 来い
       - こい
       - koi
+    display: "<ruby>来<rt>こ</rt></ruby>い"
     hint: 来る → 来い (こい) — Come!
   - type: free-input
     question: What is the imperative form of する (suru)?
@@ -314,6 +348,7 @@ imperative-form-irregular:
       - 勉強しろ
       - べんきょうしろ
       - benkyoushiro
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>しろ"
     hint: する → しろ — 勉強しろ! (Study!)
   - type: multiple-choice
     question: Which is a softer alternative to the imperative <ruby>食<rt>た</rt></ruby>べろ?
@@ -330,6 +365,7 @@ imperative-form-irregular:
       - 運動しろ
       - うんどうしろ
       - undoushiro
+    display: "<ruby>運動<rt>うんどう</rt></ruby>しろ"
     hint: する → しろ — 運動しろ! (Exercise!)
   - type: free-input
     question: What is the imperative form of <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice)?
@@ -337,6 +373,7 @@ imperative-form-irregular:
       - 練習しろ
       - れんしゅうしろ
       - renshuushiro
+    display: "<ruby>練習<rt>れんしゅう</rt></ruby>しろ"
     hint: する → しろ — 練習しろ! (Practice!)
   - type: multiple-choice
     question: What is the imperative form of <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk)?
@@ -353,6 +390,7 @@ imperative-form-irregular:
       - 説明しろ
       - せつめいしろ
       - setsumeishiro
+    display: "<ruby>説明<rt>せつめい</rt></ruby>しろ"
     hint: する → しろ — 説明しろ! (Explain!)
   - type: multiple-choice
     question: Which sentence uses the imperative correctly?
@@ -369,6 +407,7 @@ imperative-form-irregular:
       - 注意しろ
       - ちゅういしろ
       - chuuishiro
+    display: "<ruby>注意<rt>ちゅうい</rt></ruby>しろ"
     hint: する → しろ — 注意しろ! (Pay attention!)
   - type: free-input
     question: What is the imperative form of <ruby>我慢<rt>がまん</rt></ruby>する (gamansuru - to endure)?
@@ -376,6 +415,7 @@ imperative-form-irregular:
       - 我慢しろ
       - がまんしろ
       - gamanshiro
+    display: "<ruby>我慢<rt>がまん</rt></ruby>しろ"
     hint: する → しろ — 我慢しろ! (Endure it!)
   - type: multiple-choice
     question: Which is the correct imperative of する?
@@ -392,6 +432,7 @@ imperative-form-irregular:
       - ここに来い
       - ここにこい
       - kokoni koi
+    display: "ここに<ruby>来<rt>こ</rt></ruby>い"
     hint: ここに (here) + 来い (come!) = ここに来い!
   - type: free-input
     question: What is the imperative form of <ruby>紹介<rt>しょうかい</rt></ruby>する (shoukaisuru - to introduce)?
@@ -399,6 +440,7 @@ imperative-form-irregular:
       - 紹介しろ
       - しょうかいしろ
       - shoukaishiro
+    display: "<ruby>紹介<rt>しょうかい</rt></ruby>しろ"
     hint: する → しろ — 紹介しろ! (Introduce!)
   - type: multiple-choice
     question: The imperative form is commonly found in which contexts?
@@ -415,6 +457,7 @@ imperative-form-irregular:
       - 掃除しろ
       - そうじしろ
       - soujishiro
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>しろ"
     hint: する → しろ — 掃除しろ! (Clean!)
   - type: free-input
     question: What is the imperative form of <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact)?
@@ -422,6 +465,7 @@ imperative-form-irregular:
       - 連絡しろ
       - れんらくしろ
       - renrakushiro
+    display: "<ruby>連絡<rt>れんらく</rt></ruby>しろ"
     hint: する → しろ — 連絡しろ! (Contact me!)
   - type: multiple-choice
     question: Why is こい the imperative of <ruby>来<rt>く</rt></ruby>る and not くれ or くろ?
@@ -438,6 +482,7 @@ imperative-form-irregular:
       - 準備しろ
       - じゅんびしろ
       - junbishiro
+    display: "<ruby>準備<rt>じゅんび</rt></ruby>しろ"
     hint: する → しろ — 準備しろ! (Prepare!)
   - type: free-input
     question: What is the imperative form of <ruby>確認<rt>かくにん</rt></ruby>する (kakuninsuru - to confirm)?
@@ -445,6 +490,7 @@ imperative-form-irregular:
       - 確認しろ
       - かくにんしろ
       - kakuninshiro
+    display: "<ruby>確認<rt>かくにん</rt></ruby>しろ"
     hint: する → しろ — 確認しろ! (Confirm it!)
 imperative-form-test:
   - type: free-input
@@ -453,6 +499,7 @@ imperative-form-test:
       - 食べろ
       - たべろ
       - tabero
+    display: "<ruby>食<rt>た</rt></ruby>べろ"
     hint: "Ichidan: る → ろ"
   - type: free-input
     question: Imperative of <ruby>書<rt>か</rt></ruby>く?
@@ -460,6 +507,7 @@ imperative-form-test:
       - 書け
       - かけ
       - kake
+    display: "<ruby>書<rt>か</rt></ruby>け"
     hint: "Godan: く → け (e-row)"
   - type: free-input
     question: Imperative of <ruby>来<rt>く</rt></ruby>る?
@@ -467,6 +515,7 @@ imperative-form-test:
       - 来い
       - こい
       - koi
+    display: "<ruby>来<rt>こ</rt></ruby>い"
     hint: Irregular — 来い!
   - type: free-input
     question: Imperative of する?
@@ -489,6 +538,7 @@ imperative-form-test:
       - 読め
       - よめ
       - yome
+    display: "<ruby>読<rt>よ</rt></ruby>め"
     hint: "Godan: む → め (e-row)"
   - type: free-input
     question: Imperative of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
@@ -496,6 +546,7 @@ imperative-form-test:
       - 見ろ
       - みろ
       - miro
+    display: "<ruby>見<rt>み</rt></ruby>ろ"
     hint: "Ichidan: る → ろ"
   - type: free-input
     question: Imperative of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
@@ -503,6 +554,7 @@ imperative-form-test:
       - 飲め
       - のめ
       - nome
+    display: "<ruby>飲<rt>の</rt></ruby>め"
     hint: "Godan: む → め (e-row)"
   - type: multiple-choice
     question: Which is the correct imperative of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
@@ -519,6 +571,7 @@ imperative-form-test:
       - 話せ
       - はなせ
       - hanase
+    display: "<ruby>話<rt>はな</rt></ruby>せ"
     hint: "Godan: す → せ (e-row)"
   - type: free-input
     question: Imperative of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)?
@@ -526,6 +579,7 @@ imperative-form-test:
       - 走れ
       - はしれ
       - hashire
+    display: "<ruby>走<rt>はし</rt></ruby>れ"
     hint: Godan verb! る → れ (e-row)
   - type: multiple-choice
     question: Which is the correct imperative of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
@@ -542,6 +596,7 @@ imperative-form-test:
       - 起きろ
       - おきろ
       - okiro
+    display: "<ruby>起<rt>お</rt></ruby>きろ"
     hint: "Ichidan: る → ろ"
   - type: free-input
     question: Imperative of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
@@ -549,6 +604,7 @@ imperative-form-test:
       - 勉強しろ
       - べんきょうしろ
       - benkyoushiro
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>しろ"
     hint: "する verb: する → しろ"
   - type: free-input
     question: Imperative of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
@@ -556,6 +612,7 @@ imperative-form-test:
       - 遊べ
       - あそべ
       - asobe
+    display: "<ruby>遊<rt>あそ</rt></ruby>べ"
     hint: "Godan: ぶ → べ (e-row)"
   - type: multiple-choice
     question: For godan verbs, the imperative form uses which vowel row?
@@ -572,6 +629,7 @@ imperative-form-test:
       - 閉めろ
       - しめろ
       - shimero
+    display: "<ruby>閉<rt>し</rt></ruby>めろ"
     hint: "Ichidan: る → ろ"
   - type: free-input
     question: Imperative of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home)?
@@ -579,6 +637,7 @@ imperative-form-test:
       - 帰れ
       - かえれ
       - kaere
+    display: "<ruby>帰<rt>かえ</rt></ruby>れ"
     hint: "Godan: る → れ (e-row)"
   - type: multiple-choice
     question: Which is the correct imperative of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -595,4 +654,5 @@ imperative-form-test:
       - 立て
       - たて
       - tate
+    display: "<ruby>立<rt>た</rt></ruby>て"
     hint: "Godan: つ → て (e-row)"

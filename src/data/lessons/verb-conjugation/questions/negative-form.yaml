@@ -5,6 +5,7 @@ negative-form-ichidan:
       - 食べない
       - たべない
       - tabenai
+    display: "<ruby>食<rt>た</rt></ruby>べない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to negative form
@@ -12,6 +13,7 @@ negative-form-ichidan:
       - 見ない
       - みない
       - minai
+    display: "<ruby>見<rt>み</rt></ruby>ない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to negative form
@@ -19,6 +21,7 @@ negative-form-ichidan:
       - 起きない
       - おきない
       - okinai
+    display: "<ruby>起<rt>お</rt></ruby>きない"
     hint: Drop る, add ない
   - type: multiple-choice
     question: "The negative form can be used for:"
@@ -35,6 +38,7 @@ negative-form-ichidan:
       - 寝ない
       - ねない
       - nenai
+    display: "<ruby>寝<rt>ね</rt></ruby>ない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to negative form
@@ -42,6 +46,7 @@ negative-form-ichidan:
       - 教えない
       - おしえない
       - oshienai
+    display: "<ruby>教<rt>おし</rt></ruby>えない"
     hint: Drop る, add ない
   - type: free-input
     question: What is the polite negative of <ruby>見<rt>み</rt></ruby>る?
@@ -49,6 +54,7 @@ negative-form-ichidan:
       - 見ません
       - みません
       - mimasen
+    display: "<ruby>見<rt>み</rt></ruby>ません"
     hint: 見ます → 見ません
   - type: free-input
     question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to negative form
@@ -56,6 +62,7 @@ negative-form-ichidan:
       - 開けない
       - あけない
       - akenai
+    display: "<ruby>開<rt>あ</rt></ruby>けない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to negative form
@@ -63,6 +70,7 @@ negative-form-ichidan:
       - 閉めない
       - しめない
       - shimenai
+    display: "<ruby>閉<rt>し</rt></ruby>めない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to negative form
@@ -70,6 +78,7 @@ negative-form-ichidan:
       - 着ない
       - きない
       - kinai
+    display: "<ruby>着<rt>き</rt></ruby>ない"
     hint: Drop る, add ない
   - type: multiple-choice
     question: Which is the correct negative form of <ruby>浴<rt>あ</rt></ruby>びる (abiru - to shower)?
@@ -86,6 +95,7 @@ negative-form-ichidan:
       - 出ない
       - でない
       - denai
+    display: "<ruby>出<rt>で</rt></ruby>ない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to negative form
@@ -93,6 +103,7 @@ negative-form-ichidan:
       - 信じない
       - しんじない
       - shinjinai
+    display: "<ruby>信<rt>しん</rt></ruby>じない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to negative form
@@ -100,6 +111,7 @@ negative-form-ichidan:
       - 降りない
       - おりない
       - orinai
+    display: "<ruby>降<rt>お</rt></ruby>りない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to negative form
@@ -107,6 +119,7 @@ negative-form-ichidan:
       - 借りない
       - かりない
       - karinai
+    display: "<ruby>借<rt>か</rt></ruby>りない"
     hint: Drop る, add ない
   - type: multiple-choice
     question: What is the polite negative form of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
@@ -123,6 +136,7 @@ negative-form-ichidan:
       - 覚えない
       - おぼえない
       - oboenai
+    display: "<ruby>覚<rt>おぼ</rt></ruby>えない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to negative form
@@ -130,6 +144,7 @@ negative-form-ichidan:
       - 忘れない
       - わすれない
       - wasurenai
+    display: "<ruby>忘<rt>わす</rt></ruby>れない"
     hint: Drop る, add ない
   - type: free-input
     question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to negative form
@@ -137,6 +152,7 @@ negative-form-ichidan:
       - 答えない
       - こたえない
       - kotaenai
+    display: "<ruby>答<rt>こた</rt></ruby>えない"
     hint: Drop る, add ない
   - type: multiple-choice
     question: Which is the correct negative of <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate)?
@@ -154,6 +170,7 @@ negative-form-godan:
       - 飲まない
       - のまない
       - nomanai
+    display: "<ruby>飲<rt>の</rt></ruby>まない"
     hint: む → ま (a-row), add ない
   - type: free-input
     question: Convert <ruby>書<rt>か</rt></ruby>く (kaku) to negative form
@@ -161,6 +178,7 @@ negative-form-godan:
       - 書かない
       - かかない
       - kakanai
+    display: "<ruby>書<rt>か</rt></ruby>かない"
     hint: く → か (a-row), add ない
   - type: free-input
     question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku) to negative form
@@ -168,6 +186,7 @@ negative-form-godan:
       - 聞かない
       - きかない
       - kikanai
+    display: "<ruby>聞<rt>き</rt></ruby>かない"
     hint: く → か (a-row), add ない
   - type: free-input
     question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu) to negative form
@@ -175,6 +194,7 @@ negative-form-godan:
       - 話さない
       - はなさない
       - hanasanai
+    display: "<ruby>話<rt>はな</rt></ruby>さない"
     hint: す → さ (a-row), add ない
   - type: free-input
     question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to negative form
@@ -182,6 +202,7 @@ negative-form-godan:
       - 待たない
       - またない
       - matanai
+    display: "<ruby>待<rt>ま</rt></ruby>たない"
     hint: つ → た (a-row), add ない
   - type: free-input
     question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to negative form
@@ -189,6 +210,7 @@ negative-form-godan:
       - 泳がない
       - およがない
       - oyoganai
+    display: "<ruby>泳<rt>およ</rt></ruby>がない"
     hint: ぐ → が (a-row), add ない
   - type: free-input
     question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to negative form
@@ -196,6 +218,7 @@ negative-form-godan:
       - 遊ばない
       - あそばない
       - asobanai
+    display: "<ruby>遊<rt>あそ</rt></ruby>ばない"
     hint: ぶ → ば (a-row), add ない
   - type: free-input
     question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to negative form
@@ -203,6 +226,7 @@ negative-form-godan:
       - 買わない
       - かわない
       - kawanai
+    display: "<ruby>買<rt>か</rt></ruby>わない"
     hint: う → わ (a-row), add ない
   - type: free-input
     question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run) to negative form (Godan!)
@@ -210,6 +234,7 @@ negative-form-godan:
       - 走らない
       - はしらない
       - hashiranai
+    display: "<ruby>走<rt>はし</rt></ruby>らない"
     hint: Godan る → ら (a-row), add ない
   - type: free-input
     question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to negative form
@@ -217,6 +242,7 @@ negative-form-godan:
       - 読まない
       - よまない
       - yomanai
+    display: "<ruby>読<rt>よ</rt></ruby>まない"
     hint: む → ま (a-row), add ない
   - type: free-input
     question: Convert <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) to negative form
@@ -224,6 +250,7 @@ negative-form-godan:
       - 死なない
       - しなない
       - shinanai
+    display: "<ruby>死<rt>し</rt></ruby>なない"
     hint: ぬ → な (a-row), add ない
   - type: multiple-choice
     question: Which is the correct negative of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to go home)?
@@ -240,6 +267,7 @@ negative-form-godan:
       - 立たない
       - たたない
       - tatanai
+    display: "<ruby>立<rt>た</rt></ruby>たない"
     hint: つ → た (a-row), add ない
   - type: free-input
     question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to negative form
@@ -247,6 +275,7 @@ negative-form-godan:
       - 持たない
       - もたない
       - motanai
+    display: "<ruby>持<rt>も</rt></ruby>たない"
     hint: つ → た (a-row), add ない
   - type: free-input
     question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to negative form
@@ -254,6 +283,7 @@ negative-form-godan:
       - 作らない
       - つくらない
       - tsukuranai
+    display: "<ruby>作<rt>つく</rt></ruby>らない"
     hint: Godan る → ら (a-row), add ない
   - type: multiple-choice
     question: What is the negative form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
@@ -270,6 +300,7 @@ negative-form-godan:
       - 送らない
       - おくらない
       - okuranai
+    display: "<ruby>送<rt>おく</rt></ruby>らない"
     hint: Godan る → ら (a-row), add ない
   - type: free-input
     question: Convert <ruby>乗<rt>の</rt></ruby>る (noru - to ride) to negative form
@@ -277,6 +308,7 @@ negative-form-godan:
       - 乗らない
       - のらない
       - noranai
+    display: "<ruby>乗<rt>の</rt></ruby>らない"
     hint: Godan る → ら (a-row), add ない
   - type: free-input
     question: Convert <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off clothes) to negative form
@@ -284,6 +316,7 @@ negative-form-godan:
       - 脱がない
       - ぬがない
       - nuganai
+    display: "<ruby>脱<rt>ぬ</rt></ruby>がない"
     hint: ぐ → が (a-row), add ない
   - type: multiple-choice
     question: What is the polite negative of <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk)?
@@ -307,6 +340,7 @@ negative-form-irregular:
       - 来ない
       - こない
       - konai
+    display: "<ruby>来<rt>こ</rt></ruby>ない"
     hint: く changes to こ, add ない
   - type: free-input
     question: What is the negative of ある (aru - to exist)?
@@ -326,6 +360,7 @@ negative-form-irregular:
       - 勉強しない
       - べんきょうしない
       - benkyoushinai
+    display: "<ruby>勉強<rt>べんきょう</rt></ruby>しない"
     hint: する → しない
   - type: free-input
     question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru) to negative form
@@ -333,6 +368,7 @@ negative-form-irregular:
       - 料理しない
       - りょうりしない
       - ryourishinai
+    display: "<ruby>料理<rt>りょうり</rt></ruby>しない"
     hint: する → しない
   - type: free-input
     question: What is the polite negative of <ruby>来<rt>く</rt></ruby>る?
@@ -340,6 +376,7 @@ negative-form-irregular:
       - 来ません
       - きません
       - kimasen
+    display: "<ruby>来<rt>き</rt></ruby>ません"
     hint: 来ます → 来ません
   - type: multiple-choice
     question: Why is ある→ない considered irregular?
@@ -356,6 +393,7 @@ negative-form-irregular:
       - 運動しない
       - うんどうしない
       - undoushinai
+    display: "<ruby>運動<rt>うんどう</rt></ruby>しない"
     hint: する → しない
   - type: free-input
     question: Convert <ruby>掃除<rt>そうじ</rt></ruby>する (soujisuru - to clean) to negative form
@@ -363,6 +401,7 @@ negative-form-irregular:
       - 掃除しない
       - そうじしない
       - soujishinai
+    display: "<ruby>掃除<rt>そうじ</rt></ruby>しない"
     hint: する → しない
   - type: free-input
     question: What is the polite negative of する?
@@ -385,6 +424,7 @@ negative-form-irregular:
       - 旅行しない
       - りょこうしない
       - ryokoushinai
+    display: "<ruby>旅行<rt>りょこう</rt></ruby>しない"
     hint: する → しない
   - type: free-input
     question: Convert <ruby>運転<rt>うんてん</rt></ruby>する (untensuru - to drive) to negative form
@@ -392,6 +432,7 @@ negative-form-irregular:
       - 運転しない
       - うんてんしない
       - untenshinai
+    display: "<ruby>運転<rt>うんてん</rt></ruby>しない"
     hint: する → しない
   - type: free-input
     question: Convert <ruby>洗濯<rt>せんたく</rt></ruby>する (sentakusuru - to do laundry) to negative form
@@ -399,6 +440,7 @@ negative-form-irregular:
       - 洗濯しない
       - せんたくしない
       - sentakushinai
+    display: "<ruby>洗濯<rt>せんたく</rt></ruby>しない"
     hint: する → しない
   - type: multiple-choice
     question: Which is the correct polite negative of <ruby>勉強<rt>べんきょう</rt></ruby>する?
@@ -415,6 +457,7 @@ negative-form-irregular:
       - 練習しない
       - れんしゅうしない
       - renshuushinai
+    display: "<ruby>練習<rt>れんしゅう</rt></ruby>しない"
     hint: する → しない
   - type: free-input
     question: Convert <ruby>説明<rt>せつめい</rt></ruby>する (setsumeisuru - to explain) to negative form
@@ -422,6 +465,7 @@ negative-form-irregular:
       - 説明しない
       - せつめいしない
       - setsumeishinai
+    display: "<ruby>説明<rt>せつめい</rt></ruby>しない"
     hint: する → しない
   - type: free-input
     question: What is the polite negative of <ruby>料理<rt>りょうり</rt></ruby>する?
@@ -429,6 +473,7 @@ negative-form-irregular:
       - 料理しません
       - りょうりしません
       - ryourishimasen
+    display: "<ruby>料理<rt>りょうり</rt></ruby>しません"
     hint: 料理します → 料理しません
   - type: multiple-choice
     question: What is the negative of <ruby>来<rt>く</rt></ruby>る in casual speech?
@@ -446,6 +491,7 @@ negative-form-test:
       - 泳がない
       - およがない
       - oyoganai
+    display: "<ruby>泳<rt>およ</rt></ruby>がない"
     hint: ぐ → が (a-row), add ない
   - type: free-input
     question: Negative of <ruby>走<rt>はし</rt></ruby>る (hashiru)? (Godan!)
@@ -453,6 +499,7 @@ negative-form-test:
       - 走らない
       - はしらない
       - hashiranai
+    display: "<ruby>走<rt>はし</rt></ruby>らない"
     hint: Godan る → ら (a-row), add ない
   - type: free-input
     question: Polite negative of <ruby>食<rt>た</rt></ruby>べる?
@@ -460,6 +507,7 @@ negative-form-test:
       - 食べません
       - たべません
       - tabemasen
+    display: "<ruby>食<rt>た</rt></ruby>べません"
     hint: 食べます → 食べません
   - type: multiple-choice
     question: What is special about the negative of ある?
@@ -476,6 +524,7 @@ negative-form-test:
       - 食べない
       - たべない
       - tabenai
+    display: "<ruby>食<rt>た</rt></ruby>べない"
     hint: "Ichidan: drop る, add ない"
   - type: free-input
     question: Negative of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
@@ -483,6 +532,7 @@ negative-form-test:
       - 飲まない
       - のまない
       - nomanai
+    display: "<ruby>飲<rt>の</rt></ruby>まない"
     hint: "Godan: む → ま (a-row), add ない"
   - type: free-input
     question: Negative of する (suru - to do)?
@@ -496,6 +546,7 @@ negative-form-test:
       - 来ない
       - こない
       - konai
+    display: "<ruby>来<rt>こ</rt></ruby>ない"
     hint: "Irregular: く → こ, add ない"
   - type: free-input
     question: Negative of <ruby>書<rt>か</rt></ruby>く (kaku - to write)?
@@ -503,6 +554,7 @@ negative-form-test:
       - 書かない
       - かかない
       - kakanai
+    display: "<ruby>書<rt>か</rt></ruby>かない"
     hint: "Godan: く → か (a-row), add ない"
   - type: free-input
     question: Negative of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
@@ -510,6 +562,7 @@ negative-form-test:
       - 見ない
       - みない
       - minai
+    display: "<ruby>見<rt>み</rt></ruby>ない"
     hint: "Ichidan: drop る, add ない"
   - type: multiple-choice
     question: Which negative form is correct for <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
@@ -526,6 +579,7 @@ negative-form-test:
       - 遊ばない
       - あそばない
       - asobanai
+    display: "<ruby>遊<rt>あそ</rt></ruby>ばない"
     hint: "Godan: ぶ → ば (a-row), add ない"
   - type: free-input
     question: Polite negative of <ruby>飲<rt>の</rt></ruby>む (nomu)?
@@ -533,6 +587,7 @@ negative-form-test:
       - 飲みません
       - のみません
       - nomimasen
+    display: "<ruby>飲<rt>の</rt></ruby>みません"
     hint: 飲みます → 飲みません
   - type: free-input
     question: Negative of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
@@ -540,6 +595,7 @@ negative-form-test:
       - 話さない
       - はなさない
       - hanasanai
+    display: "<ruby>話<rt>はな</rt></ruby>さない"
     hint: "Godan: す → さ (a-row), add ない"
   - type: multiple-choice
     question: "Negative of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) is:"
@@ -556,6 +612,7 @@ negative-form-test:
       - 教えない
       - おしえない
       - oshienai
+    display: "<ruby>教<rt>おし</rt></ruby>えない"
     hint: "Ichidan: drop る, add ない"
   - type: free-input
     question: Negative of <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make)? (Godan!)
@@ -563,6 +620,7 @@ negative-form-test:
       - 作らない
       - つくらない
       - tsukuranai
+    display: "<ruby>作<rt>つく</rt></ruby>らない"
     hint: "Godan: る → ら (a-row), add ない"
   - type: free-input
     question: Negative of <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)?
@@ -570,6 +628,7 @@ negative-form-test:
       - 閉めない
       - しめない
       - shimenai
+    display: "<ruby>閉<rt>し</rt></ruby>めない"
     hint: "Ichidan: drop る, add ない"
   - type: multiple-choice
     question: Which is the correct negative of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
@@ -586,4 +645,5 @@ negative-form-test:
       - 信じない
       - しんじない
       - shinjinai
+    display: "<ruby>信<rt>しん</rt></ruby>じない"
     hint: "Ichidan: drop る, add ない"
