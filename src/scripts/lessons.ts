@@ -4,7 +4,8 @@ import yaml from 'js-yaml';
 
 const LESSONS_DIR = path.resolve('src/data/lessons');
 
-export interface Chapter {
+export interface Part {
+  id: string;
   title: string;
   startTime: number;
   endTime: number;
@@ -14,7 +15,7 @@ export interface Section {
   id: string;
   title: string;
   description: string;
-  chapters: Chapter[];
+  parts: Part[];
 }
 
 export interface Question {

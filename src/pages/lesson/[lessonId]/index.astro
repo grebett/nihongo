@@ -12,6 +12,11 @@ export function getStaticPaths() {
 
 const { lesson } = Astro.props;
 const questions = getQuestions(lesson.id);
+
+// Build a flat list of all part IDs for this lesson (used by the client script)
+const allPartIds = lesson.sections.flatMap((s) =>
+  s.parts.map((p) => p.id).concat(s.parts.length > 1 ? [`${s.id}-test`] : [])
+);
 ---
 
 <Layout title={lesson.title}>
@@ -25,23 +30,143 @@ const questions = getQuestions(lesson.id);
 
   <div class="sections-grid">
     {lesson.sections.map((section, i) => {
-      const qCount = questions[section.id]?.length ?? 0;
+      const qCount = section.parts.reduce((sum, part) => sum + (questions[part.id]?.length ?? 0), 0);
       return (
-        <a href={`/lesson/${lesson.id}/${section.id}`} class="section-card">
+        <a href={`/lesson/${lesson.id}/${section.id}`} class="section-card" data-section-id={section.id}>
           <span class="section-number">{String(i + 1).padStart(2, '0')}</span>
           <div class="section-info">
             <h2>{section.title}</h2>
             <p>{section.description}</p>
             <div class="section-meta">
-              <span>{section.chapters.length} {section.chapters.length === 1 ? 'chapter' : 'chapters'}</span>
+              <span>{section.parts.length} {section.parts.length === 1 ? 'part' : 'parts'}</span>
               <span>{qCount} {qCount === 1 ? 'question' : 'questions'}</span>
+              <span class="section-score" data-parts={JSON.stringify(section.parts.map(p => p.id))}></span>
             </div>
           </div>
         </a>
       );
     })}
   </div>
+
+  <!-- Global results -->
+  <section class="global-results" id="global-results" data-lesson-id={lesson.id} data-part-ids={JSON.stringify(allPartIds)}>
+    <h2>Results</h2>
+    <div class="global-results-stats" id="global-stats"></div>
+    <div class="global-results-wrong" id="global-wrong"></div>
+    <button class="clear-results-btn hidden" id="clear-results">Clear all results</button>
+  </section>
 </Layout>
+
+<script>
+  interface StoredResult {
+    wrong: { question: string; correctAnswer: string }[];
+    correct: number;
+    total: number;
+    timestamp: number;
+  }
+
+  const container = document.getElementById('global-results') as HTMLElement;
+  const lessonId = container?.dataset.lessonId || '';
+  const allPartIds: string[] = JSON.parse(container?.dataset.partIds || '[]');
+
+  function loadResults(): Map<string, StoredResult> {
+    const results = new Map<string, StoredResult>();
+    for (const partId of allPartIds) {
+      const raw = localStorage.getItem(`nihon-results-${lessonId}-${partId}`);
+      if (raw) {
+        results.set(partId, JSON.parse(raw));
+      }
+    }
+    return results;
+  }
+
+  function renderResults() {
+    const results = loadResults();
+    const statsEl = document.getElementById('global-stats')!;
+    const wrongEl = document.getElementById('global-wrong')!;
+    const clearBtn = document.getElementById('clear-results')!;
+
+    if (results.size === 0) {
+      statsEl.innerHTML = '<p class="no-results">No results yet. Complete some sections to see your progress here.</p>';
+      wrongEl.innerHTML = '';
+      clearBtn.classList.add('hidden');
+      container.classList.add('empty');
+      return;
+    }
+
+    container.classList.remove('empty');
+    clearBtn.classList.remove('hidden');
+
+    let totalCorrect = 0;
+    let totalQuestions = 0;
+    const allWrong: { partId: string; question: string; correctAnswer: string }[] = [];
+
+    for (const [partId, result] of results) {
+      totalCorrect += result.correct;
+      totalQuestions += result.total;
+      for (const w of result.wrong) {
+        allWrong.push({ partId, ...w });
+      }
+    }
+
+    const pct = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+    statsEl.innerHTML = `
+      <div class="stats-row">
+        <div class="stat"><span class="stat-value">${results.size}</span><span class="stat-label">sections completed</span></div>
+        <div class="stat"><span class="stat-value">${totalCorrect}/${totalQuestions}</span><span class="stat-label">correct answers</span></div>
+        <div class="stat"><span class="stat-value">${pct}%</span><span class="stat-label">accuracy</span></div>
+        <div class="stat"><span class="stat-value">${allWrong.length}</span><span class="stat-label">to review</span></div>
+      </div>
+    `;
+
+    if (allWrong.length === 0) {
+      wrongEl.innerHTML = '<p class="all-correct">All answers correct so far!</p>';
+    } else {
+      let html = '<h3>Incorrect answers to review</h3><div class="global-wrong-list">';
+      for (const w of allWrong) {
+        html += `<div class="gw-item">
+          <div class="gw-question">${w.question}</div>
+          <div class="gw-answer">${w.correctAnswer}</div>
+        </div>`;
+      }
+      html += '</div>';
+      wrongEl.innerHTML = html;
+    }
+  }
+
+  // Show per-section scores on the cards
+  function renderSectionScores() {
+    document.querySelectorAll('.section-score').forEach((el) => {
+      const partIds: string[] = JSON.parse((el as HTMLElement).dataset.parts || '[]');
+      let correct = 0, total = 0;
+      for (const pid of partIds) {
+        const raw = localStorage.getItem(`nihon-results-${lessonId}-${pid}`);
+        if (raw) {
+          const r: StoredResult = JSON.parse(raw);
+          correct += r.correct;
+          total += r.total;
+        }
+      }
+      if (total > 0) {
+        const pct = Math.round((correct / total) * 100);
+        el.textContent = `${pct}%`;
+        (el as HTMLElement).classList.add(pct === 100 ? 'score-perfect' : pct >= 70 ? 'score-good' : 'score-low');
+      }
+    });
+  }
+
+  // Clear results
+  document.getElementById('clear-results')?.addEventListener('click', () => {
+    for (const partId of allPartIds) {
+      localStorage.removeItem(`nihon-results-${lessonId}-${partId}`);
+    }
+    renderResults();
+    renderSectionScores();
+  });
+
+  renderResults();
+  renderSectionScores();
+</script>
 
 <style>
   .back {
@@ -88,6 +213,7 @@ const questions = getQuestions(lesson.id);
     padding-top: 0.1rem;
   }
 
+  .section-info { flex: 1; }
   .section-info h2 { font-size: 1.05rem; margin-bottom: 0.3rem; }
   .section-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem; }
 
@@ -97,4 +223,89 @@ const questions = getQuestions(lesson.id);
     font-size: 0.75rem;
     color: var(--text-muted);
   }
+
+  .section-score {
+    font-weight: 700;
+    margin-left: auto;
+  }
+  .section-score.score-perfect { color: var(--success); }
+  .section-score.score-good { color: #f0c040; }
+  .section-score.score-low { color: var(--error); }
+
+  /* Global results */
+  .global-results {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .global-results.empty { opacity: 0.6; }
+  .global-results h2 { font-size: 1.4rem; margin-bottom: 1.2rem; }
+
+  .no-results { color: var(--text-muted); font-size: 0.9rem; }
+  .all-correct { color: var(--success); font-weight: 600; }
+
+  .stats-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    min-width: 100px;
+  }
+  .stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .global-results-wrong h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .global-wrong-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .gw-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.6rem 0.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  .gw-question { color: var(--text-muted); }
+  .gw-answer { color: var(--accent); font-weight: 600; text-align: right; }
+
+  .clear-results-btn {
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .clear-results-btn:hover { border-color: var(--error); color: var(--error); }
+
+  .hidden { display: none; }
 </style>

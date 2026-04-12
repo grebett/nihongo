@@ -7,384 +7,277 @@ videoId: 7334YPmg5G0
 sections:
   - id: verb-groups
     title: Verb Groups
-    description: "Ichidan (ru-verbs, one stage) vs Godan (u-verbs, five stages) — the two verb classifications in modern Japanese"
-    chapters:
-      - title: Verb Groups
+    description: "Ichidan (ru-verbs, one stage) vs Godan (u-verbs, five stages) — the two verb classifications"
+    parts:
+      - id: verb-groups
+        title: Overview
         startTime: 35
         endTime: 339
 
-  - id: dictionary-form-ichidan
-    title: "Dictionary Form: Ichidan"
-    description: "The baseline/plain/casual form — just the verb as-is. Used for present, habitual, and future actions."
-    chapters:
-      - title: "Dictionary Form: Ichidan"
+  - id: dictionary-form
+    title: Dictionary Form
+    description: "The baseline/plain/casual form — used for present, habitual, and future actions"
+    parts:
+      - id: dictionary-form-ichidan
+        title: Ichidan
         startTime: 339
         endTime: 457
-
-  - id: dictionary-form-godan
-    title: "Dictionary Form: Godan"
-    description: "Dictionary form for godan verbs — ending depends on one of five vowel sounds (a, i, u, e, o)"
-    chapters:
-      - title: "Dictionary Form: Godan"
+      - id: dictionary-form-godan
+        title: Godan
         startTime: 457
         endTime: 576
 
-  - id: polite-form-ichidan
-    title: "Polite Form: Ichidan"
-    description: "Drop る, add ます — used with strangers, bosses, shops, doctors"
-    chapters:
-      - title: "Polite Form: Ichidan"
+  - id: polite-form
+    title: "Polite Form (ます)"
+    description: "Used when speaking politely — to strangers, bosses, shops, doctors"
+    parts:
+      - id: polite-form-ichidan
+        title: Ichidan
         startTime: 576
         endTime: 644
-
-  - id: polite-form-godan
-    title: "Polite Form: Godan"
-    description: "Change the final sound to い-row, then add ます"
-    chapters:
-      - title: "Polite Form: Godan"
+      - id: polite-form-godan
+        title: Godan
         startTime: 644
         endTime: 770
-
-  - id: polite-form-irregular
-    title: "Polite Form: Irregular"
-    description: "する → します, 来る → 来ます — the two exceptions you must memorize"
-    chapters:
-      - title: "Polite Form: Irregular"
+      - id: polite-form-irregular
+        title: Irregular
         startTime: 770
         endTime: 855
 
-  - id: masu-stem-ichidan
-    title: "Masu Stem: Ichidan"
-    description: "Drop る to get the stem — used as a base for たい, やすい, にくい, and more"
-    chapters:
-      - title: "Masu Stem: Ichidan"
+  - id: masu-stem
+    title: Masu Stem
+    description: "The verb stem — base for たい, やすい, にくい, and many grammar patterns"
+    parts:
+      - id: masu-stem-ichidan
+        title: Ichidan
         startTime: 855
         endTime: 911
-
-  - id: masu-stem-godan
-    title: "Masu Stem: Godan"
-    description: "Drop ます from the polite form to get the stem (聞きます → 聞き)"
-    chapters:
-      - title: "Masu Stem: Godan"
+      - id: masu-stem-godan
+        title: Godan
         startTime: 911
         endTime: 970
-
-  - id: masu-stem-irregular
-    title: "Masu Stem: Irregular"
-    description: "来る → き, する → し — drop ます from the polite form"
-    chapters:
-      - title: "Masu Stem: Irregular"
+      - id: masu-stem-irregular
+        title: Irregular
         startTime: 970
         endTime: 1005
 
-  - id: te-form-ichidan
-    title: "Te-Form: Ichidan"
-    description: "Drop る, add て — used to connect sentences, make requests, and more"
-    chapters:
-      - title: "Te-Form: Ichidan"
+  - id: te-form
+    title: "Te-Form (て)"
+    description: "Connects sentences, makes requests — base for continuous form and more"
+    parts:
+      - id: te-form-ichidan
+        title: Ichidan
         startTime: 1005
         endTime: 1124
-
-  - id: te-form-godan
-    title: "Te-Form: Godan"
-    description: "Depends on the ending sound: く→いて, ぐ→いで, す→して, む/ぶ/ぬ→んで, う/つ/る→って"
-    chapters:
-      - title: "Te-Form: Godan"
+      - id: te-form-godan
+        title: Godan
         startTime: 1124
         endTime: 1467
-
-  - id: te-form-irregular
-    title: "Te-Form: Irregular"
-    description: "する → して, 来る → 来て — use the masu stem + て"
-    chapters:
-      - title: "Te-Form: Irregular"
+      - id: te-form-irregular
+        title: Irregular
         startTime: 1467
         endTime: 1583
 
-  - id: past-tense-ichidan
-    title: "Past Tense: Ichidan"
-    description: "Replace て with た — 食べて → 食べた (I ate)"
-    chapters:
-      - title: "Past Tense: Ichidan"
+  - id: past-tense
+    title: "Past Tense (た)"
+    description: "Express completed actions — replace て with た, で with だ"
+    parts:
+      - id: past-tense-ichidan
+        title: Ichidan
         startTime: 1583
         endTime: 1662
-
-  - id: past-tense-godan
-    title: "Past Tense: Godan"
-    description: "Replace て with た, で with だ — 飲んで → 飲んだ, 書いて → 書いた"
-    chapters:
-      - title: "Past Tense: Godan"
+      - id: past-tense-godan
+        title: Godan
         startTime: 1662
         endTime: 1795
-
-  - id: past-tense-irregular
-    title: "Past Tense: Irregular"
-    description: "来る → 来た (きた, not きった!), する → した"
-    chapters:
-      - title: "Past Tense: Irregular"
+      - id: past-tense-irregular
+        title: Irregular
         startTime: 1795
         endTime: 1866
 
-  - id: continuous-form-ichidan
-    title: "Continuous Form: Ichidan"
-    description: "Te-form + いる — express ongoing actions or states (食べている = is eating)"
-    chapters:
-      - title: "Continuous Form: Ichidan"
+  - id: continuous-form
+    title: "Continuous Form (ている)"
+    description: "Ongoing actions or states — te-form + いる"
+    parts:
+      - id: continuous-form-ichidan
+        title: Ichidan
         startTime: 1866
         endTime: 2012
-
-  - id: continuous-form-godan
-    title: "Continuous Form: Godan"
-    description: "Te-form + いる — 飲んでいる (is drinking), contracted to 飲んでる in casual speech"
-    chapters:
-      - title: "Continuous Form: Godan"
+      - id: continuous-form-godan
+        title: Godan
         startTime: 2012
         endTime: 2165
-
-  - id: continuous-form-irregular
-    title: "Continuous Form: Irregular"
-    description: "して + いる = している, 来て + いる = 来ている — often contracted"
-    chapters:
-      - title: "Continuous Form: Irregular"
+      - id: continuous-form-irregular
+        title: Irregular
         startTime: 2165
         endTime: 2218
 
-  - id: negative-form-ichidan
-    title: "Negative / Nai-Form: Ichidan"
-    description: "Drop る, add ない — 食べない (don't eat), used for habits, present, and future"
-    chapters:
-      - title: "Negative / Nai-Form: Ichidan"
+  - id: negative-form
+    title: "Negative / Nai-Form (ない)"
+    description: "Express not doing something — habits, present, and future"
+    parts:
+      - id: negative-form-ichidan
+        title: Ichidan
         startTime: 2218
         endTime: 2366
-
-  - id: negative-form-godan
-    title: "Negative / Nai-Form: Godan"
-    description: "Change to あ-row, add ない — 飲む → 飲まない, 書く → 書かない"
-    chapters:
-      - title: "Negative / Nai-Form: Godan"
+      - id: negative-form-godan
+        title: Godan
         startTime: 2366
         endTime: 2557
-
-  - id: negative-form-irregular
-    title: "Negative / Nai-Form: Irregular"
-    description: "する → しない, 来る → 来ない (こない), plus the exception: ある → ない"
-    chapters:
-      - title: "Negative / Nai-Form: Irregular"
+      - id: negative-form-irregular
+        title: Irregular
         startTime: 2557
         endTime: 2667
 
-  - id: past-negative-ichidan
-    title: "Past Negative: Ichidan"
-    description: "Replace ない with なかった — 食べなかった (didn't eat), polite: 食べませんでした"
-    chapters:
-      - title: "Past Negative: Ichidan"
+  - id: past-negative
+    title: "Past Negative (なかった)"
+    description: "Didn't do something — replace ない with なかった"
+    parts:
+      - id: past-negative-ichidan
+        title: Ichidan
         startTime: 2667
         endTime: 2748
-
-  - id: past-negative-godan
-    title: "Past Negative: Godan"
-    description: "Replace ない with なかった — 飲まなかった (didn't drink)"
-    chapters:
-      - title: "Past Negative: Godan"
+      - id: past-negative-godan
+        title: Godan
         startTime: 2748
         endTime: 2804
-
-  - id: past-negative-irregular
-    title: "Past Negative: Irregular"
-    description: "しなかった (didn't do), 来なかった (didn't come)"
-    chapters:
-      - title: "Past Negative: Irregular"
+      - id: past-negative-irregular
+        title: Irregular
         startTime: 2804
         endTime: 2824
 
-  - id: passive-form-ichidan
-    title: "Passive Form: Ichidan"
-    description: "Drop る, add られる — 食べられる (is eaten). Used for neutral, regretful, or respectful statements"
-    chapters:
-      - title: "Passive Form: Ichidan"
+  - id: passive-form
+    title: "Passive Form (られる/れる)"
+    description: "Something is done — neutral, regretful, or respectful language"
+    parts:
+      - id: passive-form-ichidan
+        title: Ichidan
         startTime: 2824
         endTime: 2963
-
-  - id: passive-form-godan
-    title: "Passive Form: Godan"
-    description: "Change to あ-row, add れる — 飲まれる (is drunk), 書かれる (is written)"
-    chapters:
-      - title: "Passive Form: Godan"
+      - id: passive-form-godan
+        title: Godan
         startTime: 2963
         endTime: 3090
-
-  - id: passive-form-irregular
-    title: "Passive Form: Irregular"
-    description: "する → される, 来る → 来られる (こられる)"
-    chapters:
-      - title: "Passive Form: Irregular"
+      - id: passive-form-irregular
+        title: Irregular
         startTime: 3090
         endTime: 3169
 
-  - id: causative-form-ichidan
-    title: "Causative Form: Ichidan"
-    description: "Drop る, add させる — 食べさせる (make/let eat)"
-    chapters:
-      - title: "Causative Form: Ichidan"
+  - id: causative-form
+    title: "Causative Form (させる/せる)"
+    description: "Make or let someone do something"
+    parts:
+      - id: causative-form-ichidan
+        title: Ichidan
         startTime: 3169
         endTime: 3274
-
-  - id: causative-form-godan
-    title: "Causative Form: Godan"
-    description: "Change to あ-row, add せる — 飲ませる (make/let drink), 聞かせる (make/let listen)"
-    chapters:
-      - title: "Causative Form: Godan"
+      - id: causative-form-godan
+        title: Godan
         startTime: 3274
         endTime: 3392
-
-  - id: causative-form-irregular
-    title: "Causative Form: Irregular"
-    description: "する → させる, 来る → 来させる (こさせる)"
-    chapters:
-      - title: "Causative Form: Irregular"
+      - id: causative-form-irregular
+        title: Irregular
         startTime: 3392
         endTime: 3459
 
-  - id: causative-passive-ichidan
-    title: "Causative-Passive: Ichidan"
-    description: "Drop る, add させられる — 食べさせられる (was made to eat)"
-    chapters:
-      - title: "Causative-Passive: Ichidan"
+  - id: causative-passive
+    title: Causative-Passive Form
+    description: "Being made to do something by someone — causative + passive combined"
+    parts:
+      - id: causative-passive-ichidan
+        title: Ichidan
         startTime: 3459
         endTime: 3593
-
-  - id: causative-passive-godan
-    title: "Causative-Passive: Godan"
-    description: "Change to あ-row, add せられる (or shorter させる form for す-ending verbs)"
-    chapters:
-      - title: "Causative-Passive: Godan"
+      - id: causative-passive-godan
+        title: Godan
         startTime: 3593
         endTime: 3790
-
-  - id: causative-passive-irregular
-    title: "Causative-Passive: Irregular"
-    description: "する → させられる, 来る → 来させられる (extremely rare)"
-    chapters:
-      - title: "Causative-Passive: Irregular"
+      - id: causative-passive-irregular
+        title: Irregular
         startTime: 3790
         endTime: 3861
 
-  - id: imperative-form-ichidan
-    title: "Imperative Form: Ichidan"
-    description: "Replace る with ろ — 食べろ (Eat!), やめろ (Stop it!) — very strong/forceful"
-    chapters:
-      - title: "Imperative Form: Ichidan"
+  - id: imperative-form
+    title: "Imperative Form (命令形)"
+    description: "Strong commands — ordering someone to do something"
+    parts:
+      - id: imperative-form-ichidan
+        title: Ichidan
         startTime: 3861
         endTime: 3972
-
-  - id: imperative-form-godan
-    title: "Imperative Form: Godan"
-    description: "Change to え-row — 言え (Say it!), 聞け (Listen!), 待て (Wait!)"
-    chapters:
-      - title: "Imperative Form: Godan"
+      - id: imperative-form-godan
+        title: Godan
         startTime: 3972
         endTime: 4057
-
-  - id: imperative-form-irregular
-    title: "Imperative Form: Irregular"
-    description: "する → しろ, 来る → 来い (こい) — come! / do it!"
-    chapters:
-      - title: "Imperative Form: Irregular"
+      - id: imperative-form-irregular
+        title: Irregular
         startTime: 4057
         endTime: 4125
 
-  - id: conditional-ba-ichidan
-    title: "Conditional Ba Form: Ichidan"
-    description: "Drop る, add れば — 食べれば (if you eat). Hypothetical conditions."
-    chapters:
-      - title: "Conditional Ba Form: Ichidan"
+  - id: conditional-ba
+    title: "Conditional Ba Form (ば)"
+    description: "If/when — hypothetical conditions"
+    parts:
+      - id: conditional-ba-ichidan
+        title: Ichidan
         startTime: 4125
         endTime: 4222
-
-  - id: conditional-ba-godan
-    title: "Conditional Ba Form: Godan"
-    description: "Change to え-row, add ば — 飲めば (if you drink). Same conjugation as imperative + ば"
-    chapters:
-      - title: "Conditional Ba Form: Godan"
+      - id: conditional-ba-godan
+        title: Godan
         startTime: 4222
         endTime: 4370
-
-  - id: conditional-ba-irregular
-    title: "Conditional Ba Form: Irregular"
-    description: "する → すれば, 来る → 来れば (くれば)"
-    chapters:
-      - title: "Conditional Ba Form: Irregular"
+      - id: conditional-ba-irregular
+        title: Irregular
         startTime: 4370
         endTime: 4452
 
-  - id: conditional-tara-ichidan
-    title: "Conditional Tara Form: Ichidan"
-    description: "Past tense + ら — 食べたら (if/when/after eating). Works for hypotheticals and actual conditions."
-    chapters:
-      - title: "Conditional Tara Form: Ichidan"
+  - id: conditional-tara
+    title: "Conditional Tara Form (たら)"
+    description: "If/when/after — hypotheticals and actual conditions"
+    parts:
+      - id: conditional-tara-ichidan
+        title: Ichidan
         startTime: 4452
         endTime: 4545
-
-  - id: conditional-tara-godan
-    title: "Conditional Tara Form: Godan"
-    description: "Past tense + ら — 飲んだら (if/when/after drinking), 書いたら (if/when/after writing)"
-    chapters:
-      - title: "Conditional Tara Form: Godan"
+      - id: conditional-tara-godan
+        title: Godan
         startTime: 4545
         endTime: 4606
-
-  - id: conditional-tara-irregular
-    title: "Conditional Tara Form: Irregular"
-    description: "する → したら, 来る → 来たら (きたら)"
-    chapters:
-      - title: "Conditional Tara Form: Irregular"
+      - id: conditional-tara-irregular
+        title: Irregular
         startTime: 4606
         endTime: 4641
 
-  - id: potential-form-ichidan
-    title: "Potential Form: Ichidan"
-    description: "Drop る, add られる — 食べられる (can eat). Same form as passive for ichidan verbs!"
-    chapters:
-      - title: "Potential Form: Ichidan"
+  - id: potential-form
+    title: "Potential Form (可能形)"
+    description: "To be able to do something — same as passive for ichidan!"
+    parts:
+      - id: potential-form-ichidan
+        title: Ichidan
         startTime: 4641
         endTime: 4849
-
-  - id: potential-form-godan
-    title: "Potential Form: Godan"
-    description: "Change to え-row, add る — 飲める (can drink), 書ける (can write)"
-    chapters:
-      - title: "Potential Form: Godan"
+      - id: potential-form-godan
+        title: Godan
         startTime: 4849
         endTime: 4963
-
-  - id: potential-form-irregular
-    title: "Potential Form: Irregular"
-    description: "する → できる (completely different word!), 来る → 来られる (こられる)"
-    chapters:
-      - title: "Potential Form: Irregular"
+      - id: potential-form-irregular
+        title: Irregular
         startTime: 4963
         endTime: 5061
 
-  - id: volitional-form-ichidan
-    title: "Volitional Form: Ichidan"
-    description: "Drop る, add よう — 食べよう (let's eat!). Shows will or volition."
-    chapters:
-      - title: "Volitional Form: Ichidan"
+  - id: volitional-form
+    title: "Volitional Form (意志形)"
+    description: "Showing will — often translated as 'let's'"
+    parts:
+      - id: volitional-form-ichidan
+        title: Ichidan
         startTime: 5061
         endTime: 5156
-
-  - id: volitional-form-godan
-    title: "Volitional Form: Godan"
-    description: "Change to お-row, add う — 飲もう (let's drink!). Polite: masu stem + ましょう"
-    chapters:
-      - title: "Volitional Form: Godan"
+      - id: volitional-form-godan
+        title: Godan
         startTime: 5156
         endTime: 5230
-
-  - id: volitional-form-irregular
-    title: "Volitional Form: Irregular"
-    description: "する → しよう, 来る → 来よう (こよう)"
-    chapters:
-      - title: "Volitional Form: Irregular"
+      - id: volitional-form-irregular
+        title: Irregular
         startTime: 5230
         endTime: 5305

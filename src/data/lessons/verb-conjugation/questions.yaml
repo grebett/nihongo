@@ -19,6 +19,21 @@ verb-groups:
     options: ["飲む (nomu)", "書く (kaku)", "食べる (taberu)", "話す (hanasu)"]
     answer: 2
     hint: "Ichidan verbs end in -eru or -iru"
+  - type: multiple-choice
+    question: "Which verb is godan despite looking like ichidan?"
+    options: ["食べる (taberu)", "寝る (neru)", "走る (hashiru)", "起きる (okiru)"]
+    answer: 2
+    hint: "走る ends in -iru but conjugates as godan"
+  - type: multiple-choice
+    question: "する and 来る belong to which group?"
+    options: ["Ichidan", "Godan", "Irregular", "Both ichidan and godan"]
+    answer: 2
+    hint: "They follow their own unique conjugation patterns"
+  - type: multiple-choice
+    question: "Which ending is NOT a godan verb ending?"
+    options: ["む (mu)", "く (ku)", "ず (zu)", "す (su)"]
+    answer: 2
+    hint: "Godan endings are: う, く, ぐ, す, つ, ぬ, ぶ, む, る"
 
 dictionary-form-ichidan:
   - type: multiple-choice
@@ -39,6 +54,18 @@ dictionary-form-ichidan:
     options: ["Change the last vowel", "Drop る and add the new ending", "Add after the verb", "Change the whole verb"]
     answer: 1
     hint: "One stage — just drop る and add"
+  - type: free-input
+    question: "What is the dictionary form of 'to sleep'?"
+    answers: ["寝る", "ねる", "neru"]
+    hint: "An ichidan verb ending in -eru"
+  - type: free-input
+    question: "What is the dictionary form of 'to wake up'?"
+    answers: ["起きる", "おきる", "okiru"]
+    hint: "An ichidan verb ending in -iru"
+  - type: free-input
+    question: "What is the dictionary form of 'to teach'?"
+    answers: ["教える", "おしえる", "oshieru"]
+    hint: "An ichidan verb ending in -eru"
 
 dictionary-form-godan:
   - type: free-input
@@ -58,6 +85,22 @@ dictionary-form-godan:
     options: ["Just dropping る", "Five vowel sounds (a, i, u, e, o)", "Adding ます directly", "Changing the first syllable"]
     answer: 1
     hint: "The う-row (dictionary) changes to あ, い, え, お rows depending on the form"
+  - type: free-input
+    question: "What is the dictionary form of 'to swim'?"
+    answers: ["泳ぐ", "およぐ", "oyogu"]
+    hint: "A godan verb ending in ぐ"
+  - type: free-input
+    question: "What is the dictionary form of 'to play'?"
+    answers: ["遊ぶ", "あそぶ", "asobu"]
+    hint: "A godan verb ending in ぶ"
+  - type: free-input
+    question: "What is the dictionary form of 'to walk'?"
+    answers: ["歩く", "あるく", "aruku"]
+    hint: "A godan verb ending in く"
+  - type: free-input
+    question: "What is the dictionary form of 'to buy'?"
+    answers: ["買う", "かう", "kau"]
+    hint: "A godan verb ending in う"
 
 polite-form-ichidan:
   - type: free-input
@@ -72,6 +115,19 @@ polite-form-ichidan:
     question: "Convert 起きる (okiru - to wake up) to polite form"
     answers: ["起きます", "おきます", "okimasu"]
     hint: "Drop る, add ます"
+  - type: free-input
+    question: "Convert 寝る (neru - to sleep) to polite form"
+    answers: ["寝ます", "ねます", "nemasu"]
+    hint: "Drop る, add ます"
+  - type: free-input
+    question: "Convert 教える (oshieru - to teach) to polite form"
+    answers: ["教えます", "おしえます", "oshiemasu"]
+    hint: "Drop る, add ます"
+  - type: multiple-choice
+    question: "What is the polite negative of 食べる (taberu)?"
+    options: ["食べません", "食べないます", "食べますない", "食べなます"]
+    answer: 0
+    hint: "Replace ます with ません"
 
 polite-form-godan:
   - type: free-input
@@ -95,6 +151,22 @@ polite-form-godan:
     options: ["あ-row (a)", "い-row (i)", "う-row (u)", "え-row (e)"]
     answer: 1
     hint: "む→み, く→き, す→し, つ→ち, etc."
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu - to swim) to polite form"
+    answers: ["泳ぎます", "およぎます", "oyogimasu"]
+    hint: "ぐ → ぎ (i-row), then add ます"
+  - type: free-input
+    question: "Convert 遊ぶ (asobu - to play) to polite form"
+    answers: ["遊びます", "あそびます", "asobimasu"]
+    hint: "ぶ → び (i-row), then add ます"
+  - type: free-input
+    question: "Convert 走る (hashiru - to run) to polite form"
+    answers: ["走ります", "はしります", "hashirimasu"]
+    hint: "Godan verb! る → り (i-row), then add ます"
+  - type: free-input
+    question: "Convert 買う (kau - to buy) to polite form"
+    answers: ["買います", "かいます", "kaimasu"]
+    hint: "う → い (i-row), then add ます"
 
 polite-form-irregular:
   - type: free-input
@@ -110,6 +182,14 @@ polite-form-irregular:
     options: ["They are rarely used", "They don't follow ichidan or godan rules", "They can't be conjugated", "They are only used in casual speech"]
     answer: 1
     hint: "They have their own unique conjugation patterns"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru - to study) to polite form"
+    answers: ["勉強します", "べんきょうします", "benkyoushimasu"]
+    hint: "する verb — conjugate the する part → します"
+  - type: free-input
+    question: "Convert 料理する (ryourisuru - to cook) to polite form"
+    answers: ["料理します", "りょうりします", "ryourishimasu"]
+    hint: "する verb — conjugate the する part → します"
 
 masu-stem-ichidan:
   - type: free-input
@@ -125,6 +205,18 @@ masu-stem-ichidan:
     options: ["The dictionary form", "The dictionary form minus る", "The te-form", "The nai-form"]
     answer: 1
     hint: "食べる → 食べ, 見る → 見"
+  - type: free-input
+    question: "What is the masu stem of 寝る (neru)?"
+    answers: ["寝", "ね", "ne"]
+    hint: "Drop ます from 寝ます → 寝"
+  - type: free-input
+    question: "What is the masu stem of 教える (oshieru)?"
+    answers: ["教え", "おしえ", "oshie"]
+    hint: "Drop ます from 教えます → 教え"
+  - type: free-input
+    question: "What is the masu stem of 起きる (okiru)?"
+    answers: ["起き", "おき", "oki"]
+    hint: "Drop ます from 起きます → 起き"
 
 masu-stem-godan:
   - type: free-input
@@ -145,6 +237,22 @@ masu-stem-godan:
     options: ["Hard to do", "Easy to do", "Want to do", "Able to do"]
     answer: 1
     hint: "読みやすい = easy to read"
+  - type: free-input
+    question: "What is the masu stem of 泳ぐ (oyogu)?"
+    answers: ["泳ぎ", "およぎ", "oyogi"]
+    hint: "Drop ます from 泳ぎます → 泳ぎ"
+  - type: free-input
+    question: "What is the masu stem of 話す (hanasu)?"
+    answers: ["話し", "はなし", "hanashi"]
+    hint: "Drop ます from 話します → 話し"
+  - type: free-input
+    question: "What is the masu stem of 買う (kau)?"
+    answers: ["買い", "かい", "kai"]
+    hint: "Drop ます from 買います → 買い"
+  - type: free-input
+    question: "How do you say 'want to swim' using 泳ぐ?"
+    answers: ["泳ぎたい", "およぎたい", "oyogitai"]
+    hint: "Masu stem 泳ぎ + たい"
 
 masu-stem-irregular:
   - type: free-input
@@ -159,6 +267,14 @@ masu-stem-irregular:
     question: "How do you say 'want to do' using する?"
     answers: ["したい", "shitai"]
     hint: "Masu stem し + たい"
+  - type: free-input
+    question: "How do you say 'want to come' using 来る?"
+    answers: ["来たい", "きたい", "kitai"]
+    hint: "Masu stem き + たい"
+  - type: free-input
+    question: "How do you say 'want to study' using 勉強する?"
+    answers: ["勉強したい", "べんきょうしたい", "benkyoushitai"]
+    hint: "Masu stem 勉強し + たい"
 
 te-form-ichidan:
   - type: free-input
@@ -174,6 +290,18 @@ te-form-ichidan:
     options: ["Only make requests", "Only express past tense", "Connect sentences, make requests, and more", "Only talk about habits"]
     answer: 2
     hint: "見て (look!), 食べてください (please eat), 食べて寝た (ate and slept)"
+  - type: free-input
+    question: "Convert 寝る (neru - to sleep) to te-form"
+    answers: ["寝て", "ねて", "nete"]
+    hint: "Drop る, add て"
+  - type: free-input
+    question: "Convert 起きる (okiru - to wake up) to te-form"
+    answers: ["起きて", "おきて", "okite"]
+    hint: "Drop る, add て"
+  - type: free-input
+    question: "Convert 教える (oshieru - to teach) to te-form"
+    answers: ["教えて", "おしえて", "oshiete"]
+    hint: "Drop る, add て"
 
 te-form-godan:
   - type: free-input
@@ -213,6 +341,22 @@ te-form-godan:
     options: ["く and ぐ", "む, ぶ, and ぬ", "す", "う, つ, and る"]
     answer: 1
     hint: "飲む→飲んで, 遊ぶ→遊んで, 死ぬ→死んで"
+  - type: free-input
+    question: "Convert 走る (hashiru - to run) to te-form (Godan!)"
+    answers: ["走って", "はしって", "hashitte"]
+    hint: "Godan る → って"
+  - type: free-input
+    question: "Convert 歩く (aruku - to walk) to te-form"
+    answers: ["歩いて", "あるいて", "aruite"]
+    hint: "く → いて"
+  - type: free-input
+    question: "Convert 立つ (tatsu - to stand) to te-form"
+    answers: ["立って", "たって", "tatte"]
+    hint: "つ → って"
+  - type: free-input
+    question: "Convert 笑う (warau - to laugh) to te-form"
+    answers: ["笑って", "わらって", "waratte"]
+    hint: "う → って"
 
 te-form-irregular:
   - type: free-input
@@ -228,6 +372,15 @@ te-form-irregular:
     options: ["勉強して", "勉強すて", "勉強しって", "勉強さて"]
     answer: 0
     hint: "Just conjugate the する part → して"
+  - type: free-input
+    question: "Convert 料理する (ryourisuru - to cook) to te-form"
+    answers: ["料理して", "りょうりして", "ryourishite"]
+    hint: "する verb — して"
+  - type: multiple-choice
+    question: "What is the te-form of 行く (iku - to go)?"
+    options: ["行いて", "行って", "行きて", "行して"]
+    answer: 1
+    hint: "Exception! 行く is a special case — it becomes 行って, not 行いて"
 
 past-tense-ichidan:
   - type: free-input
@@ -242,6 +395,18 @@ past-tense-ichidan:
     question: "What is the polite past of 食べる?"
     answers: ["食べました", "たべました", "tabemashita"]
     hint: "Replace ます with ました"
+  - type: free-input
+    question: "Convert 寝る (neru - to sleep) to past tense"
+    answers: ["寝た", "ねた", "neta"]
+    hint: "Te-form 寝て → replace て with た"
+  - type: free-input
+    question: "Convert 教える (oshieru - to teach) to past tense"
+    answers: ["教えた", "おしえた", "oshieta"]
+    hint: "Te-form 教えて → replace て with た"
+  - type: free-input
+    question: "Convert 起きる (okiru - to wake up) to past tense"
+    answers: ["起きた", "おきた", "okita"]
+    hint: "Te-form 起きて → replace て with た"
 
 past-tense-godan:
   - type: multiple-choice
@@ -265,6 +430,22 @@ past-tense-godan:
     question: "Convert 読む (yomu) to past tense"
     answers: ["読んだ", "よんだ", "yonda"]
     hint: "読んで → 読んだ"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu - to swim) to past tense"
+    answers: ["泳いだ", "およいだ", "oyoida"]
+    hint: "泳いで → 泳いだ (で→だ)"
+  - type: free-input
+    question: "Convert 話す (hanasu - to speak) to past tense"
+    answers: ["話した", "はなした", "hanashita"]
+    hint: "話して → 話した"
+  - type: free-input
+    question: "Convert 遊ぶ (asobu - to play) to past tense"
+    answers: ["遊んだ", "あそんだ", "asonda"]
+    hint: "遊んで → 遊んだ (で→だ)"
+  - type: free-input
+    question: "Convert 買う (kau - to buy) to past tense"
+    answers: ["買った", "かった", "katta"]
+    hint: "買って → 買った"
 
 past-tense-irregular:
   - type: free-input
@@ -279,6 +460,14 @@ past-tense-irregular:
     question: "What is the polite past of 来る?"
     answers: ["来ました", "きました", "kimashita"]
     hint: "Masu stem き + ました"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to past tense"
+    answers: ["勉強した", "べんきょうした", "benkyoushita"]
+    hint: "して → した"
+  - type: free-input
+    question: "What is the polite past of する?"
+    answers: ["しました", "shimashita"]
+    hint: "します → しました"
 
 continuous-form-ichidan:
   - type: multiple-choice
@@ -294,6 +483,18 @@ continuous-form-ichidan:
     question: "How do you say 'is looking' using 見る?"
     answers: ["見ている", "みている", "miteiru"]
     hint: "Te-form 見て + いる"
+  - type: free-input
+    question: "How do you say 'is sleeping' using 寝る?"
+    answers: ["寝ている", "ねている", "neteiru"]
+    hint: "Te-form 寝て + いる"
+  - type: free-input
+    question: "How do you say 'is teaching' using 教える?"
+    answers: ["教えている", "おしえている", "oshieteiru"]
+    hint: "Te-form 教えて + いる"
+  - type: free-input
+    question: "What is the polite continuous form of 食べる?"
+    answers: ["食べています", "たべています", "tabeteimasu"]
+    hint: "Te-form 食べて + います"
 
 continuous-form-godan:
   - type: free-input
@@ -309,6 +510,18 @@ continuous-form-godan:
     options: ["てる", "たる", "とる", "てく"]
     answer: 0
     hint: "飲んでいる → 飲んでる"
+  - type: free-input
+    question: "How do you say 'is swimming' using 泳ぐ?"
+    answers: ["泳いでいる", "およいでいる", "oyoideiru"]
+    hint: "Te-form 泳いで + いる"
+  - type: free-input
+    question: "How do you say 'is walking' using 歩く?"
+    answers: ["歩いている", "あるいている", "aruiteiru"]
+    hint: "Te-form 歩いて + いる"
+  - type: free-input
+    question: "How do you say 'is speaking' using 話す?"
+    answers: ["話している", "はなしている", "hanashiteiru"]
+    hint: "Te-form 話して + いる"
 
 continuous-form-irregular:
   - type: free-input
@@ -322,6 +535,18 @@ continuous-form-irregular:
   - type: free-input
     question: "What is the casual contraction of している?"
     answers: ["してる", "shiteru"]
+    hint: "Drop the い"
+  - type: free-input
+    question: "How do you say 'is studying' using 勉強する?"
+    answers: ["勉強している", "べんきょうしている", "benkyoushiteiru"]
+    hint: "勉強して + いる"
+  - type: free-input
+    question: "How do you say 'is cooking' using 料理する?"
+    answers: ["料理している", "りょうりしている", "ryourishiteiru"]
+    hint: "料理して + いる"
+  - type: free-input
+    question: "What is the casual contraction of 来ている?"
+    answers: ["来てる", "きてる", "kiteru"]
     hint: "Drop the い"
 
 negative-form-ichidan:
@@ -342,6 +567,18 @@ negative-form-ichidan:
     options: ["Only present actions", "Only future actions", "Habits, present, and future actions", "Only past actions"]
     answer: 2
     hint: "I don't eat meat (habit) / I'm not eating now / I won't eat tomorrow"
+  - type: free-input
+    question: "Convert 寝る (neru - to sleep) to negative form"
+    answers: ["寝ない", "ねない", "nenai"]
+    hint: "Drop る, add ない"
+  - type: free-input
+    question: "Convert 教える (oshieru - to teach) to negative form"
+    answers: ["教えない", "おしえない", "oshienai"]
+    hint: "Drop る, add ない"
+  - type: free-input
+    question: "What is the polite negative of 見る?"
+    answers: ["見ません", "みません", "mimasen"]
+    hint: "見ます → 見ません"
 
 negative-form-godan:
   - type: free-input
@@ -364,6 +601,22 @@ negative-form-godan:
     question: "Convert 待つ (matsu) to negative form"
     answers: ["待たない", "またない", "matanai"]
     hint: "つ → た (a-row), add ない"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu - to swim) to negative form"
+    answers: ["泳がない", "およがない", "oyoganai"]
+    hint: "ぐ → が (a-row), add ない"
+  - type: free-input
+    question: "Convert 遊ぶ (asobu - to play) to negative form"
+    answers: ["遊ばない", "あそばない", "asobanai"]
+    hint: "ぶ → ば (a-row), add ない"
+  - type: free-input
+    question: "Convert 買う (kau - to buy) to negative form"
+    answers: ["買わない", "かわない", "kawanai"]
+    hint: "う → わ (a-row), add ない"
+  - type: free-input
+    question: "Convert 走る (hashiru - to run) to negative form (Godan!)"
+    answers: ["走らない", "はしらない", "hashiranai"]
+    hint: "Godan る → ら (a-row), add ない"
 
 negative-form-irregular:
   - type: free-input
@@ -382,6 +635,18 @@ negative-form-irregular:
     question: "What is the polite negative of ある?"
     answers: ["ありません", "arimasen"]
     hint: "ある → あります → ありません"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to negative form"
+    answers: ["勉強しない", "べんきょうしない", "benkyoushinai"]
+    hint: "する → しない"
+  - type: free-input
+    question: "Convert 料理する (ryourisuru) to negative form"
+    answers: ["料理しない", "りょうりしない", "ryourishinai"]
+    hint: "する → しない"
+  - type: free-input
+    question: "What is the polite negative of 来る?"
+    answers: ["来ません", "きません", "kimasen"]
+    hint: "来ます → 来ません"
 
 past-negative-ichidan:
   - type: free-input
@@ -396,6 +661,18 @@ past-negative-ichidan:
     question: "What is the polite past negative of 食べる?"
     answers: ["食べませんでした", "たべませんでした", "tabemasendeshita"]
     hint: "食べません + でした"
+  - type: free-input
+    question: "Convert 寝る (neru) to past negative"
+    answers: ["寝なかった", "ねなかった", "nenakatta"]
+    hint: "寝ない → 寝なかった"
+  - type: free-input
+    question: "Convert 起きる (okiru) to past negative"
+    answers: ["起きなかった", "おきなかった", "okinakatta"]
+    hint: "起きない → 起きなかった"
+  - type: free-input
+    question: "Convert 教える (oshieru) to past negative"
+    answers: ["教えなかった", "おしえなかった", "oshienakatta"]
+    hint: "教えない → 教えなかった"
 
 past-negative-godan:
   - type: free-input
@@ -410,6 +687,18 @@ past-negative-godan:
     question: "Convert 書く (kaku) to past negative"
     answers: ["書かなかった", "かかなかった", "kakanakatta"]
     hint: "書かない → 書かなかった"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu) to past negative"
+    answers: ["泳がなかった", "およがなかった", "oyoganakatta"]
+    hint: "泳がない → 泳がなかった"
+  - type: free-input
+    question: "Convert 話す (hanasu) to past negative"
+    answers: ["話さなかった", "はなさなかった", "hanasanakatta"]
+    hint: "話さない → 話さなかった"
+  - type: free-input
+    question: "Convert 買う (kau) to past negative"
+    answers: ["買わなかった", "かわなかった", "kawanakatta"]
+    hint: "買わない → 買わなかった"
 
 past-negative-irregular:
   - type: free-input
@@ -420,6 +709,18 @@ past-negative-irregular:
     question: "Convert 来る (kuru) to past negative"
     answers: ["来なかった", "こなかった", "konakatta"]
     hint: "来ない → 来なかった"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to past negative"
+    answers: ["勉強しなかった", "べんきょうしなかった", "benkyoushinakatta"]
+    hint: "しない → しなかった"
+  - type: free-input
+    question: "What is the polite past negative of する?"
+    answers: ["しませんでした", "shimasendeshita"]
+    hint: "しません + でした"
+  - type: free-input
+    question: "What is the polite past negative of 来る?"
+    answers: ["来ませんでした", "きませんでした", "kimasendeshita"]
+    hint: "来ません + でした"
 
 passive-form-ichidan:
   - type: free-input
@@ -435,6 +736,18 @@ passive-form-ichidan:
     options: ["Only regretful actions", "Only neutral statements", "Regretful, neutral, or respectful/honorific statements", "Only commands"]
     answer: 2
     hint: "It has three nuances depending on context"
+  - type: free-input
+    question: "Convert 寝る (neru - to sleep) to passive form"
+    answers: ["寝られる", "ねられる", "nerareru"]
+    hint: "Drop る, add られる"
+  - type: free-input
+    question: "Convert 教える (oshieru - to teach) to passive form"
+    answers: ["教えられる", "おしえられる", "oshierareru"]
+    hint: "Drop る, add られる"
+  - type: free-input
+    question: "Convert 起きる (okiru - to wake up) to passive form"
+    answers: ["起きられる", "おきられる", "okirareru"]
+    hint: "Drop る, add られる"
 
 passive-form-godan:
   - type: free-input
@@ -449,6 +762,18 @@ passive-form-godan:
     question: "Convert 聞く (kiku) to passive form"
     answers: ["聞かれる", "きかれる", "kikareru"]
     hint: "く → か (a-row), add れる"
+  - type: free-input
+    question: "Convert 話す (hanasu - to speak) to passive form"
+    answers: ["話される", "はなされる", "hanasareru"]
+    hint: "す → さ (a-row), add れる"
+  - type: free-input
+    question: "Convert 買う (kau - to buy) to passive form"
+    answers: ["買われる", "かわれる", "kawareru"]
+    hint: "う → わ (a-row), add れる"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu - to swim) to passive form"
+    answers: ["泳がれる", "およがれる", "oyogareru"]
+    hint: "ぐ → が (a-row), add れる"
 
 passive-form-irregular:
   - type: free-input
@@ -459,6 +784,15 @@ passive-form-irregular:
     question: "Convert 来る (kuru) to passive form"
     answers: ["来られる", "こられる", "korareru"]
     hint: "く → こ, add られる"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to passive form"
+    answers: ["勉強される", "べんきょうされる", "benkyousareru"]
+    hint: "する → される"
+  - type: multiple-choice
+    question: "The passive of 来る (kuru) looks the same as its:"
+    options: ["Causative form", "Te-form", "Potential form", "Volitional form"]
+    answer: 2
+    hint: "来られる = was come to (passive) OR can come (potential)"
 
 causative-form-ichidan:
   - type: free-input
@@ -474,6 +808,18 @@ causative-form-ichidan:
     options: ["Only 'to make someone do'", "Only 'to let someone do'", "Both 'make' and 'let' (depends on context)", "To be able to do"]
     answer: 2
     hint: "食べさせる = make eat OR let eat"
+  - type: free-input
+    question: "Convert 寝る (neru - to sleep) to causative form"
+    answers: ["寝させる", "ねさせる", "nesaseru"]
+    hint: "Drop る, add させる"
+  - type: free-input
+    question: "Convert 起きる (okiru - to wake up) to causative form"
+    answers: ["起きさせる", "おきさせる", "okisaseru"]
+    hint: "Drop る, add させる"
+  - type: free-input
+    question: "Convert 教える (oshieru - to teach) to causative form"
+    answers: ["教えさせる", "おしえさせる", "oshiesaseru"]
+    hint: "Drop る, add させる"
 
 causative-form-godan:
   - type: free-input
@@ -492,6 +838,18 @@ causative-form-godan:
     question: "Convert 言う (iu - to say) to causative form"
     answers: ["言わせる", "いわせる", "iwaseru"]
     hint: "う → わ (a-row), add せる"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu - to swim) to causative form"
+    answers: ["泳がせる", "およがせる", "oyogaseru"]
+    hint: "ぐ → が (a-row), add せる"
+  - type: free-input
+    question: "Convert 話す (hanasu - to speak) to causative form"
+    answers: ["話させる", "はなさせる", "hanasaseru"]
+    hint: "す → さ (a-row), add せる"
+  - type: free-input
+    question: "Convert 走る (hashiru - to run) to causative form (Godan!)"
+    answers: ["走らせる", "はしらせる", "hashiraseru"]
+    hint: "Godan る → ら (a-row), add せる"
 
 causative-form-irregular:
   - type: free-input
@@ -502,6 +860,14 @@ causative-form-irregular:
     question: "Convert 来る (kuru) to causative form"
     answers: ["来させる", "こさせる", "kosaseru"]
     hint: "く → こ, add させる — careful, it's こさせる not きさせる!"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to causative form"
+    answers: ["勉強させる", "べんきょうさせる", "benkyousaseru"]
+    hint: "する → させる"
+  - type: free-input
+    question: "Convert 料理する (ryourisuru) to causative form"
+    answers: ["料理させる", "りょうりさせる", "ryourisaseru"]
+    hint: "する → させる"
 
 causative-passive-ichidan:
   - type: free-input
@@ -513,6 +879,14 @@ causative-passive-ichidan:
     options: ["I eat", "I make someone eat", "I was made to eat", "I can eat"]
     answer: 2
     hint: "Causative (make do) + passive (by someone) = was made to do"
+  - type: free-input
+    question: "Convert 見る (miru) to causative-passive form"
+    answers: ["見させられる", "みさせられる", "misaserareru"]
+    hint: "Drop る, add させられる"
+  - type: free-input
+    question: "Convert 寝る (neru) to causative-passive form"
+    answers: ["寝させられる", "ねさせられる", "nesaserareru"]
+    hint: "Drop る, add させられる — was made to sleep"
 
 causative-passive-godan:
   - type: free-input
@@ -527,6 +901,18 @@ causative-passive-godan:
     question: "Convert 飲む (nomu) to causative-passive form"
     answers: ["飲ませられる", "飲まされる", "のませられる", "のまされる", "nomaserareru", "nomasareru"]
     hint: "飲ませられる — was made to drink"
+  - type: free-input
+    question: "Convert 走る (hashiru) to causative-passive form (Godan!)"
+    answers: ["走らせられる", "走らされる", "はしらせられる", "はしらされる", "hashiraserareru", "hashirasareru"]
+    hint: "Godan る → ら, add せられる — was made to run"
+  - type: free-input
+    question: "Convert 書く (kaku) to causative-passive form"
+    answers: ["書かせられる", "書かされる", "かかせられる", "かかされる", "kakaserareru", "kakasareru"]
+    hint: "く → か, add せられる — was made to write"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu) to causative-passive form"
+    answers: ["泳がせられる", "泳がされる", "およがせられる", "およがされる", "oyogaserareru", "oyogasareru"]
+    hint: "ぐ → が, add せられる — was made to swim"
 
 causative-passive-irregular:
   - type: free-input
@@ -537,6 +923,15 @@ causative-passive-irregular:
     question: "Convert 来る (kuru) to causative-passive form"
     answers: ["来させられる", "こさせられる", "kosaserareru"]
     hint: "来させる → 来させられる — extremely rare in practice!"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to causative-passive form"
+    answers: ["勉強させられる", "べんきょうさせられる", "benkyousaserareru"]
+    hint: "させる → させられる — was made to study"
+  - type: multiple-choice
+    question: "The causative-passive form combines which two forms?"
+    options: ["Te-form + passive", "Causative + passive", "Potential + causative", "Passive + te-form"]
+    answer: 1
+    hint: "Causative (make do) + passive (done to me) = was made to do"
 
 imperative-form-ichidan:
   - type: free-input
@@ -556,6 +951,18 @@ imperative-form-ichidan:
     options: ["A polite request", "A very strong/forceful command", "A suggestion", "A question"]
     answer: 1
     hint: "Use te-form + ください for polite requests instead"
+  - type: free-input
+    question: "Convert 寝る (neru - to sleep) to imperative form"
+    answers: ["寝ろ", "ねろ", "nero"]
+    hint: "Replace る with ろ — 寝ろ! (Sleep!)"
+  - type: free-input
+    question: "Convert 起きる (okiru - to wake up) to imperative form"
+    answers: ["起きろ", "おきろ", "okiro"]
+    hint: "Replace る with ろ — 起きろ! (Wake up!)"
+  - type: free-input
+    question: "Convert 教える (oshieru - to teach) to imperative form"
+    answers: ["教えろ", "おしえろ", "oshiero"]
+    hint: "Replace る with ろ — 教えろ! (Teach!)"
 
 imperative-form-godan:
   - type: free-input
@@ -574,6 +981,22 @@ imperative-form-godan:
     question: "Convert 飲む (nomu) to imperative form"
     answers: ["飲め", "のめ", "nome"]
     hint: "む → め (e-row) — 飲め! (Drink!)"
+  - type: free-input
+    question: "Convert 走る (hashiru - to run) to imperative form (Godan!)"
+    answers: ["走れ", "はしれ", "hashire"]
+    hint: "Godan る → れ (e-row) — 走れ! (Run!)"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu - to swim) to imperative form"
+    answers: ["泳げ", "およげ", "oyoge"]
+    hint: "ぐ → げ (e-row) — 泳げ! (Swim!)"
+  - type: free-input
+    question: "Convert 話す (hanasu - to speak) to imperative form"
+    answers: ["話せ", "はなせ", "hanase"]
+    hint: "す → せ (e-row) — 話せ! (Speak!)"
+  - type: free-input
+    question: "Convert 座る (suwaru - to sit) to imperative form"
+    answers: ["座れ", "すわれ", "suware"]
+    hint: "る → れ (e-row) — 座れ! (Sit!)"
 
 imperative-form-irregular:
   - type: free-input
@@ -584,6 +1007,15 @@ imperative-form-irregular:
     question: "What is the imperative form of する (suru)?"
     answers: ["しろ", "shiro"]
     hint: "する → しろ — Do it!"
+  - type: free-input
+    question: "What is the imperative form of 勉強する (benkyousuru)?"
+    answers: ["勉強しろ", "べんきょうしろ", "benkyoushiro"]
+    hint: "する → しろ — 勉強しろ! (Study!)"
+  - type: multiple-choice
+    question: "Which is a softer alternative to the imperative 食べろ?"
+    options: ["食べない", "食べて", "食べた", "食べよう"]
+    answer: 1
+    hint: "Te-form alone can work as a casual command: 食べて (eat!)"
 
 conditional-ba-ichidan:
   - type: free-input
@@ -599,6 +1031,18 @@ conditional-ba-ichidan:
     options: ["Commands", "Past actions", "Hypothetical conditions (if/when)", "Ongoing actions"]
     answer: 2
     hint: "出れば = if/when you leave"
+  - type: free-input
+    question: "Convert 見る (miru) to ba-form"
+    answers: ["見れば", "みれば", "mireba"]
+    hint: "Drop る, add れば"
+  - type: free-input
+    question: "Convert 寝る (neru) to ba-form"
+    answers: ["寝れば", "ねれば", "nereba"]
+    hint: "Drop る, add れば — if you sleep"
+  - type: free-input
+    question: "Convert 起きる (okiru) to ba-form"
+    answers: ["起きれば", "おきれば", "okireba"]
+    hint: "Drop る, add れば — if you wake up"
 
 conditional-ba-godan:
   - type: free-input
@@ -618,6 +1062,22 @@ conditional-ba-godan:
     options: ["Dictionary form", "Polite form", "Imperative form", "Te-form"]
     answer: 2
     hint: "聞け (imperative) + ば = 聞けば (conditional)"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu) to ba-form"
+    answers: ["泳げば", "およげば", "oyogeba"]
+    hint: "ぐ → げ (e-row), add ば"
+  - type: free-input
+    question: "Convert 話す (hanasu) to ba-form"
+    answers: ["話せば", "はなせば", "hanaseba"]
+    hint: "す → せ (e-row), add ば"
+  - type: free-input
+    question: "Convert 買う (kau) to ba-form"
+    answers: ["買えば", "かえば", "kaeba"]
+    hint: "う → え (e-row), add ば"
+  - type: free-input
+    question: "Convert 走る (hashiru) to ba-form (Godan!)"
+    answers: ["走れば", "はしれば", "hashireba"]
+    hint: "Godan る → れ (e-row), add ば"
 
 conditional-ba-irregular:
   - type: free-input
@@ -632,6 +1092,14 @@ conditional-ba-irregular:
     question: "How do you say 'What should I do?' using する + ば?"
     answers: ["どうすればいい", "dousurebaii"]
     hint: "どう (how) + すれば (if do) + いい (good) = what would be good if I did"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to ba-form"
+    answers: ["勉強すれば", "べんきょうすれば", "benkyousureba"]
+    hint: "する → すれば"
+  - type: free-input
+    question: "Convert 料理する (ryourisuru) to ba-form"
+    answers: ["料理すれば", "りょうりすれば", "ryourisureba"]
+    hint: "する → すれば"
 
 conditional-tara-ichidan:
   - type: free-input
@@ -647,6 +1115,18 @@ conditional-tara-ichidan:
     options: ["Only hypotheticals", "Only 'after'", "Hypotheticals, actual conditions, and 'after'", "Only past events"]
     answer: 2
     hint: "夏が来たら = if/when/after summer comes"
+  - type: free-input
+    question: "Convert 寝る (neru) to tara-form"
+    answers: ["寝たら", "ねたら", "netara"]
+    hint: "Past tense 寝た + ら"
+  - type: free-input
+    question: "Convert 起きる (okiru) to tara-form"
+    answers: ["起きたら", "おきたら", "okitara"]
+    hint: "Past tense 起きた + ら"
+  - type: free-input
+    question: "Convert 教える (oshieru) to tara-form"
+    answers: ["教えたら", "おしえたら", "oshietara"]
+    hint: "Past tense 教えた + ら"
 
 conditional-tara-godan:
   - type: free-input
@@ -661,6 +1141,22 @@ conditional-tara-godan:
     question: "Convert 死ぬ (shinu - to die) to tara-form"
     answers: ["死んだら", "しんだら", "shindara"]
     hint: "Past tense 死んだ + ら"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu) to tara-form"
+    answers: ["泳いだら", "およいだら", "oyoidara"]
+    hint: "Past tense 泳いだ + ら"
+  - type: free-input
+    question: "Convert 話す (hanasu) to tara-form"
+    answers: ["話したら", "はなしたら", "hanashitara"]
+    hint: "Past tense 話した + ら"
+  - type: free-input
+    question: "Convert 遊ぶ (asobu) to tara-form"
+    answers: ["遊んだら", "あそんだら", "asondara"]
+    hint: "Past tense 遊んだ + ら"
+  - type: free-input
+    question: "Convert 買う (kau) to tara-form"
+    answers: ["買ったら", "かったら", "kattara"]
+    hint: "Past tense 買った + ら"
 
 conditional-tara-irregular:
   - type: free-input
@@ -671,6 +1167,14 @@ conditional-tara-irregular:
     question: "Convert 来る (kuru) to tara-form"
     answers: ["来たら", "きたら", "kitara"]
     hint: "Past tense 来た + ら"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to tara-form"
+    answers: ["勉強したら", "べんきょうしたら", "benkyoushitara"]
+    hint: "Past tense 勉強した + ら"
+  - type: free-input
+    question: "Convert 料理する (ryourisuru) to tara-form"
+    answers: ["料理したら", "りょうりしたら", "ryourishitara"]
+    hint: "Past tense 料理した + ら"
 
 potential-form-ichidan:
   - type: free-input
@@ -686,6 +1190,18 @@ potential-form-ichidan:
     options: ["The causative form", "The passive form", "The imperative form", "The te-form"]
     answer: 1
     hint: "食べられる = can eat OR is eaten — context decides!"
+  - type: free-input
+    question: "Convert 寝る (neru) to potential form"
+    answers: ["寝られる", "ねられる", "nerareru"]
+    hint: "Drop る, add られる — can sleep"
+  - type: free-input
+    question: "Convert 起きる (okiru) to potential form"
+    answers: ["起きられる", "おきられる", "okirareru"]
+    hint: "Drop る, add られる — can wake up"
+  - type: free-input
+    question: "Convert 教える (oshieru) to potential form"
+    answers: ["教えられる", "おしえられる", "oshierareru"]
+    hint: "Drop る, add られる — can teach"
 
 potential-form-godan:
   - type: free-input
@@ -704,6 +1220,18 @@ potential-form-godan:
     question: "Convert 話す (hanasu) to potential form"
     answers: ["話せる", "はなせる", "hanaseru"]
     hint: "す → せ (e-row), add る"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu) to potential form"
+    answers: ["泳げる", "およげる", "oyogeru"]
+    hint: "ぐ → げ (e-row), add る — can swim"
+  - type: free-input
+    question: "Convert 走る (hashiru) to potential form (Godan!)"
+    answers: ["走れる", "はしれる", "hashireru"]
+    hint: "Godan る → れ (e-row), add る — can run"
+  - type: free-input
+    question: "Convert 買う (kau) to potential form"
+    answers: ["買える", "かえる", "kaeru"]
+    hint: "う → え (e-row), add る — can buy"
 
 potential-form-irregular:
   - type: free-input
@@ -719,6 +1247,14 @@ potential-form-irregular:
     options: ["It uses the same form as passive", "It uses the same form as causative", "It becomes a completely different word (できる)", "It can't be conjugated"]
     answer: 2
     hint: "できる is often learned as a separate verb, but it is actually the potential of する"
+  - type: free-input
+    question: "How do you say 'can study' using 勉強する?"
+    answers: ["勉強できる", "べんきょうできる", "benkyoudekiru"]
+    hint: "する → できる — 勉強できる"
+  - type: free-input
+    question: "How do you say 'can cook' using 料理する?"
+    answers: ["料理できる", "りょうりできる", "ryouridekiru"]
+    hint: "する → できる — 料理できる"
 
 volitional-form-ichidan:
   - type: free-input
@@ -734,6 +1270,18 @@ volitional-form-ichidan:
     options: ["Must do", "Let's do / I will do", "Don't do", "Please do"]
     answer: 1
     hint: "食べよう = Let's eat! Shows will or volition."
+  - type: free-input
+    question: "Convert 寝る (neru - to sleep) to volitional form"
+    answers: ["寝よう", "ねよう", "neyou", "neyoo"]
+    hint: "Drop る, add よう — let's sleep"
+  - type: free-input
+    question: "Convert 起きる (okiru - to wake up) to volitional form"
+    answers: ["起きよう", "おきよう", "okiyou", "okiyoo"]
+    hint: "Drop る, add よう — let's wake up"
+  - type: free-input
+    question: "What is the polite volitional of 食べる?"
+    answers: ["食べましょう", "たべましょう", "tabemashou", "tabemashoo"]
+    hint: "Masu stem 食べ + ましょう"
 
 volitional-form-godan:
   - type: free-input
@@ -752,6 +1300,22 @@ volitional-form-godan:
     question: "What is the polite volitional of 行く?"
     answers: ["行きましょう", "いきましょう", "ikimashou", "ikimashoo"]
     hint: "Masu stem 行き + ましょう"
+  - type: free-input
+    question: "Convert 泳ぐ (oyogu - to swim) to volitional form"
+    answers: ["泳ごう", "およごう", "oyogou", "oyogoo"]
+    hint: "ぐ → ご (o-row), add う — let's swim!"
+  - type: free-input
+    question: "Convert 遊ぶ (asobu - to play) to volitional form"
+    answers: ["遊ぼう", "あそぼう", "asobou", "asoboo"]
+    hint: "ぶ → ぼ (o-row), add う — let's play!"
+  - type: free-input
+    question: "Convert 話す (hanasu - to speak) to volitional form"
+    answers: ["話そう", "はなそう", "hanasou", "hanasoo"]
+    hint: "す → そ (o-row), add う — let's talk!"
+  - type: free-input
+    question: "Convert 買う (kau - to buy) to volitional form"
+    answers: ["買おう", "かおう", "kaou", "kaoo"]
+    hint: "う → お (o-row), add う — let's buy!"
 
 volitional-form-irregular:
   - type: free-input
@@ -766,3 +1330,323 @@ volitional-form-irregular:
     question: "How do you say 'What should I do?' using the volitional?"
     answers: ["どうしよう", "doushiyou", "doushiyoo"]
     hint: "どう (how/what) + しよう (shall do)"
+  - type: free-input
+    question: "Convert 勉強する (benkyousuru) to volitional form"
+    answers: ["勉強しよう", "べんきょうしよう", "benkyoushiyou", "benkyoushiyoo"]
+    hint: "する → しよう — let's study!"
+  - type: free-input
+    question: "What is the polite volitional of 来る?"
+    answers: ["来ましょう", "きましょう", "kimashou", "kimashoo"]
+    hint: "Masu stem き + ましょう"
+  - type: free-input
+    question: "What is the polite volitional of する?"
+    answers: ["しましょう", "shimashou", "shimashoo"]
+    hint: "Masu stem し + ましょう"
+
+# ── Test sections: mixed ichidan/godan/irregular questions ──
+
+polite-form-test:
+  - type: free-input
+    question: "Polite form of 泳ぐ (oyogu - to swim)?"
+    answers: ["泳ぎます", "およぎます", "oyogimasu"]
+    hint: "Godan: ぐ → ぎ (i-row), add ます"
+  - type: free-input
+    question: "Polite form of 寝る (neru - to sleep)?"
+    answers: ["寝ます", "ねます", "nemasu"]
+    hint: "Ichidan: drop る, add ます"
+  - type: free-input
+    question: "Polite form of 勉強する (benkyousuru - to study)?"
+    answers: ["勉強します", "べんきょうします", "benkyoushimasu"]
+    hint: "する verb → します"
+  - type: multiple-choice
+    question: "Which is the correct polite form of 帰る (kaeru - to return)? (Godan verb!)"
+    options: ["帰ます", "帰えます", "帰ります", "帰りります"]
+    answer: 2
+    hint: "帰る is godan despite ending in -eru. る → り, add ます"
+  - type: free-input
+    question: "Polite form of 走る (hashiru - to run)? (Godan!)"
+    answers: ["走ります", "はしります", "hashirimasu"]
+    hint: "走る looks ichidan but is godan — る → り, add ます"
+
+dictionary-form-test:
+  - type: multiple-choice
+    question: "Which verb is godan despite ending in -iru?"
+    options: ["見る (miru)", "走る (hashiru)", "起きる (okiru)", "食べる (taberu)"]
+    answer: 1
+    hint: "走る (to run) is a godan verb — it conjugates differently from ichidan"
+  - type: multiple-choice
+    question: "Which verb is godan despite ending in -eru?"
+    options: ["食べる (taberu)", "寝る (neru)", "帰る (kaeru)", "見える (mieru)"]
+    answer: 2
+    hint: "帰る (to return) is godan"
+  - type: multiple-choice
+    question: "What are the two irregular verbs in Japanese?"
+    options: ["行く and 帰る", "する and 来る", "ある and いる", "食べる and 飲む"]
+    answer: 1
+    hint: "する (to do) and 来る (to come)"
+
+masu-stem-test:
+  - type: free-input
+    question: "Masu stem of 走る (hashiru - to run)? (Godan!)"
+    answers: ["走り", "はしり", "hashiri"]
+    hint: "走ります → 走り"
+  - type: free-input
+    question: "How do you say 'want to come' using 来る?"
+    answers: ["来たい", "きたい", "kitai"]
+    hint: "Masu stem き + たい"
+  - type: free-input
+    question: "How do you say 'easy to eat' using 食べる?"
+    answers: ["食べやすい", "たべやすい", "tabeyasui"]
+    hint: "Masu stem 食べ + やすい"
+  - type: free-input
+    question: "How do you say 'hard to read' using 読む?"
+    answers: ["読みにくい", "よみにくい", "yominikui"]
+    hint: "Masu stem 読み + にくい"
+
+te-form-test:
+  - type: free-input
+    question: "Te-form of 帰る (kaeru - to return)? (Godan!)"
+    answers: ["帰って", "かえって", "kaette"]
+    hint: "Godan る → って"
+  - type: free-input
+    question: "Te-form of 走る (hashiru - to run)? (Godan!)"
+    answers: ["走って", "はしって", "hashitte"]
+    hint: "Godan る → って"
+  - type: free-input
+    question: "Te-form of 行く (iku - to go)?"
+    answers: ["行って", "いって", "itte"]
+    hint: "Exception! 行く → 行って (not 行いて)"
+  - type: multiple-choice
+    question: "Which te-form is WRONG?"
+    options: ["食べて (taberu)", "飲んで (nomu)", "書きて (kaku)", "待って (matsu)"]
+    answer: 2
+    hint: "書く → 書いて (not 書きて). く verbs → いて"
+  - type: free-input
+    question: "Te-form of 勉強する (benkyousuru)?"
+    answers: ["勉強して", "べんきょうして", "benkyoushite"]
+    hint: "する → して"
+
+past-tense-test:
+  - type: free-input
+    question: "Past tense of 泳ぐ (oyogu - to swim)?"
+    answers: ["泳いだ", "およいだ", "oyoida"]
+    hint: "ぐ → いだ"
+  - type: free-input
+    question: "Past tense of 走る (hashiru)? (Godan!)"
+    answers: ["走った", "はしった", "hashitta"]
+    hint: "Godan る → った"
+  - type: free-input
+    question: "Polite past of 飲む (nomu)?"
+    answers: ["飲みました", "のみました", "nomimashita"]
+    hint: "飲みます → 飲みました"
+  - type: free-input
+    question: "Past tense of 勉強する?"
+    answers: ["勉強した", "べんきょうした", "benkyoushita"]
+    hint: "した"
+
+continuous-form-test:
+  - type: free-input
+    question: "How do you say 'is running' using 走る?"
+    answers: ["走っている", "はしっている", "hashitteiru"]
+    hint: "走って + いる"
+  - type: free-input
+    question: "How do you say 'is studying' using 勉強する?"
+    answers: ["勉強している", "べんきょうしている", "benkyoushiteiru"]
+    hint: "勉強して + いる"
+  - type: free-input
+    question: "Casual contraction of 食べている?"
+    answers: ["食べてる", "たべてる", "tabeteru"]
+    hint: "Drop the い"
+  - type: free-input
+    question: "How do you say 'is waiting' using 待つ?"
+    answers: ["待っている", "まっている", "matteiru"]
+    hint: "待って + いる"
+
+negative-form-test:
+  - type: free-input
+    question: "Negative of 泳ぐ (oyogu)?"
+    answers: ["泳がない", "およがない", "oyoganai"]
+    hint: "ぐ → が (a-row), add ない"
+  - type: free-input
+    question: "Negative of 走る (hashiru)? (Godan!)"
+    answers: ["走らない", "はしらない", "hashiranai"]
+    hint: "Godan る → ら (a-row), add ない"
+  - type: free-input
+    question: "Polite negative of 食べる?"
+    answers: ["食べません", "たべません", "tabemasen"]
+    hint: "食べます → 食べません"
+  - type: multiple-choice
+    question: "What is special about the negative of ある?"
+    options: ["It follows normal rules: あらない", "It becomes ない directly", "It can't be negated", "It uses いない"]
+    answer: 1
+    hint: "ある → ない (not あらない)"
+
+past-negative-test:
+  - type: free-input
+    question: "Past negative of 走る (hashiru)? (Godan)"
+    answers: ["走らなかった", "はしらなかった", "hashiranakatta"]
+    hint: "走らない → 走らなかった"
+  - type: free-input
+    question: "Polite past negative of 食べる?"
+    answers: ["食べませんでした", "たべませんでした", "tabemasendeshita"]
+    hint: "食べません + でした"
+  - type: free-input
+    question: "Past negative of 勉強する?"
+    answers: ["勉強しなかった", "べんきょうしなかった", "benkyoushinakatta"]
+    hint: "しない → しなかった"
+
+passive-form-test:
+  - type: free-input
+    question: "Passive of 食べる?"
+    answers: ["食べられる", "たべられる", "taberareru"]
+    hint: "Ichidan: drop る, add られる"
+  - type: free-input
+    question: "Passive of 読む (yomu)?"
+    answers: ["読まれる", "よまれる", "yomareru"]
+    hint: "Godan: む → ま, add れる"
+  - type: free-input
+    question: "Passive of する?"
+    answers: ["される", "sareru"]
+    hint: "する → される"
+  - type: multiple-choice
+    question: "For ichidan verbs, passive form and potential form are:"
+    options: ["Completely different", "Identical — context decides the meaning", "Similar but different ending", "Only the same for する"]
+    answer: 1
+    hint: "食べられる = is eaten (passive) OR can eat (potential)"
+
+causative-form-test:
+  - type: free-input
+    question: "Causative of 食べる?"
+    answers: ["食べさせる", "たべさせる", "tabesaseru"]
+    hint: "Ichidan: させる"
+  - type: free-input
+    question: "Causative of 読む?"
+    answers: ["読ませる", "よませる", "yomaseru"]
+    hint: "Godan: む → ま, add せる"
+  - type: free-input
+    question: "Causative of する?"
+    answers: ["させる", "saseru"]
+    hint: "する → させる"
+  - type: free-input
+    question: "Causative of 来る?"
+    answers: ["来させる", "こさせる", "kosaseru"]
+    hint: "こさせる — not きさせる!"
+
+causative-passive-test:
+  - type: free-input
+    question: "Causative-passive of 食べる? (was made to eat)"
+    answers: ["食べさせられる", "たべさせられる", "tabesaserareru"]
+    hint: "Ichidan: させられる"
+  - type: free-input
+    question: "Causative-passive of 飲む? (was made to drink)"
+    answers: ["飲ませられる", "飲まされる", "のませられる", "のまされる", "nomaserareru", "nomasareru"]
+    hint: "Both full and short forms are accepted"
+  - type: free-input
+    question: "Causative-passive of する?"
+    answers: ["させられる", "saserareru"]
+    hint: "させる → させられる"
+
+imperative-form-test:
+  - type: free-input
+    question: "Imperative of 食べる?"
+    answers: ["食べろ", "たべろ", "tabero"]
+    hint: "Ichidan: る → ろ"
+  - type: free-input
+    question: "Imperative of 書く?"
+    answers: ["書け", "かけ", "kake"]
+    hint: "Godan: く → け (e-row)"
+  - type: free-input
+    question: "Imperative of 来る?"
+    answers: ["来い", "こい", "koi"]
+    hint: "Irregular — 来い!"
+  - type: free-input
+    question: "Imperative of する?"
+    answers: ["しろ", "shiro"]
+    hint: "しろ!"
+  - type: multiple-choice
+    question: "What is a more polite way to give a command than the imperative?"
+    options: ["Nai-form", "Te-form + ください", "Past tense", "Volitional form"]
+    answer: 1
+    hint: "食べてください (please eat) vs 食べろ (eat!)"
+
+conditional-ba-test:
+  - type: free-input
+    question: "Ba-form of 食べる?"
+    answers: ["食べれば", "たべれば", "tabereba"]
+    hint: "Ichidan: れば"
+  - type: free-input
+    question: "Ba-form of 書く?"
+    answers: ["書けば", "かけば", "kakeba"]
+    hint: "Godan: く → け, add ば"
+  - type: free-input
+    question: "Ba-form of する?"
+    answers: ["すれば", "sureba"]
+    hint: "すれば"
+  - type: free-input
+    question: "Ba-form of 来る?"
+    answers: ["来れば", "くれば", "kureba"]
+    hint: "くれば"
+
+conditional-tara-test:
+  - type: free-input
+    question: "Tara-form of 食べる?"
+    answers: ["食べたら", "たべたら", "tabetara"]
+    hint: "Past 食べた + ら"
+  - type: free-input
+    question: "Tara-form of 書く?"
+    answers: ["書いたら", "かいたら", "kaitara"]
+    hint: "Past 書いた + ら"
+  - type: free-input
+    question: "Tara-form of する?"
+    answers: ["したら", "shitara"]
+    hint: "した + ら"
+  - type: multiple-choice
+    question: "Ba-form vs Tara-form: which one can also mean 'after'?"
+    options: ["Ba-form only", "Tara-form only", "Both", "Neither"]
+    answer: 1
+    hint: "夏が来たら = if/when/AFTER summer comes"
+
+potential-form-test:
+  - type: free-input
+    question: "Potential of 食べる? (can eat)"
+    answers: ["食べられる", "たべられる", "taberareru"]
+    hint: "Ichidan: られる (same as passive!)"
+  - type: free-input
+    question: "Potential of 書く? (can write)"
+    answers: ["書ける", "かける", "kakeru"]
+    hint: "Godan: く → け, add る"
+  - type: free-input
+    question: "Potential of する?"
+    answers: ["できる", "dekiru"]
+    hint: "Completely different word — できる"
+  - type: free-input
+    question: "Potential of 来る?"
+    answers: ["来られる", "こられる", "korareru"]
+    hint: "こられる"
+  - type: multiple-choice
+    question: "For godan verbs, the potential form is different from passive. What about ichidan?"
+    options: ["Also different", "They are identical", "Ichidan verbs have no potential", "Only する is the same"]
+    answer: 1
+    hint: "食べられる = can eat AND is eaten"
+
+volitional-form-test:
+  - type: free-input
+    question: "Volitional of 食べる?"
+    answers: ["食べよう", "たべよう", "tabeyou", "tabeyoo"]
+    hint: "Ichidan: よう"
+  - type: free-input
+    question: "Volitional of 書く?"
+    answers: ["書こう", "かこう", "kakou", "kakoo"]
+    hint: "Godan: く → こ (o-row), add う"
+  - type: free-input
+    question: "Volitional of する?"
+    answers: ["しよう", "shiyou", "shiyoo"]
+    hint: "しよう"
+  - type: free-input
+    question: "Polite volitional of する?"
+    answers: ["しましょう", "shimashou", "shimashoo"]
+    hint: "し + ましょう"
+  - type: free-input
+    question: "Volitional of 来る?"
+    answers: ["来よう", "こよう", "koyou", "koyoo"]
+    hint: "こよう"
