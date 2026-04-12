@@ -110,7 +110,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
                   {q.type === 'multiple-choice' && q.options && (
                     <div class="options">
                       {q.options.map((opt: string, j: number) => (
-                        <button class="option-btn" data-option={j} set:html={opt} />
+                        <button class="option-btn" data-option={j}><Fragment set:html={opt} /></button>
                       ))}
                     </div>
                   )}
@@ -167,7 +167,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
                 {q.type === 'multiple-choice' && q.options && (
                   <div class="options">
                     {q.options.map((opt: string, j: number) => (
-                      <button class="option-btn" data-option={j} set:html={opt} />
+                      <button class="option-btn" data-option={j}><Fragment set:html={opt} /></button>
                     ))}
                   </div>
                 )}
@@ -270,14 +270,13 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   });
 
   const MAX_ATTEMPTS = 3;
-  const SHOW_RATIO = 0.65;
-  const MIN_SHOW = 3;
+  const QUESTIONS_PER_TAB = 10;
 
   function selectRandomSubset(panel: Element) {
     const allCards = Array.from(panel.querySelectorAll('.question-card'));
-    if (allCards.length <= MIN_SHOW) return allCards;
+    if (allCards.length <= QUESTIONS_PER_TAB) return allCards;
 
-    const showCount = Math.max(MIN_SHOW, Math.round(allCards.length * SHOW_RATIO));
+    const showCount = QUESTIONS_PER_TAB;
     const indices = allCards.map((_, i) => i);
     for (let i = indices.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));

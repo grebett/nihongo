@@ -1,0 +1,587 @@
+past-negative-ichidan:
+  - type: free-input
+    question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to past negative
+    answers:
+      - 見なかった
+      - みなかった
+      - minakatta
+    hint: 見ない → replace ない with なかった
+  - type: free-input
+    question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu) to past negative
+    answers:
+      - 食べなかった
+      - たべなかった
+      - tabenakatta
+    hint: 食べない → 食べなかった
+  - type: free-input
+    question: What is the polite past negative of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べませんでした
+      - たべませんでした
+      - tabemasendeshita
+    hint: 食べません + でした
+  - type: free-input
+    question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru) to past negative
+    answers:
+      - 寝なかった
+      - ねなかった
+      - nenakatta
+    hint: 寝ない → 寝なかった
+  - type: free-input
+    question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru) to past negative
+    answers:
+      - 起きなかった
+      - おきなかった
+      - okinakatta
+    hint: 起きない → 起きなかった
+  - type: free-input
+    question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru) to past negative
+    answers:
+      - 教えなかった
+      - おしえなかった
+      - oshienakatta
+    hint: 教えない → 教えなかった
+  - type: free-input
+    question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to past negative
+    answers:
+      - 開けなかった
+      - あけなかった
+      - akenakatta
+    hint: 開けない → 開けなかった
+  - type: free-input
+    question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to past negative
+    answers:
+      - 閉めなかった
+      - しめなかった
+      - shimenakatta
+    hint: 閉めない → 閉めなかった
+  - type: free-input
+    question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to past negative
+    answers:
+      - 着なかった
+      - きなかった
+      - kinakatta
+    hint: 着ない → 着なかった
+  - type: multiple-choice
+    question: Which is the correct past negative of <ruby>浴<rt>あ</rt></ruby>びる (abiru - to shower)?
+    options:
+      - <ruby>浴<rt>あ</rt></ruby>ばなかった
+      - <ruby>浴<rt>あ</rt></ruby>びなかった
+      - <ruby>浴<rt>あ</rt></ruby>べなかった
+      - <ruby>浴<rt>あ</rt></ruby>びるなかった
+    answer: 1
+    hint: 浴びない → 浴びなかった
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to past negative
+    answers:
+      - 出なかった
+      - でなかった
+      - denakatta
+    hint: 出ない → 出なかった
+  - type: free-input
+    question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to past negative
+    answers:
+      - 信じなかった
+      - しんじなかった
+      - shinjinakatta
+    hint: 信じない → 信じなかった
+  - type: free-input
+    question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to past negative
+    answers:
+      - 降りなかった
+      - おりなかった
+      - orinakatta
+    hint: 降りない → 降りなかった
+  - type: free-input
+    question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to past negative
+    answers:
+      - 借りなかった
+      - かりなかった
+      - karinakatta
+    hint: 借りない → 借りなかった
+  - type: multiple-choice
+    question: What is the polite past negative of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to remember)?
+    options:
+      - <ruby>覚<rt>おぼ</rt></ruby>えなかった
+      - <ruby>覚<rt>おぼ</rt></ruby>えませんでした
+      - <ruby>覚<rt>おぼ</rt></ruby>えないでした
+      - <ruby>覚<rt>おぼ</rt></ruby>えなかったです
+    answer: 1
+    hint: 覚えません + でした
+  - type: free-input
+    question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to past negative
+    answers:
+      - 忘れなかった
+      - わすれなかった
+      - wasurenakatta
+    hint: 忘れない → 忘れなかった
+  - type: free-input
+    question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to past negative
+    answers:
+      - 答えなかった
+      - こたえなかった
+      - kotaenakatta
+    hint: 答えない → 答えなかった
+  - type: free-input
+    question: Convert <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think) to past negative
+    answers:
+      - 考えなかった
+      - かんがえなかった
+      - kangaenakatta
+    hint: 考えない → 考えなかった
+  - type: multiple-choice
+    question: Which is the correct past negative of <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate)?
+    options:
+      - <ruby>調<rt>しら</rt></ruby>べるなかった
+      - <ruby>調<rt>しら</rt></ruby>ばなかった
+      - <ruby>調<rt>しら</rt></ruby>べなかった
+      - <ruby>調<rt>しら</rt></ruby>びなかった
+    answer: 2
+    hint: 調べない → 調べなかった
+  - type: free-input
+    question: What is the polite past negative of <ruby>見<rt>み</rt></ruby>る?
+    answers:
+      - 見ませんでした
+      - みませんでした
+      - mimasendeshita
+    hint: 見ません + でした
+past-negative-godan:
+  - type: free-input
+    question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to past negative
+    answers:
+      - 飲まなかった
+      - のまなかった
+      - nomanakatta
+    hint: 飲まない → 飲まなかった
+  - type: free-input
+    question: Convert <ruby>言<rt>い</rt></ruby>う (iu - to say) to past negative
+    answers:
+      - 言わなかった
+      - いわなかった
+      - iwanakatta
+    hint: 言わない → 言わなかった
+  - type: free-input
+    question: Convert <ruby>書<rt>か</rt></ruby>く (kaku) to past negative
+    answers:
+      - 書かなかった
+      - かかなかった
+      - kakanakatta
+    hint: 書かない → 書かなかった
+  - type: free-input
+    question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu) to past negative
+    answers:
+      - 泳がなかった
+      - およがなかった
+      - oyoganakatta
+    hint: 泳がない → 泳がなかった
+  - type: free-input
+    question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu) to past negative
+    answers:
+      - 話さなかった
+      - はなさなかった
+      - hanasanakatta
+    hint: 話さない → 話さなかった
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>う (kau) to past negative
+    answers:
+      - 買わなかった
+      - かわなかった
+      - kawanakatta
+    hint: 買わない → 買わなかった
+  - type: free-input
+    question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to past negative
+    answers:
+      - 読まなかった
+      - よまなかった
+      - yomanakatta
+    hint: 読まない → 読まなかった
+  - type: free-input
+    question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) to past negative
+    answers:
+      - 待たなかった
+      - またなかった
+      - matanakatta
+    hint: 待たない → 待たなかった
+  - type: free-input
+    question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to past negative
+    answers:
+      - 遊ばなかった
+      - あそばなかった
+      - asobanakatta
+    hint: 遊ばない → 遊ばなかった
+  - type: multiple-choice
+    question: Which is the correct past negative of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>にない
+      - <ruby>死<rt>し</rt></ruby>ななかった
+      - <ruby>死<rt>し</rt></ruby>なかった
+      - <ruby>死<rt>し</rt></ruby>ぬなかった
+    answer: 1
+    hint: 死なない → 死ななかった
+  - type: free-input
+    question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run) to past negative (Godan!)
+    answers:
+      - 走らなかった
+      - はしらなかった
+      - hashiranakatta
+    hint: 走らない → 走らなかった
+  - type: free-input
+    question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to go home) to past negative
+    answers:
+      - 帰らなかった
+      - かえらなかった
+      - kaeranakatta
+    hint: 帰らない → 帰らなかった
+  - type: free-input
+    question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to past negative
+    answers:
+      - 立たなかった
+      - たたなかった
+      - tatanakatta
+    hint: 立たない → 立たなかった
+  - type: free-input
+    question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to past negative
+    answers:
+      - 作らなかった
+      - つくらなかった
+      - tsukuranakatta
+    hint: 作らない → 作らなかった
+  - type: multiple-choice
+    question: What is the past negative of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
+    options:
+      - <ruby>使<rt>つか</rt></ruby>あなかった
+      - <ruby>使<rt>つか</rt></ruby>わなかった
+      - <ruby>使<rt>つか</rt></ruby>いなかった
+      - <ruby>使<rt>つか</rt></ruby>うなかった
+    answer: 1
+    hint: 使わない → 使わなかった (う → わ special rule)
+  - type: free-input
+    question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to past negative
+    answers:
+      - 送らなかった
+      - おくらなかった
+      - okuranakatta
+    hint: 送らない → 送らなかった
+  - type: free-input
+    question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku - to listen) to past negative
+    answers:
+      - 聞かなかった
+      - きかなかった
+      - kikanakatta
+    hint: 聞かない → 聞かなかった
+  - type: free-input
+    question: What is the polite past negative of <ruby>書<rt>か</rt></ruby>く (kaku)?
+    answers:
+      - 書きませんでした
+      - かきませんでした
+      - kakimasendeshita
+    hint: 書きません + でした
+  - type: free-input
+    question: Convert <ruby>乗<rt>の</rt></ruby>る (noru - to ride) to past negative
+    answers:
+      - 乗らなかった
+      - のらなかった
+      - noranakatta
+    hint: 乗らない → 乗らなかった
+  - type: multiple-choice
+    question: Which is the correct past negative of <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk)?
+    options:
+      - <ruby>歩<rt>ある</rt></ruby>きなかった
+      - <ruby>歩<rt>ある</rt></ruby>くなかった
+      - <ruby>歩<rt>ある</rt></ruby>かなかった
+      - <ruby>歩<rt>ある</rt></ruby>けなかった
+    answer: 2
+    hint: 歩かない → 歩かなかった
+past-negative-irregular:
+  - type: free-input
+    question: Convert する (suru) to past negative
+    answers:
+      - しなかった
+      - shinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: Convert <ruby>来<rt>く</rt></ruby>る (kuru) to past negative
+    answers:
+      - 来なかった
+      - こなかった
+      - konakatta
+    hint: 来ない → 来なかった
+  - type: free-input
+    question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to past negative
+    answers:
+      - 勉強しなかった
+      - べんきょうしなかった
+      - benkyoushinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: What is the polite past negative of する?
+    answers:
+      - しませんでした
+      - shimasendeshita
+    hint: しません + でした
+  - type: free-input
+    question: What is the polite past negative of <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来ませんでした
+      - きませんでした
+      - kimasendeshita
+    hint: 来ません + でした
+  - type: free-input
+    question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook) to past negative
+    answers:
+      - 料理しなかった
+      - りょうりしなかった
+      - ryourishinakatta
+    hint: しない → しなかった
+  - type: multiple-choice
+    question: What is the past negative of ある (aru - to exist)?
+    options:
+      - あらなかった
+      - ないかった
+      - なかった
+      - あったない
+    answer: 2
+    hint: ある → ない → なかった (special irregular)
+  - type: free-input
+    question: Convert <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise) to past negative
+    answers:
+      - 運動しなかった
+      - うんどうしなかった
+      - undoushinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: Convert <ruby>掃除<rt>そうじ</rt></ruby>する (soujisuru - to clean) to past negative
+    answers:
+      - 掃除しなかった
+      - そうじしなかった
+      - soujishinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: What is the polite past negative of <ruby>勉強<rt>べんきょう</rt></ruby>する?
+    answers:
+      - 勉強しませんでした
+      - べんきょうしませんでした
+      - benkyoushimasendeshita
+    hint: 勉強しません + でした
+  - type: multiple-choice
+    question: Which is the correct past negative of <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>する (kaimonosuru - to shop)?
+    options:
+      - <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>さなかった
+      - <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>しなかった
+      - <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>すなかった
+      - <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>するなかった
+    answer: 1
+    hint: する → しない → しなかった
+  - type: free-input
+    question: Convert <ruby>旅行<rt>りょこう</rt></ruby>する (ryokousuru - to travel) to past negative
+    answers:
+      - 旅行しなかった
+      - りょこうしなかった
+      - ryokoushinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: Convert <ruby>運転<rt>うんてん</rt></ruby>する (untensuru - to drive) to past negative
+    answers:
+      - 運転しなかった
+      - うんてんしなかった
+      - untenshinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: Convert <ruby>洗濯<rt>せんたく</rt></ruby>する (sentakusuru - to do laundry) to past negative
+    answers:
+      - 洗濯しなかった
+      - せんたくしなかった
+      - sentakushinakatta
+    hint: しない → しなかった
+  - type: multiple-choice
+    question: What is the polite past negative of <ruby>料理<rt>りょうり</rt></ruby>する?
+    options:
+      - <ruby>料理<rt>りょうり</rt></ruby>しなかったです
+      - <ruby>料理<rt>りょうり</rt></ruby>しませんでした
+      - <ruby>料理<rt>りょうり</rt></ruby>さませんでした
+      - <ruby>料理<rt>りょうり</rt></ruby>しないでした
+    answer: 1
+    hint: 料理しません + でした
+  - type: free-input
+    question: Convert <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice) to past negative
+    answers:
+      - 練習しなかった
+      - れんしゅうしなかった
+      - renshuushinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: Convert <ruby>説明<rt>せつめい</rt></ruby>する (setsumeisuru - to explain) to past negative
+    answers:
+      - 説明しなかった
+      - せつめいしなかった
+      - setsumeishinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: Convert <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk) to past negative
+    answers:
+      - 散歩しなかった
+      - さんぽしなかった
+      - sanposhinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: What is the polite past negative of <ruby>運動<rt>うんどう</rt></ruby>する?
+    answers:
+      - 運動しませんでした
+      - うんどうしませんでした
+      - undoushimasendeshita
+    hint: 運動しません + でした
+  - type: multiple-choice
+    question: "Past negative of <ruby>来<rt>く</rt></ruby>る (kuru - to come) is:"
+    options:
+      - くなかった
+      - きなかった
+      - こなかった
+      - くらなかった
+    answer: 2
+    hint: 来ない (こない) → 来なかった (こなかった)
+past-negative-test:
+  - type: free-input
+    question: Past negative of <ruby>走<rt>はし</rt></ruby>る (hashiru)? (Godan)
+    answers:
+      - 走らなかった
+      - はしらなかった
+      - hashiranakatta
+    hint: 走らない → 走らなかった
+  - type: free-input
+    question: Polite past negative of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べませんでした
+      - たべませんでした
+      - tabemasendeshita
+    hint: 食べません + でした
+  - type: free-input
+    question: Past negative of <ruby>勉強<rt>べんきょう</rt></ruby>する?
+    answers:
+      - 勉強しなかった
+      - べんきょうしなかった
+      - benkyoushinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: Past negative of <ruby>食<rt>た</rt></ruby>べる (taberu - to eat)?
+    answers:
+      - 食べなかった
+      - たべなかった
+      - tabenakatta
+    hint: 食べない → 食べなかった
+  - type: free-input
+    question: Past negative of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    answers:
+      - 飲まなかった
+      - のまなかった
+      - nomanakatta
+    hint: 飲まない → 飲まなかった
+  - type: free-input
+    question: Past negative of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
+    answers:
+      - 来なかった
+      - こなかった
+      - konakatta
+    hint: 来ない → 来なかった
+  - type: free-input
+    question: Past negative of する (suru - to do)?
+    answers:
+      - しなかった
+      - shinakatta
+    hint: しない → しなかった
+  - type: free-input
+    question: Past negative of <ruby>書<rt>か</rt></ruby>く (kaku - to write)?
+    answers:
+      - 書かなかった
+      - かかなかった
+      - kakanakatta
+    hint: 書かない → 書かなかった
+  - type: free-input
+    question: Past negative of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
+    answers:
+      - 見なかった
+      - みなかった
+      - minakatta
+    hint: 見ない → 見なかった
+  - type: multiple-choice
+    question: Which past negative is correct for <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
+    options:
+      - <ruby>泳<rt>およ</rt></ruby>がなかった
+      - <ruby>泳<rt>およ</rt></ruby>ぎなかった
+      - <ruby>泳<rt>およ</rt></ruby>ぐなかった
+      - <ruby>泳<rt>およ</rt></ruby>いなかった
+    answer: 0
+    hint: 泳がない → 泳がなかった
+  - type: free-input
+    question: Polite past negative of <ruby>飲<rt>の</rt></ruby>む (nomu)?
+    answers:
+      - 飲みませんでした
+      - のみませんでした
+      - nomimasendeshita
+    hint: 飲みません + でした
+  - type: free-input
+    question: Past negative of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
+    answers:
+      - 話さなかった
+      - はなさなかった
+      - hanasanakatta
+    hint: 話さない → 話さなかった
+  - type: free-input
+    question: Past negative of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
+    answers:
+      - 待たなかった
+      - またなかった
+      - matanakatta
+    hint: 待たない → 待たなかった
+  - type: multiple-choice
+    question: "Past negative of <ruby>買<rt>か</rt></ruby>う (kau - to buy) is:"
+    options:
+      - <ruby>買<rt>か</rt></ruby>あなかった
+      - <ruby>買<rt>か</rt></ruby>わなかった
+      - <ruby>買<rt>か</rt></ruby>うなかった
+      - <ruby>買<rt>か</rt></ruby>いなかった
+    answer: 1
+    hint: 買わない → 買わなかった
+  - type: free-input
+    question: Past negative of <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach)?
+    answers:
+      - 教えなかった
+      - おしえなかった
+      - oshienakatta
+    hint: 教えない → 教えなかった
+  - type: free-input
+    question: Polite past negative of <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook)?
+    answers:
+      - 料理しませんでした
+      - りょうりしませんでした
+      - ryourishimasendeshita
+    hint: 料理しません + でした
+  - type: free-input
+    question: Past negative of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    answers:
+      - 遊ばなかった
+      - あそばなかった
+      - asobanakatta
+    hint: 遊ばない → 遊ばなかった
+  - type: multiple-choice
+    question: What is the past negative of ある (aru - to exist)?
+    options:
+      - あらなかった
+      - ないかった
+      - なかった
+      - あったない
+    answer: 2
+    hint: ある → ない → なかった
+  - type: free-input
+    question: Past negative of <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)?
+    answers:
+      - 閉めなかった
+      - しめなかった
+      - shimenakatta
+    hint: 閉めない → 閉めなかった
+  - type: free-input
+    question: Past negative of <ruby>送<rt>おく</rt></ruby>る (okuru - to send)?
+    answers:
+      - 送らなかった
+      - おくらなかった
+      - okuranakatta
+    hint: 送らない → 送らなかった

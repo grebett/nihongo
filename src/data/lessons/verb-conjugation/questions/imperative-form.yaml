@@ -1,0 +1,598 @@
+imperative-form-ichidan:
+  - type: free-input
+    question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu) to imperative form
+    answers:
+      - 食べろ
+      - たべろ
+      - tabero
+    hint: Replace る with ろ
+  - type: free-input
+    question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to imperative form
+    answers:
+      - 見ろ
+      - みろ
+      - miro
+    hint: Replace る with ろ — 見ろ! (Look!)
+  - type: free-input
+    question: Convert <ruby>止<rt>や</rt></ruby>める (yameru - to stop) to imperative form
+    answers:
+      - 止めろ
+      - やめろ
+      - yamero
+    hint: Replace る with ろ — やめろ! (Stop it!)
+  - type: multiple-choice
+    question: "The imperative form is:"
+    options:
+      - A polite request
+      - A very strong/forceful command
+      - A suggestion
+      - A question
+    answer: 1
+    hint: Use te-form + ください for polite requests instead
+  - type: free-input
+    question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru - to sleep) to imperative form
+    answers:
+      - 寝ろ
+      - ねろ
+      - nero
+    hint: Replace る with ろ — 寝ろ! (Sleep!)
+  - type: free-input
+    question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to imperative form
+    answers:
+      - 起きろ
+      - おきろ
+      - okiro
+    hint: Replace る with ろ — 起きろ! (Wake up!)
+  - type: free-input
+    question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to imperative form
+    answers:
+      - 教えろ
+      - おしえろ
+      - oshiero
+    hint: Replace る with ろ — 教えろ! (Teach!)
+  - type: free-input
+    question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to imperative form
+    answers:
+      - 開けろ
+      - あけろ
+      - akero
+    hint: Replace る with ろ — 開けろ! (Open it!)
+  - type: free-input
+    question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to imperative form
+    answers:
+      - 閉めろ
+      - しめろ
+      - shimero
+    hint: Replace る with ろ — 閉めろ! (Close it!)
+  - type: multiple-choice
+    question: Which is the correct imperative form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
+    options:
+      - <ruby>着<rt>き</rt></ruby>れ
+      - <ruby>着<rt>き</rt></ruby>ろ
+      - <ruby>着<rt>き</rt></ruby>り
+      - <ruby>着<rt>き</rt></ruby>ら
+    answer: 1
+    hint: "Ichidan verb: drop る, add ろ"
+  - type: free-input
+    question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to bathe/shower) to imperative form
+    answers:
+      - 浴びろ
+      - あびろ
+      - abiro
+    hint: Replace る with ろ — 浴びろ! (Take a shower!)
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to leave/go out) to imperative form
+    answers:
+      - 出ろ
+      - でろ
+      - dero
+    hint: Replace る with ろ — 出ろ! (Get out!)
+  - type: free-input
+    question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to imperative form
+    answers:
+      - 信じろ
+      - しんじろ
+      - shinjiro
+    hint: Replace る with ろ — 信じろ! (Believe!)
+  - type: multiple-choice
+    question: Which is the correct imperative form of <ruby>降<rt>お</rt></ruby>りる (oriru - to get off)?
+    options:
+      - <ruby>降<rt>お</rt></ruby>りれ
+      - <ruby>降<rt>お</rt></ruby>りら
+      - <ruby>降<rt>お</rt></ruby>りろ
+      - <ruby>降<rt>お</rt></ruby>りり
+    answer: 2
+    hint: "Ichidan verb: drop る, add ろ"
+  - type: free-input
+    question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to imperative form
+    answers:
+      - 借りろ
+      - かりろ
+      - kariro
+    hint: Replace る with ろ — 借りろ! (Borrow it!)
+  - type: free-input
+    question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to imperative form
+    answers:
+      - 答えろ
+      - こたえろ
+      - kotaero
+    hint: Replace る with ろ — 答えろ! (Answer!)
+  - type: free-input
+    question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to imperative form
+    answers:
+      - 調べろ
+      - しらべろ
+      - shirabero
+    hint: Replace る with ろ — 調べろ! (Look it up!)
+  - type: multiple-choice
+    question: Which is the correct imperative form of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
+    options:
+      - <ruby>考<rt>かんが</rt></ruby>えれ
+      - <ruby>考<rt>かんが</rt></ruby>えろ
+      - <ruby>考<rt>かんが</rt></ruby>えら
+      - <ruby>考<rt>かんが</rt></ruby>えり
+    answer: 1
+    hint: "Ichidan verb: drop る, add ろ"
+  - type: free-input
+    question: Convert <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to memorize) to imperative form
+    answers:
+      - 覚えろ
+      - おぼえろ
+      - oboero
+    hint: Replace る with ろ — 覚えろ! (Memorize it!)
+  - type: free-input
+    question: Convert <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel) to imperative form
+    answers:
+      - 感じろ
+      - かんじろ
+      - kanjiro
+    hint: Replace る with ろ — 感じろ! (Feel it!)
+imperative-form-godan:
+  - type: free-input
+    question: Convert <ruby>言<rt>い</rt></ruby>う (iu - to say) to imperative form
+    answers:
+      - 言え
+      - いえ
+      - ie
+    hint: Change to え-row — 言え! (Say it!)
+  - type: free-input
+    question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku) to imperative form
+    answers:
+      - 聞け
+      - きけ
+      - kike
+    hint: く → け (e-row) — 聞け! (Listen!)
+  - type: free-input
+    question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to imperative form
+    answers:
+      - 待て
+      - まて
+      - mate
+    hint: つ → て (e-row) — 待て! (Wait!)
+  - type: free-input
+    question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to imperative form
+    answers:
+      - 飲め
+      - のめ
+      - nome
+    hint: む → め (e-row) — 飲め! (Drink!)
+  - type: free-input
+    question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run) to imperative form (Godan!)
+    answers:
+      - 走れ
+      - はしれ
+      - hashire
+    hint: Godan る → れ (e-row) — 走れ! (Run!)
+  - type: free-input
+    question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to imperative form
+    answers:
+      - 泳げ
+      - およげ
+      - oyoge
+    hint: ぐ → げ (e-row) — 泳げ! (Swim!)
+  - type: free-input
+    question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to imperative form
+    answers:
+      - 話せ
+      - はなせ
+      - hanase
+    hint: す → せ (e-row) — 話せ! (Speak!)
+  - type: free-input
+    question: Convert <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit) to imperative form
+    answers:
+      - 座れ
+      - すわれ
+      - suware
+    hint: る → れ (e-row) — 座れ! (Sit!)
+  - type: free-input
+    question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to imperative form
+    answers:
+      - 読め
+      - よめ
+      - yome
+    hint: む → め (e-row) — 読め! (Read!)
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to imperative form
+    answers:
+      - 買え
+      - かえ
+      - kae
+    hint: う → え (e-row) — 買え! (Buy it!)
+  - type: multiple-choice
+    question: Which is the correct imperative form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    options:
+      - <ruby>遊<rt>あそ</rt></ruby>ば
+      - <ruby>遊<rt>あそ</rt></ruby>び
+      - <ruby>遊<rt>あそ</rt></ruby>べ
+      - <ruby>遊<rt>あそ</rt></ruby>ぼ
+    answer: 2
+    hint: ぶ → べ (e-row)
+  - type: free-input
+    question: Convert <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) to imperative form
+    answers:
+      - 死ね
+      - しね
+      - shine
+    hint: ぬ → ね (e-row) — 死ね! (Die!)
+  - type: free-input
+    question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to imperative form (Godan!)
+    answers:
+      - 帰れ
+      - かえれ
+      - kaere
+    hint: Godan る → れ (e-row) — 帰れ! (Go home!)
+  - type: free-input
+    question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to imperative form
+    answers:
+      - 立て
+      - たて
+      - tate
+    hint: つ → て (e-row) — 立て! (Stand up!)
+  - type: multiple-choice
+    question: Which is the correct imperative form of <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk)?
+    options:
+      - <ruby>歩<rt>ある</rt></ruby>か
+      - <ruby>歩<rt>ある</rt></ruby>け
+      - <ruby>歩<rt>ある</rt></ruby>き
+      - <ruby>歩<rt>ある</rt></ruby>こ
+    answer: 1
+    hint: く → け (e-row)
+  - type: free-input
+    question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to imperative form
+    answers:
+      - 持て
+      - もて
+      - mote
+    hint: つ → て (e-row) — 持て! (Hold it!)
+  - type: free-input
+    question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to imperative form
+    answers:
+      - 送れ
+      - おくれ
+      - okure
+    hint: る → れ (e-row) — 送れ! (Send it!)
+  - type: free-input
+    question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to imperative form
+    answers:
+      - 作れ
+      - つくれ
+      - tsukure
+    hint: る → れ (e-row) — 作れ! (Make it!)
+  - type: multiple-choice
+    question: Which is the correct imperative form of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off)?
+    options:
+      - <ruby>脱<rt>ぬ</rt></ruby>が
+      - <ruby>脱<rt>ぬ</rt></ruby>ぎ
+      - <ruby>脱<rt>ぬ</rt></ruby>げ
+      - <ruby>脱<rt>ぬ</rt></ruby>ご
+    answer: 2
+    hint: ぐ → げ (e-row)
+  - type: free-input
+    question: Convert <ruby>押<rt>お</rt></ruby>す (osu - to push) to imperative form
+    answers:
+      - 押せ
+      - おせ
+      - ose
+    hint: す → せ (e-row) — 押せ! (Push!)
+imperative-form-irregular:
+  - type: free-input
+    question: What is the imperative form of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    answers:
+      - 来い
+      - こい
+      - koi
+    hint: 来る → 来い (こい) — Come!
+  - type: free-input
+    question: What is the imperative form of する (suru)?
+    answers:
+      - しろ
+      - shiro
+    hint: する → しろ — Do it!
+  - type: free-input
+    question: What is the imperative form of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru)?
+    answers:
+      - 勉強しろ
+      - べんきょうしろ
+      - benkyoushiro
+    hint: する → しろ — 勉強しろ! (Study!)
+  - type: multiple-choice
+    question: Which is a softer alternative to the imperative <ruby>食<rt>た</rt></ruby>べろ?
+    options:
+      - <ruby>食<rt>た</rt></ruby>べない
+      - <ruby>食<rt>た</rt></ruby>べて
+      - <ruby>食<rt>た</rt></ruby>べた
+      - <ruby>食<rt>た</rt></ruby>べよう
+    answer: 1
+    hint: "Te-form alone can work as a casual command: 食べて (eat!)"
+  - type: free-input
+    question: What is the imperative form of <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise)?
+    answers:
+      - 運動しろ
+      - うんどうしろ
+      - undoushiro
+    hint: する → しろ — 運動しろ! (Exercise!)
+  - type: free-input
+    question: What is the imperative form of <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice)?
+    answers:
+      - 練習しろ
+      - れんしゅうしろ
+      - renshuushiro
+    hint: する → しろ — 練習しろ! (Practice!)
+  - type: multiple-choice
+    question: What is the imperative form of <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk)?
+    options:
+      - <ruby>散歩<rt>さんぽ</rt></ruby>すれ
+      - <ruby>散歩<rt>さんぽ</rt></ruby>しろ
+      - <ruby>散歩<rt>さんぽ</rt></ruby>しれ
+      - <ruby>散歩<rt>さんぽ</rt></ruby>せろ
+    answer: 1
+    hint: "する verb — する → しろ"
+  - type: free-input
+    question: What is the imperative form of <ruby>説明<rt>せつめい</rt></ruby>する (setsumeisuru - to explain)?
+    answers:
+      - 説明しろ
+      - せつめいしろ
+      - setsumeishiro
+    hint: する → しろ — 説明しろ! (Explain!)
+  - type: multiple-choice
+    question: Which sentence uses the imperative correctly?
+    options:
+      - もっと<ruby>勉強<rt>べんきょう</rt></ruby>しろ! (Study more!)
+      - もっと<ruby>勉強<rt>べんきょう</rt></ruby>しれ! (Study more!)
+      - もっと<ruby>勉強<rt>べんきょう</rt></ruby>しら! (Study more!)
+      - もっと<ruby>勉強<rt>べんきょう</rt></ruby>しる! (Study more!)
+    answer: 0
+    hint: する → しろ for imperative
+  - type: free-input
+    question: What is the imperative form of <ruby>注意<rt>ちゅうい</rt></ruby>する (chuuisuru - to pay attention)?
+    answers:
+      - 注意しろ
+      - ちゅういしろ
+      - chuuishiro
+    hint: する → しろ — 注意しろ! (Pay attention!)
+  - type: free-input
+    question: What is the imperative form of <ruby>我慢<rt>がまん</rt></ruby>する (gamansuru - to endure)?
+    answers:
+      - 我慢しろ
+      - がまんしろ
+      - gamanshiro
+    hint: する → しろ — 我慢しろ! (Endure it!)
+  - type: multiple-choice
+    question: Which is the correct imperative of する?
+    options:
+      - すれ
+      - しろ
+      - すろ
+      - しれ
+    answer: 1
+    hint: する → しろ (irregular)
+  - type: free-input
+    question: How do you say "Come here!" using the imperative of <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - ここに来い
+      - ここにこい
+      - kokoni koi
+    hint: ここに (here) + 来い (come!) = ここに来い!
+  - type: free-input
+    question: What is the imperative form of <ruby>紹介<rt>しょうかい</rt></ruby>する (shoukaisuru - to introduce)?
+    answers:
+      - 紹介しろ
+      - しょうかいしろ
+      - shoukaishiro
+    hint: する → しろ — 紹介しろ! (Introduce!)
+  - type: multiple-choice
+    question: The imperative form is commonly found in which contexts?
+    options:
+      - Business meetings and formal letters
+      - Manga, sports, military, and emergencies
+      - Daily polite conversation
+      - Academic papers
+    answer: 1
+    hint: The imperative is very direct/rude in casual usage, so it appears in fiction, sports cheering, and urgent situations
+  - type: free-input
+    question: What is the imperative form of <ruby>掃除<rt>そうじ</rt></ruby>する (soujisuru - to clean)?
+    answers:
+      - 掃除しろ
+      - そうじしろ
+      - soujishiro
+    hint: する → しろ — 掃除しろ! (Clean!)
+  - type: free-input
+    question: What is the imperative form of <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact)?
+    answers:
+      - 連絡しろ
+      - れんらくしろ
+      - renrakushiro
+    hint: する → しろ — 連絡しろ! (Contact me!)
+  - type: multiple-choice
+    question: Why is こい the imperative of <ruby>来<rt>く</rt></ruby>る and not くれ or くろ?
+    options:
+      - Because it follows ichidan rules
+      - Because it follows godan rules
+      - Because it is completely irregular
+      - Because it uses the negative stem
+    answer: 2
+    hint: 来る (kuru) is one of only two irregular verbs — its forms must be memorized
+  - type: free-input
+    question: What is the imperative form of <ruby>準備<rt>じゅんび</rt></ruby>する (junbisuru - to prepare)?
+    answers:
+      - 準備しろ
+      - じゅんびしろ
+      - junbishiro
+    hint: する → しろ — 準備しろ! (Prepare!)
+  - type: free-input
+    question: What is the imperative form of <ruby>確認<rt>かくにん</rt></ruby>する (kakuninsuru - to confirm)?
+    answers:
+      - 確認しろ
+      - かくにんしろ
+      - kakuninshiro
+    hint: する → しろ — 確認しろ! (Confirm it!)
+imperative-form-test:
+  - type: free-input
+    question: Imperative of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べろ
+      - たべろ
+      - tabero
+    hint: "Ichidan: る → ろ"
+  - type: free-input
+    question: Imperative of <ruby>書<rt>か</rt></ruby>く?
+    answers:
+      - 書け
+      - かけ
+      - kake
+    hint: "Godan: く → け (e-row)"
+  - type: free-input
+    question: Imperative of <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来い
+      - こい
+      - koi
+    hint: Irregular — 来い!
+  - type: free-input
+    question: Imperative of する?
+    answers:
+      - しろ
+      - shiro
+    hint: しろ!
+  - type: multiple-choice
+    question: What is a more polite way to give a command than the imperative?
+    options:
+      - Nai-form
+      - Te-form + ください
+      - Past tense
+      - Volitional form
+    answer: 1
+    hint: 食べてください (please eat) vs 食べろ (eat!)
+  - type: free-input
+    question: Imperative of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
+    answers:
+      - 読め
+      - よめ
+      - yome
+    hint: "Godan: む → め (e-row)"
+  - type: free-input
+    question: Imperative of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
+    answers:
+      - 見ろ
+      - みろ
+      - miro
+    hint: "Ichidan: る → ろ"
+  - type: free-input
+    question: Imperative of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    answers:
+      - 飲め
+      - のめ
+      - nome
+    hint: "Godan: む → め (e-row)"
+  - type: multiple-choice
+    question: Which is the correct imperative of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
+    options:
+      - <ruby>泳<rt>およ</rt></ruby>げ
+      - <ruby>泳<rt>およ</rt></ruby>が
+      - <ruby>泳<rt>およ</rt></ruby>ぎ
+      - <ruby>泳<rt>およ</rt></ruby>ご
+    answer: 0
+    hint: "Godan: ぐ → げ (e-row)"
+  - type: free-input
+    question: Imperative of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
+    answers:
+      - 話せ
+      - はなせ
+      - hanase
+    hint: "Godan: す → せ (e-row)"
+  - type: free-input
+    question: Imperative of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)?
+    answers:
+      - 走れ
+      - はしれ
+      - hashire
+    hint: Godan verb! る → れ (e-row)
+  - type: multiple-choice
+    question: Which is the correct imperative of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
+    options:
+      - <ruby>待<rt>ま</rt></ruby>て
+      - <ruby>待<rt>ま</rt></ruby>た
+      - <ruby>待<rt>ま</rt></ruby>ち
+      - <ruby>待<rt>ま</rt></ruby>と
+    answer: 0
+    hint: "Godan: つ → て (e-row)"
+  - type: free-input
+    question: Imperative of <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up)?
+    answers:
+      - 起きろ
+      - おきろ
+      - okiro
+    hint: "Ichidan: る → ろ"
+  - type: free-input
+    question: Imperative of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
+    answers:
+      - 勉強しろ
+      - べんきょうしろ
+      - benkyoushiro
+    hint: "する verb: する → しろ"
+  - type: free-input
+    question: Imperative of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    answers:
+      - 遊べ
+      - あそべ
+      - asobe
+    hint: "Godan: ぶ → べ (e-row)"
+  - type: multiple-choice
+    question: For godan verbs, the imperative form uses which vowel row?
+    options:
+      - あ-row (a)
+      - い-row (i)
+      - お-row (o)
+      - え-row (e)
+    answer: 3
+    hint: く → け, む → め, す → せ — all e-row
+  - type: free-input
+    question: Imperative of <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)?
+    answers:
+      - 閉めろ
+      - しめろ
+      - shimero
+    hint: "Ichidan: る → ろ"
+  - type: free-input
+    question: Imperative of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home)?
+    answers:
+      - 帰れ
+      - かえれ
+      - kaere
+    hint: "Godan: る → れ (e-row)"
+  - type: multiple-choice
+    question: Which is the correct imperative of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>な
+      - <ruby>死<rt>し</rt></ruby>に
+      - <ruby>死<rt>し</rt></ruby>ね
+      - <ruby>死<rt>し</rt></ruby>の
+    answer: 2
+    hint: "Godan: ぬ → ね (e-row)"
+  - type: free-input
+    question: Imperative of <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand)?
+    answers:
+      - 立て
+      - たて
+      - tate
+    hint: "Godan: つ → て (e-row)"

@@ -1,0 +1,601 @@
+polite-form-ichidan:
+  - type: free-input
+    question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu - to eat) to polite form
+    answers:
+      - 食べます
+      - たべます
+      - tabemasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>見<rt>み</rt></ruby>る (miru - to look) to polite form
+    answers:
+      - 見ます
+      - みます
+      - mimasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to polite form
+    answers:
+      - 起きます
+      - おきます
+      - okimasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru - to sleep) to polite form
+    answers:
+      - 寝ます
+      - ねます
+      - nemasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to polite form
+    answers:
+      - 教えます
+      - おしえます
+      - oshiemasu
+    hint: Drop る, add ます
+  - type: multiple-choice
+    question: What is the polite negative of <ruby>食<rt>た</rt></ruby>べる (taberu)?
+    options:
+      - <ruby>食<rt>た</rt></ruby>べません
+      - <ruby>食<rt>た</rt></ruby>べないます
+      - <ruby>食<rt>た</rt></ruby>べますない
+      - <ruby>食<rt>た</rt></ruby>べなます
+    answer: 0
+    hint: Replace ます with ません
+  - type: free-input
+    question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to polite form
+    answers:
+      - 開けます
+      - あけます
+      - akemasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to polite form
+    answers:
+      - 閉めます
+      - しめます
+      - shimemasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to polite form
+    answers:
+      - 着ます
+      - きます
+      - kimasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to shower) to polite form
+    answers:
+      - 浴びます
+      - あびます
+      - abimasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to exit) to polite form
+    answers:
+      - 出ます
+      - でます
+      - demasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to polite form
+    answers:
+      - 信じます
+      - しんじます
+      - shinjimasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel) to polite form
+    answers:
+      - 感じます
+      - かんじます
+      - kanjimasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to polite form
+    answers:
+      - 降ります
+      - おります
+      - orimasu
+    hint: Drop る, add ます
+  - type: free-input
+    question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to polite form
+    answers:
+      - 借ります
+      - かります
+      - karimasu
+    hint: Drop る, add ます
+  - type: multiple-choice
+    question: What is the polite past form of <ruby>見<rt>み</rt></ruby>る (miru)?
+    options:
+      - <ruby>見<rt>み</rt></ruby>ます
+      - <ruby>見<rt>み</rt></ruby>ました
+      - <ruby>見<rt>み</rt></ruby>ませんでした
+      - <ruby>見<rt>み</rt></ruby>るました
+    answer: 1
+    hint: Replace ます with ました for polite past
+  - type: multiple-choice
+    question: Which is the correct polite form of <ruby>出<rt>で</rt></ruby>る (deru - to exit)?
+    options:
+      - <ruby>出<rt>で</rt></ruby>ります
+      - <ruby>出<rt>で</rt></ruby>ます
+      - <ruby>出<rt>で</rt></ruby>えます
+      - <ruby>出<rt>で</rt></ruby>るます
+    answer: 1
+    hint: 出る is ichidan — drop る and add ます
+  - type: multiple-choice
+    question: What is the polite negative past of <ruby>寝<rt>ね</rt></ruby>る (neru)?
+    options:
+      - <ruby>寝<rt>ね</rt></ruby>ません
+      - <ruby>寝<rt>ね</rt></ruby>ませんでした
+      - <ruby>寝<rt>ね</rt></ruby>なかったです
+      - <ruby>寝<rt>ね</rt></ruby>ました
+    answer: 1
+    hint: Replace ます with ませんでした for polite negative past
+  - type: multiple-choice
+    question: Which is the correct polite form of <ruby>開<rt>あ</rt></ruby>ける (akeru)?
+    options:
+      - <ruby>開<rt>あ</rt></ruby>きます
+      - <ruby>開<rt>あ</rt></ruby>けます
+      - <ruby>開<rt>あ</rt></ruby>くます
+      - <ruby>開<rt>あ</rt></ruby>かます
+    answer: 1
+    hint: 開ける is ichidan — drop る and add ます to get 開けます
+  - type: free-input
+    question: What is the polite negative of <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up)?
+    answers:
+      - 起きません
+      - おきません
+      - okimasen
+    hint: Drop る, add ません
+polite-form-godan:
+  - type: free-input
+    question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu - to drink) to polite form
+    answers:
+      - 飲みます
+      - のみます
+      - nomimasu
+    hint: む → み (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku - to listen) to polite form
+    answers:
+      - 聞きます
+      - ききます
+      - kikimasu
+    hint: く → き (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to polite form
+    answers:
+      - 持ちます
+      - もちます
+      - mochimasu
+    hint: つ → ち (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to polite form
+    answers:
+      - 読みます
+      - よみます
+      - yomimasu
+    hint: む → み (i-row), then add ます
+  - type: multiple-choice
+    question: For godan verbs, what sound row do you change to before adding ます?
+    options:
+      - あ-row (a)
+      - い-row (i)
+      - う-row (u)
+      - え-row (e)
+    answer: 1
+    hint: む→み, く→き, す→し, つ→ち, etc.
+  - type: free-input
+    question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to polite form
+    answers:
+      - 泳ぎます
+      - およぎます
+      - oyogimasu
+    hint: ぐ → ぎ (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to polite form
+    answers:
+      - 遊びます
+      - あそびます
+      - asobimasu
+    hint: ぶ → び (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run) to polite form
+    answers:
+      - 走ります
+      - はしります
+      - hashirimasu
+    hint: Godan verb! る → り (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to polite form
+    answers:
+      - 買います
+      - かいます
+      - kaimasu
+    hint: う → い (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to polite form
+    answers:
+      - 話します
+      - はなします
+      - hanashimasu
+    hint: す → し (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) to polite form
+    answers:
+      - 待ちます
+      - まちます
+      - machimasu
+    hint: つ → ち (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) to polite form
+    answers:
+      - 死にます
+      - しにます
+      - shinimasu
+    hint: ぬ → に (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to polite form
+    answers:
+      - 帰ります
+      - かえります
+      - kaerimasu
+    hint: Godan verb! る → り (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to polite form
+    answers:
+      - 作ります
+      - つくります
+      - tsukurimasu
+    hint: る → り (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to polite form
+    answers:
+      - 送ります
+      - おくります
+      - okurimasu
+    hint: る → り (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>笑<rt>わら</rt></ruby>う (warau - to laugh) to polite form
+    answers:
+      - 笑います
+      - わらいます
+      - waraimasu
+    hint: う → い (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit) to polite form
+    answers:
+      - 座ります
+      - すわります
+      - suwarimasu
+    hint: る → り (i-row), then add ます
+  - type: multiple-choice
+    question: Which is the correct polite form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>なます
+      - <ruby>死<rt>し</rt></ruby>にます
+      - <ruby>死<rt>し</rt></ruby>ぬます
+      - <ruby>死<rt>し</rt></ruby>のます
+    answer: 1
+    hint: ぬ → に (i-row), then add ます
+  - type: multiple-choice
+    question: Which is the correct polite form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
+    options:
+      - <ruby>使<rt>つか</rt></ruby>うます
+      - <ruby>使<rt>つか</rt></ruby>あます
+      - <ruby>使<rt>つか</rt></ruby>います
+      - <ruby>使<rt>つか</rt></ruby>えます
+    answer: 2
+    hint: う → い (i-row), then add ます
+  - type: free-input
+    question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to polite form
+    answers:
+      - 立ちます
+      - たちます
+      - tachimasu
+    hint: つ → ち (i-row), then add ます
+polite-form-irregular:
+  - type: free-input
+    question: Convert する (suru - to do) to polite form
+    answers:
+      - します
+      - shimasu
+    hint: Irregular — する becomes します
+  - type: free-input
+    question: Convert <ruby>来<rt>く</rt></ruby>る (kuru - to come) to polite form
+    answers:
+      - 来ます
+      - きます
+      - kimasu
+    hint: Irregular — く changes to き, then add ます
+  - type: multiple-choice
+    question: Why are する and <ruby>来<rt>く</rt></ruby>る called irregular?
+    options:
+      - They are rarely used
+      - They don't follow ichidan or godan rules
+      - They can't be conjugated
+      - They are only used in casual speech
+    answer: 1
+    hint: They have their own unique conjugation patterns
+  - type: free-input
+    question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study) to polite form
+    answers:
+      - 勉強します
+      - べんきょうします
+      - benkyoushimasu
+    hint: する verb — conjugate the する part → します
+  - type: free-input
+    question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook) to polite form
+    answers:
+      - 料理します
+      - りょうりします
+      - ryourishimasu
+    hint: する verb — conjugate the する part → します
+  - type: multiple-choice
+    question: What is the polite negative of する (suru)?
+    options:
+      - しない
+      - しません
+      - さません
+      - すません
+    answer: 1
+    hint: します → しません
+  - type: multiple-choice
+    question: What is the polite past of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    options:
+      - <ruby>来<rt>き</rt></ruby>ます
+      - <ruby>来<rt>く</rt></ruby>りました
+      - <ruby>来<rt>き</rt></ruby>ました
+      - <ruby>来<rt>く</rt></ruby>ました
+    answer: 2
+    hint: 来ます → 来ました (replace ます with ました)
+  - type: free-input
+    question: What is the polite negative of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
+    answers:
+      - 来ません
+      - きません
+      - kimasen
+    hint: Irregular — 来ます → 来ません
+  - type: free-input
+    question: What is the polite past of する (suru - to do)?
+    answers:
+      - しました
+      - shimashita
+    hint: します → しました
+  - type: free-input
+    question: Convert <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk) to polite form
+    answers:
+      - 散歩します
+      - さんぽします
+      - sanposhimasu
+    hint: する verb — conjugate the する part → します
+  - type: free-input
+    question: Convert <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise) to polite form
+    answers:
+      - 運動します
+      - うんどうします
+      - undoushimasu
+    hint: する verb — conjugate the する part → します
+  - type: free-input
+    question: Convert <ruby>掃除<rt>そうじ</rt></ruby>する (soujisuru - to clean) to polite form
+    answers:
+      - 掃除します
+      - そうじします
+      - soujishimasu
+    hint: する verb — conjugate the する part → します
+  - type: free-input
+    question: Convert <ruby>洗濯<rt>せんたく</rt></ruby>する (sentakusuru - to do laundry) to polite form
+    answers:
+      - 洗濯します
+      - せんたくします
+      - sentakushimasu
+    hint: する verb — conjugate the する part → します
+  - type: multiple-choice
+    question: What is the polite negative past of する (suru)?
+    options:
+      - しませんでした
+      - しなかったです
+      - さませんでした
+      - すませんでした
+    answer: 0
+    hint: します → しませんでした
+  - type: multiple-choice
+    question: Which of these is a noun + する compound verb?
+    options:
+      - <ruby>食<rt>た</rt></ruby>べる (taberu)
+      - <ruby>走<rt>はし</rt></ruby>る (hashiru)
+      - <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru)
+      - <ruby>飲<rt>の</rt></ruby>む (nomu)
+    answer: 2
+    hint: 勉強 is a noun that pairs with する to become a verb
+  - type: multiple-choice
+    question: What is the polite negative past of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    options:
+      - <ruby>来<rt>き</rt></ruby>ませんでした
+      - <ruby>来<rt>く</rt></ruby>ませんでした
+      - <ruby>来<rt>こ</rt></ruby>なかったです
+      - <ruby>来<rt>き</rt></ruby>ません
+    answer: 0
+    hint: 来ます → 来ませんでした (the kanji 来 is read き in this form)
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>する (kaimonosuru - to go shopping) to polite form
+    answers:
+      - 買い物します
+      - かいものします
+      - kaimonoshimasu
+    hint: する verb — conjugate the する part → します
+  - type: free-input
+    question: Convert <ruby>電話<rt>でんわ</rt></ruby>する (denwasuru - to call/phone) to polite form
+    answers:
+      - 電話します
+      - でんわします
+      - denwashimasu
+    hint: する verb — conjugate the する part → します
+  - type: multiple-choice
+    question: How do you form the polite form of noun + する verbs?
+    options:
+      - Change the noun and keep する
+      - Keep the noun and conjugate する → します
+      - Drop する entirely
+      - Add ます to the noun
+    answer: 1
+    hint: The noun stays the same — only する changes to します
+  - type: free-input
+    question: Convert <ruby>旅行<rt>りょこう</rt></ruby>する (ryokousuru - to travel) to polite form
+    answers:
+      - 旅行します
+      - りょこうします
+      - ryokoushimasu
+    hint: する verb — conjugate the する part → します
+polite-form-test:
+  - type: free-input
+    question: Polite form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
+    answers:
+      - 泳ぎます
+      - およぎます
+      - oyogimasu
+    hint: "Godan: ぐ → ぎ (i-row), add ます"
+  - type: free-input
+    question: Polite form of <ruby>寝<rt>ね</rt></ruby>る (neru - to sleep)?
+    answers:
+      - 寝ます
+      - ねます
+      - nemasu
+    hint: "Ichidan: drop る, add ます"
+  - type: free-input
+    question: Polite form of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
+    answers:
+      - 勉強します
+      - べんきょうします
+      - benkyoushimasu
+    hint: する verb → します
+  - type: multiple-choice
+    question: Which is the correct polite form of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return)? (Godan verb!)
+    options:
+      - <ruby>帰<rt>かえ</rt></ruby>ます
+      - <ruby>帰<rt>かえ</rt></ruby>えます
+      - <ruby>帰<rt>かえ</rt></ruby>ります
+      - <ruby>帰<rt>かえ</rt></ruby>りります
+    answer: 2
+    hint: 帰る is godan despite ending in -eru. る → り, add ます
+  - type: free-input
+    question: Polite form of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)? (Godan!)
+    answers:
+      - 走ります
+      - はしります
+      - hashirimasu
+    hint: 走る looks ichidan but is godan — る → り, add ます
+  - type: free-input
+    question: Polite form of <ruby>食<rt>た</rt></ruby>べる (taberu - to eat)?
+    answers:
+      - 食べます
+      - たべます
+      - tabemasu
+    hint: "Ichidan: drop る, add ます"
+  - type: free-input
+    question: Polite form of <ruby>書<rt>か</rt></ruby>く (kaku - to write)?
+    answers:
+      - 書きます
+      - かきます
+      - kakimasu
+    hint: "Godan: く → き (i-row), add ます"
+  - type: free-input
+    question: Polite form of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
+    answers:
+      - 来ます
+      - きます
+      - kimasu
+    hint: "Irregular: く → き, add ます"
+  - type: multiple-choice
+    question: Which is the correct polite form of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    options:
+      - <ruby>飲<rt>の</rt></ruby>むます
+      - <ruby>飲<rt>の</rt></ruby>みます
+      - <ruby>飲<rt>の</rt></ruby>まます
+      - <ruby>飲<rt>の</rt></ruby>めます
+    answer: 1
+    hint: "Godan: む → み (i-row), then add ます"
+  - type: free-input
+    question: Polite form of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
+    answers:
+      - 見ます
+      - みます
+      - mimasu
+    hint: "Ichidan: drop る, add ます"
+  - type: free-input
+    question: Polite form of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
+    answers:
+      - 待ちます
+      - まちます
+      - machimasu
+    hint: "Godan: つ → ち (i-row), add ます"
+  - type: free-input
+    question: Polite form of する (suru - to do)?
+    answers:
+      - します
+      - shimasu
+    hint: "Irregular: する → します"
+  - type: multiple-choice
+    question: Which polite form is WRONG?
+    options:
+      - <ruby>遊<rt>あそ</rt></ruby>びます (asobu)
+      - <ruby>読<rt>よ</rt></ruby>みます (yomu)
+      - <ruby>教<rt>おし</rt></ruby>えます (oshieru)
+      - <ruby>話<rt>はな</rt></ruby>さます (hanasu)
+    answer: 3
+    hint: 話す → 話します (す → し, add ます), not 話さます
+  - type: free-input
+    question: Polite form of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
+    answers:
+      - 買います
+      - かいます
+      - kaimasu
+    hint: "Godan: う → い (i-row), add ます"
+  - type: free-input
+    question: Polite form of <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook)?
+    answers:
+      - 料理します
+      - りょうりします
+      - ryourishimasu
+    hint: "する verb: conjugate する → します"
+  - type: multiple-choice
+    question: How do ichidan and godan verbs differ when forming polite form?
+    options:
+      - Ichidan drops る then adds ます; godan changes last kana to i-row then adds ます
+      - They both just add ます to dictionary form
+      - Ichidan changes the stem; godan drops the ending
+      - There is no difference
+    answer: 0
+    hint: 食べる → 食べます (drop る) vs 書く → 書きます (く → き)
+  - type: free-input
+    question: Polite form of <ruby>開<rt>あ</rt></ruby>ける (akeru - to open)?
+    answers:
+      - 開けます
+      - あけます
+      - akemasu
+    hint: "Ichidan: drop る, add ます"
+  - type: free-input
+    question: Polite form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    answers:
+      - 死にます
+      - しにます
+      - shinimasu
+    hint: "Godan: ぬ → に (i-row), add ます"
+  - type: free-input
+    question: Polite form of <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make)?
+    answers:
+      - 作ります
+      - つくります
+      - tsukurimasu
+    hint: "Godan: る → り (i-row), add ます"
+  - type: multiple-choice
+    question: Which is the correct polite form of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
+    options:
+      - <ruby>信<rt>しん</rt></ruby>じります
+      - <ruby>信<rt>しん</rt></ruby>じます
+      - <ruby>信<rt>しん</rt></ruby>じるます
+      - <ruby>信<rt>しん</rt></ruby>ずます
+    answer: 1
+    hint: 信じる is ichidan — drop る, add ます

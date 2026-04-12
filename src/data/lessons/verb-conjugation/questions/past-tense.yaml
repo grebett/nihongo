@@ -1,0 +1,589 @@
+past-tense-ichidan:
+  - type: free-input
+    question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to past tense
+    answers:
+      - 見た
+      - みた
+      - mita
+    hint: Te-form 見て → replace て with た
+  - type: free-input
+    question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu) to past tense
+    answers:
+      - 食べた
+      - たべた
+      - tabeta
+    hint: Te-form 食べて → replace て with た
+  - type: free-input
+    question: What is the polite past of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べました
+      - たべました
+      - tabemashita
+    hint: Replace ます with ました
+  - type: free-input
+    question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru - to sleep) to past tense
+    answers:
+      - 寝た
+      - ねた
+      - neta
+    hint: Te-form 寝て → replace て with た
+  - type: free-input
+    question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to past tense
+    answers:
+      - 教えた
+      - おしえた
+      - oshieta
+    hint: Te-form 教えて → replace て with た
+  - type: free-input
+    question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to past tense
+    answers:
+      - 起きた
+      - おきた
+      - okita
+    hint: Te-form 起きて → replace て with た
+  - type: free-input
+    question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to past tense
+    answers:
+      - 開けた
+      - あけた
+      - aketa
+    hint: Te-form 開けて → replace て with た
+  - type: free-input
+    question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to past tense
+    answers:
+      - 閉めた
+      - しめた
+      - shimeta
+    hint: Te-form 閉めて → replace て with た
+  - type: free-input
+    question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to past tense
+    answers:
+      - 着た
+      - きた
+      - kita
+    hint: Te-form 着て → replace て with た
+  - type: free-input
+    question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to shower) to past tense
+    answers:
+      - 浴びた
+      - あびた
+      - abita
+    hint: Te-form 浴びて → replace て with た
+  - type: multiple-choice
+    question: What is the past tense of <ruby>出<rt>で</rt></ruby>る (deru - to go out)?
+    options:
+      - <ruby>出<rt>で</rt></ruby>って
+      - <ruby>出<rt>で</rt></ruby>った
+      - <ruby>出<rt>で</rt></ruby>た
+      - <ruby>出<rt>で</rt></ruby>いた
+    answer: 2
+    hint: Ichidan — drop る, add た
+  - type: free-input
+    question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to past tense
+    answers:
+      - 降りた
+      - おりた
+      - orita
+    hint: Te-form 降りて → replace て with た
+  - type: free-input
+    question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to past tense
+    answers:
+      - 借りた
+      - かりた
+      - karita
+    hint: Te-form 借りて → replace て with た
+  - type: free-input
+    question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to past tense
+    answers:
+      - 調べた
+      - しらべた
+      - shirabeta
+    hint: Te-form 調べて → replace て with た
+  - type: multiple-choice
+    question: What is the past tense of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
+    options:
+      - <ruby>考<rt>かんが</rt></ruby>えって
+      - <ruby>考<rt>かんが</rt></ruby>いた
+      - <ruby>考<rt>かんが</rt></ruby>えた
+      - <ruby>考<rt>かんが</rt></ruby>えんだ
+    answer: 2
+    hint: Ichidan — drop る, add た
+  - type: free-input
+    question: Convert <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to remember) to past tense
+    answers:
+      - 覚えた
+      - おぼえた
+      - oboeta
+    hint: Te-form 覚えて → replace て with た
+  - type: free-input
+    question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to past tense
+    answers:
+      - 忘れた
+      - わすれた
+      - wasureta
+    hint: Te-form 忘れて → replace て with た
+  - type: free-input
+    question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to past tense
+    answers:
+      - 答えた
+      - こたえた
+      - kotaeta
+    hint: Te-form 答えて → replace て with た
+  - type: multiple-choice
+    question: What is the past tense of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
+    options:
+      - <ruby>信<rt>しん</rt></ruby>じった
+      - <ruby>信<rt>しん</rt></ruby>じんだ
+      - <ruby>信<rt>しん</rt></ruby>じた
+      - <ruby>信<rt>しん</rt></ruby>した
+    answer: 2
+    hint: Ichidan — drop る, add た
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>かける (dekakeru - to go out) to past tense
+    answers:
+      - 出かけた
+      - でかけた
+      - dekaketa
+    hint: Te-form 出かけて → replace て with た
+past-tense-godan:
+  - type: multiple-choice
+    question: How do you form past tense from te-form?
+    options:
+      - Add た after て
+      - Replace て with た (and で with だ)
+      - Add ました
+      - Change the verb stem
+    answer: 1
+    hint: 書いて→書いた, 飲んで→飲んだ
+  - type: free-input
+    question: Convert <ruby>書<rt>か</rt></ruby>く (kaku) to past tense
+    answers:
+      - 書いた
+      - かいた
+      - kaita
+    hint: 書いて → 書いた
+  - type: free-input
+    question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to past tense
+    answers:
+      - 飲んだ
+      - のんだ
+      - nonda
+    hint: 飲んで → 飲んだ (で→だ)
+  - type: free-input
+    question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to past tense
+    answers:
+      - 待った
+      - まった
+      - matta
+    hint: 待って → 待った
+  - type: free-input
+    question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu) to past tense
+    answers:
+      - 読んだ
+      - よんだ
+      - yonda
+    hint: 読んで → 読んだ
+  - type: free-input
+    question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to past tense
+    answers:
+      - 泳いだ
+      - およいだ
+      - oyoida
+    hint: 泳いで → 泳いだ (で→だ)
+  - type: free-input
+    question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to past tense
+    answers:
+      - 話した
+      - はなした
+      - hanashita
+    hint: 話して → 話した
+  - type: free-input
+    question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to past tense
+    answers:
+      - 遊んだ
+      - あそんだ
+      - asonda
+    hint: 遊んで → 遊んだ (で→だ)
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to past tense
+    answers:
+      - 買った
+      - かった
+      - katta
+    hint: 買って → 買った
+  - type: free-input
+    question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run) to past tense (Godan!)
+    answers:
+      - 走った
+      - はしった
+      - hashitta
+    hint: Godan る → った
+  - type: free-input
+    question: Convert <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk) to past tense
+    answers:
+      - 歩いた
+      - あるいた
+      - aruita
+    hint: く → いた
+  - type: free-input
+    question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to past tense
+    answers:
+      - 立った
+      - たった
+      - tatta
+    hint: つ → った
+  - type: free-input
+    question: Convert <ruby>笑<rt>わら</rt></ruby>う (warau - to laugh) to past tense
+    answers:
+      - 笑った
+      - わらった
+      - waratta
+    hint: う → った
+  - type: multiple-choice
+    question: What is the past tense of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>にた
+      - <ruby>死<rt>し</rt></ruby>った
+      - <ruby>死<rt>し</rt></ruby>んだ
+      - <ruby>死<rt>し</rt></ruby>いた
+    answer: 2
+    hint: ぬ → んだ (same as む and ぶ)
+  - type: free-input
+    question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to past tense (Godan!)
+    answers:
+      - 送った
+      - おくった
+      - okutta
+    hint: Godan る → った
+  - type: free-input
+    question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to past tense (Godan!)
+    answers:
+      - 作った
+      - つくった
+      - tsukutta
+    hint: Godan る → った
+  - type: free-input
+    question: Convert <ruby>使<rt>つか</rt></ruby>う (tsukau - to use) to past tense
+    answers:
+      - 使った
+      - つかった
+      - tsukatta
+    hint: う → った
+  - type: multiple-choice
+    question: What is the past tense of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off)?
+    options:
+      - <ruby>脱<rt>ぬ</rt></ruby>いた
+      - <ruby>脱<rt>ぬ</rt></ruby>いだ
+      - <ruby>脱<rt>ぬ</rt></ruby>った
+      - <ruby>脱<rt>ぬ</rt></ruby>んだ
+    answer: 1
+    hint: ぐ → いだ (voiced)
+  - type: free-input
+    question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to past tense
+    answers:
+      - 持った
+      - もった
+      - motta
+    hint: つ → った
+  - type: free-input
+    question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to past tense (Godan!)
+    answers:
+      - 帰った
+      - かえった
+      - kaetta
+    hint: Godan る → った
+past-tense-irregular:
+  - type: free-input
+    question: Convert <ruby>来<rt>く</rt></ruby>る (kuru) to past tense
+    answers:
+      - 来た
+      - きた
+      - kita
+    hint: 来て → 来た — careful, it's きた not きった!
+  - type: free-input
+    question: Convert する (suru) to past tense
+    answers:
+      - した
+      - shita
+    hint: して → した
+  - type: free-input
+    question: What is the polite past of <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来ました
+      - きました
+      - kimashita
+    hint: Masu stem き + ました
+  - type: free-input
+    question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to past tense
+    answers:
+      - 勉強した
+      - べんきょうした
+      - benkyoushita
+    hint: して → した
+  - type: free-input
+    question: What is the polite past of する?
+    answers:
+      - しました
+      - shimashita
+    hint: します → しました
+  - type: multiple-choice
+    question: What is the past tense of <ruby>行<rt>い</rt></ruby>く (iku - to go)?
+    options:
+      - <ruby>行<rt>い</rt></ruby>いた
+      - <ruby>行<rt>い</rt></ruby>った
+      - <ruby>行<rt>い</rt></ruby>きた
+      - <ruby>行<rt>い</rt></ruby>した
+    answer: 1
+    hint: Exception! 行く → 行った (not 行いた)
+  - type: free-input
+    question: Convert <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise) to past tense
+    answers:
+      - 運動した
+      - うんどうした
+      - undoushita
+    hint: する verb — した
+  - type: free-input
+    question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook) to past tense
+    answers:
+      - 料理した
+      - りょうりした
+      - ryourishita
+    hint: する verb — した
+  - type: multiple-choice
+    question: What is the past tense of <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk)?
+    options:
+      - <ruby>散歩<rt>さんぽ</rt></ruby>すた
+      - <ruby>散歩<rt>さんぽ</rt></ruby>した
+      - <ruby>散歩<rt>さんぽ</rt></ruby>しった
+      - <ruby>散歩<rt>さんぽ</rt></ruby>さた
+    answer: 1
+    hint: する verb — した
+  - type: free-input
+    question: Convert <ruby>旅行<rt>りょこう</rt></ruby>する (ryokousuru - to travel) to past tense
+    answers:
+      - 旅行した
+      - りょこうした
+      - ryokoushita
+    hint: する verb — した
+  - type: free-input
+    question: Convert <ruby>掃除<rt>そうじ</rt></ruby>する (soujisuru - to clean) to past tense
+    answers:
+      - 掃除した
+      - そうじした
+      - soujishita
+    hint: する verb — した
+  - type: free-input
+    question: What is the polite past of <ruby>勉強<rt>べんきょう</rt></ruby>する?
+    answers:
+      - 勉強しました
+      - べんきょうしました
+      - benkyoushimashita
+    hint: 勉強します → 勉強しました
+  - type: multiple-choice
+    question: Which of the following is the correct past tense of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    options:
+      - くた
+      - きた
+      - こた
+      - かた
+    answer: 1
+    hint: The stem changes to き, then add た
+  - type: free-input
+    question: Convert <ruby>電話<rt>でんわ</rt></ruby>する (denwasuru - to phone) to past tense
+    answers:
+      - 電話した
+      - でんわした
+      - denwashita
+    hint: する verb — した
+  - type: free-input
+    question: Convert <ruby>心配<rt>しんぱい</rt></ruby>する (shinpaisuru - to worry) to past tense
+    answers:
+      - 心配した
+      - しんぱいした
+      - shinpaishita
+    hint: する verb — した
+  - type: multiple-choice
+    question: "<ruby>行<rt>い</rt></ruby>く (iku) is irregular in past tense. Why is it <ruby>行<rt>い</rt></ruby>った and not <ruby>行<rt>い</rt></ruby>いた?"
+    options:
+      - "Because <ruby>行<rt>い</rt></ruby>く is an ichidan verb"
+      - "Because <ruby>行<rt>い</rt></ruby>く is a する verb"
+      - Because it is an exception to the く → いた rule
+      - Because う verbs always become った
+    answer: 2
+    hint: 行く is the only く verb that becomes った instead of いた
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>する (kaimonosuru - to go shopping) to past tense
+    answers:
+      - 買い物した
+      - かいものした
+      - kaimonoshita
+    hint: する verb — した
+  - type: free-input
+    question: Convert <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice) to past tense
+    answers:
+      - 練習した
+      - れんしゅうした
+      - renshuushita
+    hint: する verb — した
+  - type: multiple-choice
+    question: What is the polite past tense of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    options:
+      - くました
+      - きました
+      - こました
+      - かました
+    answer: 1
+    hint: Masu stem き + ました
+  - type: free-input
+    question: Convert <ruby>卒業<rt>そつぎょう</rt></ruby>する (sotsugyousuru - to graduate) to past tense
+    answers:
+      - 卒業した
+      - そつぎょうした
+      - sotsugyoushita
+    hint: する verb — した
+past-tense-test:
+  - type: free-input
+    question: Past tense of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
+    answers:
+      - 泳いだ
+      - およいだ
+      - oyoida
+    hint: ぐ → いだ
+  - type: free-input
+    question: Past tense of <ruby>走<rt>はし</rt></ruby>る (hashiru)? (Godan!)
+    answers:
+      - 走った
+      - はしった
+      - hashitta
+    hint: Godan る → った
+  - type: free-input
+    question: Polite past of <ruby>飲<rt>の</rt></ruby>む (nomu)?
+    answers:
+      - 飲みました
+      - のみました
+      - nomimashita
+    hint: 飲みます → 飲みました
+  - type: free-input
+    question: Past tense of <ruby>勉強<rt>べんきょう</rt></ruby>する?
+    answers:
+      - 勉強した
+      - べんきょうした
+      - benkyoushita
+    hint: した
+  - type: free-input
+    question: Past tense of <ruby>食<rt>た</rt></ruby>べる (taberu - to eat)?
+    answers:
+      - 食べた
+      - たべた
+      - tabeta
+    hint: "Ichidan: drop る, add た"
+  - type: free-input
+    question: Past tense of <ruby>書<rt>か</rt></ruby>く (kaku - to write)?
+    answers:
+      - 書いた
+      - かいた
+      - kaita
+    hint: "Godan: く → いた"
+  - type: free-input
+    question: Past tense of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
+    answers:
+      - 来た
+      - きた
+      - kita
+    hint: "Irregular: きた"
+  - type: free-input
+    question: Past tense of する (suru - to do)?
+    answers:
+      - した
+      - shita
+    hint: "Irregular: した"
+  - type: free-input
+    question: Past tense of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    answers:
+      - 飲んだ
+      - のんだ
+      - nonda
+    hint: "Godan: む → んだ"
+  - type: free-input
+    question: Past tense of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
+    answers:
+      - 待った
+      - まった
+      - matta
+    hint: "Godan: つ → った"
+  - type: multiple-choice
+    question: Which past tense form is correct for <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    options:
+      - <ruby>遊<rt>あそ</rt></ruby>びた
+      - <ruby>遊<rt>あそ</rt></ruby>んだ
+      - <ruby>遊<rt>あそ</rt></ruby>いだ
+      - <ruby>遊<rt>あそ</rt></ruby>った
+    answer: 1
+    hint: ぶ → んだ (same pattern as む and ぬ)
+  - type: free-input
+    question: Past tense of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
+    answers:
+      - 見た
+      - みた
+      - mita
+    hint: "Ichidan: drop る, add た"
+  - type: free-input
+    question: Polite past of <ruby>見<rt>み</rt></ruby>る (miru)?
+    answers:
+      - 見ました
+      - みました
+      - mimashita
+    hint: 見ます → 見ました
+  - type: free-input
+    question: Past tense of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
+    answers:
+      - 話した
+      - はなした
+      - hanashita
+    hint: "Godan: す → した"
+  - type: multiple-choice
+    question: "Past tense of <ruby>買<rt>か</rt></ruby>う (kau - to buy) is:"
+    options:
+      - <ruby>買<rt>か</rt></ruby>いた
+      - <ruby>買<rt>か</rt></ruby>った
+      - <ruby>買<rt>か</rt></ruby>うた
+      - <ruby>買<rt>か</rt></ruby>わた
+    answer: 1
+    hint: う → った
+  - type: free-input
+    question: Polite past of <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach)?
+    answers:
+      - 教えました
+      - おしえました
+      - oshiemashita
+    hint: 教えます → 教えました
+  - type: free-input
+    question: Past tense of <ruby>送<rt>おく</rt></ruby>る (okuru - to send)? (Godan!)
+    answers:
+      - 送った
+      - おくった
+      - okutta
+    hint: "Godan: る → った"
+  - type: multiple-choice
+    question: Which past tense form is correct for <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>にた
+      - <ruby>死<rt>し</rt></ruby>った
+      - <ruby>死<rt>し</rt></ruby>んだ
+      - <ruby>死<rt>し</rt></ruby>いた
+    answer: 2
+    hint: ぬ → んだ (same as む and ぶ)
+  - type: free-input
+    question: Past tense of <ruby>行<rt>い</rt></ruby>く (iku - to go)?
+    answers:
+      - 行った
+      - いった
+      - itta
+    hint: "Exception: 行く → 行った (not 行いた)"
+  - type: free-input
+    question: Past tense of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to remember)?
+    answers:
+      - 覚えた
+      - おぼえた
+      - oboeta
+    hint: "Ichidan: drop る, add た"

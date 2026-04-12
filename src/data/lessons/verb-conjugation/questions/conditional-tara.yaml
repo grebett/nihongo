@@ -1,0 +1,594 @@
+conditional-tara-ichidan:
+  - type: free-input
+    question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu) to tara-form
+    answers:
+      - 食べたら
+      - たべたら
+      - tabetara
+    hint: Past tense 食べた + ら
+  - type: free-input
+    question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to tara-form
+    answers:
+      - 見たら
+      - みたら
+      - mitara
+    hint: Past tense 見た + ら
+  - type: multiple-choice
+    question: "The tara-form can express:"
+    options:
+      - Only hypotheticals
+      - Only 'after'
+      - Hypotheticals, actual conditions, and 'after'
+      - Only past events
+    answer: 2
+    hint: 夏が来たら = if/when/after summer comes
+  - type: free-input
+    question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru) to tara-form
+    answers:
+      - 寝たら
+      - ねたら
+      - netara
+    hint: Past tense 寝た + ら
+  - type: free-input
+    question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru) to tara-form
+    answers:
+      - 起きたら
+      - おきたら
+      - okitara
+    hint: Past tense 起きた + ら
+  - type: free-input
+    question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru) to tara-form
+    answers:
+      - 教えたら
+      - おしえたら
+      - oshietara
+    hint: Past tense 教えた + ら
+  - type: free-input
+    question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to tara-form
+    answers:
+      - 開けたら
+      - あけたら
+      - aketara
+    hint: Past tense 開けた + ら
+  - type: free-input
+    question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to tara-form
+    answers:
+      - 閉めたら
+      - しめたら
+      - shimetara
+    hint: Past tense 閉めた + ら
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
+    options:
+      - <ruby>着<rt>き</rt></ruby>ったら
+      - <ruby>着<rt>き</rt></ruby>たら
+      - <ruby>着<rt>き</rt></ruby>りたら
+      - <ruby>着<rt>き</rt></ruby>るたら
+    answer: 1
+    hint: "Ichidan: past 着た + ら"
+  - type: free-input
+    question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to bathe/shower) to tara-form
+    answers:
+      - 浴びたら
+      - あびたら
+      - abitara
+    hint: Past tense 浴びた + ら
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to leave) to tara-form
+    answers:
+      - 出たら
+      - でたら
+      - detara
+    hint: Past tense 出た + ら
+  - type: free-input
+    question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to tara-form
+    answers:
+      - 信じたら
+      - しんじたら
+      - shinjitara
+    hint: Past tense 信じた + ら
+  - type: free-input
+    question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to tara-form
+    answers:
+      - 降りたら
+      - おりたら
+      - oritara
+    hint: Past tense 降りた + ら
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow)?
+    options:
+      - <ruby>借<rt>か</rt></ruby>りったら
+      - <ruby>借<rt>か</rt></ruby>りたら
+      - <ruby>借<rt>か</rt></ruby>るたら
+      - <ruby>借<rt>か</rt></ruby>れたら
+    answer: 1
+    hint: "Ichidan: past 借りた + ら"
+  - type: free-input
+    question: Convert <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think) to tara-form
+    answers:
+      - 考えたら
+      - かんがえたら
+      - kangaetara
+    hint: Past tense 考えた + ら
+  - type: free-input
+    question: Convert <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to memorize) to tara-form
+    answers:
+      - 覚えたら
+      - おぼえたら
+      - oboetara
+    hint: Past tense 覚えた + ら
+  - type: free-input
+    question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to tara-form
+    answers:
+      - 答えたら
+      - こたえたら
+      - kotaetara
+    hint: Past tense 答えた + ら
+  - type: free-input
+    question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to tara-form
+    answers:
+      - 調べたら
+      - しらべたら
+      - shirabetara
+    hint: Past tense 調べた + ら
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget)?
+    options:
+      - <ruby>忘<rt>わす</rt></ruby>れるたら
+      - <ruby>忘<rt>わす</rt></ruby>れったら
+      - <ruby>忘<rt>わす</rt></ruby>れたら
+      - <ruby>忘<rt>わす</rt></ruby>れりたら
+    answer: 2
+    hint: "Ichidan: past 忘れた + ら"
+  - type: free-input
+    question: Convert <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel) to tara-form
+    answers:
+      - 感じたら
+      - かんじたら
+      - kanjitara
+    hint: Past tense 感じた + ら
+conditional-tara-godan:
+  - type: free-input
+    question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to tara-form
+    answers:
+      - 飲んだら
+      - のんだら
+      - nondara
+    hint: Past tense 飲んだ + ら
+  - type: free-input
+    question: Convert <ruby>書<rt>か</rt></ruby>く (kaku) to tara-form
+    answers:
+      - 書いたら
+      - かいたら
+      - kaitara
+    hint: Past tense 書いた + ら
+  - type: free-input
+    question: Convert <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) to tara-form
+    answers:
+      - 死んだら
+      - しんだら
+      - shindara
+    hint: Past tense 死んだ + ら
+  - type: free-input
+    question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu) to tara-form
+    answers:
+      - 泳いだら
+      - およいだら
+      - oyoidara
+    hint: Past tense 泳いだ + ら
+  - type: free-input
+    question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu) to tara-form
+    answers:
+      - 話したら
+      - はなしたら
+      - hanashitara
+    hint: Past tense 話した + ら
+  - type: free-input
+    question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu) to tara-form
+    answers:
+      - 遊んだら
+      - あそんだら
+      - asondara
+    hint: Past tense 遊んだ + ら
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>う (kau) to tara-form
+    answers:
+      - 買ったら
+      - かったら
+      - kattara
+    hint: Past tense 買った + ら
+  - type: free-input
+    question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to tara-form
+    answers:
+      - 読んだら
+      - よんだら
+      - yondara
+    hint: Past tense 読んだ + ら (む uses んだ in past)
+  - type: free-input
+    question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) to tara-form
+    answers:
+      - 待ったら
+      - まったら
+      - mattara
+    hint: Past tense 待った + ら
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>聞<rt>き</rt></ruby>く (kiku - to listen)?
+    options:
+      - <ruby>聞<rt>き</rt></ruby>いたら
+      - <ruby>聞<rt>き</rt></ruby>きたら
+      - <ruby>聞<rt>き</rt></ruby>くたら
+      - <ruby>聞<rt>き</rt></ruby>かたら
+    answer: 0
+    hint: Past of く verbs uses いた → 聞いた + ら
+  - type: free-input
+    question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to tara-form (Godan!)
+    answers:
+      - 帰ったら
+      - かえったら
+      - kaettara
+    hint: Godan る → past った + ら
+  - type: free-input
+    question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to tara-form
+    answers:
+      - 立ったら
+      - たったら
+      - tattara
+    hint: Past tense 立った + ら
+  - type: free-input
+    question: Convert <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk) to tara-form
+    answers:
+      - 歩いたら
+      - あるいたら
+      - aruitara
+    hint: Past tense 歩いた + ら (く uses いた in past)
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit)?
+    options:
+      - <ruby>座<rt>すわ</rt></ruby>りたら
+      - <ruby>座<rt>すわ</rt></ruby>ったら
+      - <ruby>座<rt>すわ</rt></ruby>るたら
+      - <ruby>座<rt>すわ</rt></ruby>れたら
+    answer: 1
+    hint: Godan る → past った + ら
+  - type: free-input
+    question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to tara-form
+    answers:
+      - 送ったら
+      - おくったら
+      - okuttara
+    hint: Past tense 送った + ら
+  - type: free-input
+    question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to tara-form
+    answers:
+      - 作ったら
+      - つくったら
+      - tsukuttara
+    hint: Past tense 作った + ら
+  - type: free-input
+    question: Convert <ruby>使<rt>つか</rt></ruby>う (tsukau - to use) to tara-form
+    answers:
+      - 使ったら
+      - つかったら
+      - tsukattara
+    hint: Past tense 使った + ら (う uses った in past)
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off)?
+    options:
+      - <ruby>脱<rt>ぬ</rt></ruby>いたら
+      - <ruby>脱<rt>ぬ</rt></ruby>いだら
+      - <ruby>脱<rt>ぬ</rt></ruby>ぎたら
+      - <ruby>脱<rt>ぬ</rt></ruby>がたら
+    answer: 1
+    hint: Past of ぐ verbs uses いだ → 脱いだ + ら
+  - type: free-input
+    question: Convert <ruby>押<rt>お</rt></ruby>す (osu - to push) to tara-form
+    answers:
+      - 押したら
+      - おしたら
+      - oshitara
+    hint: Past tense 押した + ら (す uses した in past)
+  - type: free-input
+    question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to tara-form
+    answers:
+      - 持ったら
+      - もったら
+      - mottara
+    hint: Past tense 持った + ら
+conditional-tara-irregular:
+  - type: free-input
+    question: Convert する (suru) to tara-form
+    answers:
+      - したら
+      - shitara
+    hint: Past tense した + ら
+  - type: free-input
+    question: Convert <ruby>来<rt>く</rt></ruby>る (kuru) to tara-form
+    answers:
+      - 来たら
+      - きたら
+      - kitara
+    hint: Past tense 来た + ら
+  - type: free-input
+    question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to tara-form
+    answers:
+      - 勉強したら
+      - べんきょうしたら
+      - benkyoushitara
+    hint: Past tense 勉強した + ら
+  - type: free-input
+    question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru) to tara-form
+    answers:
+      - 料理したら
+      - りょうりしたら
+      - ryourishitara
+    hint: Past tense 料理した + ら
+  - type: free-input
+    question: Convert <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise) to tara-form
+    answers:
+      - 運動したら
+      - うんどうしたら
+      - undoushitara
+    hint: Past tense 運動した + ら
+  - type: free-input
+    question: Convert <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice) to tara-form
+    answers:
+      - 練習したら
+      - れんしゅうしたら
+      - renshuushitara
+    hint: Past tense 練習した + ら
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    options:
+      - <ruby>来<rt>く</rt></ruby>ったら
+      - <ruby>来<rt>き</rt></ruby>たら
+      - <ruby>来<rt>こ</rt></ruby>たら
+      - <ruby>来<rt>く</rt></ruby>るたら
+    answer: 1
+    hint: 来る → 来た (きた) + ら — irregular past tense
+  - type: free-input
+    question: Convert <ruby>説明<rt>せつめい</rt></ruby>する (setsumeisuru - to explain) to tara-form
+    answers:
+      - 説明したら
+      - せつめいしたら
+      - setsumeishitara
+    hint: Past tense 説明した + ら
+  - type: multiple-choice
+    question: Which sentence correctly uses the tara-form? "If you study, you'll understand."
+    options:
+      - <ruby>勉強<rt>べんきょう</rt></ruby>すれば、わかる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>したら、わかる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>しろたら、わかる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>するたら、わかる
+    answer: 1
+    hint: する → した + ら = したら
+  - type: free-input
+    question: Convert <ruby>注意<rt>ちゅうい</rt></ruby>する (chuuisuru - to pay attention) to tara-form
+    answers:
+      - 注意したら
+      - ちゅういしたら
+      - chuuishitara
+    hint: Past tense 注意した + ら
+  - type: free-input
+    question: Convert <ruby>我慢<rt>がまん</rt></ruby>する (gamansuru - to endure) to tara-form
+    answers:
+      - 我慢したら
+      - がまんしたら
+      - gamanshitara
+    hint: Past tense 我慢した + ら
+  - type: multiple-choice
+    question: Which is the correct tara-form of する?
+    options:
+      - しれたら
+      - したら
+      - するたら
+      - さらたら
+    answer: 1
+    hint: する → した + ら (irregular past)
+  - type: free-input
+    question: Convert <ruby>紹介<rt>しょうかい</rt></ruby>する (shoukaisuru - to introduce) to tara-form
+    answers:
+      - 紹介したら
+      - しょうかいしたら
+      - shoukaishitara
+    hint: Past tense 紹介した + ら
+  - type: free-input
+    question: Convert <ruby>準備<rt>じゅんび</rt></ruby>する (junbisuru - to prepare) to tara-form
+    answers:
+      - 準備したら
+      - じゅんびしたら
+      - junbishitara
+    hint: Past tense 準備した + ら
+  - type: multiple-choice
+    question: What is the key difference between tara-form and ba-form?
+    options:
+      - Tara-form is more formal
+      - Tara-form can also mean 'after' and works for actual conditions
+      - Ba-form is used for past events
+      - There is no difference
+    answer: 1
+    hint: Tara-form is more versatile — it handles hypotheticals, actual conditions, AND sequential "after" meaning
+  - type: free-input
+    question: Convert <ruby>掃除<rt>そうじ</rt></ruby>する (soujisuru - to clean) to tara-form
+    answers:
+      - 掃除したら
+      - そうじしたら
+      - soujishitara
+    hint: Past tense 掃除した + ら
+  - type: free-input
+    question: Convert <ruby>確認<rt>かくにん</rt></ruby>する (kakuninsuru - to confirm) to tara-form
+    answers:
+      - 確認したら
+      - かくにんしたら
+      - kakuninshitara
+    hint: Past tense 確認した + ら
+  - type: free-input
+    question: Convert <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact) to tara-form
+    answers:
+      - 連絡したら
+      - れんらくしたら
+      - renrakushitara
+    hint: Past tense 連絡した + ら
+  - type: free-input
+    question: Convert <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk) to tara-form
+    answers:
+      - 散歩したら
+      - さんぽしたら
+      - sanposhitara
+    hint: Past tense 散歩した + ら
+  - type: multiple-choice
+    question: How would you say "When he comes" using <ruby>来<rt>く</rt></ruby>る tara-form?
+    options:
+      - <ruby>彼<rt>かれ</rt></ruby>がくったら
+      - <ruby>彼<rt>かれ</rt></ruby>がきたら
+      - <ruby>彼<rt>かれ</rt></ruby>がこたら
+      - <ruby>彼<rt>かれ</rt></ruby>がくるたら
+    answer: 1
+    hint: 来る → 来た (きた) + ら — 彼がきたら (when he comes)
+conditional-tara-test:
+  - type: free-input
+    question: Tara-form of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べたら
+      - たべたら
+      - tabetara
+    hint: Past 食べた + ら
+  - type: free-input
+    question: Tara-form of <ruby>書<rt>か</rt></ruby>く?
+    answers:
+      - 書いたら
+      - かいたら
+      - kaitara
+    hint: Past 書いた + ら
+  - type: free-input
+    question: Tara-form of する?
+    answers:
+      - したら
+      - shitara
+    hint: した + ら
+  - type: multiple-choice
+    question: "Ba-form vs Tara-form: which one can also mean 'after'?"
+    options:
+      - Ba-form only
+      - Tara-form only
+      - Both
+      - Neither
+    answer: 1
+    hint: 夏が来たら = if/when/AFTER summer comes
+  - type: free-input
+    question: Tara-form of <ruby>見<rt>み</rt></ruby>る (miru - to see)?
+    answers:
+      - 見たら
+      - みたら
+      - mitara
+    hint: Past 見た + ら
+  - type: free-input
+    question: Tara-form of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    answers:
+      - 飲んだら
+      - のんだら
+      - nondara
+    hint: Past 飲んだ + ら (む uses んだ in past)
+  - type: free-input
+    question: Tara-form of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
+    answers:
+      - 読んだら
+      - よんだら
+      - yondara
+    hint: Past 読んだ + ら (む uses んだ in past)
+  - type: free-input
+    question: Tara-form of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
+    answers:
+      - 来たら
+      - きたら
+      - kitara
+    hint: Past 来た (きた) + ら
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
+    options:
+      - <ruby>泳<rt>およ</rt></ruby>いだら
+      - <ruby>泳<rt>およ</rt></ruby>いたら
+      - <ruby>泳<rt>およ</rt></ruby>がたら
+      - <ruby>泳<rt>およ</rt></ruby>ぎたら
+    answer: 0
+    hint: Past of ぐ verbs uses いだ → 泳いだ + ら
+  - type: free-input
+    question: Tara-form of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
+    answers:
+      - 話したら
+      - はなしたら
+      - hanashitara
+    hint: Past 話した + ら
+  - type: free-input
+    question: Tara-form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    answers:
+      - 遊んだら
+      - あそんだら
+      - asondara
+    hint: Past of ぶ verbs uses んだ → 遊んだ + ら
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
+    options:
+      - <ruby>待<rt>ま</rt></ruby>ったら
+      - <ruby>待<rt>ま</rt></ruby>ちたら
+      - <ruby>待<rt>ま</rt></ruby>つたら
+      - <ruby>待<rt>ま</rt></ruby>たたら
+    answer: 0
+    hint: Past of つ verbs uses った → 待った + ら
+  - type: free-input
+    question: Tara-form of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
+    answers:
+      - 買ったら
+      - かったら
+      - kattara
+    hint: Past of う verbs uses った → 買った + ら
+  - type: free-input
+    question: Tara-form of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
+    answers:
+      - 勉強したら
+      - べんきょうしたら
+      - benkyoushitara
+    hint: "する verb: した + ら"
+  - type: free-input
+    question: Tara-form of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)?
+    answers:
+      - 走ったら
+      - はしったら
+      - hashittara
+    hint: Godan verb! Past 走った + ら
+  - type: free-input
+    question: Tara-form of <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up)?
+    answers:
+      - 起きたら
+      - おきたら
+      - okitara
+    hint: "Ichidan: past 起きた + ら"
+  - type: free-input
+    question: Tara-form of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home)?
+    answers:
+      - 帰ったら
+      - かえったら
+      - kaettara
+    hint: "Godan: past 帰った + ら"
+  - type: multiple-choice
+    question: Which is the correct tara-form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>にたら
+      - <ruby>死<rt>し</rt></ruby>んだら
+      - <ruby>死<rt>し</rt></ruby>ぬたら
+      - <ruby>死<rt>し</rt></ruby>なたら
+    answer: 1
+    hint: Past of ぬ verbs uses んだ → 死んだ + ら
+  - type: free-input
+    question: Tara-form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
+    answers:
+      - 使ったら
+      - つかったら
+      - tsukattara
+    hint: "Past of う verbs uses った → 使った + ら"
+  - type: free-input
+    question: Tara-form of <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)?
+    answers:
+      - 閉めたら
+      - しめたら
+      - shimetara
+    hint: "Ichidan: past 閉めた + ら"

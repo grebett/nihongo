@@ -1,0 +1,602 @@
+passive-form-ichidan:
+  - type: free-input
+    question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu) to passive form
+    answers:
+      - 食べられる
+      - たべられる
+      - taberareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to passive form
+    answers:
+      - 見られる
+      - みられる
+      - mirareru
+    hint: Drop る, add られる
+  - type: multiple-choice
+    question: "The passive form can express:"
+    options:
+      - Only regretful actions
+      - Only neutral statements
+      - Regretful, neutral, or respectful/honorific statements
+      - Only commands
+    answer: 2
+    hint: It has three nuances depending on context
+  - type: free-input
+    question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru - to sleep) to passive form
+    answers:
+      - 寝られる
+      - ねられる
+      - nerareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to passive form
+    answers:
+      - 教えられる
+      - おしえられる
+      - oshierareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to passive form
+    answers:
+      - 起きられる
+      - おきられる
+      - okirareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to passive form
+    answers:
+      - 開けられる
+      - あけられる
+      - akerareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to passive form
+    answers:
+      - 閉められる
+      - しめられる
+      - shimerareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>着<rt>き</rt></ruby>る (kiru - to wear) to passive form
+    answers:
+      - 着られる
+      - きられる
+      - kirareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to shower) to passive form
+    answers:
+      - 浴びられる
+      - あびられる
+      - abirareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to passive form
+    answers:
+      - 出られる
+      - でられる
+      - derareru
+    hint: Drop る, add られる
+  - type: multiple-choice
+    question: What is the passive form of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
+    options:
+      - <ruby>信<rt>しん</rt></ruby>じられる
+      - <ruby>信<rt>しん</rt></ruby>じれる
+      - <ruby>信<rt>しん</rt></ruby>じされる
+      - <ruby>信<rt>しん</rt></ruby>ずられる
+    answer: 0
+    hint: Ichidan passive — drop る, add られる
+  - type: free-input
+    question: Convert <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel) to passive form
+    answers:
+      - 感じられる
+      - かんじられる
+      - kanjirareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to passive form
+    answers:
+      - 降りられる
+      - おりられる
+      - orirareru
+    hint: Drop る, add られる
+  - type: multiple-choice
+    question: What is the passive form of <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow)?
+    options:
+      - <ruby>借<rt>か</rt></ruby>りれる
+      - <ruby>借<rt>か</rt></ruby>りされる
+      - <ruby>借<rt>か</rt></ruby>りられる
+      - <ruby>借<rt>か</rt></ruby>られる
+    answer: 2
+    hint: Ichidan passive — drop る, add られる
+  - type: free-input
+    question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to passive form
+    answers:
+      - 答えられる
+      - こたえられる
+      - kotaerareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to passive form
+    answers:
+      - 調べられる
+      - しらべられる
+      - shiraberareru
+    hint: Drop る, add られる
+  - type: multiple-choice
+    question: What is the passive form of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to remember)?
+    options:
+      - <ruby>覚<rt>おぼ</rt></ruby>えれる
+      - <ruby>覚<rt>おぼ</rt></ruby>えられる
+      - <ruby>覚<rt>おぼ</rt></ruby>えされる
+      - <ruby>覚<rt>おぼ</rt></ruby>われる
+    answer: 1
+    hint: Ichidan passive — drop る, add られる
+  - type: free-input
+    question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to passive form
+    answers:
+      - 忘れられる
+      - わすれられる
+      - wasurerareru
+    hint: Drop る, add られる
+  - type: free-input
+    question: Convert <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think) to passive form
+    answers:
+      - 考えられる
+      - かんがえられる
+      - kangaerareru
+    hint: Drop る, add られる
+passive-form-godan:
+  - type: free-input
+    question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to passive form
+    answers:
+      - 飲まれる
+      - のまれる
+      - nomareru
+    hint: む → ま (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>書<rt>か</rt></ruby>く (kaku) to passive form
+    answers:
+      - 書かれる
+      - かかれる
+      - kakareru
+    hint: く → か (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku) to passive form
+    answers:
+      - 聞かれる
+      - きかれる
+      - kikareru
+    hint: く → か (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to passive form
+    answers:
+      - 話される
+      - はなされる
+      - hanasareru
+    hint: す → さ (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to passive form
+    answers:
+      - 買われる
+      - かわれる
+      - kawareru
+    hint: う → わ (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to passive form
+    answers:
+      - 泳がれる
+      - およがれる
+      - oyogareru
+    hint: ぐ → が (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) to passive form
+    answers:
+      - 待たれる
+      - またれる
+      - matareru
+    hint: つ → た (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to passive form
+    answers:
+      - 遊ばれる
+      - あそばれる
+      - asobareru
+    hint: ぶ → ば (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) to passive form
+    answers:
+      - 死なれる
+      - しなれる
+      - shinareru
+    hint: ぬ → な (a-row), add れる
+  - type: multiple-choice
+    question: What is the passive form of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)?
+    options:
+      - <ruby>走<rt>はし</rt></ruby>られる
+      - <ruby>走<rt>はし</rt></ruby>れる
+      - <ruby>走<rt>はし</rt></ruby>りれる
+      - <ruby>走<rt>はし</rt></ruby>するれる
+    answer: 0
+    hint: Godan る → ら (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk) to passive form
+    answers:
+      - 歩かれる
+      - あるかれる
+      - arukareru
+    hint: く → か (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home) to passive form
+    answers:
+      - 帰られる
+      - かえられる
+      - kaerareru
+    hint: Godan る → ら (a-row), add れる
+  - type: multiple-choice
+    question: What is the passive form of <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand)?
+    options:
+      - <ruby>立<rt>た</rt></ruby>たれる
+      - <ruby>立<rt>た</rt></ruby>ちれる
+      - <ruby>立<rt>た</rt></ruby>つれる
+      - <ruby>立<rt>た</rt></ruby>てれる
+    answer: 0
+    hint: Godan つ → た (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to passive form
+    answers:
+      - 持たれる
+      - もたれる
+      - motareru
+    hint: つ → た (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to passive form
+    answers:
+      - 送られる
+      - おくられる
+      - okurareru
+    hint: Godan る → ら (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to passive form
+    answers:
+      - 作られる
+      - つくられる
+      - tsukurareru
+    hint: Godan る → ら (a-row), add れる
+  - type: multiple-choice
+    question: What is the passive form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
+    options:
+      - <ruby>使<rt>つか</rt></ruby>われる
+      - <ruby>使<rt>つか</rt></ruby>えれる
+      - <ruby>使<rt>つか</rt></ruby>うれる
+      - <ruby>使<rt>つか</rt></ruby>いれる
+    answer: 0
+    hint: Godan う → わ (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>笑<rt>わら</rt></ruby>う (warau - to laugh) to passive form
+    answers:
+      - 笑われる
+      - わらわれる
+      - warawareru
+    hint: う → わ (a-row), add れる
+  - type: free-input
+    question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to passive form
+    answers:
+      - 読まれる
+      - よまれる
+      - yomareru
+    hint: む → ま (a-row), add れる
+  - type: multiple-choice
+    question: What is the passive form of <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu - to take off clothes)?
+    options:
+      - <ruby>脱<rt>ぬ</rt></ruby>がれる
+      - <ruby>脱<rt>ぬ</rt></ruby>ぎれる
+      - <ruby>脱<rt>ぬ</rt></ruby>ぐれる
+      - <ruby>脱<rt>ぬ</rt></ruby>げれる
+    answer: 0
+    hint: Godan ぐ → が (a-row), add れる
+passive-form-irregular:
+  - type: free-input
+    question: Convert する (suru) to passive form
+    answers:
+      - される
+      - sareru
+    hint: する → される
+  - type: free-input
+    question: Convert <ruby>来<rt>く</rt></ruby>る (kuru) to passive form
+    answers:
+      - 来られる
+      - こられる
+      - korareru
+    hint: く → こ, add られる
+  - type: free-input
+    question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to passive form
+    answers:
+      - 勉強される
+      - べんきょうされる
+      - benkyousareru
+    hint: する → される
+  - type: multiple-choice
+    question: "The passive of <ruby>来<rt>く</rt></ruby>る (kuru) looks the same as its:"
+    options:
+      - Causative form
+      - Te-form
+      - Potential form
+      - Volitional form
+    answer: 2
+    hint: 来られる = was come to (passive) OR can come (potential)
+  - type: free-input
+    question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook) to passive form
+    answers:
+      - 料理される
+      - りょうりされる
+      - ryourisareru
+    hint: する → される
+  - type: free-input
+    question: Convert <ruby>運転<rt>うんてん</rt></ruby>する (untensuru - to drive) to passive form
+    answers:
+      - 運転される
+      - うんてんされる
+      - untensareru
+    hint: する → される
+  - type: multiple-choice
+    question: What is the passive form of <ruby>紹介<rt>しょうかい</rt></ruby>する (shoukaisuru - to introduce)?
+    options:
+      - <ruby>紹介<rt>しょうかい</rt></ruby>される
+      - <ruby>紹介<rt>しょうかい</rt></ruby>させる
+      - <ruby>紹介<rt>しょうかい</rt></ruby>しられる
+      - <ruby>紹介<rt>しょうかい</rt></ruby>すれる
+    answer: 0
+    hint: する compound — する → される
+  - type: free-input
+    question: Convert <ruby>説明<rt>せつめい</rt></ruby>する (setsumeisuru - to explain) to passive form
+    answers:
+      - 説明される
+      - せつめいされる
+      - setsumeisareru
+    hint: する → される
+  - type: free-input
+    question: Convert <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact) to passive form
+    answers:
+      - 連絡される
+      - れんらくされる
+      - renrakusareru
+    hint: する → される
+  - type: multiple-choice
+    question: Which sentence correctly uses the passive of <ruby>来<rt>く</rt></ruby>る?
+    options:
+      - <ruby>友達<rt>ともだち</rt></ruby>に<ruby>来<rt>こ</rt></ruby>られて<ruby>困<rt>こま</rt></ruby>った (My friend came and it troubled me)
+      - <ruby>友達<rt>ともだち</rt></ruby>に<ruby>来<rt>き</rt></ruby>られて<ruby>困<rt>こま</rt></ruby>った
+      - <ruby>友達<rt>ともだち</rt></ruby>に<ruby>来<rt>く</rt></ruby>られて<ruby>困<rt>こま</rt></ruby>った
+      - <ruby>友達<rt>ともだち</rt></ruby>に<ruby>来<rt>こ</rt></ruby>れて<ruby>困<rt>こま</rt></ruby>った
+    answer: 0
+    hint: 来る passive is こられる — suffering passive (迷惑の受身)
+  - type: free-input
+    question: Convert <ruby>心配<rt>しんぱい</rt></ruby>する (shinpaisuru - to worry) to passive form
+    answers:
+      - 心配される
+      - しんぱいされる
+      - shinpaisareru
+    hint: する → される
+  - type: free-input
+    question: Convert <ruby>発見<rt>はっけん</rt></ruby>する (hakkensuru - to discover) to passive form
+    answers:
+      - 発見される
+      - はっけんされる
+      - hakkensareru
+    hint: する → される
+  - type: multiple-choice
+    question: "In the suffering passive (<ruby>迷<rt>めい</rt></ruby><ruby>惑<rt>わく</rt></ruby>の<ruby>受<rt>うけ</rt></ruby><ruby>身<rt>み</rt></ruby>), <ruby>来<rt>く</rt></ruby>る is commonly used. What does <ruby>雨<rt>あめ</rt></ruby>に<ruby>降<rt>ふ</rt></ruby>られた mean?"
+    options:
+      - I made it rain
+      - I was rained on (and it was inconvenient)
+      - I can see the rain
+      - I let it rain
+    answer: 1
+    hint: The suffering passive expresses that the action negatively affected the speaker
+  - type: free-input
+    question: Convert <ruby>利用<rt>りよう</rt></ruby>する (riyousuru - to utilize) to passive form
+    answers:
+      - 利用される
+      - りようされる
+      - riyousareru
+    hint: する → される
+  - type: free-input
+    question: Convert <ruby>招待<rt>しょうたい</rt></ruby>する (shoutaisuru - to invite) to passive form
+    answers:
+      - 招待される
+      - しょうたいされる
+      - shoutaisareru
+    hint: する → される
+  - type: multiple-choice
+    question: What is the passive of <ruby>期待<rt>きたい</rt></ruby>する (kitaisuru - to expect)?
+    options:
+      - <ruby>期待<rt>きたい</rt></ruby>しられる
+      - <ruby>期待<rt>きたい</rt></ruby>させる
+      - <ruby>期待<rt>きたい</rt></ruby>される
+      - <ruby>期待<rt>きたい</rt></ruby>すれる
+    answer: 2
+    hint: する compound — する → される
+  - type: free-input
+    question: Convert <ruby>感動<rt>かんどう</rt></ruby>する (kandousuru - to be moved/impressed) to passive form
+    answers:
+      - 感動される
+      - かんどうされる
+      - kandousareru
+    hint: する → される
+  - type: multiple-choice
+    question: How many irregular verbs are there in Japanese?
+    options:
+      - 1 (する only)
+      - 2 (する and <ruby>来<rt>く</rt></ruby>る)
+      - 3
+      - 5
+    answer: 1
+    hint: する and 来る are the only two truly irregular verbs
+  - type: free-input
+    question: Convert <ruby>翻訳<rt>ほんやく</rt></ruby>する (honyakusuru - to translate) to passive form
+    answers:
+      - 翻訳される
+      - ほんやくされる
+      - honyakusareru
+    hint: する → される
+  - type: free-input
+    question: Convert <ruby>注意<rt>ちゅうい</rt></ruby>する (chuuisuru - to warn) to passive form
+    answers:
+      - 注意される
+      - ちゅういされる
+      - chuuisareru
+    hint: する → される
+passive-form-test:
+  - type: free-input
+    question: Passive of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べられる
+      - たべられる
+      - taberareru
+    hint: "Ichidan: drop る, add られる"
+  - type: free-input
+    question: Passive of <ruby>読<rt>よ</rt></ruby>む (yomu)?
+    answers:
+      - 読まれる
+      - よまれる
+      - yomareru
+    hint: "Godan: む → ま, add れる"
+  - type: free-input
+    question: Passive of する?
+    answers:
+      - される
+      - sareru
+    hint: する → される
+  - type: multiple-choice
+    question: "For ichidan verbs, passive form and potential form are:"
+    options:
+      - Completely different
+      - Identical — context decides the meaning
+      - Similar but different ending
+      - Only the same for する
+    answer: 1
+    hint: 食べられる = is eaten (passive) OR can eat (potential)
+  - type: free-input
+    question: Passive of <ruby>見<rt>み</rt></ruby>る (miru - to see)?
+    answers:
+      - 見られる
+      - みられる
+      - mirareru
+    hint: "Ichidan: drop る, add られる"
+  - type: free-input
+    question: Passive of <ruby>書<rt>か</rt></ruby>く (kaku - to write)?
+    answers:
+      - 書かれる
+      - かかれる
+      - kakareru
+    hint: "Godan: く → か (a-row), add れる"
+  - type: free-input
+    question: Passive of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    answers:
+      - 飲まれる
+      - のまれる
+      - nomareru
+    hint: "Godan: む → ま (a-row), add れる"
+  - type: free-input
+    question: Passive of <ruby>来<rt>く</rt></ruby>る (kuru - to come)?
+    answers:
+      - 来られる
+      - こられる
+      - korareru
+    hint: "Irregular: こられる"
+  - type: free-input
+    question: Passive of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
+    answers:
+      - 話される
+      - はなされる
+      - hanasareru
+    hint: "Godan: す → さ (a-row), add れる"
+  - type: multiple-choice
+    question: Which is the correct passive form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
+    options:
+      - <ruby>泳<rt>およ</rt></ruby>がれる
+      - <ruby>泳<rt>およ</rt></ruby>げれる
+      - <ruby>泳<rt>およ</rt></ruby>ぎれる
+      - <ruby>泳<rt>およ</rt></ruby>ぐれる
+    answer: 0
+    hint: "Godan: ぐ → が (a-row), add れる"
+  - type: multiple-choice
+    question: Which is the correct passive form of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
+    options:
+      - <ruby>待<rt>ま</rt></ruby>たれる
+      - <ruby>待<rt>ま</rt></ruby>ちれる
+      - <ruby>待<rt>ま</rt></ruby>つれる
+      - <ruby>待<rt>ま</rt></ruby>てれる
+    answer: 0
+    hint: "Godan: つ → た (a-row), add れる"
+  - type: free-input
+    question: Passive of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    answers:
+      - 遊ばれる
+      - あそばれる
+      - asobareru
+    hint: "Godan: ぶ → ば (a-row), add れる"
+  - type: free-input
+    question: Passive of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
+    answers:
+      - 勉強される
+      - べんきょうされる
+      - benkyousareru
+    hint: "する verb: する → される"
+  - type: multiple-choice
+    question: For godan verbs, passive form is made by changing to which vowel row before adding れる?
+    options:
+      - い-row (i)
+      - う-row (u)
+      - あ-row (a)
+      - え-row (e)
+    answer: 2
+    hint: む → ま, く → か, す → さ — all a-row
+  - type: free-input
+    question: Passive of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
+    answers:
+      - 買われる
+      - かわれる
+      - kawareru
+    hint: "Godan: う → わ (a-row), add れる"
+  - type: multiple-choice
+    question: Which verb has identical passive and potential forms?
+    options:
+      - <ruby>書<rt>か</rt></ruby>く (godan)
+      - <ruby>飲<rt>の</rt></ruby>む (godan)
+      - <ruby>見<rt>み</rt></ruby>る (ichidan)
+      - <ruby>走<rt>はし</rt></ruby>る (godan)
+    answer: 2
+    hint: Ichidan verbs use られる for both passive and potential
+  - type: free-input
+    question: Passive of <ruby>送<rt>おく</rt></ruby>る (okuru - to send)?
+    answers:
+      - 送られる
+      - おくられる
+      - okurareru
+    hint: "Godan: る → ら (a-row), add れる"
+  - type: free-input
+    question: Passive of <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)?
+    answers:
+      - 閉められる
+      - しめられる
+      - shimerareru
+    hint: "Ichidan: drop る, add られる"
+  - type: multiple-choice
+    question: Which is the correct passive form of <ruby>笑<rt>わら</rt></ruby>う (warau - to laugh)?
+    options:
+      - <ruby>笑<rt>わら</rt></ruby>われる
+      - <ruby>笑<rt>わら</rt></ruby>うれる
+      - <ruby>笑<rt>わら</rt></ruby>えれる
+      - <ruby>笑<rt>わら</rt></ruby>いれる
+    answer: 0
+    hint: "Godan: う → わ (a-row), add れる"
+  - type: free-input
+    question: Passive of <ruby>説明<rt>せつめい</rt></ruby>する (setsumeisuru - to explain)?
+    answers:
+      - 説明される
+      - せつめいされる
+      - setsumeisareru
+    hint: "する verb: する → される"

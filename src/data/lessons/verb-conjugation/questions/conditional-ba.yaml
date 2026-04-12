@@ -1,0 +1,593 @@
+conditional-ba-ichidan:
+  - type: free-input
+    question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu) to ba-form
+    answers:
+      - 食べれば
+      - たべれば
+      - tabereba
+    hint: Drop る, add れば
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to leave) to ba-form
+    answers:
+      - 出れば
+      - でれば
+      - dereba
+    hint: Drop る, add れば — 出れば (if you leave)
+  - type: multiple-choice
+    question: "The ba-form is used for:"
+    options:
+      - Commands
+      - Past actions
+      - Hypothetical conditions (if/when)
+      - Ongoing actions
+    answer: 2
+    hint: 出れば = if/when you leave
+  - type: free-input
+    question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to ba-form
+    answers:
+      - 見れば
+      - みれば
+      - mireba
+    hint: Drop る, add れば
+  - type: free-input
+    question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru) to ba-form
+    answers:
+      - 寝れば
+      - ねれば
+      - nereba
+    hint: Drop る, add れば — if you sleep
+  - type: free-input
+    question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru) to ba-form
+    answers:
+      - 起きれば
+      - おきれば
+      - okireba
+    hint: Drop る, add れば — if you wake up
+  - type: free-input
+    question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to ba-form
+    answers:
+      - 教えれば
+      - おしえれば
+      - oshiereba
+    hint: Drop る, add れば — if you teach
+  - type: free-input
+    question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to ba-form
+    answers:
+      - 開ければ
+      - あければ
+      - akereba
+    hint: Drop る, add れば — if you open
+  - type: free-input
+    question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to ba-form
+    answers:
+      - 閉めれば
+      - しめれば
+      - shimereba
+    hint: Drop る, add れば — if you close
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
+    options:
+      - <ruby>着<rt>き</rt></ruby>ければ
+      - <ruby>着<rt>き</rt></ruby>りば
+      - <ruby>着<rt>き</rt></ruby>れば
+      - <ruby>着<rt>き</rt></ruby>るば
+    answer: 2
+    hint: "Ichidan: drop る, add れば"
+  - type: free-input
+    question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to bathe/shower) to ba-form
+    answers:
+      - 浴びれば
+      - あびれば
+      - abireba
+    hint: Drop る, add れば — if you shower
+  - type: free-input
+    question: Convert <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe) to ba-form
+    answers:
+      - 信じれば
+      - しんじれば
+      - shinjireba
+    hint: Drop る, add れば — if you believe
+  - type: free-input
+    question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to ba-form
+    answers:
+      - 降りれば
+      - おりれば
+      - orireba
+    hint: Drop る, add れば — if you get off
+  - type: free-input
+    question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to ba-form
+    answers:
+      - 借りれば
+      - かりれば
+      - karireba
+    hint: Drop る, add れば — if you borrow
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
+    options:
+      - <ruby>考<rt>かんが</rt></ruby>えるば
+      - <ruby>考<rt>かんが</rt></ruby>えれば
+      - <ruby>考<rt>かんが</rt></ruby>えらば
+      - <ruby>考<rt>かんが</rt></ruby>えりば
+    answer: 1
+    hint: "Ichidan: drop る, add れば"
+  - type: free-input
+    question: Convert <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to memorize) to ba-form
+    answers:
+      - 覚えれば
+      - おぼえれば
+      - oboereba
+    hint: Drop る, add れば — if you memorize
+  - type: free-input
+    question: Convert <ruby>答<rt>こた</rt></ruby>える (kotaeru - to answer) to ba-form
+    answers:
+      - 答えれば
+      - こたえれば
+      - kotaereba
+    hint: Drop る, add れば — if you answer
+  - type: free-input
+    question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to ba-form
+    answers:
+      - 調べれば
+      - しらべれば
+      - shirabereba
+    hint: Drop る, add れば — if you investigate
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel)?
+    options:
+      - <ruby>感<rt>かん</rt></ruby>じるば
+      - <ruby>感<rt>かん</rt></ruby>じらば
+      - <ruby>感<rt>かん</rt></ruby>じれば
+      - <ruby>感<rt>かん</rt></ruby>じりば
+    answer: 2
+    hint: "Ichidan: drop る, add れば"
+  - type: free-input
+    question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to ba-form
+    answers:
+      - 忘れれば
+      - わすれれば
+      - wasurereba
+    hint: Drop る, add れば — if you forget
+conditional-ba-godan:
+  - type: free-input
+    question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to ba-form
+    answers:
+      - 飲めば
+      - のめば
+      - nomeba
+    hint: む → め (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>言<rt>い</rt></ruby>う (iu) to ba-form
+    answers:
+      - 言えば
+      - いえば
+      - ieba
+    hint: う → え (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku) to ba-form
+    answers:
+      - 聞けば
+      - きけば
+      - kikeba
+    hint: く → け (e-row), add ば
+  - type: multiple-choice
+    question: The ba-form conjugation for godan verbs is the same as which form + ば?
+    options:
+      - Dictionary form
+      - Polite form
+      - Imperative form
+      - Te-form
+    answer: 2
+    hint: 聞け (imperative) + ば = 聞けば (conditional)
+  - type: free-input
+    question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu) to ba-form
+    answers:
+      - 泳げば
+      - およげば
+      - oyogeba
+    hint: ぐ → げ (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu) to ba-form
+    answers:
+      - 話せば
+      - はなせば
+      - hanaseba
+    hint: す → せ (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>う (kau) to ba-form
+    answers:
+      - 買えば
+      - かえば
+      - kaeba
+    hint: う → え (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru) to ba-form (Godan!)
+    answers:
+      - 走れば
+      - はしれば
+      - hashireba
+    hint: Godan る → れ (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to ba-form
+    answers:
+      - 読めば
+      - よめば
+      - yomeba
+    hint: む → め (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) to ba-form
+    answers:
+      - 待てば
+      - まてば
+      - mateba
+    hint: つ → て (e-row), add ば
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    options:
+      - <ruby>遊<rt>あそ</rt></ruby>ばば
+      - <ruby>遊<rt>あそ</rt></ruby>びば
+      - <ruby>遊<rt>あそ</rt></ruby>べば
+      - <ruby>遊<rt>あそ</rt></ruby>ぼば
+    answer: 2
+    hint: ぶ → べ (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) to ba-form
+    answers:
+      - 死ねば
+      - しねば
+      - shineba
+    hint: ぬ → ね (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return) to ba-form (Godan!)
+    answers:
+      - 帰れば
+      - かえれば
+      - kaereba
+    hint: Godan る → れ (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand) to ba-form
+    answers:
+      - 立てば
+      - たてば
+      - tateba
+    hint: つ → て (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk) to ba-form
+    answers:
+      - 歩けば
+      - あるけば
+      - arukeba
+    hint: く → け (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>送<rt>おく</rt></ruby>る (okuru - to send) to ba-form
+    answers:
+      - 送れば
+      - おくれば
+      - okureba
+    hint: る → れ (e-row), add ば
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>押<rt>お</rt></ruby>す (osu - to push)?
+    options:
+      - <ruby>押<rt>お</rt></ruby>さば
+      - <ruby>押<rt>お</rt></ruby>しば
+      - <ruby>押<rt>お</rt></ruby>せば
+      - <ruby>押<rt>お</rt></ruby>そば
+    answer: 2
+    hint: す → せ (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to ba-form
+    answers:
+      - 作れば
+      - つくれば
+      - tsukureba
+    hint: る → れ (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>持<rt>も</rt></ruby>つ (motsu - to hold) to ba-form
+    answers:
+      - 持てば
+      - もてば
+      - moteba
+    hint: つ → て (e-row), add ば
+  - type: free-input
+    question: Convert <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit) to ba-form
+    answers:
+      - 座れば
+      - すわれば
+      - suwareba
+    hint: る → れ (e-row), add ば
+conditional-ba-irregular:
+  - type: free-input
+    question: Convert する (suru) to ba-form
+    answers:
+      - すれば
+      - sureba
+    hint: Replace る with れば
+  - type: free-input
+    question: Convert <ruby>来<rt>く</rt></ruby>る (kuru) to ba-form
+    answers:
+      - 来れば
+      - くれば
+      - kureba
+    hint: Replace る with れば
+  - type: free-input
+    question: How do you say 'What should I do?' using する + ば?
+    answers:
+      - どうすればいい
+      - dousurebaii
+    hint: どう (how) + すれば (if do) + いい (good) = what would be good if I did
+  - type: free-input
+    question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to ba-form
+    answers:
+      - 勉強すれば
+      - べんきょうすれば
+      - benkyousureba
+    hint: する → すれば
+  - type: free-input
+    question: Convert <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru) to ba-form
+    answers:
+      - 料理すれば
+      - りょうりすれば
+      - ryourisureba
+    hint: する → すれば
+  - type: free-input
+    question: Convert <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise) to ba-form
+    answers:
+      - 運動すれば
+      - うんどうすれば
+      - undousureba
+    hint: する → すれば — if you exercise
+  - type: free-input
+    question: Convert <ruby>練習<rt>れんしゅう</rt></ruby>する (renshuusuru - to practice) to ba-form
+    answers:
+      - 練習すれば
+      - れんしゅうすれば
+      - renshuusureba
+    hint: する → すれば — if you practice
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    options:
+      - <ruby>来<rt>こ</rt></ruby>れば
+      - <ruby>来<rt>く</rt></ruby>ろば
+      - <ruby>来<rt>く</rt></ruby>れば
+      - <ruby>来<rt>き</rt></ruby>れば
+    answer: 2
+    hint: 来る → 来れば (くれば) — irregular, just replace る with れば
+  - type: free-input
+    question: Convert <ruby>説明<rt>せつめい</rt></ruby>する (setsumeisuru - to explain) to ba-form
+    answers:
+      - 説明すれば
+      - せつめいすれば
+      - setsumeisureba
+    hint: する → すれば — if you explain
+  - type: multiple-choice
+    question: Which sentence correctly uses the ba-form? "If you study, you will pass."
+    options:
+      - <ruby>勉強<rt>べんきょう</rt></ruby>したら、<ruby>受<rt>う</rt></ruby>かる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>すれば、<ruby>受<rt>う</rt></ruby>かる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>しろば、<ruby>受<rt>う</rt></ruby>かる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>するば、<ruby>受<rt>う</rt></ruby>かる
+    answer: 1
+    hint: する → すれば for the ba-conditional
+  - type: free-input
+    question: Convert <ruby>注意<rt>ちゅうい</rt></ruby>する (chuuisuru - to pay attention) to ba-form
+    answers:
+      - 注意すれば
+      - ちゅういすれば
+      - chuuisureba
+    hint: する → すれば — if you pay attention
+  - type: free-input
+    question: Convert <ruby>我慢<rt>がまん</rt></ruby>する (gamansuru - to endure) to ba-form
+    answers:
+      - 我慢すれば
+      - がまんすれば
+      - gamansureba
+    hint: する → すれば — if you endure
+  - type: multiple-choice
+    question: Which is the correct ba-form of する?
+    options:
+      - しれば
+      - すれば
+      - するば
+      - さらば
+    answer: 1
+    hint: する → すれば (irregular)
+  - type: free-input
+    question: Convert <ruby>紹介<rt>しょうかい</rt></ruby>する (shoukaisuru - to introduce) to ba-form
+    answers:
+      - 紹介すれば
+      - しょうかいすれば
+      - shoukaisureba
+    hint: する → すれば — if you introduce
+  - type: free-input
+    question: Convert <ruby>準備<rt>じゅんび</rt></ruby>する (junbisuru - to prepare) to ba-form
+    answers:
+      - 準備すれば
+      - じゅんびすれば
+      - junbisureba
+    hint: する → すれば — if you prepare
+  - type: multiple-choice
+    question: The ba-form emphasizes which aspect of a conditional?
+    options:
+      - The result/consequence
+      - The condition itself
+      - A past event
+      - A command
+    answer: 1
+    hint: Ba-form emphasizes the condition — "IF you do X (then Y will follow)"
+  - type: free-input
+    question: Convert <ruby>掃除<rt>そうじ</rt></ruby>する (soujisuru - to clean) to ba-form
+    answers:
+      - 掃除すれば
+      - そうじすれば
+      - soujisureba
+    hint: する → すれば — if you clean
+  - type: free-input
+    question: Convert <ruby>確認<rt>かくにん</rt></ruby>する (kakuninsuru - to confirm) to ba-form
+    answers:
+      - 確認すれば
+      - かくにんすれば
+      - kakuninsureba
+    hint: する → すれば — if you confirm
+  - type: free-input
+    question: Convert <ruby>連絡<rt>れんらく</rt></ruby>する (renrakusuru - to contact) to ba-form
+    answers:
+      - 連絡すれば
+      - れんらくすれば
+      - renrakusureba
+    hint: する → すれば — if you contact
+  - type: multiple-choice
+    question: How would you say "If he comes" using <ruby>来<rt>く</rt></ruby>る ba-form?
+    options:
+      - <ruby>彼<rt>かれ</rt></ruby>がくろば
+      - <ruby>彼<rt>かれ</rt></ruby>がくれば
+      - <ruby>彼<rt>かれ</rt></ruby>がきれば
+      - <ruby>彼<rt>かれ</rt></ruby>がこれば
+    answer: 1
+    hint: 来る → くれば — 彼がくれば (if he comes)
+conditional-ba-test:
+  - type: free-input
+    question: Ba-form of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べれば
+      - たべれば
+      - tabereba
+    hint: "Ichidan: れば"
+  - type: free-input
+    question: Ba-form of <ruby>書<rt>か</rt></ruby>く?
+    answers:
+      - 書けば
+      - かけば
+      - kakeba
+    hint: "Godan: く → け, add ば"
+  - type: free-input
+    question: Ba-form of する?
+    answers:
+      - すれば
+      - sureba
+    hint: すれば
+  - type: free-input
+    question: Ba-form of <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来れば
+      - くれば
+      - kureba
+    hint: くれば
+  - type: free-input
+    question: Ba-form of <ruby>見<rt>み</rt></ruby>る (miru - to see)?
+    answers:
+      - 見れば
+      - みれば
+      - mireba
+    hint: "Ichidan: drop る, add れば"
+  - type: free-input
+    question: Ba-form of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    answers:
+      - 飲めば
+      - のめば
+      - nomeba
+    hint: "Godan: む → め (e-row), add ば"
+  - type: free-input
+    question: Ba-form of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
+    answers:
+      - 読めば
+      - よめば
+      - yomeba
+    hint: "Godan: む → め (e-row), add ば"
+  - type: free-input
+    question: Ba-form of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
+    answers:
+      - 話せば
+      - はなせば
+      - hanaseba
+    hint: "Godan: す → せ (e-row), add ば"
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
+    options:
+      - <ruby>泳<rt>およ</rt></ruby>げば
+      - <ruby>泳<rt>およ</rt></ruby>がば
+      - <ruby>泳<rt>およ</rt></ruby>ぎば
+      - <ruby>泳<rt>およ</rt></ruby>ごば
+    answer: 0
+    hint: "Godan: ぐ → げ (e-row), add ば"
+  - type: free-input
+    question: Ba-form of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    answers:
+      - 遊べば
+      - あそべば
+      - asobeba
+    hint: "Godan: ぶ → べ (e-row), add ば"
+  - type: free-input
+    question: Ba-form of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
+    answers:
+      - 待てば
+      - まてば
+      - mateba
+    hint: "Godan: つ → て (e-row), add ば"
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
+    options:
+      - <ruby>買<rt>か</rt></ruby>えば
+      - <ruby>買<rt>か</rt></ruby>あば
+      - <ruby>買<rt>か</rt></ruby>いば
+      - <ruby>買<rt>か</rt></ruby>うば
+    answer: 0
+    hint: "Godan: う → え (e-row), add ば"
+  - type: free-input
+    question: Ba-form of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)?
+    answers:
+      - 走れば
+      - はしれば
+      - hashireba
+    hint: Godan verb! る → れ (e-row), add ば
+  - type: free-input
+    question: Ba-form of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
+    answers:
+      - 勉強すれば
+      - べんきょうすれば
+      - benkyousureba
+    hint: "する verb: する → すれば"
+  - type: free-input
+    question: Ba-form of <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up)?
+    answers:
+      - 起きれば
+      - おきれば
+      - okireba
+    hint: "Ichidan: drop る, add れば"
+  - type: multiple-choice
+    question: For godan verbs, the ba-form uses which vowel row before ば?
+    options:
+      - あ-row (a)
+      - い-row (i)
+      - う-row (u)
+      - え-row (e)
+    answer: 3
+    hint: Same e-row as imperative — く → け, む → め, す → せ
+  - type: free-input
+    question: Ba-form of <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)?
+    answers:
+      - 閉めれば
+      - しめれば
+      - shimereba
+    hint: "Ichidan: drop る, add れば"
+  - type: free-input
+    question: Ba-form of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return home)?
+    answers:
+      - 帰れば
+      - かえれば
+      - kaereba
+    hint: "Godan: る → れ (e-row), add ば"
+  - type: multiple-choice
+    question: Which is the correct ba-form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>なば
+      - <ruby>死<rt>し</rt></ruby>にば
+      - <ruby>死<rt>し</rt></ruby>ねば
+      - <ruby>死<rt>し</rt></ruby>のば
+    answer: 2
+    hint: "Godan: ぬ → ね (e-row), add ば"
+  - type: free-input
+    question: Ba-form of <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand)?
+    answers:
+      - 立てば
+      - たてば
+      - tateba
+    hint: "Godan: つ → て (e-row), add ば"

@@ -53,6 +53,24 @@ export function getLesson(id: string): Lesson {
 }
 
 export function getQuestions(lessonId: string): Record<string, Question[]> {
-  const qPath = path.join(LESSONS_DIR, lessonId, 'questions.yaml');
-  return yaml.load(fs.readFileSync(qPath, 'utf8')) as Record<string, Question[]>;
+  const questionsDir = path.join(LESSONS_DIR, lessonId, 'questions');
+  const result: Record<string, Question[]> = {};
+
+  // Load from questions/ directory (one file per section)
+  if (fs.existsSync(questionsDir)) {
+    const files = fs.readdirSync(questionsDir).filter((f) => f.endsWith('.yaml'));
+    for (const file of files) {
+      const data = yaml.load(fs.readFileSync(path.join(questionsDir, file), 'utf8')) as Record<string, Question[]>;
+      if (data) Object.assign(result, data);
+    }
+  }
+
+  // Fallback: single questions.yaml
+  const singlePath = path.join(LESSONS_DIR, lessonId, 'questions.yaml');
+  if (fs.existsSync(singlePath)) {
+    const data = yaml.load(fs.readFileSync(singlePath, 'utf8')) as Record<string, Question[]>;
+    if (data) Object.assign(result, data);
+  }
+
+  return result;
 }

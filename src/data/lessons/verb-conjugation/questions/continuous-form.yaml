@@ -1,0 +1,593 @@
+continuous-form-ichidan:
+  - type: multiple-choice
+    question: "The continuous form expresses:"
+    options:
+      - Past actions
+      - Ongoing actions or states
+      - Future plans
+      - Commands
+    answer: 1
+    hint: 勉強している = I am studying (ongoing action)
+  - type: free-input
+    question: How do you say 'is eating' using <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べている
+      - たべている
+      - tabeteiru
+    hint: Te-form 食べて + いる
+  - type: free-input
+    question: How do you say 'is looking' using <ruby>見<rt>み</rt></ruby>る?
+    answers:
+      - 見ている
+      - みている
+      - miteiru
+    hint: Te-form 見て + いる
+  - type: free-input
+    question: How do you say 'is sleeping' using <ruby>寝<rt>ね</rt></ruby>る?
+    answers:
+      - 寝ている
+      - ねている
+      - neteiru
+    hint: Te-form 寝て + いる
+  - type: free-input
+    question: How do you say 'is teaching' using <ruby>教<rt>おし</rt></ruby>える?
+    answers:
+      - 教えている
+      - おしえている
+      - oshieteiru
+    hint: Te-form 教えて + いる
+  - type: free-input
+    question: What is the polite continuous form of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べています
+      - たべています
+      - tabeteimasu
+    hint: Te-form 食べて + います
+  - type: free-input
+    question: How do you say 'is waking up' using <ruby>起<rt>お</rt></ruby>きる?
+    answers:
+      - 起きている
+      - おきている
+      - okiteiru
+    hint: Te-form 起きて + いる
+  - type: free-input
+    question: How do you say 'is opening' using <ruby>開<rt>あ</rt></ruby>ける?
+    answers:
+      - 開けている
+      - あけている
+      - aketeiru
+    hint: Te-form 開けて + いる
+  - type: free-input
+    question: How do you say 'is closing' using <ruby>閉<rt>し</rt></ruby>める?
+    answers:
+      - 閉めている
+      - しめている
+      - shimeteiru
+    hint: Te-form 閉めて + いる
+  - type: multiple-choice
+    question: What is the continuous form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
+    options:
+      - <ruby>着<rt>き</rt></ruby>ている
+      - <ruby>着<rt>き</rt></ruby>いている
+      - <ruby>着<rt>き</rt></ruby>っている
+      - <ruby>着<rt>き</rt></ruby>ている
+    answer: 0
+    hint: Ichidan te-form 着て + いる. 着ている means "is wearing" (resulting state)
+  - type: free-input
+    question: How do you say 'is going out' using <ruby>出<rt>で</rt></ruby>かける?
+    answers:
+      - 出かけている
+      - でかけている
+      - dekaketeiru
+    hint: Te-form 出かけて + いる
+  - type: free-input
+    question: How do you say 'is answering' using <ruby>答<rt>こた</rt></ruby>える?
+    answers:
+      - 答えている
+      - こたえている
+      - kotaeteiru
+    hint: Te-form 答えて + いる
+  - type: multiple-choice
+    question: What does <ruby>出<rt>で</rt></ruby>ている mean?
+    options:
+      - I will go out
+      - I went out
+      - It is out / has come out
+      - I want to go out
+    answer: 2
+    hint: ている can express a resulting state, not just ongoing action
+  - type: free-input
+    question: How do you say 'is investigating' using <ruby>調<rt>しら</rt></ruby>べる?
+    answers:
+      - 調べている
+      - しらべている
+      - shirabeteiru
+    hint: Te-form 調べて + いる
+  - type: free-input
+    question: How do you say 'is thinking' using <ruby>考<rt>かんが</rt></ruby>える?
+    answers:
+      - 考えている
+      - かんがえている
+      - kangaeteiru
+    hint: Te-form 考えて + いる
+  - type: multiple-choice
+    question: Which is the polite continuous form of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to remember)?
+    options:
+      - <ruby>覚<rt>おぼ</rt></ruby>えている
+      - <ruby>覚<rt>おぼ</rt></ruby>えています
+      - <ruby>覚<rt>おぼ</rt></ruby>えていた
+      - <ruby>覚<rt>おぼ</rt></ruby>えてある
+    answer: 1
+    hint: Te-form 覚えて + います
+  - type: free-input
+    question: How do you say 'is feeling' using <ruby>感<rt>かん</rt></ruby>じる?
+    answers:
+      - 感じている
+      - かんじている
+      - kanjiteiru
+    hint: Te-form 感じて + いる
+  - type: free-input
+    question: How do you say 'is getting off' using <ruby>降<rt>お</rt></ruby>りる?
+    answers:
+      - 降りている
+      - おりている
+      - oriteiru
+    hint: Te-form 降りて + いる
+  - type: free-input
+    question: How do you say 'is borrowing' using <ruby>借<rt>か</rt></ruby>りる?
+    answers:
+      - 借りている
+      - かりている
+      - kariteiru
+    hint: Te-form 借りて + いる
+  - type: multiple-choice
+    question: What does <ruby>忘<rt>わす</rt></ruby>れている mean?
+    options:
+      - I forgot
+      - I am forgetting / have forgotten
+      - I will forget
+      - I want to forget
+    answer: 1
+    hint: ている can express a resulting state — "have forgotten" (the state persists)
+continuous-form-godan:
+  - type: free-input
+    question: How do you say 'is drinking' using <ruby>飲<rt>の</rt></ruby>む?
+    answers:
+      - 飲んでいる
+      - のんでいる
+      - nondeiru
+    hint: Te-form 飲んで + いる
+  - type: free-input
+    question: How do you say 'is listening' using <ruby>聞<rt>き</rt></ruby>く?
+    answers:
+      - 聞いている
+      - きいている
+      - kiiteiru
+    hint: Te-form 聞いて + いる
+  - type: multiple-choice
+    question: "In casual speech, ている is often contracted to:"
+    options:
+      - てる
+      - たる
+      - とる
+      - てく
+    answer: 0
+    hint: 飲んでいる → 飲んでる
+  - type: free-input
+    question: How do you say 'is swimming' using <ruby>泳<rt>およ</rt></ruby>ぐ?
+    answers:
+      - 泳いでいる
+      - およいでいる
+      - oyoideiru
+    hint: Te-form 泳いで + いる
+  - type: free-input
+    question: How do you say 'is walking' using <ruby>歩<rt>ある</rt></ruby>く?
+    answers:
+      - 歩いている
+      - あるいている
+      - aruiteiru
+    hint: Te-form 歩いて + いる
+  - type: free-input
+    question: How do you say 'is speaking' using <ruby>話<rt>はな</rt></ruby>す?
+    answers:
+      - 話している
+      - はなしている
+      - hanashiteiru
+    hint: Te-form 話して + いる
+  - type: free-input
+    question: How do you say 'is reading' using <ruby>読<rt>よ</rt></ruby>む?
+    answers:
+      - 読んでいる
+      - よんでいる
+      - yondeiru
+    hint: Te-form 読んで + いる
+  - type: free-input
+    question: How do you say 'is waiting' using <ruby>待<rt>ま</rt></ruby>つ?
+    answers:
+      - 待っている
+      - まっている
+      - matteiru
+    hint: Te-form 待って + いる
+  - type: free-input
+    question: How do you say 'is buying' using <ruby>買<rt>か</rt></ruby>う?
+    answers:
+      - 買っている
+      - かっている
+      - katteiru
+    hint: "Te-form 買って + いる (う verbs: う→って)"
+  - type: multiple-choice
+    question: What does <ruby>知<rt>し</rt></ruby>っている mean?
+    options:
+      - I am knowing
+      - I know
+      - I knew
+      - I want to know
+    answer: 1
+    hint: 知る is a stative verb — 知っている expresses the STATE of knowing, not an ongoing action
+  - type: free-input
+    question: How do you say 'is playing' using <ruby>遊<rt>あそ</rt></ruby>ぶ?
+    answers:
+      - 遊んでいる
+      - あそんでいる
+      - asondeiru
+    hint: Te-form 遊んで + いる
+  - type: free-input
+    question: How do you say 'is running' using <ruby>走<rt>はし</rt></ruby>る?
+    answers:
+      - 走っている
+      - はしっている
+      - hashitteiru
+    hint: Te-form 走って + いる
+  - type: free-input
+    question: How do you say 'is going home' using <ruby>帰<rt>かえ</rt></ruby>る?
+    answers:
+      - 帰っている
+      - かえっている
+      - kaetteiru
+    hint: Te-form 帰って + いる
+  - type: multiple-choice
+    question: Which is the correct continuous form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>にている
+      - <ruby>死<rt>し</rt></ruby>んている
+      - <ruby>死<rt>し</rt></ruby>んでいる
+      - <ruby>死<rt>し</rt></ruby>ないる
+    answer: 2
+    hint: "ぬ verbs: te-form is 死んで + いる"
+  - type: free-input
+    question: How do you say 'is standing' using <ruby>立<rt>た</rt></ruby>つ?
+    answers:
+      - 立っている
+      - たっている
+      - tatteiru
+    hint: Te-form 立って + いる. Also expresses the state "is standing"
+  - type: free-input
+    question: How do you say 'is making' using <ruby>作<rt>つく</rt></ruby>る?
+    answers:
+      - 作っている
+      - つくっている
+      - tsukutteiru
+    hint: Te-form 作って + いる
+  - type: free-input
+    question: How do you say 'is using' using <ruby>使<rt>つか</rt></ruby>う?
+    answers:
+      - 使っている
+      - つかっている
+      - tsukatteiru
+    hint: "Te-form 使って + いる (う verbs: う→って)"
+  - type: multiple-choice
+    question: What is the polite continuous form of <ruby>送<rt>おく</rt></ruby>る (okuru - to send)?
+    options:
+      - <ruby>送<rt>おく</rt></ruby>っています
+      - <ruby>送<rt>おく</rt></ruby>りています
+      - <ruby>送<rt>おく</rt></ruby>るています
+      - <ruby>送<rt>おく</rt></ruby>れている
+    answer: 0
+    hint: Te-form 送って + います
+  - type: free-input
+    question: How do you say 'is laughing' using <ruby>笑<rt>わら</rt></ruby>う?
+    answers:
+      - 笑っている
+      - わらっている
+      - waratteiru
+    hint: "Te-form 笑って + いる (う verbs: う→って)"
+  - type: free-input
+    question: How do you say 'is sitting' using <ruby>座<rt>すわ</rt></ruby>る?
+    answers:
+      - 座っている
+      - すわっている
+      - suwatteiru
+    hint: Te-form 座って + いる. Also expresses the state "is sitting"
+continuous-form-irregular:
+  - type: free-input
+    question: How do you say 'is doing' using する?
+    answers:
+      - している
+      - shiteiru
+    hint: して + いる
+  - type: free-input
+    question: How do you say 'is coming' using <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来ている
+      - きている
+      - kiteiru
+    hint: 来て + いる
+  - type: free-input
+    question: What is the casual contraction of している?
+    answers:
+      - してる
+      - shiteru
+    hint: Drop the い
+  - type: free-input
+    question: How do you say 'is studying' using <ruby>勉強<rt>べんきょう</rt></ruby>する?
+    answers:
+      - 勉強している
+      - べんきょうしている
+      - benkyoushiteiru
+    hint: 勉強して + いる
+  - type: free-input
+    question: How do you say 'is cooking' using <ruby>料理<rt>りょうり</rt></ruby>する?
+    answers:
+      - 料理している
+      - りょうりしている
+      - ryourishiteiru
+    hint: 料理して + いる
+  - type: free-input
+    question: What is the casual contraction of <ruby>来<rt>き</rt></ruby>ている?
+    answers:
+      - 来てる
+      - きてる
+      - kiteru
+    hint: Drop the い
+  - type: multiple-choice
+    question: What is the polite continuous form of する?
+    options:
+      - しています
+      - するています
+      - していた
+      - してある
+    answer: 0
+    hint: して + います
+  - type: free-input
+    question: How do you say 'is exercising' using <ruby>運動<rt>うんどう</rt></ruby>する?
+    answers:
+      - 運動している
+      - うんどうしている
+      - undoushiteiru
+    hint: 運動して + いる
+  - type: free-input
+    question: How do you say 'is cleaning' using <ruby>掃除<rt>そうじ</rt></ruby>する?
+    answers:
+      - 掃除している
+      - そうじしている
+      - soujishiteiru
+    hint: 掃除して + いる
+  - type: multiple-choice
+    question: What does <ruby>来<rt>き</rt></ruby>ている mean?
+    options:
+      - I will come
+      - I came
+      - I am coming / has come
+      - I want to come
+    answer: 2
+    hint: 来ている can mean "is coming" or "has come" (resulting state)
+  - type: free-input
+    question: What is the polite continuous form of <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来ています
+      - きています
+      - kiteimasu
+    hint: 来て + います
+  - type: free-input
+    question: How do you say 'is shopping' using <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>する?
+    answers:
+      - 買い物している
+      - かいものしている
+      - kaimonoshiteiru
+    hint: 買い物して + いる
+  - type: free-input
+    question: How do you say 'is traveling' using <ruby>旅行<rt>りょこう</rt></ruby>する?
+    answers:
+      - 旅行している
+      - りょこうしている
+      - ryokoushiteiru
+    hint: 旅行して + いる
+  - type: multiple-choice
+    question: Which is the casual contraction of <ruby>勉強<rt>べんきょう</rt></ruby>している?
+    options:
+      - <ruby>勉強<rt>べんきょう</rt></ruby>してる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>しとる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>したる
+      - <ruby>勉強<rt>べんきょう</rt></ruby>すてる
+    answer: 0
+    hint: Drop the い from している → してる
+  - type: free-input
+    question: How do you say 'is driving' using <ruby>運転<rt>うんてん</rt></ruby>する?
+    answers:
+      - 運転している
+      - うんてんしている
+      - untenshiteiru
+    hint: 運転して + いる
+  - type: free-input
+    question: How do you say 'is washing' using <ruby>洗濯<rt>せんたく</rt></ruby>する?
+    answers:
+      - 洗濯している
+      - せんたくしている
+      - sentakushiteiru
+    hint: 洗濯して + いる
+  - type: free-input
+    question: What is the casual contraction of <ruby>料理<rt>りょうり</rt></ruby>している?
+    answers:
+      - 料理してる
+      - りょうりしてる
+      - ryourishiteru
+    hint: Drop the い from している → してる
+  - type: multiple-choice
+    question: What is the polite continuous form of <ruby>運動<rt>うんどう</rt></ruby>する?
+    options:
+      - <ruby>運動<rt>うんどう</rt></ruby>しています
+      - <ruby>運動<rt>うんどう</rt></ruby>するています
+      - <ruby>運動<rt>うんどう</rt></ruby>していた
+      - <ruby>運動<rt>うんどう</rt></ruby>してある
+    answer: 0
+    hint: 運動して + います
+  - type: free-input
+    question: How do you say 'is practicing' using <ruby>練習<rt>れんしゅう</rt></ruby>する?
+    answers:
+      - 練習している
+      - れんしゅうしている
+      - renshuushiteiru
+    hint: 練習して + いる
+  - type: free-input
+    question: How do you say 'is explaining' using <ruby>説明<rt>せつめい</rt></ruby>する?
+    answers:
+      - 説明している
+      - せつめいしている
+      - setsumeishiteiru
+    hint: 説明して + いる
+continuous-form-test:
+  - type: free-input
+    question: How do you say 'is running' using <ruby>走<rt>はし</rt></ruby>る?
+    answers:
+      - 走っている
+      - はしっている
+      - hashitteiru
+    hint: 走って + いる
+  - type: free-input
+    question: How do you say 'is studying' using <ruby>勉強<rt>べんきょう</rt></ruby>する?
+    answers:
+      - 勉強している
+      - べんきょうしている
+      - benkyoushiteiru
+    hint: 勉強して + いる
+  - type: free-input
+    question: Casual contraction of <ruby>食<rt>た</rt></ruby>べている?
+    answers:
+      - 食べてる
+      - たべてる
+      - tabeteru
+    hint: Drop the い
+  - type: free-input
+    question: How do you say 'is waiting' using <ruby>待<rt>ま</rt></ruby>つ?
+    answers:
+      - 待っている
+      - まっている
+      - matteiru
+    hint: 待って + いる
+  - type: free-input
+    question: How do you say 'is eating' using <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べている
+      - たべている
+      - tabeteiru
+    hint: 食べて + いる
+  - type: free-input
+    question: How do you say 'is drinking' using <ruby>飲<rt>の</rt></ruby>む?
+    answers:
+      - 飲んでいる
+      - のんでいる
+      - nondeiru
+    hint: 飲んで + いる
+  - type: free-input
+    question: How do you say 'is writing' using <ruby>書<rt>か</rt></ruby>く?
+    answers:
+      - 書いている
+      - かいている
+      - kaiteiru
+    hint: 書いて + いる
+  - type: free-input
+    question: How do you say 'is coming' using <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来ている
+      - きている
+      - kiteiru
+    hint: 来て + いる
+  - type: free-input
+    question: How do you say 'is swimming' using <ruby>泳<rt>およ</rt></ruby>ぐ?
+    answers:
+      - 泳いでいる
+      - およいでいる
+      - oyoideiru
+    hint: 泳いで + いる
+  - type: multiple-choice
+    question: What is the polite continuous form of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
+    options:
+      - <ruby>読<rt>よ</rt></ruby>んでいます
+      - <ruby>読<rt>よ</rt></ruby>みています
+      - <ruby>読<rt>よ</rt></ruby>むています
+      - <ruby>読<rt>よ</rt></ruby>んでいました
+    answer: 0
+    hint: Te-form 読んで + います
+  - type: free-input
+    question: How do you say 'is playing' using <ruby>遊<rt>あそ</rt></ruby>ぶ?
+    answers:
+      - 遊んでいる
+      - あそんでいる
+      - asondeiru
+    hint: 遊んで + いる
+  - type: free-input
+    question: Casual contraction of <ruby>飲<rt>の</rt></ruby>んでいる?
+    answers:
+      - 飲んでる
+      - のんでる
+      - nonderu
+    hint: Drop the い
+  - type: free-input
+    question: How do you say 'is teaching' using <ruby>教<rt>おし</rt></ruby>える?
+    answers:
+      - 教えている
+      - おしえている
+      - oshieteiru
+    hint: 教えて + いる
+  - type: multiple-choice
+    question: Which continuous form is correct for <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
+    options:
+      - <ruby>話<rt>はな</rt></ruby>している
+      - <ruby>話<rt>はな</rt></ruby>さいる
+      - <ruby>話<rt>はな</rt></ruby>すいる
+      - <ruby>話<rt>はな</rt></ruby>しいる
+    answer: 0
+    hint: Te-form 話して + いる
+  - type: free-input
+    question: How do you say 'is doing' using する?
+    answers:
+      - している
+      - shiteiru
+    hint: して + いる
+  - type: free-input
+    question: How do you say 'is walking' using <ruby>歩<rt>ある</rt></ruby>く?
+    answers:
+      - 歩いている
+      - あるいている
+      - aruiteiru
+    hint: 歩いて + いる
+  - type: free-input
+    question: How do you say 'is sitting' using <ruby>座<rt>すわ</rt></ruby>る?
+    answers:
+      - 座っている
+      - すわっている
+      - suwatteiru
+    hint: 座って + いる. Also expresses the state "is sitting"
+  - type: multiple-choice
+    question: What does <ruby>知<rt>し</rt></ruby>っている mean?
+    options:
+      - I am knowing
+      - I know
+      - I want to know
+      - I knew
+    answer: 1
+    hint: 知る is a stative verb — 知っている means "know" (a state), not "knowing"
+  - type: free-input
+    question: How do you say 'is investigating' using <ruby>調<rt>しら</rt></ruby>べる?
+    answers:
+      - 調べている
+      - しらべている
+      - shirabeteiru
+    hint: Te-form 調べて + いる
+  - type: free-input
+    question: How do you say 'is exercising' using <ruby>運動<rt>うんどう</rt></ruby>する?
+    answers:
+      - 運動している
+      - うんどうしている
+      - undoushiteiru
+    hint: 運動して + いる

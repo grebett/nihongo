@@ -1,0 +1,167 @@
+verb-groups:
+  - type: multiple-choice
+    question: How many verb groups exist in modern Japanese?
+    options:
+      - One
+      - Two (+ irregulars)
+      - Three
+      - Five
+    answer: 1
+    hint: Ichidan and Godan, plus two irregular verbs (する and 来る)
+  - type: multiple-choice
+    question: What does 'ichidan' (<ruby>一段<rt>いちだん</rt></ruby>) literally mean?
+    options:
+      - Five stages
+      - One stage
+      - First verb
+      - Simple form
+    answer: 1
+    hint: There's only one stage of conjugation — just drop る and add the ending
+  - type: multiple-choice
+    question: What does 'godan' (<ruby>五段<rt>ごだん</rt></ruby>) literally mean?
+    options:
+      - One stage
+      - Two stages
+      - Five stages
+      - Ten stages
+    answer: 2
+    hint: Conjugation depends on five vowel sounds (a, i, u, e, o)
+  - type: multiple-choice
+    question: Which of these is an ichidan verb?
+    options:
+      - <ruby>飲<rt>の</rt></ruby>む (nomu)
+      - <ruby>書<rt>か</rt></ruby>く (kaku)
+      - <ruby>食<rt>た</rt></ruby>べる (taberu)
+      - <ruby>話<rt>はな</rt></ruby>す (hanasu)
+    answer: 2
+    hint: Ichidan verbs end in -eru or -iru
+  - type: multiple-choice
+    question: Which verb is godan despite looking like ichidan?
+    options:
+      - <ruby>食<rt>た</rt></ruby>べる (taberu)
+      - <ruby>寝<rt>ね</rt></ruby>る (neru)
+      - <ruby>走<rt>はし</rt></ruby>る (hashiru)
+      - <ruby>起<rt>お</rt></ruby>きる (okiru)
+    answer: 2
+    hint: 走る ends in -iru but conjugates as godan
+  - type: multiple-choice
+    question: する and <ruby>来<rt>く</rt></ruby>る belong to which group?
+    options:
+      - Ichidan
+      - Godan
+      - Irregular
+      - Both ichidan and godan
+    answer: 2
+    hint: They follow their own unique conjugation patterns
+  - type: multiple-choice
+    question: Which ending is NOT a godan verb ending?
+    options:
+      - む (mu)
+      - く (ku)
+      - ず (zu)
+      - す (su)
+    answer: 2
+    hint: "Godan endings are: う, く, ぐ, す, つ, ぬ, ぶ, む, る"
+  - type: free-input
+    question: What verb group does <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) belong to?
+    answers:
+      - ichidan
+      - 一段
+      - いちだん
+    hint: It ends in -eru and follows the one-stage conjugation pattern
+  - type: free-input
+    question: What verb group does <ruby>書<rt>か</rt></ruby>く (kaku - to write) belong to?
+    answers:
+      - godan
+      - 五段
+      - ごだん
+    hint: It ends in く, which is exclusively a godan ending
+  - type: multiple-choice
+    question: Which of these verbs ending in -eru is actually godan?
+    options:
+      - <ruby>食<rt>た</rt></ruby>べる (taberu)
+      - <ruby>寝<rt>ね</rt></ruby>る (neru)
+      - <ruby>帰<rt>かえ</rt></ruby>る (kaeru)
+      - <ruby>教<rt>おし</rt></ruby>える (oshieru)
+    answer: 2
+    hint: 帰る (to return) ends in -eru but is a godan verb — you must memorize exceptions
+  - type: free-input
+    question: What verb group does <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die) belong to?
+    answers:
+      - godan
+      - 五段
+      - ごだん
+    hint: It ends in ぬ — this is the only common verb with that ending, and it is godan
+  - type: multiple-choice
+    question: Which of these is the ONLY verb ending that is always godan (never ichidan)?
+    options:
+      - る (ru)
+      - く (ku)
+      - いる (iru)
+      - える (eru)
+    answer: 1
+    hint: Endings like く, す, む, etc. are exclusively godan — only る is shared
+  - type: free-input
+    question: What verb group does <ruby>浴<rt>あ</rt></ruby>びる (abiru - to bathe/shower) belong to?
+    answers:
+      - ichidan
+      - 一段
+      - いちだん
+    hint: It ends in -iru and follows the one-stage conjugation pattern
+  - type: multiple-choice
+    question: Which of these verbs is godan?
+    options:
+      - <ruby>閉<rt>し</rt></ruby>める (shimeru - to close)
+      - <ruby>着<rt>き</rt></ruby>る (kiru - to wear)
+      - <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make)
+      - <ruby>出<rt>で</rt></ruby>る (deru - to exit)
+    answer: 2
+    hint: 作る ends in -ru but the vowel before る is u, not i or e — it's godan
+  - type: free-input
+    question: What verb group does <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) belong to?
+    answers:
+      - godan
+      - 五段
+      - ごだん
+    hint: It ends in す, which is exclusively a godan ending
+  - type: multiple-choice
+    question: How can you usually identify an ichidan verb?
+    options:
+      - It always has kanji
+      - It ends in -eru or -iru (with exceptions)
+      - It is always three syllables long
+      - It starts with a vowel
+    answer: 1
+    hint: Most verbs ending in -eru or -iru are ichidan, but some are godan exceptions
+  - type: multiple-choice
+    question: Which of these verbs ending in -iru is actually godan (not ichidan)?
+    options:
+      - <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up)
+      - <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow)
+      - <ruby>入<rt>はい</rt></ruby>る (hairu - to enter)
+      - <ruby>降<rt>お</rt></ruby>りる (oriru - to get off)
+    answer: 2
+    hint: "入る ends in -iru but is godan — you must memorize these exceptions"
+  - type: free-input
+    question: What verb group does <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait) belong to?
+    answers:
+      - godan
+      - 五段
+      - ごだん
+    hint: It ends in つ, which is exclusively a godan ending
+  - type: multiple-choice
+    question: Which statement about <ruby>切<rt>き</rt></ruby>る (kiru - to cut) is true?
+    options:
+      - It is ichidan because it ends in -iru
+      - It is godan even though it ends in -iru
+      - It is irregular
+      - It can be either ichidan or godan
+    answer: 1
+    hint: 切る is a godan exception — don't confuse it with 着る (to wear) which is ichidan
+  - type: free-input
+    question: What verb group does <ruby>感<rt>かん</rt></ruby>じる (kanjiru - to feel) belong to?
+    answers:
+      - ichidan
+      - 一段
+      - いちだん
+    hint: It ends in -iru and follows the one-stage conjugation pattern

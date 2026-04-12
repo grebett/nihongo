@@ -1,0 +1,462 @@
+dictionary-form-ichidan:
+  - type: multiple-choice
+    question: The dictionary form can be used for which situations?
+    options:
+      - Only present tense
+      - Only future tense
+      - Present, habitual, and future
+      - Only past tense
+    answer: 2
+    hint: I eat sushi (now) / I eat sushi (regularly) / I will eat sushi (future)
+  - type: free-input
+    question: What is the dictionary form of 'to eat'?
+    answers:
+      - 食べる
+      - たべる
+      - taberu
+    hint: An ichidan verb ending in -eru
+  - type: free-input
+    question: What is the dictionary form of 'to look/see'?
+    answers:
+      - 見る
+      - みる
+      - miru
+    hint: An ichidan verb ending in -iru
+  - type: multiple-choice
+    question: How do you conjugate ichidan verbs from dictionary form?
+    options:
+      - Change the last vowel
+      - Drop る and add the new ending
+      - Add after the verb
+      - Change the whole verb
+    answer: 1
+    hint: One stage — just drop る and add
+  - type: free-input
+    question: What is the dictionary form of 'to sleep'?
+    answers:
+      - 寝る
+      - ねる
+      - neru
+    hint: An ichidan verb ending in -eru
+  - type: free-input
+    question: What is the dictionary form of 'to wake up'?
+    answers:
+      - 起きる
+      - おきる
+      - okiru
+    hint: An ichidan verb ending in -iru
+  - type: free-input
+    question: What is the dictionary form of 'to teach'?
+    answers:
+      - 教える
+      - おしえる
+      - oshieru
+    hint: An ichidan verb ending in -eru
+  - type: free-input
+    question: What is the dictionary form of 'to open'?
+    answers:
+      - 開ける
+      - あける
+      - akeru
+    hint: An ichidan verb ending in -eru
+  - type: free-input
+    question: What is the dictionary form of 'to close'?
+    answers:
+      - 閉める
+      - しめる
+      - shimeru
+    hint: An ichidan verb ending in -eru
+  - type: free-input
+    question: What is the dictionary form of 'to wear (upper body)'?
+    answers:
+      - 着る
+      - きる
+      - kiru
+    hint: An ichidan verb ending in -iru
+  - type: free-input
+    question: What is the dictionary form of 'to shower/bathe'?
+    answers:
+      - 浴びる
+      - あびる
+      - abiru
+    hint: An ichidan verb ending in -iru
+  - type: free-input
+    question: What is the dictionary form of 'to exit/go out'?
+    answers:
+      - 出る
+      - でる
+      - deru
+    hint: An ichidan verb ending in -eru
+  - type: free-input
+    question: What is the dictionary form of 'to believe'?
+    answers:
+      - 信じる
+      - しんじる
+      - shinjiru
+    hint: An ichidan verb ending in -iru
+  - type: free-input
+    question: What is the dictionary form of 'to feel'?
+    answers:
+      - 感じる
+      - かんじる
+      - kanjiru
+    hint: An ichidan verb ending in -iru
+  - type: free-input
+    question: What is the dictionary form of 'to get off/descend'?
+    answers:
+      - 降りる
+      - おりる
+      - oriru
+    hint: An ichidan verb ending in -iru
+  - type: free-input
+    question: What is the dictionary form of 'to borrow'?
+    answers:
+      - 借りる
+      - かりる
+      - kariru
+    hint: An ichidan verb ending in -iru
+  - type: multiple-choice
+    question: What remains when you remove る from an ichidan verb?
+    options:
+      - The dictionary form
+      - The verb stem
+      - The polite form
+      - The past tense
+    answer: 1
+    hint: For 食べる, removing る gives 食べ — the stem used to build other forms
+  - type: multiple-choice
+    question: Which of these is the stem of <ruby>起<rt>お</rt></ruby>きる (okiru)?
+    options:
+      - <ruby>起<rt>お</rt></ruby>き
+      - <ruby>起<rt>お</rt></ruby>
+      - <ruby>起<rt>お</rt></ruby>きり
+      - <ruby>起<rt>お</rt></ruby>く
+    answer: 0
+    hint: Drop る from 起きる to get the stem 起き
+  - type: multiple-choice
+    question: Which of these is NOT an ichidan verb?
+    options:
+      - <ruby>開<rt>あ</rt></ruby>ける (akeru)
+      - <ruby>閉<rt>し</rt></ruby>める (shimeru)
+      - <ruby>走<rt>はし</rt></ruby>る (hashiru)
+      - <ruby>出<rt>で</rt></ruby>る (deru)
+    answer: 2
+    hint: 走る looks like it could be ichidan but it is actually godan
+  - type: free-input
+    question: What is the stem of <ruby>食<rt>た</rt></ruby>べる (taberu)?
+    answers:
+      - 食べ
+      - たべ
+      - tabe
+    hint: Remove る from the ichidan verb to get the stem
+dictionary-form-godan:
+  - type: free-input
+    question: What is the dictionary form of 'to drink'?
+    answers:
+      - 飲む
+      - のむ
+      - nomu
+    hint: A godan verb ending in む
+  - type: free-input
+    question: What is the dictionary form of 'to write'?
+    answers:
+      - 書く
+      - かく
+      - kaku
+    hint: A godan verb ending in く
+  - type: free-input
+    question: What is the dictionary form of 'to read'?
+    answers:
+      - 読む
+      - よむ
+      - yomu
+    hint: A godan verb ending in む
+  - type: multiple-choice
+    question: "Godan verbs conjugate based on:"
+    options:
+      - Just dropping る
+      - Five vowel sounds (a, i, u, e, o)
+      - Adding ます directly
+      - Changing the first syllable
+    answer: 1
+    hint: The う-row (dictionary) changes to あ, い, え, お rows depending on the form
+  - type: free-input
+    question: What is the dictionary form of 'to swim'?
+    answers:
+      - 泳ぐ
+      - およぐ
+      - oyogu
+    hint: A godan verb ending in ぐ
+  - type: free-input
+    question: What is the dictionary form of 'to play'?
+    answers:
+      - 遊ぶ
+      - あそぶ
+      - asobu
+    hint: A godan verb ending in ぶ
+  - type: free-input
+    question: What is the dictionary form of 'to walk'?
+    answers:
+      - 歩く
+      - あるく
+      - aruku
+    hint: A godan verb ending in く
+  - type: free-input
+    question: What is the dictionary form of 'to buy'?
+    answers:
+      - 買う
+      - かう
+      - kau
+    hint: A godan verb ending in う
+  - type: free-input
+    question: What is the dictionary form of 'to speak'?
+    answers:
+      - 話す
+      - はなす
+      - hanasu
+    hint: A godan verb ending in す
+  - type: free-input
+    question: What is the dictionary form of 'to wait'?
+    answers:
+      - 待つ
+      - まつ
+      - matsu
+    hint: A godan verb ending in つ
+  - type: free-input
+    question: What is the dictionary form of 'to die'?
+    answers:
+      - 死ぬ
+      - しぬ
+      - shinu
+    hint: The only common godan verb ending in ぬ
+  - type: free-input
+    question: What is the dictionary form of 'to return/go home'?
+    answers:
+      - 帰る
+      - かえる
+      - kaeru
+    hint: A godan verb ending in る — careful, this one looks like ichidan but is not
+  - type: free-input
+    question: What is the dictionary form of 'to make/create'?
+    answers:
+      - 作る
+      - つくる
+      - tsukuru
+    hint: A godan verb ending in る
+  - type: free-input
+    question: What is the dictionary form of 'to send'?
+    answers:
+      - 送る
+      - おくる
+      - okuru
+    hint: A godan verb ending in る
+  - type: free-input
+    question: What is the dictionary form of 'to laugh/smile'?
+    answers:
+      - 笑う
+      - わらう
+      - warau
+    hint: A godan verb ending in う
+  - type: free-input
+    question: What is the dictionary form of 'to stand'?
+    answers:
+      - 立つ
+      - たつ
+      - tatsu
+    hint: A godan verb ending in つ
+  - type: multiple-choice
+    question: Which row of the kana chart does the dictionary form of godan verbs always end in?
+    options:
+      - あ-row (a)
+      - い-row (i)
+      - う-row (u)
+      - え-row (e)
+    answer: 2
+    hint: む, く, す, つ, う, ぐ, ぶ, ぬ, る — all are in the う-row
+  - type: multiple-choice
+    question: Which of these godan verbs ends in る?
+    options:
+      - <ruby>飲<rt>の</rt></ruby>む (nomu)
+      - <ruby>座<rt>すわ</rt></ruby>る (suwaru)
+      - <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu)
+      - <ruby>話<rt>はな</rt></ruby>す (hanasu)
+    answer: 1
+    hint: 座る (to sit) is a godan verb that ends in る
+  - type: multiple-choice
+    question: How many possible final kana can a godan verb have in dictionary form?
+    options:
+      - 5
+      - 7
+      - 9
+      - 2
+    answer: 2
+    hint: "う, く, ぐ, す, つ, ぬ, ぶ, む, る — nine possible endings"
+  - type: free-input
+    question: What is the dictionary form of 'to use'?
+    answers:
+      - 使う
+      - つかう
+      - tsukau
+    hint: A godan verb ending in う
+dictionary-form-test:
+  - type: multiple-choice
+    question: Which verb is godan despite ending in -iru?
+    options:
+      - <ruby>見<rt>み</rt></ruby>る (miru)
+      - <ruby>走<rt>はし</rt></ruby>る (hashiru)
+      - <ruby>起<rt>お</rt></ruby>きる (okiru)
+      - <ruby>食<rt>た</rt></ruby>べる (taberu)
+    answer: 1
+    hint: 走る (to run) is a godan verb — it conjugates differently from ichidan
+  - type: multiple-choice
+    question: Which verb is godan despite ending in -eru?
+    options:
+      - <ruby>食<rt>た</rt></ruby>べる (taberu)
+      - <ruby>寝<rt>ね</rt></ruby>る (neru)
+      - <ruby>帰<rt>かえ</rt></ruby>る (kaeru)
+      - <ruby>見<rt>み</rt></ruby>える (mieru)
+    answer: 2
+    hint: 帰る (to return) is godan
+  - type: multiple-choice
+    question: What are the two irregular verbs in Japanese?
+    options:
+      - <ruby>行<rt>い</rt></ruby>く and <ruby>帰<rt>かえ</rt></ruby>る
+      - する and <ruby>来<rt>く</rt></ruby>る
+      - ある and いる
+      - <ruby>食<rt>た</rt></ruby>べる and <ruby>飲<rt>の</rt></ruby>む
+    answer: 1
+    hint: する (to do) and 来る (to come)
+  - type: multiple-choice
+    question: Which of these verbs is ichidan?
+    options:
+      - <ruby>買<rt>か</rt></ruby>う (kau)
+      - <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu)
+      - <ruby>寝<rt>ね</rt></ruby>る (neru)
+      - <ruby>待<rt>ま</rt></ruby>つ (matsu)
+    answer: 2
+    hint: Ichidan verbs end in -eru or -iru and drop る to conjugate
+  - type: multiple-choice
+    question: Which verb group does <ruby>勉強<rt>べんきょう</rt></ruby>する belong to?
+    options:
+      - Ichidan
+      - Godan
+      - Irregular
+      - It depends on the sentence
+    answer: 2
+    hint: Noun + する verbs are irregular — they conjugate like する
+  - type: free-input
+    question: What is the dictionary form of 'to swim'?
+    answers:
+      - 泳ぐ
+      - およぐ
+      - oyogu
+    hint: A godan verb ending in ぐ
+  - type: free-input
+    question: What is the dictionary form of 'to play'?
+    answers:
+      - 遊ぶ
+      - あそぶ
+      - asobu
+    hint: A godan verb ending in ぶ
+  - type: multiple-choice
+    question: Which ending is shared by both godan and ichidan verbs?
+    options:
+      - む (mu)
+      - す (su)
+      - る (ru)
+      - く (ku)
+    answer: 2
+    hint: Some -ru verbs are ichidan (食べる) and some are godan (走る)
+  - type: free-input
+    question: What is the dictionary form of 'to do'?
+    answers:
+      - する
+      - suru
+    hint: One of the two irregular verbs
+  - type: free-input
+    question: What is the dictionary form of 'to come'?
+    answers:
+      - 来る
+      - くる
+      - kuru
+    hint: One of the two irregular verbs
+  - type: multiple-choice
+    question: How can you tell <ruby>起<rt>お</rt></ruby>きる is ichidan and not godan?
+    options:
+      - It ends in -iru so it must be ichidan
+      - You must memorize it — -iru verbs can be either group
+      - All verbs with kanji are ichidan
+      - It has more than two syllables
+    answer: 1
+    hint: Some -iru verbs like 走る are godan; you have to learn which group each belongs to
+  - type: multiple-choice
+    question: Which of these is a godan verb?
+    options:
+      - <ruby>教<rt>おし</rt></ruby>える (oshieru)
+      - <ruby>見<rt>み</rt></ruby>る (miru)
+      - <ruby>読<rt>よ</rt></ruby>む (yomu)
+      - する (suru)
+    answer: 2
+    hint: 読む ends in む, which is exclusively a godan ending
+  - type: free-input
+    question: What is the dictionary form of 'to speak'?
+    answers:
+      - 話す
+      - はなす
+      - hanasu
+    hint: A godan verb ending in す
+  - type: multiple-choice
+    question: Which statement about dictionary form is true?
+    options:
+      - It can only express present tense
+      - It is only used in dictionaries
+      - It can express present, habitual, and future actions
+      - It is the same as polite form
+    answer: 2
+    hint: The dictionary form (plain present) covers present, habitual, and future meanings
+  - type: free-input
+    question: What is the dictionary form of 'to cook'?
+    answers:
+      - 料理する
+      - りょうりする
+      - ryourisuru
+    hint: A noun + する (irregular) verb
+  - type: multiple-choice
+    question: <ruby>歩<rt>ある</rt></ruby>く (aruku) belongs to which verb group?
+    options:
+      - Ichidan
+      - Godan
+      - Irregular
+      - Both ichidan and godan
+    answer: 1
+    hint: It ends in く, which is exclusively a godan ending
+  - type: free-input
+    question: What is the dictionary form of 'to close'?
+    answers:
+      - 閉める
+      - しめる
+      - shimeru
+    hint: An ichidan verb ending in -eru
+  - type: free-input
+    question: What is the dictionary form of 'to sit'?
+    answers:
+      - 座る
+      - すわる
+      - suwaru
+    hint: A godan verb ending in る — the vowel before る is a, not i or e
+  - type: free-input
+    question: What is the dictionary form of 'to use'?
+    answers:
+      - 使う
+      - つかう
+      - tsukau
+    hint: A godan verb ending in う
+  - type: multiple-choice
+    question: Which verb is ichidan?
+    options:
+      - <ruby>作<rt>つく</rt></ruby>る (tsukuru)
+      - <ruby>降<rt>お</rt></ruby>りる (oriru)
+      - <ruby>送<rt>おく</rt></ruby>る (okuru)
+      - <ruby>立<rt>た</rt></ruby>つ (tatsu)
+    answer: 1
+    hint: 降りる (to get off) ends in -iru and is a true ichidan verb

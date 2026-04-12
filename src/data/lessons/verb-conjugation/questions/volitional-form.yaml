@@ -1,0 +1,655 @@
+volitional-form-ichidan:
+  - type: free-input
+    question: Convert <ruby>食<rt>た</rt></ruby>べる (taberu) to volitional form
+    answers:
+      - 食べよう
+      - たべよう
+      - tabeyou
+      - tabeyoo
+    hint: Drop る, add よう
+  - type: free-input
+    question: Convert <ruby>見<rt>み</rt></ruby>る (miru) to volitional form
+    answers:
+      - 見よう
+      - みよう
+      - miyou
+      - miyoo
+    hint: Drop る, add よう
+  - type: multiple-choice
+    question: "The volitional form is often translated as:"
+    options:
+      - Must do
+      - Let's do / I will do
+      - Don't do
+      - Please do
+    answer: 1
+    hint: 食べよう = Let's eat! Shows will or volition.
+  - type: free-input
+    question: Convert <ruby>寝<rt>ね</rt></ruby>る (neru - to sleep) to volitional form
+    answers:
+      - 寝よう
+      - ねよう
+      - neyou
+      - neyoo
+    hint: Drop る, add よう — let's sleep
+  - type: free-input
+    question: Convert <ruby>起<rt>お</rt></ruby>きる (okiru - to wake up) to volitional form
+    answers:
+      - 起きよう
+      - おきよう
+      - okiyou
+      - okiyoo
+    hint: Drop る, add よう — let's wake up
+  - type: free-input
+    question: What is the polite volitional of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べましょう
+      - たべましょう
+      - tabemashou
+      - tabemashoo
+    hint: Masu stem 食べ + ましょう
+  - type: free-input
+    question: Convert <ruby>教<rt>おし</rt></ruby>える (oshieru - to teach) to volitional form
+    answers:
+      - 教えよう
+      - おしえよう
+      - oshieyou
+      - oshieyoo
+    hint: Drop る, add よう — let's teach
+  - type: free-input
+    question: Convert <ruby>開<rt>あ</rt></ruby>ける (akeru - to open) to volitional form
+    answers:
+      - 開けよう
+      - あけよう
+      - akeyou
+      - akeyoo
+    hint: Drop る, add よう — let's open
+  - type: free-input
+    question: Convert <ruby>閉<rt>し</rt></ruby>める (shimeru - to close) to volitional form
+    answers:
+      - 閉めよう
+      - しめよう
+      - shimeyou
+      - shimeyoo
+    hint: Drop る, add よう — let's close
+  - type: multiple-choice
+    question: What is the volitional form of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
+    options:
+      - <ruby>着<rt>き</rt></ruby>よう
+      - <ruby>着<rt>き</rt></ruby>ろう
+      - <ruby>着<rt>き</rt></ruby>るよう
+      - <ruby>着<rt>き</rt></ruby>りよう
+    answer: 0
+    hint: Ichidan — drop る, add よう
+  - type: free-input
+    question: Convert <ruby>浴<rt>あ</rt></ruby>びる (abiru - to bathe/shower) to volitional form
+    answers:
+      - 浴びよう
+      - あびよう
+      - abiyou
+      - abiyoo
+    hint: Drop る, add よう — let's shower
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>る (deru - to go out) to volitional form
+    answers:
+      - 出よう
+      - でよう
+      - deyou
+      - deyoo
+    hint: Drop る, add よう — let's go out
+  - type: free-input
+    question: Convert <ruby>降<rt>お</rt></ruby>りる (oriru - to get off) to volitional form
+    answers:
+      - 降りよう
+      - おりよう
+      - oriyou
+      - oriyoo
+    hint: Drop る, add よう — let's get off
+  - type: multiple-choice
+    question: What is the volitional form of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
+    options:
+      - <ruby>信<rt>しん</rt></ruby>じよう
+      - <ruby>信<rt>しん</rt></ruby>じろう
+      - <ruby>信<rt>しん</rt></ruby>じるう
+      - <ruby>信<rt>しん</rt></ruby>じおう
+    answer: 0
+    hint: Ichidan — drop る, add よう
+  - type: free-input
+    question: Convert <ruby>借<rt>か</rt></ruby>りる (kariru - to borrow) to volitional form
+    answers:
+      - 借りよう
+      - かりよう
+      - kariyou
+      - kariyoo
+    hint: Drop る, add よう — let's borrow
+  - type: free-input
+    question: Convert <ruby>出<rt>で</rt></ruby>かける (dekakeru - to go out/leave) to volitional form
+    answers:
+      - 出かけよう
+      - でかけよう
+      - dekakeyou
+      - dekakeyoo
+    hint: Drop る, add よう — let's head out
+  - type: free-input
+    question: Convert <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate) to volitional form
+    answers:
+      - 調べよう
+      - しらべよう
+      - shirabeyou
+      - shirabeyoo
+    hint: Drop る, add よう — let's investigate
+  - type: multiple-choice
+    question: What is the volitional form of <ruby>考<rt>かんが</rt></ruby>える (kangaeru - to think)?
+    options:
+      - <ruby>考<rt>かんが</rt></ruby>えよう
+      - <ruby>考<rt>かんが</rt></ruby>えろう
+      - <ruby>考<rt>かんが</rt></ruby>えるう
+      - <ruby>考<rt>かんが</rt></ruby>えおう
+    answer: 0
+    hint: Ichidan — drop る, add よう
+  - type: free-input
+    question: Convert <ruby>覚<rt>おぼ</rt></ruby>える (oboeru - to memorize) to volitional form
+    answers:
+      - 覚えよう
+      - おぼえよう
+      - oboeyou
+      - oboeyoo
+    hint: Drop る, add よう — let's memorize
+  - type: free-input
+    question: Convert <ruby>忘<rt>わす</rt></ruby>れる (wasureru - to forget) to volitional form
+    answers:
+      - 忘れよう
+      - わすれよう
+      - wasureyou
+      - wasureyoo
+    hint: Drop る, add よう — let's forget
+volitional-form-godan:
+  - type: free-input
+    question: Convert <ruby>飲<rt>の</rt></ruby>む (nomu) to volitional form
+    answers:
+      - 飲もう
+      - のもう
+      - nomou
+      - nomoo
+    hint: む → も (o-row), add う
+  - type: free-input
+    question: Convert <ruby>行<rt>い</rt></ruby>く (iku) to volitional form
+    answers:
+      - 行こう
+      - いこう
+      - ikou
+      - ikoo
+    hint: く → こ (o-row), add う — 行こう! (Let's go!)
+  - type: free-input
+    question: Convert <ruby>待<rt>ま</rt></ruby>つ (matsu) to volitional form
+    answers:
+      - 待とう
+      - まとう
+      - matou
+      - matoo
+    hint: つ → と (o-row), add う
+  - type: free-input
+    question: What is the polite volitional of <ruby>行<rt>い</rt></ruby>く?
+    answers:
+      - 行きましょう
+      - いきましょう
+      - ikimashou
+      - ikimashoo
+    hint: Masu stem 行き + ましょう
+  - type: free-input
+    question: Convert <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim) to volitional form
+    answers:
+      - 泳ごう
+      - およごう
+      - oyogou
+      - oyogoo
+    hint: ぐ → ご (o-row), add う — let's swim!
+  - type: free-input
+    question: Convert <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play) to volitional form
+    answers:
+      - 遊ぼう
+      - あそぼう
+      - asobou
+      - asoboo
+    hint: ぶ → ぼ (o-row), add う — let's play!
+  - type: free-input
+    question: Convert <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak) to volitional form
+    answers:
+      - 話そう
+      - はなそう
+      - hanasou
+      - hanasoo
+    hint: す → そ (o-row), add う — let's talk!
+  - type: free-input
+    question: Convert <ruby>買<rt>か</rt></ruby>う (kau - to buy) to volitional form
+    answers:
+      - 買おう
+      - かおう
+      - kaou
+      - kaoo
+    hint: う → お (o-row), add う — let's buy!
+  - type: free-input
+    question: Convert <ruby>読<rt>よ</rt></ruby>む (yomu - to read) to volitional form
+    answers:
+      - 読もう
+      - よもう
+      - yomou
+      - yomoo
+    hint: む → も (o-row), add う — let's read!
+  - type: free-input
+    question: Convert <ruby>書<rt>か</rt></ruby>く (kaku - to write) to volitional form
+    answers:
+      - 書こう
+      - かこう
+      - kakou
+      - kakoo
+    hint: く → こ (o-row), add う — let's write!
+  - type: multiple-choice
+    question: What is the volitional form of <ruby>死<rt>し</rt></ruby>ぬ (shinu - to die)?
+    options:
+      - <ruby>死<rt>し</rt></ruby>のう
+      - <ruby>死<rt>し</rt></ruby>なう
+      - <ruby>死<rt>し</rt></ruby>にう
+      - <ruby>死<rt>し</rt></ruby>ぬう
+    answer: 0
+    hint: ぬ → の (o-row), add う — the only -nu verb!
+  - type: free-input
+    question: Convert <ruby>走<rt>はし</rt></ruby>る (hashiru - to run, Godan!) to volitional form
+    answers:
+      - 走ろう
+      - はしろう
+      - hashirou
+      - hashiroo
+    hint: Godan る → ろ (o-row), add う — let's run!
+  - type: free-input
+    question: Convert <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return, Godan!) to volitional form
+    answers:
+      - 帰ろう
+      - かえろう
+      - kaerou
+      - kaeroo
+    hint: Godan る → ろ (o-row), add う — let's go home!
+  - type: multiple-choice
+    question: What is the volitional form of <ruby>歩<rt>ある</rt></ruby>く (aruku - to walk)?
+    options:
+      - <ruby>歩<rt>ある</rt></ruby>こう
+      - <ruby>歩<rt>ある</rt></ruby>かう
+      - <ruby>歩<rt>ある</rt></ruby>きう
+      - <ruby>歩<rt>ある</rt></ruby>くう
+    answer: 0
+    hint: く → こ (o-row), add う
+  - type: free-input
+    question: Convert <ruby>座<rt>すわ</rt></ruby>る (suwaru - to sit) to volitional form
+    answers:
+      - 座ろう
+      - すわろう
+      - suwarou
+      - suwaroo
+    hint: Godan る → ろ (o-row), add う — let's sit!
+  - type: free-input
+    question: Convert <ruby>作<rt>つく</rt></ruby>る (tsukuru - to make) to volitional form
+    answers:
+      - 作ろう
+      - つくろう
+      - tsukurou
+      - tsukuroo
+    hint: Godan る → ろ (o-row), add う — let's make it!
+  - type: free-input
+    question: Convert <ruby>乗<rt>の</rt></ruby>る (noru - to ride) to volitional form
+    answers:
+      - 乗ろう
+      - のろう
+      - norou
+      - noroo
+    hint: Godan る → ろ (o-row), add う — let's ride!
+  - type: multiple-choice
+    question: What is the volitional form of <ruby>使<rt>つか</rt></ruby>う (tsukau - to use)?
+    options:
+      - <ruby>使<rt>つか</rt></ruby>おう
+      - <ruby>使<rt>つか</rt></ruby>あう
+      - <ruby>使<rt>つか</rt></ruby>いう
+      - <ruby>使<rt>つか</rt></ruby>ううう
+    answer: 0
+    hint: う → お (o-row), add う
+  - type: free-input
+    question: Convert <ruby>聞<rt>き</rt></ruby>く (kiku - to listen) to volitional form
+    answers:
+      - 聞こう
+      - きこう
+      - kikou
+      - kikoo
+    hint: く → こ (o-row), add う — let's listen!
+  - type: free-input
+    question: Convert <ruby>消<rt>け</rt></ruby>す (kesu - to turn off/erase) to volitional form
+    answers:
+      - 消そう
+      - けそう
+      - kesou
+      - kesoo
+    hint: す → そ (o-row), add う — let's turn it off!
+volitional-form-irregular:
+  - type: free-input
+    question: Convert する (suru) to volitional form
+    answers:
+      - しよう
+      - shiyou
+      - shiyoo
+    hint: する → しよう
+  - type: free-input
+    question: Convert <ruby>来<rt>く</rt></ruby>る (kuru) to volitional form
+    answers:
+      - 来よう
+      - こよう
+      - koyou
+      - koyoo
+    hint: く → こ, add よう
+  - type: free-input
+    question: How do you say 'What should I do?' using the volitional?
+    answers:
+      - どうしよう
+      - doushiyou
+      - doushiyoo
+    hint: どう (how/what) + しよう (shall do)
+  - type: free-input
+    question: Convert <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru) to volitional form
+    answers:
+      - 勉強しよう
+      - べんきょうしよう
+      - benkyoushiyou
+      - benkyoushiyoo
+    hint: する → しよう — let's study!
+  - type: free-input
+    question: What is the polite volitional of <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来ましょう
+      - きましょう
+      - kimashou
+      - kimashoo
+    hint: Masu stem き + ましょう
+  - type: free-input
+    question: What is the polite volitional of する?
+    answers:
+      - しましょう
+      - shimashou
+      - shimashoo
+    hint: Masu stem し + ましょう
+  - type: free-input
+    question: How do you say 'let's exercise' using <ruby>運動<rt>うんどう</rt></ruby>する?
+    answers:
+      - 運動しよう
+      - うんどうしよう
+      - undoushiyou
+      - undoushiyoo
+    hint: する → しよう — 運動しよう!
+  - type: free-input
+    question: How do you say 'let's cook' using <ruby>料理<rt>りょうり</rt></ruby>する?
+    answers:
+      - 料理しよう
+      - りょうりしよう
+      - ryourishiyou
+      - ryourishiyoo
+    hint: する → しよう — 料理しよう!
+  - type: multiple-choice
+    question: "What does しようと<ruby>思<rt>おも</rt></ruby>う mean?"
+    options:
+      - I must do
+      - I think I will do
+      - I don't want to do
+      - I did
+    answer: 1
+    hint: Volitional + と思う = I think I will... (expresses intention)
+  - type: free-input
+    question: How do you say 'let's clean' using <ruby>掃除<rt>そうじ</rt></ruby>する?
+    answers:
+      - 掃除しよう
+      - そうじしよう
+      - soujishiyou
+      - soujishiyoo
+    hint: する → しよう — 掃除しよう!
+  - type: free-input
+    question: How do you say 'let's drive' using <ruby>運転<rt>うんてん</rt></ruby>する?
+    answers:
+      - 運転しよう
+      - うんてんしよう
+      - untenshiyou
+      - untenshiyoo
+    hint: する → しよう — 運転しよう!
+  - type: multiple-choice
+    question: "What does <ruby>来<rt>く</rt></ruby>る become in the volitional form?"
+    options:
+      - くよう
+      - きよう
+      - こよう
+      - かよう
+    answer: 2
+    hint: The reading changes — く → こ, then add よう
+  - type: free-input
+    question: How do you say 'let's travel' using <ruby>旅行<rt>りょこう</rt></ruby>する?
+    answers:
+      - 旅行しよう
+      - りょこうしよう
+      - ryokoushiyou
+      - ryokoushiyoo
+    hint: する → しよう — 旅行しよう!
+  - type: free-input
+    question: How do you say 'let's shop' using <ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>する?
+    answers:
+      - 買い物しよう
+      - かいものしよう
+      - kaimonoshiyou
+      - kaimonoshiyoo
+    hint: する → しよう — 買い物しよう!
+  - type: multiple-choice
+    question: "What does こようと<ruby>思<rt>おも</rt></ruby>う mean?"
+    options:
+      - I came
+      - I think I will come
+      - I cannot come
+      - I must come
+    answer: 1
+    hint: こよう (volitional of 来る) + と思う = I think I will come
+  - type: free-input
+    question: How do you say 'let's wash (laundry)' using <ruby>洗濯<rt>せんたく</rt></ruby>する?
+    answers:
+      - 洗濯しよう
+      - せんたくしよう
+      - sentakushiyou
+      - sentakushiyoo
+    hint: する → しよう — 洗濯しよう!
+  - type: free-input
+    question: How do you say 'let's reserve' using <ruby>予約<rt>よやく</rt></ruby>する?
+    answers:
+      - 予約しよう
+      - よやくしよう
+      - yoyakushiyou
+      - yoyakushiyoo
+    hint: する → しよう — 予約しよう!
+  - type: multiple-choice
+    question: "Which pattern expresses internal will or intention?"
+    options:
+      - Volitional + と<ruby>思<rt>おも</rt></ruby>う
+      - Volitional + ください
+      - Volitional + ない
+      - Volitional + ます
+    answer: 0
+    hint: 食べようと思う = I think I'll eat (internal decision)
+  - type: free-input
+    question: How do you say 'let's translate' using <ruby>翻訳<rt>ほんやく</rt></ruby>する?
+    answers:
+      - 翻訳しよう
+      - ほんやくしよう
+      - honyakushiyou
+      - honyakushiyoo
+    hint: する → しよう — 翻訳しよう!
+  - type: free-input
+    question: How do you say 'let's memorize' using <ruby>暗記<rt>あんき</rt></ruby>する?
+    answers:
+      - 暗記しよう
+      - あんきしよう
+      - ankishiyou
+      - ankishiyoo
+    hint: する → しよう — 暗記しよう!
+volitional-form-test:
+  - type: free-input
+    question: Volitional of <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べよう
+      - たべよう
+      - tabeyou
+      - tabeyoo
+    hint: "Ichidan: よう"
+  - type: free-input
+    question: Volitional of <ruby>書<rt>か</rt></ruby>く?
+    answers:
+      - 書こう
+      - かこう
+      - kakou
+      - kakoo
+    hint: "Godan: く → こ (o-row), add う"
+  - type: free-input
+    question: Volitional of する?
+    answers:
+      - しよう
+      - shiyou
+      - shiyoo
+    hint: しよう
+  - type: free-input
+    question: Polite volitional of する?
+    answers:
+      - しましょう
+      - shimashou
+      - shimashoo
+    hint: し + ましょう
+  - type: free-input
+    question: Volitional of <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来よう
+      - こよう
+      - koyou
+      - koyoo
+    hint: こよう
+  - type: free-input
+    question: Volitional of <ruby>読<rt>よ</rt></ruby>む (yomu - to read)?
+    answers:
+      - 読もう
+      - よもう
+      - yomou
+      - yomoo
+    hint: "Godan: む → も (o-row), add う"
+  - type: free-input
+    question: Volitional of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    answers:
+      - 飲もう
+      - のもう
+      - nomou
+      - nomoo
+    hint: "Godan: む → も (o-row), add う"
+  - type: free-input
+    question: Volitional of <ruby>見<rt>み</rt></ruby>る (miru - to see)?
+    answers:
+      - 見よう
+      - みよう
+      - miyou
+      - miyoo
+    hint: "Ichidan: drop る, add よう"
+  - type: free-input
+    question: Volitional of <ruby>話<rt>はな</rt></ruby>す (hanasu - to speak)?
+    answers:
+      - 話そう
+      - はなそう
+      - hanasou
+      - hanasoo
+    hint: "Godan: す → そ (o-row), add う"
+  - type: multiple-choice
+    question: Which is the correct volitional of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu - to swim)?
+    options:
+      - <ruby>泳<rt>およ</rt></ruby>ごう
+      - <ruby>泳<rt>およ</rt></ruby>がう
+      - <ruby>泳<rt>およ</rt></ruby>ぎう
+      - <ruby>泳<rt>およ</rt></ruby>ぐう
+    answer: 0
+    hint: "Godan: ぐ → ご (o-row), add う"
+  - type: free-input
+    question: Volitional of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    answers:
+      - 遊ぼう
+      - あそぼう
+      - asobou
+      - asoboo
+    hint: "Godan: ぶ → ぼ (o-row), add う"
+  - type: free-input
+    question: Volitional of <ruby>待<rt>ま</rt></ruby>つ (matsu - to wait)?
+    answers:
+      - 待とう
+      - まとう
+      - matou
+      - matoo
+    hint: "Godan: つ → と (o-row), add う"
+  - type: multiple-choice
+    question: Which is the correct volitional of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
+    options:
+      - <ruby>買<rt>か</rt></ruby>おう
+      - <ruby>買<rt>か</rt></ruby>あう
+      - <ruby>買<rt>か</rt></ruby>いう
+      - <ruby>買<rt>か</rt></ruby>ううう
+    answer: 0
+    hint: "Godan: う → お (o-row), add う"
+  - type: free-input
+    question: Volitional of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)?
+    answers:
+      - 走ろう
+      - はしろう
+      - hashirou
+      - hashiroo
+    hint: Godan verb! る → ろ (o-row), add う
+  - type: free-input
+    question: Volitional of <ruby>勉強<rt>べんきょう</rt></ruby>する (benkyousuru - to study)?
+    answers:
+      - 勉強しよう
+      - べんきょうしよう
+      - benkyoushiyou
+      - benkyoushiyoo
+    hint: "する verb: する → しよう"
+  - type: multiple-choice
+    question: For godan verbs, the volitional form uses which vowel row before う?
+    options:
+      - あ-row (a)
+      - い-row (i)
+      - え-row (e)
+      - お-row (o)
+    answer: 3
+    hint: く → こ, む → も, す → そ — all o-row
+  - type: free-input
+    question: Volitional of <ruby>開<rt>あ</rt></ruby>ける (akeru - to open)?
+    answers:
+      - 開けよう
+      - あけよう
+      - akeyou
+      - akeyoo
+    hint: "Ichidan: drop る, add よう"
+  - type: multiple-choice
+    question: Which is the correct volitional of <ruby>帰<rt>かえ</rt></ruby>る (kaeru - to return, Godan)?
+    options:
+      - <ruby>帰<rt>かえ</rt></ruby>ろう
+      - <ruby>帰<rt>かえ</rt></ruby>よう
+      - <ruby>帰<rt>かえ</rt></ruby>えう
+      - <ruby>帰<rt>かえ</rt></ruby>りう
+    answer: 0
+    hint: "Godan: る → ろ (o-row), add う — don't treat it as ichidan!"
+  - type: free-input
+    question: Volitional of <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook)?
+    answers:
+      - 料理しよう
+      - りょうりしよう
+      - ryourishiyou
+      - ryourishiyoo
+    hint: "する verb: する → しよう"
+  - type: multiple-choice
+    question: "What does <ruby>食<rt>た</rt></ruby>べようと<ruby>思<rt>おも</rt></ruby>う mean?"
+    options:
+      - I must eat
+      - I think I will eat
+      - I cannot eat
+      - I finished eating
+    answer: 1
+    hint: Volitional + と思う = I think I will... (intention)

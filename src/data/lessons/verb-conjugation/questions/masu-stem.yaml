@@ -1,0 +1,591 @@
+masu-stem-ichidan:
+  - type: free-input
+    question: What is the masu stem of <ruby>見<rt>み</rt></ruby>る (miru)?
+    answers:
+      - 見
+      - み
+      - mi
+    hint: Drop ます from 見ます → 見
+  - type: free-input
+    question: What is the masu stem of <ruby>食<rt>た</rt></ruby>べる (taberu)?
+    answers:
+      - 食べ
+      - たべ
+      - tabe
+    hint: Drop ます from 食べます → 食べ
+  - type: multiple-choice
+    question: "For ichidan verbs, the masu stem is the same as:"
+    options:
+      - The dictionary form
+      - The dictionary form minus る
+      - The te-form
+      - The nai-form
+    answer: 1
+    hint: 食べる → 食べ, 見る → 見
+  - type: free-input
+    question: What is the masu stem of <ruby>寝<rt>ね</rt></ruby>る (neru)?
+    answers:
+      - 寝
+      - ね
+      - ne
+    hint: Drop ます from 寝ます → 寝
+  - type: free-input
+    question: What is the masu stem of <ruby>教<rt>おし</rt></ruby>える (oshieru)?
+    answers:
+      - 教え
+      - おしえ
+      - oshie
+    hint: Drop ます from 教えます → 教え
+  - type: free-input
+    question: What is the masu stem of <ruby>起<rt>お</rt></ruby>きる (okiru)?
+    answers:
+      - 起き
+      - おき
+      - oki
+    hint: Drop ます from 起きます → 起き
+  - type: free-input
+    question: What is the masu stem of <ruby>開<rt>あ</rt></ruby>ける (akeru)?
+    answers:
+      - 開け
+      - あけ
+      - ake
+    hint: Drop ます from 開けます → 開け
+  - type: free-input
+    question: What is the masu stem of <ruby>閉<rt>し</rt></ruby>める (shimeru)?
+    answers:
+      - 閉め
+      - しめ
+      - shime
+    hint: Drop ます from 閉めます → 閉め
+  - type: free-input
+    question: What is the masu stem of <ruby>着<rt>き</rt></ruby>る (kiru - to wear)?
+    answers:
+      - 着
+      - き
+      - ki
+    hint: Drop ます from 着ます → 着
+  - type: free-input
+    question: What is the masu stem of <ruby>浴<rt>あ</rt></ruby>びる (abiru)?
+    answers:
+      - 浴び
+      - あび
+      - abi
+    hint: Drop ます from 浴びます → 浴び
+  - type: free-input
+    question: What is the masu stem of <ruby>出<rt>で</rt></ruby>る (deru)?
+    answers:
+      - 出
+      - で
+      - de
+    hint: Drop ます from 出ます → 出
+  - type: multiple-choice
+    question: What is the masu stem of <ruby>信<rt>しん</rt></ruby>じる (shinjiru - to believe)?
+    options:
+      - <ruby>信<rt>しん</rt></ruby>じ
+      - <ruby>信<rt>しん</rt></ruby>じる
+      - <ruby>信<rt>しん</rt></ruby>じり
+      - <ruby>信<rt>しん</rt></ruby>じん
+    answer: 0
+    hint: Drop ます from 信じます → 信じ
+  - type: free-input
+    question: What is the masu stem of <ruby>降<rt>お</rt></ruby>りる (oriru)?
+    answers:
+      - 降り
+      - おり
+      - ori
+    hint: Drop ます from 降ります → 降り
+  - type: free-input
+    question: What is the masu stem of <ruby>借<rt>か</rt></ruby>りる (kariru)?
+    answers:
+      - 借り
+      - かり
+      - kari
+    hint: Drop ます from 借ります → 借り
+  - type: multiple-choice
+    question: What is the masu stem of <ruby>調<rt>しら</rt></ruby>べる (shiraberu - to investigate)?
+    options:
+      - <ruby>調<rt>しら</rt></ruby>べり
+      - <ruby>調<rt>しら</rt></ruby>べ
+      - <ruby>調<rt>しら</rt></ruby>び
+      - <ruby>調<rt>しら</rt></ruby>ば
+    answer: 1
+    hint: Drop ます from 調べます → 調べ
+  - type: free-input
+    question: What is the masu stem of <ruby>考<rt>かんが</rt></ruby>える (kangaeru)?
+    answers:
+      - 考え
+      - かんがえ
+      - kangae
+    hint: Drop ます from 考えます → 考え
+  - type: free-input
+    question: What is the masu stem of <ruby>覚<rt>おぼ</rt></ruby>える (oboeru)?
+    answers:
+      - 覚え
+      - おぼえ
+      - oboe
+    hint: Drop ます from 覚えます → 覚え
+  - type: free-input
+    question: How do you say 'want to wake up' using <ruby>起<rt>お</rt></ruby>きる?
+    answers:
+      - 起きたい
+      - おきたい
+      - okitai
+    hint: Masu stem 起き + たい
+  - type: multiple-choice
+    question: How do you say 'easy to teach' using <ruby>教<rt>おし</rt></ruby>える?
+    options:
+      - <ruby>教<rt>おし</rt></ruby>えにくい
+      - <ruby>教<rt>おし</rt></ruby>えやすい
+      - <ruby>教<rt>おし</rt></ruby>えたい
+      - <ruby>教<rt>おし</rt></ruby>えすぎる
+    answer: 1
+    hint: Masu stem 教え + やすい
+  - type: free-input
+    question: What is the masu stem of <ruby>忘<rt>わす</rt></ruby>れる (wasureru)?
+    answers:
+      - 忘れ
+      - わすれ
+      - wasure
+    hint: Drop ます from 忘れます → 忘れ
+masu-stem-godan:
+  - type: free-input
+    question: What is the masu stem of <ruby>読<rt>よ</rt></ruby>む (yomu)?
+    answers:
+      - 読み
+      - よみ
+      - yomi
+    hint: Drop ます from 読みます → 読み
+  - type: free-input
+    question: What is the masu stem of <ruby>聞<rt>き</rt></ruby>く (kiku)?
+    answers:
+      - 聞き
+      - きき
+      - kiki
+    hint: Drop ます from 聞きます → 聞き
+  - type: multiple-choice
+    question: "The masu stem + たい expresses:"
+    options:
+      - Ability to do something
+      - Want to do something
+      - Must do something
+      - Should do something
+    answer: 1
+    hint: 読みたい = want to read
+  - type: multiple-choice
+    question: "The masu stem + やすい expresses:"
+    options:
+      - Hard to do
+      - Easy to do
+      - Want to do
+      - Able to do
+    answer: 1
+    hint: 読みやすい = easy to read
+  - type: free-input
+    question: What is the masu stem of <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu)?
+    answers:
+      - 泳ぎ
+      - およぎ
+      - oyogi
+    hint: Drop ます from 泳ぎます → 泳ぎ
+  - type: free-input
+    question: What is the masu stem of <ruby>話<rt>はな</rt></ruby>す (hanasu)?
+    answers:
+      - 話し
+      - はなし
+      - hanashi
+    hint: Drop ます from 話します → 話し
+  - type: free-input
+    question: What is the masu stem of <ruby>買<rt>か</rt></ruby>う (kau)?
+    answers:
+      - 買い
+      - かい
+      - kai
+    hint: Drop ます from 買います → 買い
+  - type: free-input
+    question: How do you say 'want to swim' using <ruby>泳<rt>およ</rt></ruby>ぐ?
+    answers:
+      - 泳ぎたい
+      - およぎたい
+      - oyogitai
+    hint: Masu stem 泳ぎ + たい
+  - type: free-input
+    question: What is the masu stem of <ruby>待<rt>ま</rt></ruby>つ (matsu)?
+    answers:
+      - 待ち
+      - まち
+      - machi
+    hint: Drop ます from 待ちます → 待ち
+  - type: free-input
+    question: What is the masu stem of <ruby>走<rt>はし</rt></ruby>る (hashiru)?
+    answers:
+      - 走り
+      - はしり
+      - hashiri
+    hint: Drop ます from 走ります → 走り (Godan verb!)
+  - type: free-input
+    question: What is the masu stem of <ruby>帰<rt>かえ</rt></ruby>る (kaeru)?
+    answers:
+      - 帰り
+      - かえり
+      - kaeri
+    hint: Drop ます from 帰ります → 帰り (Godan verb!)
+  - type: free-input
+    question: What is the masu stem of <ruby>死<rt>し</rt></ruby>ぬ (shinu)?
+    answers:
+      - 死に
+      - しに
+      - shini
+    hint: Drop ます from 死にます → 死に
+  - type: multiple-choice
+    question: What is the masu stem of <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu - to play)?
+    options:
+      - <ruby>遊<rt>あそ</rt></ruby>ば
+      - <ruby>遊<rt>あそ</rt></ruby>び
+      - <ruby>遊<rt>あそ</rt></ruby>べ
+      - <ruby>遊<rt>あそ</rt></ruby>ぼ
+    answer: 1
+    hint: Drop ます from 遊びます → 遊び
+  - type: free-input
+    question: What is the masu stem of <ruby>座<rt>すわ</rt></ruby>る (suwaru)?
+    answers:
+      - 座り
+      - すわり
+      - suwari
+    hint: Drop ます from 座ります → 座り
+  - type: free-input
+    question: What is the masu stem of <ruby>送<rt>おく</rt></ruby>る (okuru)?
+    answers:
+      - 送り
+      - おくり
+      - okuri
+    hint: Drop ます from 送ります → 送り
+  - type: free-input
+    question: How do you say 'want to buy' using <ruby>買<rt>か</rt></ruby>う?
+    answers:
+      - 買いたい
+      - かいたい
+      - kaitai
+    hint: Masu stem 買い + たい
+  - type: multiple-choice
+    question: What is the masu stem of <ruby>立<rt>た</rt></ruby>つ (tatsu - to stand)?
+    options:
+      - <ruby>立<rt>た</rt></ruby>た
+      - <ruby>立<rt>た</rt></ruby>ち
+      - <ruby>立<rt>た</rt></ruby>て
+      - <ruby>立<rt>た</rt></ruby>つ
+    answer: 1
+    hint: Drop ます from 立ちます → 立ち
+  - type: free-input
+    question: What is the masu stem of <ruby>作<rt>つく</rt></ruby>る (tsukuru)?
+    answers:
+      - 作り
+      - つくり
+      - tsukuri
+    hint: Drop ます from 作ります → 作り
+  - type: free-input
+    question: How do you say 'easy to use' using <ruby>使<rt>つか</rt></ruby>う?
+    answers:
+      - 使いやすい
+      - つかいやすい
+      - tsukaiyasui
+    hint: Masu stem 使い + やすい
+  - type: free-input
+    question: What is the masu stem of <ruby>乗<rt>の</rt></ruby>る (noru)?
+    answers:
+      - 乗り
+      - のり
+      - nori
+    hint: Drop ます from 乗ります → 乗り
+masu-stem-irregular:
+  - type: free-input
+    question: What is the masu stem of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    answers:
+      - き
+      - ki
+    hint: 来ます → き
+  - type: free-input
+    question: What is the masu stem of する (suru)?
+    answers:
+      - し
+      - shi
+    hint: します → し
+  - type: free-input
+    question: How do you say 'want to do' using する?
+    answers:
+      - したい
+      - shitai
+    hint: Masu stem し + たい
+  - type: free-input
+    question: How do you say 'want to come' using <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来たい
+      - きたい
+      - kitai
+    hint: Masu stem き + たい
+  - type: free-input
+    question: How do you say 'want to study' using <ruby>勉強<rt>べんきょう</rt></ruby>する?
+    answers:
+      - 勉強したい
+      - べんきょうしたい
+      - benkyoushitai
+    hint: Masu stem 勉強し + たい
+  - type: multiple-choice
+    question: What is the ます form of <ruby>来<rt>く</rt></ruby>る (kuru)?
+    options:
+      - くります
+      - きます
+      - こます
+      - かます
+    answer: 1
+    hint: The stem changes to き
+  - type: multiple-choice
+    question: What is the ます form of する (suru)?
+    options:
+      - すります
+      - さます
+      - します
+      - しります
+    answer: 2
+    hint: The stem changes to し
+  - type: free-input
+    question: How do you say 'easy to do' using する?
+    answers:
+      - しやすい
+      - shiyasui
+    hint: Masu stem し + やすい
+  - type: free-input
+    question: How do you say 'hard to come' using <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来にくい
+      - きにくい
+      - kinikui
+    hint: Masu stem き + にくい
+  - type: free-input
+    question: What is the masu stem of <ruby>運動<rt>うんどう</rt></ruby>する (undousuru - to exercise)?
+    answers:
+      - 運動し
+      - うんどうし
+      - undoushi
+    hint: する verb — stem is し
+  - type: free-input
+    question: How do you say 'want to exercise' using <ruby>運動<rt>うんどう</rt></ruby>する?
+    answers:
+      - 運動したい
+      - うんどうしたい
+      - undoushitai
+    hint: Masu stem 運動し + たい
+  - type: multiple-choice
+    question: What is the masu stem of <ruby>料理<rt>りょうり</rt></ruby>する (ryourisuru - to cook)?
+    options:
+      - <ruby>料理<rt>りょうり</rt></ruby>す
+      - <ruby>料理<rt>りょうり</rt></ruby>さ
+      - <ruby>料理<rt>りょうり</rt></ruby>し
+      - <ruby>料理<rt>りょうり</rt></ruby>せ
+    answer: 2
+    hint: する verb — stem is し
+  - type: free-input
+    question: How do you say 'do too much' using する?
+    answers:
+      - しすぎる
+      - shisugiru
+    hint: Masu stem し + すぎる
+  - type: free-input
+    question: What is the masu stem of <ruby>旅行<rt>りょこう</rt></ruby>する (ryokousuru - to travel)?
+    answers:
+      - 旅行し
+      - りょこうし
+      - ryokoushi
+    hint: する verb — stem is し
+  - type: free-input
+    question: How do you say 'want to travel' using <ruby>旅行<rt>りょこう</rt></ruby>する?
+    answers:
+      - 旅行したい
+      - りょこうしたい
+      - ryokoushitai
+    hint: Masu stem 旅行し + たい
+  - type: multiple-choice
+    question: How do you say 'easy to come' using <ruby>来<rt>く</rt></ruby>る?
+    options:
+      - <ruby>来<rt>く</rt></ruby>やすい
+      - きやすい
+      - くやすい
+      - こやすい
+    answer: 1
+    hint: Masu stem き + やすい
+  - type: free-input
+    question: What is the masu stem of <ruby>散歩<rt>さんぽ</rt></ruby>する (sanposuru - to take a walk)?
+    answers:
+      - 散歩し
+      - さんぽし
+      - sanposhi
+    hint: する verb — stem is し
+  - type: free-input
+    question: How do you say 'hard to do' using する?
+    answers:
+      - しにくい
+      - shinikui
+    hint: Masu stem し + にくい
+  - type: multiple-choice
+    question: Which of the following is the correct way to say 'want to cook' using <ruby>料理<rt>りょうり</rt></ruby>する?
+    options:
+      - <ruby>料理<rt>りょうり</rt></ruby>すたい
+      - <ruby>料理<rt>りょうり</rt></ruby>したい
+      - <ruby>料理<rt>りょうり</rt></ruby>さたい
+      - <ruby>料理<rt>りょうり</rt></ruby>しいたい
+    answer: 1
+    hint: する verb — masu stem し + たい
+  - type: free-input
+    question: How do you say 'come too much' using <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来すぎる
+      - きすぎる
+      - kisugiru
+    hint: Masu stem き + すぎる
+masu-stem-test:
+  - type: free-input
+    question: Masu stem of <ruby>走<rt>はし</rt></ruby>る (hashiru - to run)? (Godan!)
+    answers:
+      - 走り
+      - はしり
+      - hashiri
+    hint: 走ります → 走り
+  - type: free-input
+    question: How do you say 'want to come' using <ruby>来<rt>く</rt></ruby>る?
+    answers:
+      - 来たい
+      - きたい
+      - kitai
+    hint: Masu stem き + たい
+  - type: free-input
+    question: How do you say 'easy to eat' using <ruby>食<rt>た</rt></ruby>べる?
+    answers:
+      - 食べやすい
+      - たべやすい
+      - tabeyasui
+    hint: Masu stem 食べ + やすい
+  - type: free-input
+    question: How do you say 'hard to read' using <ruby>読<rt>よ</rt></ruby>む?
+    answers:
+      - 読みにくい
+      - よみにくい
+      - yominikui
+    hint: Masu stem 読み + にくい
+  - type: free-input
+    question: Masu stem of <ruby>飲<rt>の</rt></ruby>む (nomu - to drink)?
+    answers:
+      - 飲み
+      - のみ
+      - nomi
+    hint: 飲みます → 飲み
+  - type: free-input
+    question: Masu stem of <ruby>見<rt>み</rt></ruby>る (miru - to look)?
+    answers:
+      - 見
+      - み
+      - mi
+    hint: "Ichidan: drop ます from 見ます → 見"
+  - type: free-input
+    question: Masu stem of する (suru - to do)?
+    answers:
+      - し
+      - shi
+    hint: "Irregular: します → し"
+  - type: free-input
+    question: How do you say 'want to write' using <ruby>書<rt>か</rt></ruby>く?
+    answers:
+      - 書きたい
+      - かきたい
+      - kakitai
+    hint: Masu stem 書き + たい
+  - type: free-input
+    question: How do you say 'want to swim' using <ruby>泳<rt>およ</rt></ruby>ぐ?
+    answers:
+      - 泳ぎたい
+      - およぎたい
+      - oyogitai
+    hint: Masu stem 泳ぎ + たい
+  - type: multiple-choice
+    question: What is the masu stem of <ruby>話<rt>はな</rt></ruby>す (hanasu)?
+    options:
+      - <ruby>話<rt>はな</rt></ruby>さ
+      - <ruby>話<rt>はな</rt></ruby>し
+      - <ruby>話<rt>はな</rt></ruby>す
+      - <ruby>話<rt>はな</rt></ruby>せ
+    answer: 1
+    hint: 話します → 話し
+  - type: free-input
+    question: How do you say 'easy to drink' using <ruby>飲<rt>の</rt></ruby>む?
+    answers:
+      - 飲みやすい
+      - のみやすい
+      - nomiyasui
+    hint: Masu stem 飲み + やすい
+  - type: free-input
+    question: How do you say 'hard to walk' using <ruby>歩<rt>ある</rt></ruby>く?
+    answers:
+      - 歩きにくい
+      - あるきにくい
+      - arukinikui
+    hint: Masu stem 歩き + にくい
+  - type: multiple-choice
+    question: What does masu stem + すぎる express?
+    options:
+      - Want to do
+      - Easy to do
+      - Doing too much
+      - Hard to do
+    answer: 2
+    hint: 食べすぎる = eat too much
+  - type: free-input
+    question: How do you say 'want to study' using <ruby>勉強<rt>べんきょう</rt></ruby>する?
+    answers:
+      - 勉強したい
+      - べんきょうしたい
+      - benkyoushitai
+    hint: Masu stem 勉強し + たい
+  - type: free-input
+    question: How do you say 'easy to see' using <ruby>見<rt>み</rt></ruby>る?
+    answers:
+      - 見やすい
+      - みやすい
+      - miyasui
+    hint: Masu stem 見 + やすい
+  - type: multiple-choice
+    question: What is the masu stem of <ruby>買<rt>か</rt></ruby>う (kau - to buy)?
+    options:
+      - <ruby>買<rt>か</rt></ruby>わ
+      - <ruby>買<rt>か</rt></ruby>い
+      - <ruby>買<rt>か</rt></ruby>う
+      - <ruby>買<rt>か</rt></ruby>え
+    answer: 1
+    hint: 買います → 買い
+  - type: free-input
+    question: How do you say 'hard to make' using <ruby>作<rt>つく</rt></ruby>る?
+    answers:
+      - 作りにくい
+      - つくりにくい
+      - tsukurinikui
+    hint: Masu stem 作り + にくい
+  - type: free-input
+    question: Masu stem of <ruby>開<rt>あ</rt></ruby>ける (akeru - to open)?
+    answers:
+      - 開け
+      - あけ
+      - ake
+    hint: "Ichidan: drop ます from 開けます → 開け"
+  - type: multiple-choice
+    question: How do you say 'want to wait' using <ruby>待<rt>ま</rt></ruby>つ?
+    options:
+      - <ruby>待<rt>ま</rt></ruby>ちたい
+      - <ruby>待<rt>ま</rt></ruby>つたい
+      - <ruby>待<rt>ま</rt></ruby>ったい
+      - <ruby>待<rt>ま</rt></ruby>ていたい
+    answer: 0
+    hint: Masu stem 待ち + たい
+  - type: free-input
+    question: How do you say 'easy to ride' using <ruby>乗<rt>の</rt></ruby>る?
+    answers:
+      - 乗りやすい
+      - のりやすい
+      - noriyasui
+    hint: Masu stem 乗り + やすい
