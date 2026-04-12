@@ -105,12 +105,12 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
               {partQuestions.map((q: Question, qi: number) => (
                 <div class="question-card" data-type={q.type} data-answer={q.type === 'multiple-choice' ? q.answer : JSON.stringify(q.answers)}>
                   <div class="question-number">Q{qi + 1}</div>
-                  <p class="question-text">{q.question}</p>
+                  <p class="question-text" set:html={q.question} />
 
                   {q.type === 'multiple-choice' && q.options && (
                     <div class="options">
                       {q.options.map((opt: string, j: number) => (
-                        <button class="option-btn" data-option={j}>{opt}</button>
+                        <button class="option-btn" data-option={j} set:html={opt} />
                       ))}
                     </div>
                   )}
@@ -162,12 +162,12 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
             {testQuestions.map((q: Question, qi: number) => (
               <div class="question-card" data-type={q.type} data-answer={q.type === 'multiple-choice' ? q.answer : JSON.stringify(q.answers)}>
                 <div class="question-number">Q{qi + 1}</div>
-                <p class="question-text">{q.question}</p>
+                <p class="question-text" set:html={q.question} />
 
                 {q.type === 'multiple-choice' && q.options && (
                   <div class="options">
                     {q.options.map((opt: string, j: number) => (
-                      <button class="option-btn" data-option={j}>{opt}</button>
+                      <button class="option-btn" data-option={j} set:html={opt} />
                     ))}
                   </div>
                 )}
@@ -407,7 +407,7 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
         fb.textContent = `Answer: ${answer}`;
         fb.className = 'feedback incorrect';
         card.classList.add('answered-incorrect');
-        const questionText = card.querySelector('.question-text')?.textContent || '';
+        const questionText = card.querySelector('.question-text')?.innerHTML || '';
         wrongAnswers.push({ question: questionText, correctAnswer: answer });
         answered++;
       } else {
@@ -683,7 +683,14 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     letter-spacing: 0.06em;
     margin-bottom: 0.4rem;
   }
-  .question-text { font-size: 1.05rem; margin-bottom: 1rem; font-weight: 500; }
+  .question-text { font-size: 1.05rem; margin-bottom: 1rem; font-weight: 500; line-height: 2; }
+
+  ruby { ruby-align: center; }
+  ruby rt {
+    font-size: 0.55em;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
 
   .options {
     display: grid;

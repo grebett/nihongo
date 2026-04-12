@@ -288,6 +288,14 @@ const { title, sakura = false } = Astro.props;
         }
       }
 
+      /* Furigana */
+      ruby { ruby-align: center; }
+      ruby rt {
+        font-size: 0.55em;
+        font-weight: 400;
+        color: var(--text-muted);
+      }
+
       /* Scrollbar */
       ::-webkit-scrollbar { width: 6px; }
       ::-webkit-scrollbar-track { background: var(--bg); }
