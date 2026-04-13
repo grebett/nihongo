@@ -98,7 +98,10 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
           <div class="quiz-section" data-part-id={part.id} data-lesson-id={lesson.id}>
             <div class="quiz-header">
               <h2>Practice</h2>
-              <div class="score" data-score={part.id}>0 / {partQuestions.length}</div>
+              <div class="quiz-controls">
+                <button class="hard-mode-toggle" title="Show all questions">Hard</button>
+                <div class="score" data-score={part.id}>0 / {partQuestions.length}</div>
+              </div>
             </div>
 
             <div class="questions-list">
@@ -155,12 +158,15 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
         <div class="quiz-section" data-part-id={`${section.id}-test`} data-lesson-id={lesson.id}>
           <div class="quiz-header">
             <h2>Test — All forms</h2>
-            <div class="score" data-score="__test">0 / {testQuestions.length}</div>
+            <div class="quiz-controls">
+              <button class="hard-mode-toggle" title="Show all questions">Hard</button>
+              <div class="score" data-score="__test">0 / {testQuestions.length}</div>
+            </div>
           </div>
 
           <div class="questions-list" id="test-questions">
             {testQuestions.map((q: Question, qi: number) => (
-              <div class="question-card" data-type={q.type} data-answer={q.type === 'multiple-choice' ? q.answer : JSON.stringify(q.answers)}>
+              <div class="question-card" data-type={q.type} data-answer={q.type === 'multiple-choice' ? q.answer : JSON.stringify(q.answers)} data-display={q.display || ''}>
                 <div class="question-number">Q{qi + 1}</div>
                 <p class="question-text" set:html={q.question} />
 
@@ -272,9 +278,19 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   const MAX_ATTEMPTS = 3;
   const QUESTIONS_PER_TAB = 10;
 
-  function selectRandomSubset(panel: Element) {
+  function selectRandomSubset(panel: Element, showAll = false) {
     const allCards = Array.from(panel.querySelectorAll('.question-card'));
-    if (allCards.length <= QUESTIONS_PER_TAB) return allCards;
+
+    if (showAll || allCards.length <= QUESTIONS_PER_TAB) {
+      let idx = 1;
+      allCards.forEach((card) => {
+        (card as HTMLElement).style.display = '';
+        card.classList.remove('pool-hidden');
+        const num = card.querySelector('.question-number');
+        if (num) num.textContent = `Q${idx++}`;
+      });
+      return allCards;
+    }
 
     const showCount = QUESTIONS_PER_TAB;
     const indices = allCards.map((_, i) => i);
@@ -370,11 +386,13 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
   function setupQuiz(panel: Element) {
     let correct = 0;
     let answered = 0;
+    let hardMode = false;
     const wrongAnswers: { question: string; correctAnswer: string }[] = [];
     const visibleCards = selectRandomSubset(panel);
     let total = visibleCards.length;
     const scoreEl = panel.querySelector('.score');
     const quizSection = panel.querySelector('.quiz-section');
+    const hardToggle = panel.querySelector('.hard-mode-toggle') as HTMLElement;
 
     if (scoreEl) scoreEl.textContent = `0 / ${total}`;
 
@@ -510,15 +528,13 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
       });
     });
 
-    // Reset
-    panel.querySelector('.reset-btn')?.addEventListener('click', () => {
+    // Hard mode toggle
+    function resetQuiz() {
       correct = 0;
       answered = 0;
       wrongAnswers.length = 0;
-      // Hide results
       const results = panel.querySelector('.results-summary') as HTMLElement;
       if (results) { results.classList.add('hidden'); results.innerHTML = ''; }
-      // Unhide all, reset state
       panel.querySelectorAll('.question-card').forEach((card) => {
         (card as HTMLElement).style.display = '';
         card.classList.remove('answered-correct', 'answered-incorrect', 'pool-hidden', 'shake');
@@ -533,13 +549,24 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
         if (hintText) hintText.classList.add('hidden');
         if (hintBtn) hintBtn.textContent = 'Show hint';
       });
-      // Re-randomize
-      const newVisible = selectRandomSubset(panel);
+      const newVisible = selectRandomSubset(panel, hardMode);
       visibleCards.length = 0;
       visibleCards.push(...newVisible);
       total = newVisible.length;
       if (scoreEl) scoreEl.textContent = `0 / ${total}`;
-    });
+    }
+
+    if (hardToggle) {
+      hardToggle.addEventListener('click', () => {
+        hardMode = !hardMode;
+        hardToggle.classList.toggle('active', hardMode);
+        hardToggle.textContent = hardMode ? 'Hard' : 'Hard';
+        resetQuiz();
+      });
+    }
+
+    // Reset
+    panel.querySelector('.reset-btn')?.addEventListener('click', resetQuiz);
   }
 
   // Init quiz for each panel
@@ -660,6 +687,34 @@ const { lesson, section, questions, sectionIndex, totalSections, prevSection, ne
     margin-bottom: 1.2rem;
   }
   .quiz-header h2 { font-size: 1.25rem; font-weight: 800; }
+  .quiz-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .hard-mode-toggle {
+    padding: 0.35rem 0.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .hard-mode-toggle:hover {
+    border-color: var(--error);
+    color: var(--error);
+  }
+  .hard-mode-toggle.active {
+    background: rgba(220, 50, 47, 0.1);
+    border-color: var(--error);
+    color: var(--error);
+  }
   .score {
     font-size: 1rem;
     font-weight: 700;
