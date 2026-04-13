@@ -1,0 +1,912 @@
+vocab-ichidan:
+  # 1. 浴びる (abiru) - to bathe/shower
+  - type: free-input
+    question: What is the Japanese verb for "to bathe/shower"?
+    answers:
+      - 浴びる
+      - あびる
+      - abiru
+    display: "<ruby>浴<rt>あ</rt></ruby>びる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>浴<rt>あ</rt></ruby>びる (abiru) mean?
+    answers:
+      - to bathe
+      - bathe
+      - to shower
+      - shower
+    hint: Ichidan verb (ru-verb)
+
+  # 2. 開ける (akeru) - to open
+  - type: free-input
+    question: What is the Japanese verb for "to open"?
+    answers:
+      - 開ける
+      - あける
+      - akeru
+    display: "<ruby>開<rt>あ</rt></ruby>ける"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>開<rt>あ</rt></ruby>ける (akeru) mean?
+    answers:
+      - to open
+      - open
+    hint: Ichidan verb (ru-verb)
+
+  # 3. 出かける (dekakeru) - to go out
+  - type: free-input
+    question: What is the Japanese verb for "to go out"?
+    answers:
+      - 出かける
+      - でかける
+      - dekakeru
+    display: "<ruby>出<rt>で</rt></ruby>かける"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>出<rt>で</rt></ruby>かける (dekakeru) mean?
+    answers:
+      - to go out
+      - go out
+    hint: Ichidan verb (ru-verb)
+
+  # 4. 出る (deru) - to exit/leave
+  - type: free-input
+    question: What is the Japanese verb for "to exit/leave"?
+    answers:
+      - 出る
+      - でる
+      - deru
+    display: "<ruby>出<rt>で</rt></ruby>る"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>出<rt>で</rt></ruby>る (deru) mean?
+    answers:
+      - to exit
+      - exit
+      - to leave
+      - leave
+    hint: Ichidan verb (ru-verb)
+
+  # 5. 考える (kangaeru) - to think/consider
+  - type: free-input
+    question: What is the Japanese verb for "to think/consider"?
+    answers:
+      - 考える
+      - かんがえる
+      - kangaeru
+    display: "<ruby>考<rt>かんが</rt></ruby>える"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>考<rt>かんが</rt></ruby>える (kangaeru) mean?
+    answers:
+      - to think
+      - think
+      - to consider
+      - consider
+    hint: Ichidan verb (ru-verb)
+
+  # 6. 感じる (kanjiru) - to feel
+  - type: free-input
+    question: What is the Japanese verb for "to feel"?
+    answers:
+      - 感じる
+      - かんじる
+      - kanjiru
+    display: "<ruby>感<rt>かん</rt></ruby>じる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>感<rt>かん</rt></ruby>じる (kanjiru) mean?
+    answers:
+      - to feel
+      - feel
+    hint: Ichidan verb (ru-verb)
+
+  # 7. 借りる (kariru) - to borrow
+  - type: free-input
+    question: What is the Japanese verb for "to borrow"?
+    answers:
+      - 借りる
+      - かりる
+      - kariru
+    display: "<ruby>借<rt>か</rt></ruby>りる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>借<rt>か</rt></ruby>りる (kariru) mean?
+    answers:
+      - to borrow
+      - borrow
+    hint: Ichidan verb (ru-verb)
+
+  # 8. 着る (kiru) - to wear
+  - type: free-input
+    question: What is the Japanese verb for "to wear"?
+    answers:
+      - 着る
+      - きる
+      - kiru
+    display: "<ruby>着<rt>き</rt></ruby>る"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>着<rt>き</rt></ruby>る (kiru) mean?
+    answers:
+      - to wear
+      - wear
+    hint: Ichidan verb (ru-verb)
+
+  # 9. 答える (kotaeru) - to answer
+  - type: free-input
+    question: What is the Japanese verb for "to answer"?
+    answers:
+      - 答える
+      - こたえる
+      - kotaeru
+    display: "<ruby>答<rt>こた</rt></ruby>える"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>答<rt>こた</rt></ruby>える (kotaeru) mean?
+    answers:
+      - to answer
+      - answer
+    hint: Ichidan verb (ru-verb)
+
+  # 10. 見る (miru) - to see/watch
+  - type: free-input
+    question: What is the Japanese verb for "to see/watch"?
+    answers:
+      - 見る
+      - みる
+      - miru
+    display: "<ruby>見<rt>み</rt></ruby>る"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>見<rt>み</rt></ruby>る (miru) mean?
+    answers:
+      - to see
+      - see
+      - to watch
+      - watch
+    hint: Ichidan verb (ru-verb)
+
+  # 11. 寝る (neru) - to sleep
+  - type: free-input
+    question: What is the Japanese verb for "to sleep"?
+    answers:
+      - 寝る
+      - ねる
+      - neru
+    display: "<ruby>寝<rt>ね</rt></ruby>る"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>寝<rt>ね</rt></ruby>る (neru) mean?
+    answers:
+      - to sleep
+      - sleep
+    hint: Ichidan verb (ru-verb)
+
+  # 12. 覚える (oboeru) - to remember/memorize
+  - type: free-input
+    question: What is the Japanese verb for "to remember/memorize"?
+    answers:
+      - 覚える
+      - おぼえる
+      - oboeru
+    display: "<ruby>覚<rt>おぼ</rt></ruby>える"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>覚<rt>おぼ</rt></ruby>える (oboeru) mean?
+    answers:
+      - to remember
+      - remember
+      - to memorize
+      - memorize
+    hint: Ichidan verb (ru-verb)
+
+  # 13. 起きる (okiru) - to wake up/get up
+  - type: free-input
+    question: What is the Japanese verb for "to wake up/get up"?
+    answers:
+      - 起きる
+      - おきる
+      - okiru
+    display: "<ruby>起<rt>お</rt></ruby>きる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>起<rt>お</rt></ruby>きる (okiru) mean?
+    answers:
+      - to wake up
+      - wake up
+      - to get up
+      - get up
+    hint: Ichidan verb (ru-verb)
+
+  # 14. 降りる (oriru) - to get off/descend
+  - type: free-input
+    question: What is the Japanese verb for "to get off/descend"?
+    answers:
+      - 降りる
+      - おりる
+      - oriru
+    display: "<ruby>降<rt>お</rt></ruby>りる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>降<rt>お</rt></ruby>りる (oriru) mean?
+    answers:
+      - to get off
+      - get off
+      - to descend
+      - descend
+    hint: Ichidan verb (ru-verb)
+
+  # 15. 教える (oshieru) - to teach
+  - type: free-input
+    question: What is the Japanese verb for "to teach"?
+    answers:
+      - 教える
+      - おしえる
+      - oshieru
+    display: "<ruby>教<rt>おし</rt></ruby>える"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>教<rt>おし</rt></ruby>える (oshieru) mean?
+    answers:
+      - to teach
+      - teach
+    hint: Ichidan verb (ru-verb)
+
+  # 16. 閉める (shimeru) - to close
+  - type: free-input
+    question: What is the Japanese verb for "to close"?
+    answers:
+      - 閉める
+      - しめる
+      - shimeru
+    display: "<ruby>閉<rt>し</rt></ruby>める"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>閉<rt>し</rt></ruby>める (shimeru) mean?
+    answers:
+      - to close
+      - close
+    hint: Ichidan verb (ru-verb)
+
+  # 17. 信じる (shinjiru) - to believe
+  - type: free-input
+    question: What is the Japanese verb for "to believe"?
+    answers:
+      - 信じる
+      - しんじる
+      - shinjiru
+    display: "<ruby>信<rt>しん</rt></ruby>じる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>信<rt>しん</rt></ruby>じる (shinjiru) mean?
+    answers:
+      - to believe
+      - believe
+    hint: Ichidan verb (ru-verb)
+
+  # 18. 調べる (shiraberu) - to investigate/look up
+  - type: free-input
+    question: What is the Japanese verb for "to investigate/look up"?
+    answers:
+      - 調べる
+      - しらべる
+      - shiraberu
+    display: "<ruby>調<rt>しら</rt></ruby>べる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>調<rt>しら</rt></ruby>べる (shiraberu) mean?
+    answers:
+      - to investigate
+      - investigate
+      - to look up
+      - look up
+    hint: Ichidan verb (ru-verb)
+
+  # 19. 食べる (taberu) - to eat
+  - type: free-input
+    question: What is the Japanese verb for "to eat"?
+    answers:
+      - 食べる
+      - たべる
+      - taberu
+    display: "<ruby>食<rt>た</rt></ruby>べる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>食<rt>た</rt></ruby>べる (taberu) mean?
+    answers:
+      - to eat
+      - eat
+    hint: Ichidan verb (ru-verb)
+
+  # 20. 忘れる (wasureru) - to forget
+  - type: free-input
+    question: What is the Japanese verb for "to forget"?
+    answers:
+      - 忘れる
+      - わすれる
+      - wasureru
+    display: "<ruby>忘<rt>わす</rt></ruby>れる"
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does <ruby>忘<rt>わす</rt></ruby>れる (wasureru) mean?
+    answers:
+      - to forget
+      - forget
+    hint: Ichidan verb (ru-verb)
+
+  # 21. やめる (yameru) - to quit/stop (pure kana)
+  - type: free-input
+    question: What is the Japanese verb for "to quit/stop"?
+    answers:
+      - やめる
+      - yameru
+    hint: Ichidan verb (ru-verb)
+
+  - type: free-input
+    question: What does やめる (yameru) mean?
+    answers:
+      - to quit
+      - quit
+      - to stop
+      - stop
+    hint: Ichidan verb (ru-verb)
+vocab-godan:
+  # 1. 歩く (aruku) - to walk
+  - type: free-input
+    question: What is the Japanese verb for "to walk"?
+    answers:
+      - 歩く
+      - あるく
+      - aruku
+    display: "<ruby>歩<rt>ある</rt></ruby>く"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>歩<rt>ある</rt></ruby>く (aruku) mean?
+    answers:
+      - to walk
+      - walk
+    hint: Godan verb (u-verb)
+
+  # 2. 遊ぶ (asobu) - to play
+  - type: free-input
+    question: What is the Japanese verb for "to play"?
+    answers:
+      - 遊ぶ
+      - あそぶ
+      - asobu
+    display: "<ruby>遊<rt>あそ</rt></ruby>ぶ"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>遊<rt>あそ</rt></ruby>ぶ (asobu) mean?
+    answers:
+      - to play
+      - play
+    hint: Godan verb (u-verb)
+
+  # 3. 降る (furu) - to fall (rain/snow)
+  - type: free-input
+    question: What is the Japanese verb for "to fall (rain/snow)"?
+    answers:
+      - 降る
+      - ふる
+      - furu
+    display: "<ruby>降<rt>ふ</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>降<rt>ふ</rt></ruby>る (furu) mean?
+    answers:
+      - to fall
+      - fall
+      - to fall (rain/snow)
+    hint: Godan verb (u-verb)
+
+  # 4. 入る (hairu) - to enter
+  - type: free-input
+    question: What is the Japanese verb for "to enter"?
+    answers:
+      - 入る
+      - はいる
+      - hairu
+    display: "<ruby>入<rt>はい</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>入<rt>はい</rt></ruby>る (hairu) mean?
+    answers:
+      - to enter
+      - enter
+    hint: Godan verb (u-verb)
+
+  # 5. 話す (hanasu) - to speak/talk
+  - type: free-input
+    question: What is the Japanese verb for "to speak"?
+    answers:
+      - 話す
+      - はなす
+      - hanasu
+    display: "<ruby>話<rt>はな</rt></ruby>す"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>話<rt>はな</rt></ruby>す (hanasu) mean?
+    answers:
+      - to speak
+      - speak
+      - to talk
+      - talk
+    hint: Godan verb (u-verb)
+
+  # 6. 走る (hashiru) - to run
+  - type: free-input
+    question: What is the Japanese verb for "to run"?
+    answers:
+      - 走る
+      - はしる
+      - hashiru
+    display: "<ruby>走<rt>はし</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>走<rt>はし</rt></ruby>る (hashiru) mean?
+    answers:
+      - to run
+      - run
+    hint: Godan verb (u-verb)
+
+  # 7. 行く (iku) - to go
+  - type: free-input
+    question: What is the Japanese verb for "to go"?
+    answers:
+      - 行く
+      - いく
+      - iku
+    display: "<ruby>行<rt>い</rt></ruby>く"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>行<rt>い</rt></ruby>く (iku) mean?
+    answers:
+      - to go
+      - go
+    hint: Godan verb (u-verb)
+
+  # 8. 言う (iu) - to say
+  - type: free-input
+    question: What is the Japanese verb for "to say"?
+    answers:
+      - 言う
+      - いう
+      - iu
+    display: "<ruby>言<rt>い</rt></ruby>う"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>言<rt>い</rt></ruby>う (iu) mean?
+    answers:
+      - to say
+      - say
+    hint: Godan verb (u-verb)
+
+  # 9. 帰る (kaeru) - to return home
+  - type: free-input
+    question: What is the Japanese verb for "to return home"?
+    answers:
+      - 帰る
+      - かえる
+      - kaeru
+    display: "<ruby>帰<rt>かえ</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>帰<rt>かえ</rt></ruby>る (kaeru) mean?
+    answers:
+      - to return home
+      - return home
+      - to return
+      - return
+    hint: Godan verb (u-verb)
+
+  # 10. 書く (kaku) - to write
+  - type: free-input
+    question: What is the Japanese verb for "to write"?
+    answers:
+      - 書く
+      - かく
+      - kaku
+    display: "<ruby>書<rt>か</rt></ruby>く"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>書<rt>か</rt></ruby>く (kaku) mean?
+    answers:
+      - to write
+      - write
+    hint: Godan verb (u-verb)
+
+  # 11. 買う (kau) - to buy
+  - type: free-input
+    question: What is the Japanese verb for "to buy"?
+    answers:
+      - 買う
+      - かう
+      - kau
+    display: "<ruby>買<rt>か</rt></ruby>う"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>買<rt>か</rt></ruby>う (kau) mean?
+    answers:
+      - to buy
+      - buy
+    hint: Godan verb (u-verb)
+
+  # 12. 消す (kesu) - to erase/turn off
+  - type: free-input
+    question: What is the Japanese verb for "to erase"?
+    answers:
+      - 消す
+      - けす
+      - kesu
+    display: "<ruby>消<rt>け</rt></ruby>す"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>消<rt>け</rt></ruby>す (kesu) mean?
+    answers:
+      - to erase
+      - erase
+      - to turn off
+      - turn off
+    hint: Godan verb (u-verb)
+
+  # 13. 聞く (kiku) - to listen/ask
+  - type: free-input
+    question: What is the Japanese verb for "to listen"?
+    answers:
+      - 聞く
+      - きく
+      - kiku
+    display: "<ruby>聞<rt>き</rt></ruby>く"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>聞<rt>き</rt></ruby>く (kiku) mean?
+    answers:
+      - to listen
+      - listen
+      - to ask
+      - ask
+    hint: Godan verb (u-verb)
+
+  # 14. 切る (kiru) - to cut
+  - type: free-input
+    question: What is the Japanese verb for "to cut"?
+    answers:
+      - 切る
+      - きる
+      - kiru
+    display: "<ruby>切<rt>き</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>切<rt>き</rt></ruby>る (kiru) mean?
+    answers:
+      - to cut
+      - cut
+    hint: Godan verb (u-verb)
+
+  # 15. 待つ (matsu) - to wait
+  - type: free-input
+    question: What is the Japanese verb for "to wait"?
+    answers:
+      - 待つ
+      - まつ
+      - matsu
+    display: "<ruby>待<rt>ま</rt></ruby>つ"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>待<rt>ま</rt></ruby>つ (matsu) mean?
+    answers:
+      - to wait
+      - wait
+    hint: Godan verb (u-verb)
+
+  # 16. 持つ (motsu) - to hold/have
+  - type: free-input
+    question: What is the Japanese verb for "to hold"?
+    answers:
+      - 持つ
+      - もつ
+      - motsu
+    display: "<ruby>持<rt>も</rt></ruby>つ"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>持<rt>も</rt></ruby>つ (motsu) mean?
+    answers:
+      - to hold
+      - hold
+      - to have
+      - have
+    hint: Godan verb (u-verb)
+
+  # 17. 飲む (nomu) - to drink
+  - type: free-input
+    question: What is the Japanese verb for "to drink"?
+    answers:
+      - 飲む
+      - のむ
+      - nomu
+    display: "<ruby>飲<rt>の</rt></ruby>む"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>飲<rt>の</rt></ruby>む (nomu) mean?
+    answers:
+      - to drink
+      - drink
+    hint: Godan verb (u-verb)
+
+  # 18. 乗る (noru) - to ride
+  - type: free-input
+    question: What is the Japanese verb for "to ride"?
+    answers:
+      - 乗る
+      - のる
+      - noru
+    display: "<ruby>乗<rt>の</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>乗<rt>の</rt></ruby>る (noru) mean?
+    answers:
+      - to ride
+      - ride
+    hint: Godan verb (u-verb)
+
+  # 19. 脱ぐ (nugu) - to take off (clothes)
+  - type: free-input
+    question: What is the Japanese verb for "to take off (clothes)"?
+    answers:
+      - 脱ぐ
+      - ぬぐ
+      - nugu
+    display: "<ruby>脱<rt>ぬ</rt></ruby>ぐ"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>脱<rt>ぬ</rt></ruby>ぐ (nugu) mean?
+    answers:
+      - to take off
+      - take off
+      - to take off (clothes)
+    hint: Godan verb (u-verb)
+
+  # 20. 送る (okuru) - to send
+  - type: free-input
+    question: What is the Japanese verb for "to send"?
+    answers:
+      - 送る
+      - おくる
+      - okuru
+    display: "<ruby>送<rt>おく</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>送<rt>おく</rt></ruby>る (okuru) mean?
+    answers:
+      - to send
+      - send
+    hint: Godan verb (u-verb)
+
+  # 21. 押す (osu) - to push
+  - type: free-input
+    question: What is the Japanese verb for "to push"?
+    answers:
+      - 押す
+      - おす
+      - osu
+    display: "<ruby>押<rt>お</rt></ruby>す"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>押<rt>お</rt></ruby>す (osu) mean?
+    answers:
+      - to push
+      - push
+    hint: Godan verb (u-verb)
+
+  # 22. 泳ぐ (oyogu) - to swim
+  - type: free-input
+    question: What is the Japanese verb for "to swim"?
+    answers:
+      - 泳ぐ
+      - およぐ
+      - oyogu
+    display: "<ruby>泳<rt>およ</rt></ruby>ぐ"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>泳<rt>およ</rt></ruby>ぐ (oyogu) mean?
+    answers:
+      - to swim
+      - swim
+    hint: Godan verb (u-verb)
+
+  # 23. 死ぬ (shinu) - to die
+  - type: free-input
+    question: What is the Japanese verb for "to die"?
+    answers:
+      - 死ぬ
+      - しぬ
+      - shinu
+    display: "<ruby>死<rt>し</rt></ruby>ぬ"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>死<rt>し</rt></ruby>ぬ (shinu) mean?
+    answers:
+      - to die
+      - die
+    hint: Godan verb (u-verb)
+
+  # 24. 知る (shiru) - to know
+  - type: free-input
+    question: What is the Japanese verb for "to know"?
+    answers:
+      - 知る
+      - しる
+      - shiru
+    display: "<ruby>知<rt>し</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>知<rt>し</rt></ruby>る (shiru) mean?
+    answers:
+      - to know
+      - know
+    hint: Godan verb (u-verb)
+
+  # 25. 座る (suwaru) - to sit
+  - type: free-input
+    question: What is the Japanese verb for "to sit"?
+    answers:
+      - 座る
+      - すわる
+      - suwaru
+    display: "<ruby>座<rt>すわ</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>座<rt>すわ</rt></ruby>る (suwaru) mean?
+    answers:
+      - to sit
+      - sit
+    hint: Godan verb (u-verb)
+
+  # 26. 立つ (tatsu) - to stand
+  - type: free-input
+    question: What is the Japanese verb for "to stand"?
+    answers:
+      - 立つ
+      - たつ
+      - tatsu
+    display: "<ruby>立<rt>た</rt></ruby>つ"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>立<rt>た</rt></ruby>つ (tatsu) mean?
+    answers:
+      - to stand
+      - stand
+    hint: Godan verb (u-verb)
+
+  # 27. 使う (tsukau) - to use
+  - type: free-input
+    question: What is the Japanese verb for "to use"?
+    answers:
+      - 使う
+      - つかう
+      - tsukau
+    display: "<ruby>使<rt>つか</rt></ruby>う"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>使<rt>つか</rt></ruby>う (tsukau) mean?
+    answers:
+      - to use
+      - use
+    hint: Godan verb (u-verb)
+
+  # 28. 作る (tsukuru) - to make
+  - type: free-input
+    question: What is the Japanese verb for "to make"?
+    answers:
+      - 作る
+      - つくる
+      - tsukuru
+    display: "<ruby>作<rt>つく</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>作<rt>つく</rt></ruby>る (tsukuru) mean?
+    answers:
+      - to make
+      - make
+    hint: Godan verb (u-verb)
+
+  # 29. 売る (uru) - to sell
+  - type: free-input
+    question: What is the Japanese verb for "to sell"?
+    answers:
+      - 売る
+      - うる
+      - uru
+    display: "<ruby>売<rt>う</rt></ruby>る"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>売<rt>う</rt></ruby>る (uru) mean?
+    answers:
+      - to sell
+      - sell
+    hint: Godan verb (u-verb)
+
+  # 30. 笑う (warau) - to laugh
+  - type: free-input
+    question: What is the Japanese verb for "to laugh"?
+    answers:
+      - 笑う
+      - わらう
+      - warau
+    display: "<ruby>笑<rt>わら</rt></ruby>う"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>笑<rt>わら</rt></ruby>う (warau) mean?
+    answers:
+      - to laugh
+      - laugh
+    hint: Godan verb (u-verb)
+
+  # 31. 読む (yomu) - to read
+  - type: free-input
+    question: What is the Japanese verb for "to read"?
+    answers:
+      - 読む
+      - よむ
+      - yomu
+    display: "<ruby>読<rt>よ</rt></ruby>む"
+    hint: Godan verb (u-verb)
+
+  - type: free-input
+    question: What does <ruby>読<rt>よ</rt></ruby>む (yomu) mean?
+    answers:
+      - to read
+      - read
+    hint: Godan verb (u-verb)

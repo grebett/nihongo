@@ -281,3 +281,16 @@ sections:
         title: Irregular
         startTime: 5230
         endTime: 5305
+
+  - id: vocabulary
+    title: "Vocabulary Review"
+    description: "Test your knowledge of all ichidan and godan verbs — English ↔ Japanese"
+    parts:
+      - id: vocab-ichidan
+        title: Ichidan (21)
+        startTime: 339
+        endTime: 457
+      - id: vocab-godan
+        title: Godan (31)
+        startTime: 457
+        endTime: 576
