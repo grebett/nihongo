@@ -66,6 +66,18 @@ const lessons = getAllLessons();
     <div id="imported-list" class="lessons"></div>
   </section>
 
+  <section class="anki-home-section" id="anki-section" hidden>
+    <div class="imported-header">
+      <h2>Anki — Today's reviews</h2>
+      <a href={`${import.meta.env.BASE_URL}/anki`} class="import-btn">
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </div>
+    <div id="anki-list" class="lessons"></div>
+    <div id="anki-status-line" class="anki-status-line"></div>
+  </section>
+
   <style is:global>
     h1 {
       font-size: 1.85rem;
@@ -238,12 +250,60 @@ const lessons = getAllLessons();
       width: 42px;
       height: auto;
     }
+
+    .anki-home-section {
+      margin-top: 3rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid var(--border);
+    }
+    .anki-status-line {
+      margin-top: 0.9rem;
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+      letter-spacing: 0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .anki-deck-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.95rem 1.1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--dur) var(--ease),
+                  box-shadow var(--dur) var(--ease),
+                  transform var(--dur) var(--ease);
+    }
+    .anki-deck-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+    .anki-deck-info { flex: 1; min-width: 0; }
+    .anki-deck-info h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      color: var(--text-strong);
+      margin-bottom: 0.25rem;
+    }
+    .anki-empty {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-style: italic;
+      padding: 0.8rem 0;
+    }
   </style>
 </Layout>
 
 <script>
   import { getAllImported, deleteImported } from '../scripts/imported-lessons';
   import { icon } from '../scripts/icons';
+  import { getConfig as getAnkiConfig, getCachedDecks, getQueue as getAnkiQueue } from '../scripts/anki';
 
   const BASE = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
@@ -320,4 +380,56 @@ const lessons = getAllLessons();
   }
 
   renderImported();
+
+  function fmtAge(ts: number | null): string {
+    if (!ts) return 'never';
+    const sec = Math.round((Date.now() - ts) / 1000);
+    if (sec < 60) return `${sec}s ago`;
+    if (sec < 3600) return `${Math.round(sec / 60)} min ago`;
+    if (sec < 86400) return `${Math.round(sec / 3600)} h ago`;
+    return `${Math.round(sec / 86400)} d ago`;
+  }
+
+  function renderAnki() {
+    const section = document.getElementById('anki-section') as HTMLElement;
+    const list = document.getElementById('anki-list')!;
+    const statusLine = document.getElementById('anki-status-line')!;
+    const cfg = getAnkiConfig();
+
+    if (!cfg.enabled) {
+      section.hidden = true;
+      return;
+    }
+    section.hidden = false;
+
+    const decks = getCachedDecks();
+    const queue = getAnkiQueue();
+
+    if (decks.length === 0) {
+      list.innerHTML = '<p class="anki-empty">No cached decks yet. Open <a href="' + BASE + '/anki">Anki settings</a> and run a sync.</p>';
+    } else {
+      list.innerHTML = decks
+        .map((d) => {
+          const due = d.summary.dueCount;
+          const total = d.summary.totalCards;
+          return `<a class="anki-deck-card" href="${BASE}/anki/practice/?deck=${encodeURIComponent(d.summary.name)}">
+            <div class="anki-deck-info">
+              <h3>${escapeText(d.summary.name)}</h3>
+              <div class="meta-row">
+                <span class="meta-item">${icon('layers', 13)} ${total} cards</span>
+                <span class="meta-item">${icon('flame', 13)} ${due} due</span>
+              </div>
+            </div>
+            <span class="card-chevron" aria-hidden="true">${icon('chevron-right', 18)}</span>
+          </a>`;
+        })
+        .join('');
+    }
+
+    const lastSync = fmtAge(cfg.lastSyncAt);
+    const queuedNote = queue.length > 0 ? ` · ${queue.length} queued review${queue.length > 1 ? 's' : ''}` : '';
+    statusLine.textContent = `Last sync: ${lastSync}${queuedNote}`;
+  }
+
+  renderAnki();
 </script>

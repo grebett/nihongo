@@ -1,0 +1,138 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/quiz.css';
+---
+
+<Layout title="Anki practice">
+  <a href={import.meta.env.BASE_URL} class="back">&larr; Home</a>
+
+  <header class="section-header">
+    <span id="anki-deck-label" class="section-number"></span>
+    <h1 id="anki-page-title">Anki practice</h1>
+    <p id="anki-page-desc" class="description"></p>
+  </header>
+
+  <div id="anki-empty" class="anki-empty hidden">
+    <p>No due cards in this deck (or deck not cached yet). Try syncing from <a id="anki-settings-link" href="#">Anki settings</a>.</p>
+  </div>
+
+  <div id="anki-panel" class="tab-panel active hidden" data-panel="anki" role="tabpanel">
+    <div class="quiz-section" data-part-id="anki-deck" data-lesson-id="anki">
+      <div class="quiz-header">
+        <h2>Practice</h2>
+        <div class="quiz-controls">
+          <div class="score" data-score="anki-deck">0 / 0</div>
+        </div>
+      </div>
+      <div id="anki-questions" class="questions-list"></div>
+      <div class="results-summary hidden"></div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { getCachedDeck, enqueueReview, getConfig as getAnkiCfg, syncNow } from '../../../scripts/anki';
+  import { cardsToMatchingQuestions } from '../../../scripts/anki-question-render';
+  import { renderQuestionCard } from '../../../scripts/quiz-render';
+  import { setupQuiz } from '../../../scripts/quiz';
+
+  const BASE = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+  const params = new URLSearchParams(window.location.search);
+  const deckName = params.get('deck') || '';
+
+  const titleEl = document.getElementById('anki-page-title')!;
+  const labelEl = document.getElementById('anki-deck-label')!;
+  const descEl = document.getElementById('anki-page-desc')!;
+  const emptyEl = document.getElementById('anki-empty')!;
+  const settingsLink = document.getElementById('anki-settings-link') as HTMLAnchorElement;
+  const panel = document.getElementById('anki-panel')!;
+  const questionsList = document.getElementById('anki-questions')!;
+
+  settingsLink.href = `${BASE}/anki`;
+  labelEl.textContent = deckName ? 'Anki deck' : '';
+  titleEl.textContent = deckName || 'Anki practice';
+
+  if (!deckName) {
+    descEl.textContent = 'No deck specified. Add ?deck=<name> to the URL.';
+    emptyEl.classList.remove('hidden');
+  } else {
+    const cached = getCachedDeck(deckName);
+    if (!cached || cached.dueCards.length === 0) {
+      descEl.textContent = '';
+      emptyEl.classList.remove('hidden');
+    } else {
+      const due = cached.dueCards.length;
+      descEl.textContent = `${due} card${due > 1 ? 's' : ''} due · cached ${fmtAge(cached.fetchedAt)}`;
+
+      const questions = cardsToMatchingQuestions(cached.dueCards, 5);
+      if (questions.length === 0) {
+        emptyEl.classList.remove('hidden');
+        emptyEl.querySelector('p')!.textContent = 'No matching-compatible cards in this deck (need Expression + Meaning fields).';
+      } else {
+        // Render question cards with attached Anki cardIds
+        questionsList.innerHTML = questions
+          .map(({ question, cardIds }, i) => {
+            const html = renderQuestionCard(question, i);
+            // Inject data-anki-card-ids attribute on the rendered card
+            return html.replace(
+              /<div class="question-card"/,
+              `<div class="question-card" data-anki-card-ids="${cardIds.join(',')}"`,
+            );
+          })
+          .join('');
+
+        panel.classList.remove('hidden');
+
+        // Watch each card for answered state changes → enqueue Anki review
+        questionsList.querySelectorAll<HTMLElement>('.question-card').forEach((card) => {
+          const ids = (card.dataset.ankiCardIds || '').split(',').map(Number).filter(Boolean);
+          if (ids.length === 0) return;
+          const obs = new MutationObserver(() => {
+            if (card.classList.contains('answered-correct')) {
+              ids.forEach((id) => enqueueReview(id, 3));
+              obs.disconnect();
+            } else if (card.classList.contains('answered-incorrect')) {
+              ids.forEach((id) => enqueueReview(id, 1));
+              obs.disconnect();
+            }
+          });
+          obs.observe(card, { attributes: true, attributeFilter: ['class'] });
+        });
+
+        // Initialize quiz logic on the panel
+        setupQuiz(panel);
+
+        // Best-effort: try to flush queue right away if AnkiConnect is reachable
+        const cfg = getAnkiCfg();
+        if (cfg.enabled) {
+          window.addEventListener('beforeunload', () => {
+            // Queue is persisted in localStorage; nothing extra to do
+          });
+        }
+      }
+    }
+  }
+
+  function fmtAge(ts: number): string {
+    const sec = Math.round((Date.now() - ts) / 1000);
+    if (sec < 60) return `${sec}s ago`;
+    if (sec < 3600) return `${Math.round(sec / 60)} min ago`;
+    if (sec < 86400) return `${Math.round(sec / 3600)} h ago`;
+    return `${Math.round(sec / 86400)} d ago`;
+  }
+</script>
+
+<style is:global>
+  .anki-empty {
+    padding: 1.4rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    box-shadow: var(--shadow-sm);
+  }
+  .anki-empty.hidden { display: none; }
+</style>

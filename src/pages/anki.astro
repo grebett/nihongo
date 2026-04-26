@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/quiz.css';
+---
+
+<Layout title="Anki">
+  <a href={import.meta.env.BASE_URL} class="back">&larr; Home</a>
+
+  <header class="section-header">
+    <h1>Anki connection</h1>
+    <p class="description">
+      Bridge Nihon to your Anki desktop via <a href="https://ankiweb.net/shared/info/2055492159" target="_blank" rel="noopener">AnkiConnect</a>.
+      Pulls today's due cards into Nihon and syncs your reviews back.
+    </p>
+  </header>
+
+  <section class="anki-section">
+    <h2>Endpoint</h2>
+    <div class="anki-row">
+      <input id="endpoint" type="text" class="answer-input" placeholder="http://localhost:8765" />
+      <button id="ping-btn" class="submit-btn">Test</button>
+    </div>
+    <div id="ping-status" class="anki-status"></div>
+  </section>
+
+  <section class="anki-section">
+    <h2>Setup checklist</h2>
+    <ol class="anki-checklist">
+      <li>Install the <strong>AnkiConnect</strong> add-on in Anki Desktop (code <code>2055492159</code>).</li>
+      <li>Anki → Tools → Add-ons → AnkiConnect → <em>Config</em>, add this site to <code>webCorsOriginList</code>:
+        <pre id="cors-snippet"></pre>
+        <button class="copy-btn" data-copy="cors-snippet">Copy</button>
+      </li>
+      <li>Restart Anki, then click <strong>Test</strong> above.</li>
+    </ol>
+  </section>
+
+  <section class="anki-section">
+    <h2>Status</h2>
+    <div id="status-grid" class="status-grid"></div>
+    <div class="anki-actions">
+      <button id="sync-btn" class="submit-btn">Sync now</button>
+      <button id="enable-btn" class="reset-btn"></button>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .anki-section {
+    margin-bottom: 2rem;
+    padding: 1.4rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .anki-section h2 {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--text-strong);
+    margin-bottom: 0.9rem;
+  }
+  .anki-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .anki-status {
+    margin-top: 0.7rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    min-height: 1.2em;
+  }
+  .anki-status.ok { color: var(--success); }
+  .anki-status.err { color: var(--error); white-space: pre-wrap; }
+  .anki-checklist {
+    margin-left: 1.2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .anki-checklist li { margin-bottom: 0.5rem; }
+  .anki-checklist code {
+    background: var(--bg-input);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+  .anki-checklist pre {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+    margin: 0.5rem 0 0.4rem;
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    overflow-x: auto;
+  }
+  .copy-btn {
+    padding: 0.35rem 0.75rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .copy-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .status-cell {
+    padding: 0.85rem 1rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+  }
+  .status-cell-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.25rem;
+  }
+  .status-cell-value {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-strong);
+    font-variant-numeric: tabular-nums;
+  }
+  .anki-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+</style>
+
+<script>
+  import { getConfig, saveConfig, pingAnki, syncNow, getCache, getQueue } from '../scripts/anki';
+
+  const endpointInput = document.getElementById('endpoint') as HTMLInputElement;
+  const pingBtn = document.getElementById('ping-btn') as HTMLButtonElement;
+  const pingStatus = document.getElementById('ping-status')!;
+  const corsSnippet = document.getElementById('cors-snippet')!;
+  const syncBtn = document.getElementById('sync-btn') as HTMLButtonElement;
+  const enableBtn = document.getElementById('enable-btn') as HTMLButtonElement;
+  const statusGrid = document.getElementById('status-grid')!;
+
+  function origins(): string[] {
+    const list = [window.location.origin];
+    if (window.location.origin !== 'http://localhost:4321') list.push('http://localhost:4321');
+    return list;
+  }
+  corsSnippet.textContent = JSON.stringify({ webCorsOriginList: origins() }, null, 2);
+
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach((b) => {
+    b.addEventListener('click', () => {
+      const target = document.getElementById(b.dataset.copy!);
+      if (!target) return;
+      navigator.clipboard.writeText(target.textContent || '');
+      const orig = b.textContent;
+      b.textContent = 'Copied ✓';
+      setTimeout(() => { b.textContent = orig; }, 1500);
+    });
+  });
+
+  function fmtAge(ts: number | null): string {
+    if (!ts) return 'never';
+    const sec = Math.round((Date.now() - ts) / 1000);
+    if (sec < 60) return `${sec}s ago`;
+    if (sec < 3600) return `${Math.round(sec / 60)} min ago`;
+    if (sec < 86400) return `${Math.round(sec / 3600)} h ago`;
+    return `${Math.round(sec / 86400)} d ago`;
+  }
+
+  function refreshStatus() {
+    const cfg = getConfig();
+    const cache = getCache();
+    const queue = getQueue();
+    const deckCount = Object.keys(cache.decks).length;
+    const totalDue = Object.values(cache.decks).reduce((s, d) => s + d.summary.dueCount, 0);
+
+    statusGrid.innerHTML = `
+      <div class="status-cell">
+        <span class="status-cell-label">Enabled</span>
+        <span class="status-cell-value">${cfg.enabled ? 'Yes' : 'No'}</span>
+      </div>
+      <div class="status-cell">
+        <span class="status-cell-label">Last sync</span>
+        <span class="status-cell-value">${fmtAge(cfg.lastSyncAt)}</span>
+      </div>
+      <div class="status-cell">
+        <span class="status-cell-label">Cached decks</span>
+        <span class="status-cell-value">${deckCount}</span>
+      </div>
+      <div class="status-cell">
+        <span class="status-cell-label">Due today</span>
+        <span class="status-cell-value">${totalDue}</span>
+      </div>
+      <div class="status-cell">
+        <span class="status-cell-label">Queued reviews</span>
+        <span class="status-cell-value">${queue.length}</span>
+      </div>
+    `;
+
+    enableBtn.textContent = cfg.enabled ? 'Disable Anki bridge' : 'Enable Anki bridge';
+  }
+
+  // Init
+  const initial = getConfig();
+  endpointInput.value = initial.endpoint;
+  refreshStatus();
+
+  endpointInput.addEventListener('change', () => {
+    saveConfig({ endpoint: endpointInput.value.trim() || 'http://localhost:8765' });
+  });
+
+  pingBtn.addEventListener('click', async () => {
+    pingStatus.className = 'anki-status';
+    pingStatus.textContent = 'Pinging…';
+    const url = endpointInput.value.trim() || 'http://localhost:8765';
+    saveConfig({ endpoint: url });
+    try {
+      const ok = await pingAnki(url);
+      if (ok) {
+        pingStatus.className = 'anki-status ok';
+        pingStatus.textContent = '✓ Connected — AnkiConnect is reachable.';
+      } else {
+        pingStatus.className = 'anki-status err';
+        pingStatus.textContent = '✗ Unreachable. Is Anki running with AnkiConnect installed? Check the CORS origin in AnkiConnect config (above).';
+      }
+    } catch (e: any) {
+      pingStatus.className = 'anki-status err';
+      pingStatus.textContent = `✗ Error: ${e?.message ?? e}`;
+    }
+  });
+
+  enableBtn.addEventListener('click', () => {
+    const cfg = getConfig();
+    saveConfig({ enabled: !cfg.enabled });
+    refreshStatus();
+  });
+
+  syncBtn.addEventListener('click', async () => {
+    syncBtn.disabled = true;
+    syncBtn.textContent = 'Syncing…';
+    const result = await syncNow();
+    syncBtn.disabled = false;
+    syncBtn.textContent = 'Sync now';
+    if (result.ok) {
+      pingStatus.className = 'anki-status ok';
+      pingStatus.textContent = `✓ Synced. ${result.flushed > 0 ? `Flushed ${result.flushed} queued review(s).` : 'No queued reviews.'}`;
+    } else {
+      pingStatus.className = 'anki-status err';
+      pingStatus.textContent = `✗ Sync failed: ${result.reason}${result.reason === 'disabled' ? ' (enable the bridge first)' : ''}`;
+    }
+    refreshStatus();
+  });
+</script>
