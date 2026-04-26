@@ -1,0 +1,58 @@
+id: shimamori-1
+title: "Shimamori — Chapitre 1 : Famille"
+description: "Vocabulaire de la famille — formes neutres/modestes et formes honorifiques"
+source: "Shimamori (chapitre 1, leçon 2)"
+videoId: ""
+coverImage: shimamori.png
+number: 1
+
+sections:
+  - id: famille-neutre
+    title: "Famille — forme neutre"
+    description: "Termes utilisés pour parler de sa propre famille (modeste/neutre)"
+    parts:
+      - id: famille-parents-neutre
+        title: "Parents"
+        startTime: 0
+        endTime: 0
+      - id: famille-freres-soeurs-neutre
+        title: "Frères & sœurs"
+        startTime: 0
+        endTime: 0
+      - id: famille-conjoint-neutre
+        title: "Conjoint"
+        startTime: 0
+        endTime: 0
+      - id: famille-enfants-neutre
+        title: "Enfants & petits-enfants"
+        startTime: 0
+        endTime: 0
+      - id: famille-elargie-neutre
+        title: "Grands-parents, oncles, neveux"
+        startTime: 0
+        endTime: 0
+
+  - id: famille-honorifique
+    title: "Famille — forme honorifique"
+    description: "Termes utilisés pour parler de la famille d'autrui (御 / お~さん)"
+    parts:
+      - id: famille-parents-honorifique
+        title: "Parents"
+        startTime: 0
+        endTime: 0
+      - id: famille-freres-soeurs-honorifique
+        title: "Frères & sœurs"
+        startTime: 0
+        endTime: 0
+      - id: famille-conjoint-honorifique
+        title: "Conjoint"
+        startTime: 0
+        endTime: 0
+      - id: famille-enfants-honorifique
+        title: "Enfants & petits-enfants"
+        startTime: 0
+        endTime: 0
+      - id: famille-elargie-honorifique
+        title: "Grands-parents, oncles, neveux"
+        startTime: 0
+        endTime: 0

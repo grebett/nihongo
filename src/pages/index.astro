@@ -10,11 +10,31 @@ const lessons = getAllLessons();
   <div class="lessons">
     {lessons.map((lesson) => (
       <a href={`${import.meta.env.BASE_URL}/lesson/${lesson.id}`} class="lesson-card">
-        <img
-          src={`https://i.ytimg.com/vi/${lesson.videoId}/mqdefault.jpg`}
-          alt={lesson.title}
-          class="thumbnail"
-        />
+        <div class="thumb-wrap">
+          {lesson.coverImage ? (
+            <img
+              src={`${import.meta.env.BASE_URL}/${lesson.coverImage}`}
+              alt={lesson.title}
+              class="thumbnail"
+            />
+          ) : lesson.videoId ? (
+            <img
+              src={`https://i.ytimg.com/vi/${lesson.videoId}/mqdefault.jpg`}
+              alt={lesson.title}
+              class="thumbnail"
+            />
+          ) : (
+            <div class="thumbnail thumbnail-placeholder" aria-hidden="true">
+              <span>{lesson.title.charAt(0)}</span>
+            </div>
+          )}
+          {lesson.number !== undefined && lesson.number !== '' && (
+            <svg class="lesson-badge" viewBox="0 0 40 40" aria-hidden="true">
+              <circle cx="20" cy="20" r="17" />
+              <text x="20" y="20" text-anchor="middle" dominant-baseline="central">{lesson.number}</text>
+            </svg>
+          )}
+        </div>
         <div class="lesson-info">
           <h2>{lesson.title}</h2>
           <p>{lesson.description}</p>
@@ -26,6 +46,14 @@ const lessons = getAllLessons();
       </a>
     ))}
   </div>
+
+  <section class="imported-section">
+    <div class="imported-header">
+      <h2>Imported lessons</h2>
+      <a href={`${import.meta.env.BASE_URL}/imported/`} class="import-btn">+ Importer une leçon</a>
+    </div>
+    <div id="imported-list" class="lessons"></div>
+  </section>
 
   <style>
     h1 {
@@ -55,12 +83,48 @@ const lessons = getAllLessons();
       transform: translateY(-1px);
     }
 
-    .thumbnail {
+    .thumb-wrap {
+      position: relative;
+      flex-shrink: 0;
       width: 200px;
       height: 112px;
+    }
+    .thumbnail {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: 6px;
-      flex-shrink: 0;
+      display: block;
+    }
+    .thumbnail-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 2.4rem;
+      font-weight: 800;
+    }
+    .lesson-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    }
+    .lesson-badge circle {
+      fill: var(--accent);
+      stroke: var(--bg);
+      stroke-width: 2;
+    }
+    .lesson-badge text {
+      fill: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .lesson-info { display: flex; flex-direction: column; justify-content: center; }
@@ -77,7 +141,123 @@ const lessons = getAllLessons();
 
     @media (max-width: 600px) {
       .lesson-card { flex-direction: column; }
-      .thumbnail { width: 100%; height: auto; aspect-ratio: 16/9; }
+      .thumb-wrap { width: 100%; height: auto; aspect-ratio: 16/9; }
+    }
+
+    .imported-section {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .imported-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .imported-header h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin: 0;
+    }
+    .import-btn {
+      padding: 0.5rem 0.9rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .import-btn:hover {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+    .imported-empty {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-style: italic;
+      padding: 0.8rem 0;
+    }
+    .lesson-card-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+    .lesson-delete-btn {
+      width: 36px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.15s;
+    }
+    .lesson-delete-btn:hover {
+      border-color: var(--error);
+      color: var(--error);
     }
   </style>
 </Layout>
+
+<script>
+  import { getAllImported, deleteImported } from '../scripts/imported-lessons';
+
+  const BASE = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+  function escapeText(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderImported() {
+    const container = document.getElementById('imported-list')!;
+    const all = getAllImported();
+    if (all.length === 0) {
+      container.innerHTML = '<p class="imported-empty">Aucune leçon importée. Cliquez sur « Importer une leçon » pour commencer.</p>';
+      return;
+    }
+    container.innerHTML = all
+      .map(({ lesson }) => {
+        const initial = escapeText(lesson.title.charAt(0));
+        const badge = lesson.number !== undefined && lesson.number !== ''
+          ? `<svg class="lesson-badge" viewBox="0 0 40 40" aria-hidden="true">
+              <circle cx="20" cy="20" r="17"/>
+              <text x="20" y="20" text-anchor="middle" dominant-baseline="central">${escapeText(String(lesson.number))}</text>
+            </svg>`
+          : '';
+        return `<div class="lesson-card-row">
+          <a class="lesson-card" href="${BASE}/imported/?lesson=${encodeURIComponent(lesson.id)}" style="flex:1;">
+            <div class="thumb-wrap">
+              <div class="thumbnail thumbnail-placeholder" aria-hidden="true"><span>${initial}</span></div>
+              ${badge}
+            </div>
+            <div class="lesson-info">
+              <h2>${escapeText(lesson.title)}</h2>
+              <p>${escapeText(lesson.description ?? '')}</p>
+              <div class="meta">
+                <span class="source">${escapeText(lesson.source ?? '')}</span>
+                <span class="section-count">${lesson.sections.length} sections</span>
+              </div>
+            </div>
+          </a>
+          <button class="lesson-delete-btn" data-delete-id="${escapeText(lesson.id)}" aria-label="Supprimer">✕</button>
+        </div>`;
+      })
+      .join('');
+
+    container.querySelectorAll('[data-delete-id]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = (btn as HTMLElement).dataset.deleteId!;
+        if (!confirm(`Supprimer la leçon importée "${id}" ?`)) return;
+        deleteImported(id);
+        renderImported();
+      });
+    });
+  }
+
+  renderImported();
+</script>

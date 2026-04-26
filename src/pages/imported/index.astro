@@ -1,0 +1,486 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/quiz.css';
+---
+
+<Layout title="Leçons importées">
+  <a href={import.meta.env.BASE_URL} class="back">&larr; Accueil</a>
+
+  <!-- View: import (default) -->
+  <div id="view-import" class="view hidden">
+    <header class="section-header">
+      <h1>Leçons importées</h1>
+      <p class="description">Importer une leçon au format YAML bundle (voir <code>docs/LLM_PROMPT.md</code>).</p>
+    </header>
+
+    <section class="import-section">
+      <div class="import-controls">
+        <label for="file-input" class="file-label">Choisir un fichier .yaml / .yml / .txt</label>
+        <input id="file-input" type="file" accept=".yaml,.yml,.txt,.json" />
+      </div>
+      <textarea id="paste-area" rows="14" placeholder="…ou coller le contenu YAML ici"></textarea>
+      <div class="import-actions">
+        <button id="import-btn" class="submit-btn">Importer</button>
+      </div>
+      <div id="import-error" class="import-error hidden"></div>
+      <div id="import-success" class="import-success hidden"></div>
+    </section>
+
+    <section class="imports-list-section">
+      <h2>Leçons actuellement importées</h2>
+      <div id="imports-list"></div>
+    </section>
+  </div>
+
+  <!-- View: lesson outline -->
+  <div id="view-lesson" class="view hidden">
+    <header class="lesson-header">
+      <h1 id="lesson-title"></h1>
+      <p id="lesson-description" class="description"></p>
+      <p id="lesson-source" class="source"></p>
+    </header>
+    <div id="sections-grid" class="sections-grid"></div>
+  </div>
+
+  <!-- View: section quiz -->
+  <div id="view-section" class="view hidden">
+    <a id="lesson-back" href="#" class="back">&larr; <span id="lesson-back-title"></span></a>
+    <header class="section-header">
+      <span id="section-number" class="section-number"></span>
+      <h1 id="section-title"></h1>
+      <p id="section-description" class="description"></p>
+    </header>
+    <div id="tabs-container"></div>
+    <div id="panels-container"></div>
+  </div>
+</Layout>
+
+<style>
+  .view.hidden { display: none; }
+  .view { display: block; }
+
+  .import-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .import-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .file-label {
+    padding: 0.5rem 1rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .file-label:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  #file-input { display: none; }
+
+  #paste-area {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 0.85rem;
+    padding: 0.8rem;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  #paste-area:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-glow);
+  }
+
+  .import-actions { margin-top: 0.8rem; }
+
+  .import-error {
+    margin-top: 0.8rem;
+    padding: 0.7rem 1rem;
+    background: rgba(220, 50, 47, 0.08);
+    border: 1px solid var(--error);
+    border-radius: 8px;
+    color: var(--error);
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: pre-wrap;
+  }
+  .import-success {
+    margin-top: 0.8rem;
+    padding: 0.7rem 1rem;
+    background: rgba(42, 161, 152, 0.1);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    color: var(--success);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .imports-list-section h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+
+  .import-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .import-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px var(--card-shadow-hover);
+  }
+  .import-card-info { flex: 1; min-width: 0; }
+  .import-card-info h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: var(--text);
+  }
+  .import-card-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .import-card-delete {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .import-card-delete:hover {
+    border-color: var(--error);
+    color: var(--error);
+  }
+
+  .imports-empty {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-style: italic;
+  }
+
+  /* Lesson outline view (mirrors built-in /lesson/[id]/index.astro styling) */
+  .lesson-header { margin-bottom: 2rem; }
+  .lesson-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .source {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  .sections-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .section-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+  .section-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px var(--card-shadow-hover);
+    transform: translateY(-1px);
+  }
+  .section-card .section-number {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    width: 2rem;
+    padding-top: 0.15rem;
+    opacity: 0.8;
+  }
+  .section-info { flex: 1; }
+  .section-info h2 { font-size: 1.05rem; margin-bottom: 0.3rem; font-weight: 700; }
+  .section-info p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem; }
+  .section-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  import yaml from 'js-yaml';
+  import {
+    getAllImported,
+    getImported,
+    saveImported,
+    deleteImported,
+    parseImportYaml,
+  } from '../../scripts/imported-lessons';
+  import { renderQuestionCard } from '../../scripts/quiz-render';
+  import { setupQuiz } from '../../scripts/quiz';
+  import type { Question, Lesson } from '../../scripts/lessons';
+
+  const BASE = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+  function escapeText(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function showView(name: 'import' | 'lesson' | 'section') {
+    for (const v of ['import', 'lesson', 'section']) {
+      const el = document.getElementById(`view-${v}`);
+      if (el) el.classList.toggle('hidden', v !== name);
+    }
+  }
+
+  function renderImportsList() {
+    const container = document.getElementById('imports-list')!;
+    const all = getAllImported();
+    if (all.length === 0) {
+      container.innerHTML = '<p class="imports-empty">Aucune leçon importée pour le moment.</p>';
+      return;
+    }
+    container.innerHTML = all
+      .map(({ lesson }) => {
+        const sectionsCount = lesson.sections.length;
+        return `<div class="import-card-row" style="display:flex;gap:0.5rem;align-items:stretch;margin-bottom:0.6rem;">
+          <a class="import-card" href="${BASE}/imported/?lesson=${encodeURIComponent(lesson.id)}" style="flex:1;margin:0;">
+            <div class="import-card-info">
+              <h3>${escapeText(lesson.title)}</h3>
+              <div class="import-card-meta">${escapeText(lesson.source || '—')} · ${sectionsCount} section${sectionsCount > 1 ? 's' : ''}</div>
+            </div>
+          </a>
+          <button class="import-card-delete" data-delete-id="${escapeText(lesson.id)}" aria-label="Supprimer">✕</button>
+        </div>`;
+      })
+      .join('');
+
+    container.querySelectorAll('[data-delete-id]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = (btn as HTMLElement).dataset.deleteId!;
+        if (!confirm(`Supprimer la leçon importée "${id}" ?`)) return;
+        deleteImported(id);
+        renderImportsList();
+      });
+    });
+  }
+
+  function attemptImport(text: string) {
+    const errEl = document.getElementById('import-error')!;
+    const okEl = document.getElementById('import-success')!;
+    errEl.classList.add('hidden');
+    okEl.classList.add('hidden');
+
+    const result = parseImportYaml(text);
+    if (!result.ok) {
+      errEl.textContent = result.error;
+      errEl.classList.remove('hidden');
+      return;
+    }
+    saveImported(result.bundle);
+    okEl.textContent = `Leçon "${result.bundle.lesson.title}" importée !`;
+    okEl.classList.remove('hidden');
+    (document.getElementById('paste-area') as HTMLTextAreaElement).value = '';
+    renderImportsList();
+  }
+
+  function initImportView() {
+    document.getElementById('import-btn')!.addEventListener('click', () => {
+      const text = (document.getElementById('paste-area') as HTMLTextAreaElement).value.trim();
+      if (!text) {
+        const errEl = document.getElementById('import-error')!;
+        errEl.textContent = 'Le champ est vide.';
+        errEl.classList.remove('hidden');
+        return;
+      }
+      attemptImport(text);
+    });
+
+    const fileInput = document.getElementById('file-input') as HTMLInputElement;
+    fileInput.addEventListener('change', async () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      const text = await file.text();
+      (document.getElementById('paste-area') as HTMLTextAreaElement).value = text;
+      attemptImport(text);
+      fileInput.value = '';
+    });
+
+    renderImportsList();
+  }
+
+  function renderLessonView(lessonId: string) {
+    const bundle = getImported(lessonId);
+    if (!bundle) {
+      document.getElementById('lesson-title')!.textContent = 'Leçon introuvable';
+      document.getElementById('lesson-description')!.textContent = `Aucune leçon importée avec l'identifiant "${lessonId}".`;
+      return;
+    }
+    const { lesson, questions } = bundle;
+    document.title = `${lesson.title} - Nihongo`;
+    document.getElementById('lesson-title')!.textContent = lesson.title;
+    document.getElementById('lesson-description')!.textContent = lesson.description;
+    document.getElementById('lesson-source')!.textContent = lesson.source ? `Source : ${lesson.source}` : '';
+
+    const grid = document.getElementById('sections-grid')!;
+    grid.innerHTML = lesson.sections
+      .map((sec, i) => {
+        const qCount = sec.parts.reduce((sum, p) => sum + (questions[p.id]?.length ?? 0), 0);
+        return `<a href="${BASE}/imported/?lesson=${encodeURIComponent(lesson.id)}&section=${encodeURIComponent(sec.id)}" class="section-card">
+          <span class="section-number">${String(i + 1).padStart(2, '0')}</span>
+          <div class="section-info">
+            <h2>${escapeText(sec.title)}</h2>
+            <p>${escapeText(sec.description ?? '')}</p>
+            <div class="section-meta">
+              <span>${sec.parts.length} part${sec.parts.length > 1 ? 's' : ''}</span>
+              <span>${qCount} question${qCount > 1 ? 's' : ''}</span>
+            </div>
+          </div>
+        </a>`;
+      })
+      .join('');
+  }
+
+  function renderSectionView(lessonId: string, sectionId: string) {
+    const bundle = getImported(lessonId);
+    if (!bundle) {
+      document.getElementById('section-title')!.textContent = 'Leçon introuvable';
+      return;
+    }
+    const { lesson, questions } = bundle;
+    const section = lesson.sections.find((s) => s.id === sectionId);
+    if (!section) {
+      document.getElementById('section-title')!.textContent = 'Section introuvable';
+      return;
+    }
+    document.title = `${section.title} - ${lesson.title}`;
+
+    const back = document.getElementById('lesson-back') as HTMLAnchorElement;
+    back.href = `${BASE}/imported/?lesson=${encodeURIComponent(lesson.id)}`;
+    document.getElementById('lesson-back-title')!.textContent = lesson.title;
+
+    const sectionIdx = lesson.sections.indexOf(section);
+    document.getElementById('section-number')!.textContent = `Section ${sectionIdx + 1} / ${lesson.sections.length}`;
+    document.getElementById('section-title')!.textContent = section.title;
+    document.getElementById('section-description')!.textContent = section.description ?? '';
+
+    const tabsContainer = document.getElementById('tabs-container')!;
+    const panelsContainer = document.getElementById('panels-container')!;
+
+    if (section.parts.length > 1) {
+      tabsContainer.innerHTML = `<div class="tabs" role="tablist">
+        ${section.parts
+          .map(
+            (p, i) =>
+              `<button class="tab ${i === 0 ? 'active' : ''}" role="tab" data-tab="${escapeText(p.id)}" aria-selected="${i === 0 ? 'true' : 'false'}">${escapeText(p.title)}</button>`,
+          )
+          .join('')}
+      </div>`;
+    }
+
+    panelsContainer.innerHTML = section.parts
+      .map((part, i) => {
+        const partQuestions: Question[] = questions[part.id] ?? [];
+        if (partQuestions.length === 0) {
+          return `<div class="tab-panel ${i === 0 ? 'active' : ''}" data-panel="${escapeText(part.id)}" role="tabpanel">
+            <p class="description">Aucune question pour cette partie.</p>
+          </div>`;
+        }
+        const cards = partQuestions.map((q, qi) => renderQuestionCard(q, qi)).join('');
+        return `<div class="tab-panel ${i === 0 ? 'active' : ''}" data-panel="${escapeText(part.id)}" role="tabpanel">
+          <div class="quiz-section" data-part-id="${escapeText(part.id)}" data-lesson-id="${escapeText(lesson.id)}">
+            <div class="quiz-header">
+              <h2>Practice</h2>
+              <div class="quiz-controls">
+                <button class="hard-mode-toggle" title="Show all questions">Hard</button>
+                <div class="score" data-score="${escapeText(part.id)}">0 / ${partQuestions.length}</div>
+              </div>
+            </div>
+            <div class="questions-list">${cards}</div>
+            <button class="reset-btn">Reset</button>
+            <div class="results-summary hidden"></div>
+          </div>
+        </div>`;
+      })
+      .join('');
+
+    // Wire tab switching (no video, simpler than initTabsAndVideo)
+    document.querySelectorAll('#tabs-container .tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = (tab as HTMLElement).dataset.tab;
+        document.querySelectorAll('#tabs-container .tab').forEach((t) => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        document.querySelectorAll('#panels-container .tab-panel').forEach((panel) => {
+          (panel as HTMLElement).classList.toggle(
+            'active',
+            (panel as HTMLElement).dataset.panel === targetId,
+          );
+        });
+      });
+    });
+
+    // Initialize quiz logic per panel
+    document.querySelectorAll('#panels-container .tab-panel').forEach(setupQuiz);
+  }
+
+  // Bootstrap: pick view by query params
+  const params = new URLSearchParams(window.location.search);
+  const lessonParam = params.get('lesson');
+  const sectionParam = params.get('section');
+
+  if (lessonParam && sectionParam) {
+    showView('section');
+    renderSectionView(lessonParam, sectionParam);
+  } else if (lessonParam) {
+    showView('lesson');
+    renderLessonView(lessonParam);
+  } else {
+    showView('import');
+    initImportView();
+  }
+</script>

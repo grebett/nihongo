@@ -1,0 +1,85 @@
+# Sample bundle YAML — paste/upload at /imported/ to test the importer.
+# This is the same format an LLM would produce in "bundle mode"
+# (see docs/LLM_PROMPT.md → Mode B).
+
+lesson:
+  id: test-import
+  title: "Test — Import"
+  description: "Petite leçon pour tester l'importeur"
+  source: "Sample"
+  videoId: ""
+  number: "?"
+  sections:
+    - id: vocabulaire
+      title: "Vocabulaire"
+      description: "Trois exercices basiques pour tester les 4 types"
+      parts:
+        - id: matching-couleurs
+          title: "Couleurs (matching)"
+          startTime: 0
+          endTime: 0
+        - id: blocks-bonjour
+          title: "Composer (blocks)"
+          startTime: 0
+          endTime: 0
+        - id: free-input-jours
+          title: "Écrire (free-input)"
+          startTime: 0
+          endTime: 0
+        - id: mc-particules
+          title: "Choix multiples"
+          startTime: 0
+          endTime: 0
+
+questions:
+  matching-couleurs:
+    - type: matching
+      question: "Reliez chaque couleur à sa traduction."
+      pairs:
+        - jp: "<ruby>赤<rt>あか</rt></ruby>"
+          meaning: "rouge"
+        - jp: "<ruby>青<rt>あお</rt></ruby>"
+          meaning: "bleu"
+        - jp: "<ruby>白<rt>しろ</rt></ruby>"
+          meaning: "blanc"
+        - jp: "<ruby>黒<rt>くろ</rt></ruby>"
+          meaning: "noir"
+        - jp: "<ruby>緑<rt>みどり</rt></ruby>"
+          meaning: "vert"
+      hint: "Les couleurs de base"
+
+  blocks-bonjour:
+    - type: sentence-blocks
+      question: "Bonjour, je m'appelle Pierre."
+      blocks:
+        - text: "こんにちは"
+        - text: "、"
+        - text: "<ruby>私<rt>わたし</rt></ruby>"
+        - text: "は"
+        - text: "ピエール"
+        - text: "です"
+      distractors:
+        - text: "が"
+        - text: "を"
+      hint: "Salutation + auto-présentation"
+
+  free-input-jours:
+    - type: free-input
+      question: "Comment dit-on « lundi » en japonais ?"
+      answers:
+        - 月曜日
+        - げつようび
+        - getsuyoubi
+      display: "<ruby>月曜日<rt>げつようび</rt></ruby>"
+      hint: "Le jour de la lune"
+
+  mc-particules:
+    - type: multiple-choice
+      question: "Quelle particule indique le complément d'objet direct ?"
+      options:
+        - は
+        - を
+        - が
+        - に
+      answer: 1
+      hint: "« wo » se prononce « o »"

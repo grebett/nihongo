@@ -1,0 +1,81 @@
+famille-parents-honorifique:
+  - type: matching
+    question: "Reliez chaque terme à sa traduction (parents — forme honorifique)."
+    pairs:
+      - jp: "お<ruby>父<rt>とう</rt></ruby>さん"
+        meaning: "père / papa (honorifique)"
+      - jp: "お<ruby>母<rt>かあ</rt></ruby>さん"
+        meaning: "mère / maman (honorifique)"
+      - jp: "<ruby>御家族<rt>ごかぞく</rt></ruby>"
+        meaning: "votre famille (honorifique)"
+      - jp: "<ruby>御両親<rt>ごりょうしん</rt></ruby>"
+        meaning: "vos parents (honorifique)"
+      - jp: "<ruby>親御<rt>おやご</rt></ruby>さん"
+        meaning: "votre parent (honorifique)"
+    hint: "御 (go-) et お~さん marquent le respect envers la famille d'autrui"
+
+famille-freres-soeurs-honorifique:
+  - type: matching
+    question: "Reliez chaque terme à sa traduction (frères & sœurs — forme honorifique)."
+    pairs:
+      - jp: "お<ruby>兄<rt>にい</rt></ruby>さん"
+        meaning: "votre grand frère (honorifique)"
+      - jp: "お<ruby>姉<rt>ねえ</rt></ruby>さん"
+        meaning: "votre grande sœur (honorifique)"
+      - jp: "<ruby>弟<rt>おとうと</rt></ruby>さん"
+        meaning: "votre frère cadet (honorifique)"
+      - jp: "<ruby>妹<rt>いもうと</rt></ruby>さん"
+        meaning: "votre sœur cadette (honorifique)"
+      - jp: "<ruby>御兄弟<rt>ごきょうだい</rt></ruby>"
+        meaning: "vos frères et sœurs (honorifique)"
+    hint: "Pour parler de la fratrie de quelqu'un d'autre"
+
+famille-conjoint-honorifique:
+  - type: matching
+    question: "Reliez chaque terme à sa traduction (conjoint — forme honorifique)."
+    pairs:
+      - jp: "<ruby>御主人<rt>ごしゅじん</rt></ruby>"
+        meaning: "votre mari (honorifique)"
+      - jp: "<ruby>奥様<rt>おくさま</rt></ruby>"
+        meaning: "votre épouse / madame (très poli)"
+      - jp: "<ruby>奥<rt>おく</rt></ruby>さん"
+        meaning: "votre épouse / femme (honorifique)"
+      - jp: "<ruby>御夫婦<rt>ごふうふ</rt></ruby>"
+        meaning: "le couple / vos époux (honorifique)"
+    hint: "奥様 est plus formel que 奥さん"
+
+famille-enfants-honorifique:
+  - type: matching
+    question: "Reliez chaque terme à sa traduction (enfants & petits-enfants — forme honorifique)."
+    pairs:
+      - jp: "お<ruby>子<rt>こ</rt></ruby>さん"
+        meaning: "votre enfant (honorifique)"
+      - jp: "<ruby>息子<rt>むすこ</rt></ruby>さん"
+        meaning: "votre fils (honorifique)"
+      - jp: "<ruby>娘<rt>むすめ</rt></ruby>さん"
+        meaning: "votre fille (honorifique)"
+      - jp: "お<ruby>嬢<rt>じょう</rt></ruby>さん"
+        meaning: "votre fille / jeune fille (honorifique)"
+      - jp: "お<ruby>孫<rt>まご</rt></ruby>さん"
+        meaning: "votre petit-enfant (honorifique)"
+      - jp: "お<ruby>坊<rt>ぼっ</rt></ruby>ちゃん"
+        meaning: "votre fils / jeune garçon (honorifique)"
+    hint: "お嬢さん et お坊ちゃん sont aussi utilisés pour s'adresser à de jeunes inconnus"
+
+famille-elargie-honorifique:
+  - type: matching
+    question: "Reliez chaque terme à sa traduction (famille élargie — forme honorifique)."
+    pairs:
+      - jp: "おじいさん"
+        meaning: "grand-père / monsieur âgé (honorifique)"
+      - jp: "おばあさん"
+        meaning: "grand-mère / dame âgée (honorifique)"
+      - jp: "おじさん"
+        meaning: "oncle / monsieur d'âge moyen (honorifique)"
+      - jp: "おばさん"
+        meaning: "tante / dame d'âge moyen (honorifique)"
+      - jp: "<ruby>甥御<rt>おいご</rt></ruby>さん"
+        meaning: "votre neveu (honorifique)"
+      - jp: "<ruby>姪御<rt>めいご</rt></ruby>さん"
+        meaning: "votre nièce (honorifique)"
+    hint: "Ces termes servent aussi à s'adresser à des inconnus de l'âge correspondant"

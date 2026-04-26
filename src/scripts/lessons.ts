@@ -18,13 +18,27 @@ export interface Section {
   parts: Part[];
 }
 
+export interface Block {
+  text: string;
+  reading?: string;
+}
+
+export interface Pair {
+  jp: string;
+  meaning: string;
+  reading?: string;
+}
+
 export interface Question {
-  type: 'multiple-choice' | 'free-input';
+  type: 'multiple-choice' | 'free-input' | 'sentence-blocks' | 'matching';
   question: string;
   options?: string[];
   answer?: number;
   answers?: string[];
   display?: string;
+  blocks?: Block[];
+  distractors?: Block[];
+  pairs?: Pair[];
   hint: string;
 }
 
@@ -34,6 +48,8 @@ export interface Lesson {
   description: string;
   source: string;
   videoId: string;
+  coverImage?: string;
+  number?: string | number;
   sections: Section[];
 }
 
