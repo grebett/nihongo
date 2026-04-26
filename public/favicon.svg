@@ -1,16 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <style>
-    .ink {
-      fill: none;
-      stroke: #1a1714;
-      stroke-width: 14;
-      stroke-linejoin: round;
-      stroke-linecap: round;
-    }
-    @media (prefers-color-scheme: dark) {
-      .ink { stroke: #ebe4d6; }
-    }
-  </style>
-  <rect class="ink" x="28" y="14" width="72" height="100" rx="3"/>
-  <line class="ink" x1="32" y1="64" x2="96" y2="64"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1.03401,0,0,1,-4.35285,0)">
+        <ellipse cx="66.105" cy="64" rx="61.895" ry="64" style="fill:rgb(163,47,0);stroke:rgb(163,47,0);stroke-width:0.98px;"/>
+    </g>
+    <g transform="matrix(1.66399,0,0,2.83554,23.0395,22.3286)">
+        <path d="M7.292,26.421L13.996,26.421L13.996,27.774L17.177,27.774L17.177,17.859L4.013,17.859L4.013,28.215L7.292,28.215L7.292,26.421ZM13.996,24.479L7.292,24.479L7.292,19.742L13.996,19.742L13.996,24.479ZM2.545,5.031L2.545,6.973L18.303,6.973L18.303,5.031L11.305,5.031L13.066,4.619C12.43,3.56 11.5,2.383 10.277,1.089L6.949,1.677C8.124,2.736 9.151,3.854 9.983,5.031L2.545,5.031ZM4.355,9.297L4.355,11.151L16.737,11.151L16.737,9.297L4.355,9.297ZM4.355,13.446L4.355,15.329L16.737,15.329L16.737,13.446L4.355,13.446ZM20.162,2.413L20.162,4.325L29.363,4.325L28.286,7.65L21.777,7.65L21.777,9.503L27.65,9.503L26.378,13.446L19.82,13.446L19.82,15.388L46.687,15.388L46.687,13.446L42.968,13.446L42.968,7.65L31.565,7.65L32.642,4.325L45.317,4.325L45.317,2.413L20.162,2.413ZM29.656,13.446L30.929,9.503L39.689,9.503L39.689,13.446L29.656,13.446ZM43.702,18.153L22.316,18.153L22.316,28.304L25.643,28.304L25.643,26.95L40.423,26.95L40.423,28.304L43.702,28.304L43.702,18.153ZM25.643,25.038L25.643,20.036L40.423,20.036L40.423,25.038L25.643,25.038Z" style="fill:white;fill-rule:nonzero;stroke:rgb(255,240,240);stroke-width:0.43px;stroke-linecap:butt;stroke-miterlimit:2;"/>
+    </g>
 </svg>
