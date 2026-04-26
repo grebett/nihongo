@@ -1,0 +1,641 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/quiz.css';
+---
+
+<Layout title="Pilot">
+  <a href={import.meta.env.BASE_URL} class="back">&larr; Home</a>
+
+  <header class="section-header">
+    <span class="section-number">Learning path</span>
+    <h1>Pilot</h1>
+    <p class="description">
+      Central content generator. Pick a mode, paste source material, copy the LLM prompt to your favorite model,
+      paste the output back here to import into Nihongo (and optionally push to Anki).
+    </p>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" role="tab" data-mode="from-source" aria-selected="true">From source</button>
+    <button class="tab" role="tab" data-mode="production-drill" aria-selected="false">Production drill</button>
+    <button class="tab" role="tab" data-mode="rescue-weak" aria-selected="false">Rescue weak</button>
+    <button class="tab tab-test" role="tab" data-mode="history" aria-selected="false">History</button>
+  </div>
+
+  <!-- ────────── Mode: From source ────────── -->
+  <div class="mode-panel active" data-panel="from-source">
+    <section class="pilot-card">
+      <h2>1. Describe your topic & source</h2>
+      <label class="field-label">Topic name</label>
+      <input id="src-topic" type="text" class="answer-input" placeholder="e.g. Assimil ch.5 — at the post office" />
+      <div class="row">
+        <div class="grow">
+          <label class="field-label">Anki deck (existing or new)</label>
+          <input id="src-deck" type="text" class="answer-input" list="src-deck-list" placeholder="Default" />
+          <datalist id="src-deck-list"></datalist>
+        </div>
+        <div class="grow">
+          <label class="field-label">Card model</label>
+          <select id="src-model" class="answer-input pilot-select"></select>
+        </div>
+      </div>
+      <div id="src-model-fields" class="muted small"></div>
+      <label class="field-label">Source material (book chapter, transcript, vocab list…)</label>
+      <textarea id="src-material" class="paste-area" rows="10" placeholder="Paste your source material here…"></textarea>
+    </section>
+
+    <section class="pilot-card">
+      <h2>2. Copy the LLM prompt</h2>
+      <p class="muted">Click the button below to copy a self-contained prompt (instructions + your source) to your clipboard. Paste it into Claude/GPT/Gemini and wait for its dual output (Nihongo YAML + Anki JSON).</p>
+      <div class="actions">
+        <button id="src-copy-prompt" class="submit-btn">Copy prompt to clipboard</button>
+        <span id="src-copy-status" class="copy-status"></span>
+      </div>
+    </section>
+
+    <section class="pilot-card">
+      <h2>3. Paste LLM output</h2>
+      <label class="field-label">Nihongo bundle (YAML block)</label>
+      <textarea id="src-nihon-out" class="paste-area" rows="8" placeholder="Paste the YAML code block content here…"></textarea>
+      <label class="field-label">Anki notes (JSON block)</label>
+      <textarea id="src-anki-out" class="paste-area" rows="8" placeholder="Paste the JSON code block content here…"></textarea>
+      <div class="actions">
+        <button id="src-import" class="submit-btn">Import both</button>
+        <button id="src-import-nihon-only" class="reset-btn">Nihongo only</button>
+      </div>
+      <div id="src-result" class="result-line hidden"></div>
+    </section>
+  </div>
+
+  <!-- ────────── Mode: Production drill ────────── -->
+  <div class="mode-panel" data-panel="production-drill">
+    <section class="pilot-card">
+      <h2>1. Pick a deck of mature vocab</h2>
+      <p class="muted">Pulls cards with interval ≥ 21 days (configurable below) — vocab you already recognize. Goal: drill <em>active production</em> using these in sentences.</p>
+      <div class="row">
+        <label class="field-label inline">Deck</label>
+        <select id="prod-deck" class="answer-input pilot-select"></select>
+        <label class="field-label inline">Min interval (days)</label>
+        <input id="prod-min-days" type="number" class="answer-input pilot-num" value="21" min="1" />
+        <button id="prod-load" class="submit-btn">Load mature cards</button>
+      </div>
+      <div id="prod-summary" class="muted"></div>
+    </section>
+
+    <section class="pilot-card">
+      <h2>2. Copy the LLM prompt</h2>
+      <p class="muted">Generates a prompt with your mature vocab pre-filled. The LLM will compose 5-10 sentence-blocks + 1-2 free-input exercises using these words.</p>
+      <button id="prod-copy-prompt" class="submit-btn" disabled>Copy prompt to clipboard</button>
+      <span id="prod-copy-status" class="copy-status"></span>
+    </section>
+
+    <section class="pilot-card">
+      <h2>3. Paste LLM output (Nihongo bundle)</h2>
+      <textarea id="prod-out" class="paste-area" rows="10" placeholder="Paste the YAML block here…"></textarea>
+      <button id="prod-import" class="submit-btn">Import to Nihongo</button>
+      <div id="prod-result" class="result-line hidden"></div>
+    </section>
+  </div>
+
+  <!-- ────────── Mode: Rescue weak ────────── -->
+  <div class="mode-panel" data-panel="rescue-weak">
+    <section class="pilot-card">
+      <h2>1. Pick a deck</h2>
+      <p class="muted">Pulls cards with high lapses (≥3) or marked as leeches — the ones you keep failing in Anki. Goal: attack each from multiple angles to break the block.</p>
+      <div class="row">
+        <label class="field-label inline">Deck</label>
+        <select id="rescue-deck" class="answer-input pilot-select"></select>
+        <button id="rescue-load" class="submit-btn">Load weak cards</button>
+      </div>
+      <div id="rescue-summary" class="muted"></div>
+    </section>
+
+    <section class="pilot-card">
+      <h2>2. Copy the LLM prompt</h2>
+      <p class="muted">Generates a prompt with your weak cards. The LLM will produce multi-format exercises (matching + free-input + sentence-blocks + multiple-choice) for each.</p>
+      <button id="rescue-copy-prompt" class="submit-btn" disabled>Copy prompt to clipboard</button>
+      <span id="rescue-copy-status" class="copy-status"></span>
+    </section>
+
+    <section class="pilot-card">
+      <h2>3. Paste LLM output (Nihongo bundle)</h2>
+      <textarea id="rescue-out" class="paste-area" rows="10" placeholder="Paste the YAML block here…"></textarea>
+      <button id="rescue-import" class="submit-btn">Import to Nihongo</button>
+      <div id="rescue-result" class="result-line hidden"></div>
+    </section>
+  </div>
+
+  <!-- ────────── Mode: History ────────── -->
+  <div class="mode-panel" data-panel="history">
+    <section class="pilot-card">
+      <h2>Generated topics</h2>
+      <div id="history-list"></div>
+    </section>
+  </div>
+</Layout>
+
+<style is:global>
+  .mode-panel { display: none; animation: panel-in var(--dur-slow) var(--ease); }
+  .mode-panel.active { display: block; }
+
+  .pilot-card {
+    margin-bottom: 1.4rem;
+    padding: 1.4rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .pilot-card h2 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--text-strong);
+    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  .pilot-card p.muted {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 0.8rem;
+  }
+  .field-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0.7rem 0 0.3rem;
+  }
+  .field-label.inline { display: inline-block; margin: 0; }
+
+  .pilot-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b6258' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.4rem;
+  }
+  .pilot-num { width: 7rem; }
+
+  .row {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  .row .grow { flex: 1; min-width: 200px; }
+
+  .muted.small {
+    font-size: 0.78rem;
+    color: var(--text-subtle);
+    margin-top: 0.4rem;
+    line-height: 1.5;
+  }
+  .muted.small code {
+    background: var(--bg-input);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+  }
+
+  .paste-area {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--text);
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    padding: 0.85rem;
+    resize: vertical;
+    outline: none;
+    transition: border-color var(--dur-fast) var(--ease),
+                box-shadow var(--dur-fast) var(--ease);
+  }
+  .paste-area:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    margin-top: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .copy-status {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--success);
+  }
+  .copy-status.err { color: var(--error); }
+
+  .result-line {
+    margin-top: 0.85rem;
+    padding: 0.7rem 0.95rem;
+    border-radius: 9px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .result-line.ok { background: rgba(31, 122, 106, 0.10); border: 1px solid var(--success); color: var(--success); }
+  .result-line.err { background: var(--accent-soft); border: 1px solid var(--error); color: var(--error); white-space: pre-wrap; }
+  .result-line.hidden { display: none; }
+
+  .history-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 0.85rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    margin-bottom: 0.45rem;
+  }
+  .history-row .meta-row { font-size: 0.74rem; }
+  .history-info { flex: 1; min-width: 0; }
+  .history-info h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-strong); margin-bottom: 0.15rem; }
+</style>
+
+<script>
+  import { parseImportYaml, saveImported } from '../scripts/imported-lessons';
+  import {
+    getConfig as getAnkiCfg, getCachedDecks, addNotes, loadDeckList,
+    loadMatureCards, loadWeakCards, pingAnki, listModels, listModelFields, ensureDeck,
+  } from '../scripts/anki';
+  import { PROMPT_FROM_SOURCE, PROMPT_PRODUCTION_DRILL, PROMPT_RESCUE_WEAK } from '../scripts/pilot-prompts';
+  import { listTopics, recordTopic, deleteTopic } from '../scripts/pilot';
+  import { icon } from '../scripts/icons';
+
+  const BASE = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+  function escapeText(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // ─── Tabs ─────────────────────────────────────────────────────────────
+  document.querySelectorAll<HTMLButtonElement>('.tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const mode = tab.dataset.mode;
+      document.querySelectorAll('.tab').forEach((t) => {
+        t.classList.toggle('active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      document.querySelectorAll('.mode-panel').forEach((p) => {
+        (p as HTMLElement).classList.toggle('active', (p as HTMLElement).dataset.panel === mode);
+      });
+      if (mode === 'history') renderHistory();
+    });
+  });
+
+  // ─── Populate Anki decks + models ─────────────────────────────────────
+
+  let ankiReachable = false;
+  let availableDecks: string[] = ['Default'];
+  let availableModels: string[] = ['Basic'];
+  // Map: modelName -> field names (lazy-fetched, cached)
+  const modelFieldsCache: Record<string, string[]> = {};
+
+  async function getModelFields(modelName: string): Promise<string[]> {
+    if (modelFieldsCache[modelName]) return modelFieldsCache[modelName];
+    if (!ankiReachable) return [];
+    try {
+      const fields = await listModelFields(modelName);
+      modelFieldsCache[modelName] = fields;
+      return fields;
+    } catch {
+      return [];
+    }
+  }
+
+  async function bootstrapAnki() {
+    const cfg = getAnkiCfg();
+    if (cfg.enabled) {
+      ankiReachable = await pingAnki(cfg.endpoint);
+    }
+    if (ankiReachable) {
+      try { availableDecks = await loadDeckList(); } catch {}
+      try { availableModels = await listModels(); } catch {}
+    } else {
+      const cached = getCachedDecks().map((d) => d.summary.name);
+      if (cached.length > 0) availableDecks = cached;
+    }
+    if (availableDecks.length === 0) availableDecks = ['Default'];
+    if (availableModels.length === 0) availableModels = ['Basic'];
+
+    // Populate datalist for the deck combo (from-source mode)
+    const datalist = document.getElementById('src-deck-list')!;
+    datalist.innerHTML = availableDecks.map((d) => `<option value="${escapeText(d)}">`).join('');
+
+    // Populate the model select — preselect a Japanese-looking model if found
+    const modelSel = document.getElementById('src-model') as HTMLSelectElement;
+    const preferred = availableModels.find((m) => /jap|japon|nihon|vocab/i.test(m));
+    modelSel.innerHTML = availableModels.map((m) => `<option value="${escapeText(m)}"${m === preferred ? ' selected' : ''}>${escapeText(m)}</option>`).join('');
+    await refreshModelFieldsLine();
+
+    modelSel.addEventListener('change', refreshModelFieldsLine);
+
+    // Plain selects for production/rescue (still pick from existing decks only)
+    for (const id of ['prod-deck', 'rescue-deck']) {
+      const sel = document.getElementById(id) as HTMLSelectElement;
+      sel.innerHTML = availableDecks.map((d) => `<option value="${escapeText(d)}">${escapeText(d)}</option>`).join('');
+    }
+  }
+
+  async function refreshModelFieldsLine() {
+    const modelName = (document.getElementById('src-model') as HTMLSelectElement).value;
+    const line = document.getElementById('src-model-fields')!;
+    if (!modelName) { line.textContent = ''; return; }
+    const fields = await getModelFields(modelName);
+    if (fields.length === 0) {
+      line.innerHTML = `Fields not loaded (Anki unreachable). The LLM will use generic <code>Front</code>/<code>Back</code>.`;
+    } else {
+      line.innerHTML = `Will fill these fields: ${fields.map((f) => `<code>${escapeText(f)}</code>`).join(' · ')}`;
+    }
+  }
+
+  bootstrapAnki();
+
+  // ─── Helpers ──────────────────────────────────────────────────────────
+  async function copyToClipboard(text: string, statusEl: HTMLElement) {
+    try {
+      await navigator.clipboard.writeText(text);
+      statusEl.classList.remove('err');
+      statusEl.textContent = '✓ Copied';
+      setTimeout(() => { statusEl.textContent = ''; }, 2500);
+    } catch (e: any) {
+      statusEl.classList.add('err');
+      statusEl.textContent = `✗ ${e?.message ?? e}`;
+    }
+  }
+
+  function showResult(el: HTMLElement, ok: boolean, message: string) {
+    el.className = `result-line ${ok ? 'ok' : 'err'}`;
+    el.textContent = message;
+  }
+
+  function fmtAge(ts: number | null): string {
+    if (!ts) return 'never';
+    const sec = Math.round((Date.now() - ts) / 1000);
+    if (sec < 60) return `${sec}s ago`;
+    if (sec < 3600) return `${Math.round(sec / 60)} min ago`;
+    if (sec < 86400) return `${Math.round(sec / 3600)} h ago`;
+    return `${Math.round(sec / 86400)} d ago`;
+  }
+
+  function pickJpField(fields: Record<string, string>): string {
+    const aliases = ['expression', 'japanese', 'front', 'word', 'kanji', 'jp'];
+    for (const a of aliases) {
+      const k = Object.keys(fields).find((f) => f.toLowerCase() === a);
+      if (k && fields[k]) return fields[k];
+    }
+    return Object.values(fields)[0] || '';
+  }
+  function pickReadingField(fields: Record<string, string>): string {
+    const aliases = ['reading', 'kana', 'furigana', 'pronunciation'];
+    for (const a of aliases) {
+      const k = Object.keys(fields).find((f) => f.toLowerCase() === a);
+      if (k && fields[k]) return fields[k];
+    }
+    return '';
+  }
+  function pickMeaningField(fields: Record<string, string>): string {
+    const aliases = ['meaning', 'english', 'french', 'translation', 'definition', 'back'];
+    for (const a of aliases) {
+      const k = Object.keys(fields).find((f) => f.toLowerCase() === a);
+      if (k && fields[k]) return fields[k];
+    }
+    return '';
+  }
+
+  // ─── Mode 1: From source ──────────────────────────────────────────────
+
+  document.getElementById('src-copy-prompt')!.addEventListener('click', async () => {
+    const topic = (document.getElementById('src-topic') as HTMLInputElement).value.trim();
+    const source = (document.getElementById('src-material') as HTMLTextAreaElement).value.trim();
+    const deck = (document.getElementById('src-deck') as HTMLInputElement).value.trim() || 'Default';
+    const modelName = (document.getElementById('src-model') as HTMLSelectElement).value || 'Basic';
+    const status = document.getElementById('src-copy-status')!;
+    if (!source) { status.classList.add('err'); status.textContent = 'Source material is empty.'; return; }
+    const fields = await getModelFields(modelName);
+    const promptBody = PROMPT_FROM_SOURCE(deck, modelName, fields);
+    const fullPrompt = `${promptBody}\n\n---\n\n## User input\n\n**Topic:** ${topic || '(unnamed)'}\n\n**Source material:**\n\n${source}`;
+    copyToClipboard(fullPrompt, status);
+  });
+
+  document.getElementById('src-import')!.addEventListener('click', () => importFromSource(true));
+  document.getElementById('src-import-nihon-only')!.addEventListener('click', () => importFromSource(false));
+
+  async function importFromSource(pushAnki: boolean) {
+    const topic = (document.getElementById('src-topic') as HTMLInputElement).value.trim() || 'Untitled';
+    const source = (document.getElementById('src-material') as HTMLTextAreaElement).value.trim();
+    const uiDeck = (document.getElementById('src-deck') as HTMLInputElement).value.trim() || 'Default';
+    const uiModel = (document.getElementById('src-model') as HTMLSelectElement).value || 'Basic';
+    const nihonText = (document.getElementById('src-nihon-out') as HTMLTextAreaElement).value.trim();
+    const ankiText = (document.getElementById('src-anki-out') as HTMLTextAreaElement).value.trim();
+    const result = document.getElementById('src-result')!;
+    result.classList.remove('hidden');
+
+    if (!nihonText) { showResult(result, false, 'Paste the Nihongo YAML block first.'); return; }
+    const parsed = parseImportYaml(nihonText);
+    if (!parsed.ok) { showResult(result, false, `Nihongo YAML invalid:\n${parsed.error}`); return; }
+    saveImported(parsed.bundle);
+
+    let added = 0;
+    if (pushAnki && ankiText) {
+      try {
+        const ankiData = JSON.parse(ankiText);
+        const notes = ankiData.notes || [];
+        // Trust the UI selectors over the LLM-emitted values (the user's intent)
+        const modelName = uiModel;
+        const ankiDeck = uiDeck;
+        const tags = ankiData.tags || ['nihon-pilot'];
+
+        // Create the deck if it doesn't exist
+        if (!availableDecks.includes(ankiDeck)) {
+          await ensureDeck(ankiDeck);
+          availableDecks.push(ankiDeck);
+        }
+
+        const ids = await addNotes(ankiDeck, modelName, notes, tags);
+        added = ids.filter((id: number | null) => id !== null).length;
+        const skipped = notes.length - added;
+        recordTopic({
+          name: topic, mode: 'from-source',
+          sourcePreview: source.slice(0, 200),
+          importedLessonId: parsed.bundle.lesson.id,
+          ankiDeckName: ankiDeck,
+          ankiNotesAdded: added,
+        });
+        const msg = `✓ Imported "${parsed.bundle.lesson.title}" into Nihongo. Pushed ${added}/${notes.length} notes to "${ankiDeck}" (${modelName})${skipped > 0 ? `. ${skipped} skipped (likely duplicates).` : '.'}`;
+        showResult(result, true, msg);
+      } catch (e: any) {
+        recordTopic({
+          name: topic, mode: 'from-source',
+          sourcePreview: source.slice(0, 200),
+          importedLessonId: parsed.bundle.lesson.id,
+          ankiNotesAdded: 0,
+        });
+        showResult(result, false, `Nihongo import OK, but Anki push failed: ${e?.message ?? e}`);
+      }
+    } else {
+      recordTopic({
+        name: topic, mode: 'from-source',
+        sourcePreview: source.slice(0, 200),
+        importedLessonId: parsed.bundle.lesson.id,
+        ankiNotesAdded: 0,
+      });
+      showResult(result, true, `✓ Imported "${parsed.bundle.lesson.title}" into Nihongo (no Anki push).`);
+    }
+  }
+
+  // ─── Mode 2: Production drill ─────────────────────────────────────────
+
+  let prodVocabList = '';
+
+  document.getElementById('prod-load')!.addEventListener('click', async () => {
+    const deck = (document.getElementById('prod-deck') as HTMLSelectElement).value;
+    const minDays = parseInt((document.getElementById('prod-min-days') as HTMLInputElement).value || '21');
+    const summary = document.getElementById('prod-summary')!;
+    summary.textContent = 'Loading…';
+    try {
+      const cards = await loadMatureCards(deck, minDays, 60);
+      if (cards.length === 0) {
+        summary.textContent = `No mature cards (interval ≥ ${minDays} days) in "${deck}".`;
+        prodVocabList = '';
+        (document.getElementById('prod-copy-prompt') as HTMLButtonElement).disabled = true;
+        return;
+      }
+      prodVocabList = cards.map((c) => {
+        const jp = pickJpField(c.fields);
+        const reading = pickReadingField(c.fields);
+        const meaning = pickMeaningField(c.fields);
+        return `- ${jp}${reading ? ` (${reading})` : ''} — ${meaning} [interval ${c.interval}d]`;
+      }).join('\n');
+      summary.textContent = `Loaded ${cards.length} mature cards from "${deck}".`;
+      (document.getElementById('prod-copy-prompt') as HTMLButtonElement).disabled = false;
+    } catch (e: any) {
+      summary.textContent = `Error: ${e?.message ?? e}`;
+    }
+  });
+
+  document.getElementById('prod-copy-prompt')!.addEventListener('click', () => {
+    const status = document.getElementById('prod-copy-status')!;
+    copyToClipboard(PROMPT_PRODUCTION_DRILL(prodVocabList), status);
+  });
+
+  document.getElementById('prod-import')!.addEventListener('click', () => {
+    const text = (document.getElementById('prod-out') as HTMLTextAreaElement).value.trim();
+    const result = document.getElementById('prod-result')!;
+    result.classList.remove('hidden');
+    if (!text) { showResult(result, false, 'Paste the YAML output first.'); return; }
+    const parsed = parseImportYaml(text);
+    if (!parsed.ok) { showResult(result, false, parsed.error); return; }
+    saveImported(parsed.bundle);
+    const deck = (document.getElementById('prod-deck') as HTMLSelectElement).value;
+    recordTopic({
+      name: `Production drill — ${deck}`, mode: 'production-drill',
+      sourcePreview: prodVocabList.slice(0, 200),
+      importedLessonId: parsed.bundle.lesson.id,
+      ankiNotesAdded: 0,
+    });
+    showResult(result, true, `✓ Imported "${parsed.bundle.lesson.title}" into Nihongo.`);
+  });
+
+  // ─── Mode 3: Rescue weak ──────────────────────────────────────────────
+
+  let rescueCardList = '';
+
+  document.getElementById('rescue-load')!.addEventListener('click', async () => {
+    const deck = (document.getElementById('rescue-deck') as HTMLSelectElement).value;
+    const summary = document.getElementById('rescue-summary')!;
+    summary.textContent = 'Loading…';
+    try {
+      const cards = await loadWeakCards(deck, 30);
+      if (cards.length === 0) {
+        summary.textContent = `No struggling cards (≥3 lapses or leech-tagged) in "${deck}". Lucky you!`;
+        rescueCardList = '';
+        (document.getElementById('rescue-copy-prompt') as HTMLButtonElement).disabled = true;
+        return;
+      }
+      rescueCardList = cards.map((c) => {
+        const jp = pickJpField(c.fields);
+        const reading = pickReadingField(c.fields);
+        const meaning = pickMeaningField(c.fields);
+        return `- ${jp}${reading ? ` (${reading})` : ''} — ${meaning} [${c.lapses} lapses, ease ${c.factor / 1000}]`;
+      }).join('\n');
+      summary.textContent = `Loaded ${cards.length} struggling cards from "${deck}".`;
+      (document.getElementById('rescue-copy-prompt') as HTMLButtonElement).disabled = false;
+    } catch (e: any) {
+      summary.textContent = `Error: ${e?.message ?? e}`;
+    }
+  });
+
+  document.getElementById('rescue-copy-prompt')!.addEventListener('click', () => {
+    const status = document.getElementById('rescue-copy-status')!;
+    copyToClipboard(PROMPT_RESCUE_WEAK(rescueCardList), status);
+  });
+
+  document.getElementById('rescue-import')!.addEventListener('click', () => {
+    const text = (document.getElementById('rescue-out') as HTMLTextAreaElement).value.trim();
+    const result = document.getElementById('rescue-result')!;
+    result.classList.remove('hidden');
+    if (!text) { showResult(result, false, 'Paste the YAML output first.'); return; }
+    const parsed = parseImportYaml(text);
+    if (!parsed.ok) { showResult(result, false, parsed.error); return; }
+    saveImported(parsed.bundle);
+    const deck = (document.getElementById('rescue-deck') as HTMLSelectElement).value;
+    recordTopic({
+      name: `Rescue — ${deck}`, mode: 'rescue-weak',
+      sourcePreview: rescueCardList.slice(0, 200),
+      importedLessonId: parsed.bundle.lesson.id,
+      ankiNotesAdded: 0,
+    });
+    showResult(result, true, `✓ Imported "${parsed.bundle.lesson.title}" into Nihongo.`);
+  });
+
+  // ─── History ──────────────────────────────────────────────────────────
+
+  function renderHistory() {
+    const list = document.getElementById('history-list')!;
+    const topics = listTopics();
+    if (topics.length === 0) {
+      list.innerHTML = '<p class="muted">No topics generated yet.</p>';
+      return;
+    }
+    list.innerHTML = topics.map((t) => {
+      const modeLabel = t.mode === 'from-source' ? 'Source' : t.mode === 'production-drill' ? 'Production' : 'Rescue';
+      const lessonLink = t.importedLessonId
+        ? `<a href="${BASE}/imported/?lesson=${encodeURIComponent(t.importedLessonId)}">${escapeText(t.importedLessonId)}</a>`
+        : '—';
+      const ankiInfo = t.ankiNotesAdded > 0 ? `${t.ankiNotesAdded} Anki notes → ${escapeText(t.ankiDeckName || '')}` : '';
+      return `<div class="history-row">
+        <div class="history-info">
+          <h4>${escapeText(t.name)}</h4>
+          <div class="meta-row">
+            <span class="meta-item">${modeLabel}</span>
+            <span class="meta-item">${fmtAge(t.lastUsedAt)}</span>
+            <span class="meta-item">${lessonLink}</span>
+            ${ankiInfo ? `<span class="meta-item">${ankiInfo}</span>` : ''}
+          </div>
+        </div>
+        <button class="icon-btn danger" data-del="${escapeText(t.id)}" aria-label="Delete topic">${icon('trash', 14)}</button>
+      </div>`;
+    }).join('');
+    list.querySelectorAll<HTMLButtonElement>('[data-del]').forEach((b) => {
+      b.addEventListener('click', () => {
+        if (!confirm('Remove this topic from history? (Imported lesson and Anki notes are NOT deleted.)')) return;
+        deleteTopic(b.dataset.del!);
+        renderHistory();
+      });
+    });
+  }
+</script>

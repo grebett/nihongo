@@ -59,10 +59,15 @@ const allPartIds = lesson.sections.flatMap((s) =>
 
   <!-- Global results -->
   <section class="global-results" id="global-results" data-lesson-id={lesson.id} data-part-ids={JSON.stringify(allPartIds)}>
-    <h2>Results</h2>
+    <div class="results-header-row">
+      <h2>Results</h2>
+      <button class="clear-results-btn hidden" id="clear-results" aria-label="Clear all results">
+        <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        Clear
+      </button>
+    </div>
     <div class="global-results-stats" id="global-stats"></div>
     <div class="global-results-wrong" id="global-wrong"></div>
-    <button class="clear-results-btn hidden" id="clear-results">Clear all results</button>
   </section>
 </Layout>
 
@@ -119,19 +124,37 @@ const allPartIds = lesson.sections.flatMap((s) =>
     }
 
     const pct = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+    const pctTone = pct === 100 ? 'perfect' : pct >= 70 ? 'good' : 'low';
+
     statsEl.innerHTML = `
       <div class="stats-row">
-        <div class="stat"><span class="stat-value">${results.size}</span> <span class="stat-label">sections completed</span></div>
-        <div class="stat"><span class="stat-value">${totalCorrect} / ${totalQuestions}</span> <span class="stat-label">correct answers</span></div>
-        <div class="stat"><span class="stat-value">${pct}%</span> <span class="stat-label">accuracy</span></div>
-        <div class="stat"><span class="stat-value">${allWrong.length}</span> <span class="stat-label">to review</span></div>
+        <div class="stat">
+          <span class="stat-label">Sections</span>
+          <span class="stat-value">${results.size}</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Correct</span>
+          <span class="stat-value">${totalCorrect} <span class="stat-sub">/ ${totalQuestions}</span></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Accuracy</span>
+          <span class="stat-value tone-${pctTone}">${pct}<span class="stat-sub">%</span></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">To review</span>
+          <span class="stat-value ${allWrong.length === 0 ? 'tone-perfect' : 'tone-low'}">${allWrong.length}</span>
+        </div>
       </div>
     `;
 
     if (allWrong.length === 0) {
-      wrongEl.innerHTML = '<p class="all-correct">All answers correct so far!</p>';
+      wrongEl.innerHTML = `
+        <div class="all-correct">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          All answers correct — keep it up.
+        </div>`;
     } else {
-      let html = '<h3>Incorrect answers to review</h3><div class="global-wrong-list">';
+      let html = '<h3>Cards to review</h3><div class="global-wrong-list">';
       for (const w of allWrong) {
         html += `<div class="gw-item">
           <div class="gw-question">${w.question}</div>
@@ -274,67 +297,95 @@ const allPartIds = lesson.sections.flatMap((s) =>
   /* Global results */
   .global-results {
     margin-top: 3rem;
-    padding-top: 2rem;
+    padding-top: 1.4rem;
     border-top: 1px solid var(--border);
   }
-  .global-results.empty { opacity: 0.5; }
+  .global-results.empty { opacity: 0.6; }
+  .results-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.1rem;
+    gap: 1rem;
+  }
   .global-results h2 {
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: -0.015em;
     color: var(--text-strong);
+    margin: 0;
   }
 
   .no-results { color: var(--text-muted); font-size: 0.9rem; }
-  .all-correct { color: var(--success); font-weight: 600; }
 
   .stats-row {
-    display: flex;
-    gap: 0.65rem;
-    margin-bottom: 1.6rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.55rem;
+    margin-bottom: 1.2rem;
+  }
+  @media (max-width: 540px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
   }
   .stat {
     display: flex;
     flex-direction: column;
-    padding: 0.95rem 1.2rem;
+    align-items: flex-start;
+    padding: 0.85rem 1rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    min-width: 100px;
-    flex: 1;
+    border-radius: 10px;
     box-shadow: var(--shadow-sm);
-    transition: border-color var(--dur-fast) var(--ease),
-                box-shadow var(--dur-fast) var(--ease);
+    transition: border-color var(--dur-fast) var(--ease);
   }
-  .stat:hover {
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-md);
-  }
-  .stat-value {
-    display: block;
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums;
-  }
+  .stat:hover { border-color: var(--border-hover); }
   .stat-label {
-    display: block;
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     color: var(--text-subtle);
-    margin-top: 0.25rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+  .stat-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-strong);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat-value.tone-perfect { color: var(--success); }
+  .stat-value.tone-good    { color: var(--gold); }
+  .stat-value.tone-low     { color: var(--error); }
+  .stat-sub {
+    font-size: 0.7em;
+    color: var(--text-subtle);
+    font-weight: 600;
+    margin-left: 0.1em;
   }
 
+  .all-correct {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1rem;
+    background: rgba(31, 122, 106, 0.10);
+    border: 1px solid var(--success);
+    border-radius: 10px;
+    color: var(--success);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .all-correct .icon { stroke: var(--success); }
+
   .global-results-wrong h3 {
-    font-size: 1rem;
-    margin-bottom: 0.85rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.7rem;
     font-weight: 700;
-    color: var(--text-strong);
+    color: var(--text-muted);
   }
 
   .global-wrong-list {
@@ -357,14 +408,19 @@ const allPartIds = lesson.sections.flatMap((s) =>
   .gw-answer { color: var(--accent); font-weight: 600; text-align: right; }
 
   .clear-results-btn {
-    margin-top: 1.5rem;
-    padding: 0.6rem 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
     background: transparent;
     border: 1px solid var(--border);
-    border-radius: 9px;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    font-weight: 500;
+    border-radius: 8px;
+    color: var(--text-subtle);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     cursor: pointer;
     transition: all var(--dur-fast) var(--ease);
   }

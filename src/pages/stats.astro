@@ -1,0 +1,599 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/quiz.css';
+---
+
+<Layout title="Stats">
+  <a href={import.meta.env.BASE_URL} class="back">&larr; Home</a>
+
+  <header class="section-header stats-header">
+    <div>
+      <span class="section-number">Anki dashboard</span>
+      <h1>Stats</h1>
+      <p class="description">Deck composition, retention, and review pace. Pulls live from AnkiConnect.</p>
+    </div>
+    <button id="export-advice" class="advice-btn hidden" title="Build a markdown prompt from this dashboard for LLM advice">
+      <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z"/><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z"/></svg>
+      Ask LLM for advice
+    </button>
+  </header>
+
+  <div id="stats-loader" class="stats-loader">
+    <p class="muted">Loading stats…</p>
+  </div>
+
+  <div id="stats-error" class="stats-error hidden"></div>
+
+  <div id="stats-content" class="hidden">
+    <!-- Summary chips -->
+    <section class="summary-grid">
+      <div class="summary-cell">
+        <span class="summary-label">Total cards</span>
+        <span class="summary-value" id="sum-total">—</span>
+      </div>
+      <div class="summary-cell">
+        <span class="summary-label">Mature</span>
+        <span class="summary-value" id="sum-mature">—</span>
+      </div>
+      <div class="summary-cell">
+        <span class="summary-label">Reviewed today</span>
+        <span class="summary-value" id="sum-today">—</span>
+      </div>
+      <div class="summary-cell">
+        <span class="summary-label">Streak</span>
+        <span class="summary-value" id="sum-streak">—</span>
+      </div>
+    </section>
+
+    <!-- Heatmap -->
+    <section class="stats-card">
+      <h2>Activity — last 30 days</h2>
+      <div id="chart-heatmap" class="chart-wrap"></div>
+    </section>
+
+    <!-- Per-deck composition -->
+    <section class="stats-card">
+      <h2>Decks composition</h2>
+      <p class="muted small">New · Learning · Review · Mature · Suspended</p>
+      <div id="chart-decks" class="chart-wrap"></div>
+    </section>
+
+    <!-- Interval distribution -->
+    <section class="stats-card">
+      <h2>Interval distribution</h2>
+      <p class="muted small">Where your cards sit in the SRS funnel.</p>
+      <div id="chart-intervals" class="chart-wrap"></div>
+    </section>
+
+    <!-- 14-day forecast -->
+    <section class="stats-card">
+      <h2>Next 14 days — due forecast</h2>
+      <div id="chart-forecast" class="chart-wrap"></div>
+    </section>
+  </div>
+</Layout>
+
+<style is:global>
+  .stats-loader, .stats-error {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .stats-error {
+    border-color: var(--error);
+    color: var(--error);
+  }
+
+  .stats-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .advice-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.95rem;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    border-radius: 9px;
+    color: var(--accent);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background var(--dur-fast) var(--ease),
+                color var(--dur-fast) var(--ease),
+                box-shadow var(--dur-fast) var(--ease);
+  }
+  .advice-btn:hover {
+    background: var(--accent);
+    color: white;
+    box-shadow: var(--shadow-accent);
+  }
+  .advice-btn.copied {
+    background: rgba(31, 122, 106, 0.10);
+    border-color: var(--success);
+    color: var(--success);
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 1.6rem;
+  }
+  .summary-cell {
+    padding: 1rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .summary-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+  .summary-value {
+    display: block;
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stats-card {
+    padding: 1.4rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1.4rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .stats-card h2 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--text-strong);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+  .stats-card .muted.small {
+    font-size: 0.78rem;
+    color: var(--text-subtle);
+    margin-bottom: 0.8rem;
+  }
+  .chart-wrap {
+    overflow-x: auto;
+  }
+  .chart-wrap svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Heatmap */
+  .heatmap-cell { transition: opacity 0.15s var(--ease); }
+  .heatmap-cell:hover { opacity: 0.7; }
+  .heatmap-label {
+    fill: var(--text-subtle);
+    font-size: 9px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Bar charts */
+  .bar-row { transition: opacity 0.15s var(--ease); }
+  .bar-row:hover { opacity: 0.85; }
+  .bar-label {
+    fill: var(--text-muted);
+    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+  .bar-value {
+    fill: var(--text);
+    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .axis-label {
+    fill: var(--text-subtle);
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+
+  .legend {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .legend-swatch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .legend-swatch::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--col, var(--text-subtle));
+  }
+</style>
+
+<script>
+  import { getConfig as getAnkiCfg, pingAnki, loadDeckList } from '../scripts/anki';
+  import { loadCollectionStats } from '../scripts/anki-stats';
+  import type { CollectionStats } from '../scripts/anki-stats';
+
+  const loader = document.getElementById('stats-loader')!;
+  const err = document.getElementById('stats-error')!;
+  const content = document.getElementById('stats-content')!;
+
+  // Color tokens — read from CSS variables so charts respect the theme
+  function cssVar(name: string): string {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function fail(message: string) {
+    loader.classList.add('hidden');
+    err.classList.remove('hidden');
+    err.textContent = message;
+  }
+
+  (async () => {
+    const cfg = getAnkiCfg();
+    if (!cfg.enabled) {
+      fail('Anki bridge is disabled. Enable it in /anki settings first.');
+      return;
+    }
+    const reachable = await pingAnki(cfg.endpoint);
+    if (!reachable) {
+      fail('AnkiConnect not reachable. Open Anki Desktop with AnkiConnect installed.');
+      return;
+    }
+    let deckNames: string[] = [];
+    try {
+      deckNames = await loadDeckList();
+    } catch (e: any) {
+      fail(`Failed to load decks: ${e?.message ?? e}`);
+      return;
+    }
+    if (deckNames.length === 0) {
+      fail('No decks found.');
+      return;
+    }
+
+    let stats: CollectionStats;
+    try {
+      stats = await loadCollectionStats(deckNames);
+    } catch (e: any) {
+      fail(`Failed to compute stats: ${e?.message ?? e}`);
+      return;
+    }
+
+    loader.classList.add('hidden');
+    content.classList.remove('hidden');
+    render(stats);
+    wireAdviceButton(stats);
+  })();
+
+  // ─── LLM advice export ────────────────────────────────────────────
+
+  function wireAdviceButton(s: CollectionStats) {
+    const btn = document.getElementById('export-advice') as HTMLButtonElement;
+    btn.classList.remove('hidden');
+    btn.addEventListener('click', async () => {
+      const prompt = buildAdvicePrompt(s);
+      try {
+        await navigator.clipboard.writeText(prompt);
+        btn.classList.add('copied');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✓ Copied — paste into Claude/GPT';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = orig;
+        }, 3500);
+      } catch (e: any) {
+        alert(`Copy failed: ${e?.message ?? e}`);
+      }
+    });
+  }
+
+  function buildAdvicePrompt(s: CollectionStats): string {
+    const totalCards = s.decks.reduce((acc, d) => acc + d.total, 0);
+    const totalMature = s.decks.reduce((acc, d) => acc + d.mature, 0);
+    const totalNew = s.decks.reduce((acc, d) => acc + d.newCount, 0);
+    const totalLearning = s.decks.reduce((acc, d) => acc + d.learning, 0);
+    const totalReview = s.decks.reduce((acc, d) => acc + d.review, 0);
+    const totalSuspended = s.decks.reduce((acc, d) => acc + d.suspended, 0);
+    const maturePct = totalCards > 0 ? Math.round((totalMature / totalCards) * 100) : 0;
+
+    const totalReviews30d = s.reviewedByDay.reduce((acc, d) => acc + d.count, 0);
+    const avgPerDay = Math.round(totalReviews30d / Math.max(1, s.reviewedByDay.length));
+    const activeDays = s.reviewedByDay.filter((d) => d.count > 0).length;
+
+    const dueNext7 = s.forecast14.slice(0, 7).reduce((a, b) => a + b, 0);
+    const dueNext14 = s.forecast14.reduce((a, b) => a + b, 0);
+
+    const decksTable = s.decks.map((d) =>
+      `| ${d.deckName} | ${d.total} | ${d.newCount} | ${d.learning} | ${Math.max(0, d.review - d.mature)} | ${d.mature} | ${d.suspended} |`
+    ).join('\n');
+
+    const intervalLines = s.intervalDistribution.map((b) => `- ${b.label}: ${b.count}`).join('\n');
+
+    const forecastLines = s.forecast14.map((c, i) => {
+      const label = i === 0 ? 'Today' : `+${i}d`;
+      return `- ${label}: ${c}`;
+    }).join('\n');
+
+    const heatmapSummary = s.reviewedByDay
+      .map((d) => `${d.date}: ${d.count}`)
+      .join(', ');
+
+    return `You are a Japanese language tutor reviewing my Anki SRS dashboard. Below is a snapshot of my decks, intervals, upcoming workload, and recent activity.
+
+Analyze the data and give me concrete, prioritized advice on what to focus on **this week**. Be honest, specific, and avoid generic platitudes — focus on what THIS data actually shows.
+
+## Activity (last 30 days)
+- Reviews today: **${s.reviewedToday}**
+- Streak: **${s.streak} days**
+- Active days: ${activeDays} / ${s.reviewedByDay.length}
+- Total reviews this period: ${totalReviews30d} (avg ${avgPerDay} / day)
+
+Daily counts (oldest → newest): ${heatmapSummary}
+
+## Collection summary
+- Total cards: **${totalCards}**
+- New: ${totalNew} · Learning: ${totalLearning} · Review (young + mature): ${totalReview} · Suspended: ${totalSuspended}
+- Mature ratio: **${maturePct}%** (${totalMature} cards with interval ≥ 21 days)
+
+## Decks composition
+| Deck | Total | New | Learning | Young review | Mature | Suspended |
+|------|-------|-----|----------|--------------|--------|-----------|
+${decksTable}
+
+## Interval distribution (where cards sit in the SRS funnel)
+${intervalLines}
+
+## Forecast — upcoming workload
+- Next 7 days: **${dueNext7}** cards due
+- Next 14 days: **${dueNext14}** cards due
+
+Day by day:
+${forecastLines}
+
+---
+
+## Questions
+
+1. **Workload** — Am I overloaded, under-loaded, or balanced? Should I throttle new cards, pause to catch up, or pick up the pace?
+2. **Strengths & weaknesses** — Which deck(s) deserve more focus, and why? Which one(s) are "in maintenance" and don't need immediate attention?
+3. **Funnel health** — Is my interval distribution healthy, or am I bottlenecked at one stage (too many learning, not enough mature, etc.)?
+4. **Streak & consistency** — Anything to flag about my activity pattern (gaps, intensity)?
+5. **This week's actions** — Give me 3-5 concrete actions, in priority order, for the next 7 days. Reference specific decks or numbers from the data above.
+
+Keep your reply under 400 words. Use bullet lists.`;
+  }
+
+  function render(s: CollectionStats) {
+    // ─── Summary chips ─────────────────────────────────────────────────
+    const totalCards = s.decks.reduce((acc, d) => acc + d.total, 0);
+    const totalMature = s.decks.reduce((acc, d) => acc + d.mature, 0);
+    const maturePct = totalCards > 0 ? Math.round((totalMature / totalCards) * 100) : 0;
+    document.getElementById('sum-total')!.textContent = String(totalCards);
+    document.getElementById('sum-mature')!.textContent = `${maturePct}%`;
+    document.getElementById('sum-today')!.textContent = String(s.reviewedToday);
+    document.getElementById('sum-streak')!.textContent = `${s.streak}d`;
+
+    renderHeatmap(s.reviewedByDay);
+    renderDecks(s.decks);
+    renderIntervals(s.intervalDistribution);
+    renderForecast(s.forecast14);
+  }
+
+  // ─── Heatmap (5 rows × 6 cols = 30 days, oldest top-left → today bottom-right) ─
+
+  function renderHeatmap(days: { date: string; count: number }[]) {
+    const cell = 18;
+    const gap = 4;
+    const cols = 6;
+    const rows = Math.ceil(days.length / cols);
+    const padL = 32; // label column
+    const padT = 8;
+    const w = padL + cols * (cell + gap);
+    const h = padT + rows * (cell + gap) + 18;
+
+    const max = Math.max(1, ...days.map((d) => d.count));
+    const accent = cssVar('--success');
+    const muted = cssVar('--bg-input');
+    const border = cssVar('--border');
+
+    function intensity(count: number): number {
+      if (count <= 0) return 0;
+      const t = count / max;
+      return Math.max(0.18, t); // floor for visibility
+    }
+
+    let cells = '';
+    days.forEach((d, idx) => {
+      const col = idx % cols;
+      const row = Math.floor(idx / cols);
+      const x = padL + col * (cell + gap);
+      const y = padT + row * (cell + gap);
+      const op = intensity(d.count);
+      const fill = d.count > 0 ? accent : muted;
+      cells += `<rect class="heatmap-cell" x="${x}" y="${y}" width="${cell}" height="${cell}" rx="3" fill="${fill}" fill-opacity="${op.toFixed(2)}" stroke="${border}" stroke-width="0.5"><title>${d.date} — ${d.count} reviews</title></rect>`;
+    });
+
+    // Row labels — week numbers (W-4, W-3 etc. roughly)
+    const labels: string[] = [];
+    for (let r = 0; r < rows; r++) {
+      const ago = (rows - 1 - r);
+      labels.push(`<text class="heatmap-label" x="0" y="${padT + r * (cell + gap) + cell - 4}">${ago === 0 ? 'now' : `-${ago}w`}</text>`);
+    }
+
+    // Bottom legend
+    const legY = padT + rows * (cell + gap) + 12;
+    const legend = `<text class="heatmap-label" x="${padL}" y="${legY}">Less</text>` +
+      [0.2, 0.4, 0.6, 0.8, 1.0].map((op, i) => {
+        const lx = padL + 32 + i * (cell + 4);
+        return `<rect x="${lx}" y="${legY - 10}" width="${cell - 4}" height="${cell - 4}" rx="2" fill="${accent}" fill-opacity="${op}"/>`;
+      }).join('') +
+      `<text class="heatmap-label" x="${padL + 32 + 5 * (cell + 4) + 4}" y="${legY}">More</text>`;
+
+    document.getElementById('chart-heatmap')!.innerHTML =
+      `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">${labels.join('')}${cells}${legend}</svg>`;
+  }
+
+  // ─── Per-deck composition (horizontal stacked bar) ─────────────────
+
+  function renderDecks(decks: any[]) {
+    const cell = 22;
+    const padL = 0;
+    const padR = 60; // for the count label
+    const w = 600;
+    const rowH = cell + 12;
+    const labelH = 14;
+    const h = decks.length * rowH + 10;
+
+    const colors = {
+      newCount: cssVar('--gold'),
+      learning: cssVar('--accent'),
+      review:   cssVar('--text-subtle'),
+      mature:   cssVar('--success'),
+      suspended:cssVar('--border-strong'),
+    };
+
+    const max = Math.max(1, ...decks.map((d) => d.total));
+    const barW = w - padL - padR;
+
+    let rows = '';
+    decks.forEach((d, idx) => {
+      const y = idx * rowH;
+      const scale = d.total > 0 ? barW / max : 0;
+      let x = padL;
+      const segs: { key: keyof typeof colors; val: number }[] = [
+        { key: 'newCount', val: d.newCount },
+        { key: 'learning', val: d.learning },
+        { key: 'review', val: Math.max(0, d.review - d.mature) },
+        { key: 'mature', val: d.mature },
+        { key: 'suspended', val: d.suspended },
+      ];
+      let segHtml = '';
+      for (const s of segs) {
+        if (s.val <= 0) continue;
+        const segW = s.val * scale;
+        segHtml += `<rect class="bar-row" x="${x}" y="${y + labelH}" width="${segW}" height="${cell}" fill="${colors[s.key]}"><title>${s.key}: ${s.val}</title></rect>`;
+        x += segW;
+      }
+      rows += `<g>` +
+        `<text class="bar-label" x="${padL}" y="${y + labelH - 3}">${escapeText(d.deckName)}</text>` +
+        `<text class="bar-value" x="${w - padR + 8}" y="${y + labelH + cell - 6}">${d.total}</text>` +
+        segHtml +
+        `</g>`;
+    });
+
+    const legend = `<div class="legend">` +
+      `<span class="legend-swatch" style="--col:${colors.newCount}">New</span>` +
+      `<span class="legend-swatch" style="--col:${colors.learning}">Learning</span>` +
+      `<span class="legend-swatch" style="--col:${colors.review}">Review (young)</span>` +
+      `<span class="legend-swatch" style="--col:${colors.mature}">Mature</span>` +
+      `<span class="legend-swatch" style="--col:${colors.suspended}">Suspended</span>` +
+      `</div>`;
+
+    document.getElementById('chart-decks')!.innerHTML =
+      `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">${rows}</svg>${legend}`;
+  }
+
+  // ─── Interval distribution (vertical bars) ─────────────────────────
+
+  function renderIntervals(buckets: { label: string; count: number }[]) {
+    const w = 600;
+    const h = 200;
+    const padL = 30;
+    const padR = 16;
+    const padB = 30;
+    const padT = 10;
+    const chartW = w - padL - padR;
+    const chartH = h - padT - padB;
+    const bw = chartW / buckets.length * 0.65;
+    const gap = (chartW / buckets.length) - bw;
+    const max = Math.max(1, ...buckets.map((b) => b.count));
+    const accent = cssVar('--accent');
+
+    let bars = '';
+    buckets.forEach((b, idx) => {
+      const x = padL + idx * (bw + gap) + gap / 2;
+      const barH = (b.count / max) * chartH;
+      const y = padT + chartH - barH;
+      bars += `<rect class="bar-row" x="${x}" y="${y}" width="${bw}" height="${barH}" rx="3" fill="${accent}" fill-opacity="0.85"><title>${b.label}: ${b.count}</title></rect>`;
+      bars += `<text class="bar-value" x="${x + bw / 2}" y="${y - 4}" text-anchor="middle">${b.count}</text>`;
+      bars += `<text class="axis-label" x="${x + bw / 2}" y="${padT + chartH + 14}" text-anchor="middle">${b.label}</text>`;
+    });
+
+    document.getElementById('chart-intervals')!.innerHTML =
+      `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">${bars}</svg>`;
+  }
+
+  // ─── 14-day forecast (vertical bars) ───────────────────────────────
+
+  function renderForecast(counts: number[]) {
+    const w = 600;
+    const h = 200;
+    const padL = 30;
+    const padR = 16;
+    const padB = 30;
+    const padT = 10;
+    const chartW = w - padL - padR;
+    const chartH = h - padT - padB;
+    const bw = chartW / counts.length * 0.7;
+    const gap = (chartW / counts.length) - bw;
+    const max = Math.max(1, ...counts);
+    const today = cssVar('--accent');
+    const others = cssVar('--text-subtle');
+
+    let bars = '';
+    counts.forEach((c, idx) => {
+      const x = padL + idx * (bw + gap) + gap / 2;
+      const barH = (c / max) * chartH;
+      const y = padT + chartH - barH;
+      const isToday = idx === 0;
+      const fill = isToday ? today : others;
+      bars += `<rect class="bar-row" x="${x}" y="${y}" width="${bw}" height="${barH}" rx="2" fill="${fill}" fill-opacity="${isToday ? 0.9 : 0.55}"><title>${idx === 0 ? 'today' : `+${idx}d`}: ${c} cards</title></rect>`;
+      if (idx === 0 || idx === 6 || idx === 13) {
+        bars += `<text class="axis-label" x="${x + bw / 2}" y="${padT + chartH + 14}" text-anchor="middle">${idx === 0 ? 'today' : `+${idx}d`}</text>`;
+      }
+      if (c > 0 && (isToday || c === max)) {
+        bars += `<text class="bar-value" x="${x + bw / 2}" y="${y - 4}" text-anchor="middle">${c}</text>`;
+      }
+    });
+
+    document.getElementById('chart-forecast')!.innerHTML =
+      `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">${bars}</svg>`;
+  }
+
+  function escapeText(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+</script>

@@ -1,0 +1,48 @@
+matching-colors:
+  - type: matching
+    question: Match each color to its translation.
+    pairs:
+      - jp: <ruby>赤<rt>あか</rt></ruby>
+        meaning: red
+      - jp: <ruby>青<rt>あお</rt></ruby>
+        meaning: blue
+      - jp: <ruby>白<rt>しろ</rt></ruby>
+        meaning: white
+      - jp: <ruby>黒<rt>くろ</rt></ruby>
+        meaning: black
+      - jp: <ruby>緑<rt>みどり</rt></ruby>
+        meaning: green
+    hint: Basic colors
+blocks-hello:
+  - type: sentence-blocks
+    question: Hello, my name is Pierre.
+    blocks:
+      - text: こんにちは
+      - text: 、
+      - text: <ruby>私<rt>わたし</rt></ruby>
+      - text: は
+      - text: ピエール
+      - text: です
+    distractors:
+      - text: が
+      - text: を
+    hint: Greeting + self-introduction
+free-input-days:
+  - type: free-input
+    question: How do you say "Monday" in Japanese?
+    answers:
+      - 月曜日
+      - げつようび
+      - getsuyoubi
+    display: <ruby>月曜日<rt>げつようび</rt></ruby>
+    hint: The day of the moon
+mc-particles:
+  - type: multiple-choice
+    question: Which particle marks the direct object?
+    options:
+      - は
+      - を
+      - が
+      - に
+    answer: 1
+    hint: "\"wo\" is pronounced \"o\""

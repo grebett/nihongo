@@ -1,6 +1,6 @@
 # Authoring lessons & questions
 
-How to add new content (lessons, sections, questions) to Nihon.
+How to add new content (lessons, sections, questions) to Nihongo.
 
 ## Where things live
 
@@ -168,7 +168,7 @@ and get back a ready-to-drop-in lesson + question files.
 
 ## Two formats — when to use which
 
-Nihon supports two equivalent formats for the same data:
+Nihongo supports two equivalent formats for the same data:
 
 ### 1. Multi-file (this doc) — for repo-committed lessons
 

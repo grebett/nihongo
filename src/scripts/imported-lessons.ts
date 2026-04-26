@@ -143,6 +143,7 @@ export function parseImportYaml(text: string): ParseResult {
     source: typeof lesson.source === 'string' ? lesson.source : '',
     videoId: typeof lesson.videoId === 'string' ? lesson.videoId : '',
     coverImage: typeof lesson.coverImage === 'string' ? lesson.coverImage : undefined,
+    coverEmoji: typeof lesson.coverEmoji === 'string' ? lesson.coverEmoji : undefined,
     number: lesson.number,
     sections: lesson.sections,
   };
@@ -154,4 +155,74 @@ export function parseImportYaml(text: string): ParseResult {
       questions: questions as Record<string, Question[]>,
     },
   };
+}
+
+// ─── Promote: bundle → multi-file format ────────────────────────────────
+
+/**
+ * Convert an imported bundle into the multi-file format used by built-in
+ * lessons in `src/data/lessons/<id>/`. Returns a map of relative path → YAML
+ * content, ready to be written to disk.
+ *
+ * Convention: one questions/<sectionId>.yaml file per section, containing all
+ * its parts. (Mirrors how shimamori-1 / verb-conjugation are organised.)
+ */
+export function bundleToFiles(bundle: LessonBundle): Record<string, string> {
+  const files: Record<string, string> = {};
+
+  // lesson.yaml — strip away anything that's only meaningful for imports
+  const lessonForRepo = { ...bundle.lesson };
+  files['lesson.yaml'] = yaml.dump(lessonForRepo, {
+    lineWidth: -1, // don't wrap long strings (preserves ruby HTML in one line)
+    quotingType: '"',
+    forceQuotes: false,
+  });
+
+  // Group questions by their owning section
+  // (a part belongs to the section that lists it in lesson.sections[].parts[])
+  const partToSection: Record<string, string> = {};
+  for (const sec of bundle.lesson.sections) {
+    for (const p of sec.parts) {
+      partToSection[p.id] = sec.id;
+    }
+  }
+
+  const sectionBuckets: Record<string, Record<string, Question[]>> = {};
+  for (const [partId, qList] of Object.entries(bundle.questions)) {
+    const sectionId = partToSection[partId] ?? partId; // orphan parts get their own file
+    if (!sectionBuckets[sectionId]) sectionBuckets[sectionId] = {};
+    sectionBuckets[sectionId][partId] = qList;
+  }
+
+  for (const [sectionId, parts] of Object.entries(sectionBuckets)) {
+    files[`questions/${sectionId}.yaml`] = yaml.dump(parts, {
+      lineWidth: -1,
+      quotingType: '"',
+      forceQuotes: false,
+    });
+  }
+
+  return files;
+}
+
+/**
+ * Build a single bash command that creates the lesson folder + all files via
+ * heredocs. The user pastes this into their terminal; files appear under
+ * `src/data/lessons/<id>/`.
+ */
+export function bundleToShellCommand(bundle: LessonBundle): string {
+  const files = bundleToFiles(bundle);
+  const id = bundle.lesson.id;
+  const dirParts = new Set<string>();
+  for (const path of Object.keys(files)) {
+    const dir = path.includes('/') ? path.slice(0, path.lastIndexOf('/')) : '';
+    if (dir) dirParts.add(dir);
+  }
+  const mkdirs = `mkdir -p src/data/lessons/${id}${dirParts.size > 0 ? '/' + Array.from(dirParts).join(' src/data/lessons/' + id + '/') : ''}`;
+
+  const heredocs = Object.entries(files).map(([path, content]) =>
+    `cat > src/data/lessons/${id}/${path} <<'NIHONGO_EOF'\n${content}NIHONGO_EOF`
+  ).join('\n');
+
+  return `${mkdirs}\n${heredocs}`;
 }

@@ -186,14 +186,120 @@ export async function loadDueCards(deckName: string, limit = 50): Promise<AnkiCa
 }
 
 /**
- * Submit one review to Anki. Uses the `guiAnswerCard` action — requires the
- * card to be the currently shown one in Anki, so we use `answerCards` instead
- * which works on arbitrary cardIds without UI focus.
+ * Submit one review to Anki. Uses `answerCards` which works on arbitrary
+ * cardIds without UI focus.
  */
 export async function submitReview(cardId: number, ease: AnkiEase): Promise<void> {
   await invoke<boolean[]>('answerCards', {
     answers: [{ cardId, ease }],
   });
+}
+
+// ─── Notes API (push new content into Anki) ─────────────────────────────
+
+export interface AnkiNote {
+  fields: Record<string, string>;
+  tags?: string[];
+}
+
+/**
+ * Push a batch of notes into Anki. Returns the array of created noteIds
+ * (null entries = duplicates that AnkiConnect refused).
+ */
+export async function addNotes(
+  deckName: string,
+  modelName: string,
+  notes: AnkiNote[],
+  defaultTags: string[] = [],
+): Promise<(number | null)[]> {
+  const payload = notes.map((n) => ({
+    deckName,
+    modelName,
+    fields: n.fields,
+    tags: [...(n.tags ?? []), ...defaultTags],
+    options: {
+      allowDuplicate: false,
+      duplicateScope: 'deck',
+    },
+  }));
+  return invoke<(number | null)[]>('addNotes', { notes: payload });
+}
+
+export async function listModels(): Promise<string[]> {
+  return invoke<string[]>('modelNames');
+}
+
+export async function listModelFields(modelName: string): Promise<string[]> {
+  return invoke<string[]>('modelFieldNames', { modelName });
+}
+
+/** Create a deck if it doesn't exist (no-op if it already does). Returns the deckId. */
+export async function ensureDeck(deckName: string): Promise<number> {
+  return invoke<number>('createDeck', { deck: deckName });
+}
+
+// ─── Card sub-queries (mature / weak) for production drill & rescue ─────
+
+export interface CardSnapshot extends AnkiCard {
+  interval: number; // days
+  factor: number;   // ease factor (2500 = 250% default)
+  reps: number;
+  lapses: number;
+}
+
+async function loadCardSnapshots(cardIds: number[]): Promise<CardSnapshot[]> {
+  if (cardIds.length === 0) return [];
+  const info = await invoke<Array<{
+    cardId: number;
+    note: number;
+    deckName: string;
+    due: number;
+    interval: number;
+    factor: number;
+    reps: number;
+    lapses: number;
+    fields: Record<string, { value: string; order: number }>;
+  }>>('cardsInfo', { cards: cardIds });
+  return info.map((c) => ({
+    cardId: c.cardId,
+    noteId: c.note,
+    deckName: c.deckName,
+    due: c.due,
+    interval: c.interval,
+    factor: c.factor,
+    reps: c.reps,
+    lapses: c.lapses,
+    fields: Object.fromEntries(
+      Object.entries(c.fields).map(([k, v]) => [k, stripHtml(v.value)]),
+    ),
+    tags: [],
+  }));
+}
+
+/** Mature cards = interval ≥ minDays AND lapses are low (well-known). */
+export async function loadMatureCards(deckName: string, minDays = 21, limit = 100): Promise<CardSnapshot[]> {
+  const ids = await invoke<number[]>('findCards', {
+    query: `deck:"${deckName}" prop:ivl>=${minDays} -is:new`,
+  });
+  const snapshots = await loadCardSnapshots(ids.slice(0, limit));
+  // Sort: longest interval first (most "mature")
+  snapshots.sort((a, b) => b.interval - a.interval);
+  return snapshots;
+}
+
+/** Weak cards = high lapse count and/or low ease factor. */
+export async function loadWeakCards(deckName: string, limit = 30): Promise<CardSnapshot[]> {
+  // Anki "leech" cards: tagged 'leech'. Plus cards with ≥3 lapses.
+  const ids = await invoke<number[]>('findCards', {
+    query: `deck:"${deckName}" (prop:lapses>=3 OR tag:leech)`,
+  });
+  const snapshots = await loadCardSnapshots(ids);
+  // Sort: most lapses first, then lowest factor
+  snapshots.sort((a, b) => {
+    if (b.lapses !== a.lapses) return b.lapses - a.lapses;
+    return a.factor - b.factor;
+  });
+  return snapshots.slice(0, limit);
 }
 
 // ─── Sync ────────────────────────────────────────────────────────────────

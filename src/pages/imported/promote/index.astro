@@ -1,0 +1,283 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/quiz.css';
+---
+
+<Layout title="Promote import">
+  <a id="back-link" class="back" href="#">&larr; Imported lessons</a>
+
+  <header class="section-header">
+    <span class="section-number">Promote</span>
+    <h1 id="page-title">Promote to repo</h1>
+    <p id="page-desc" class="description">
+      Convert this imported lesson into permanent YAML files committable to the repo.
+    </p>
+  </header>
+
+  <div id="not-found" class="stats-error hidden">Lesson not found in localStorage.</div>
+
+  <div id="content" class="hidden">
+    <section class="pilot-card">
+      <h2>1. Files to create</h2>
+      <p class="muted small">The bundle splits into one <code>lesson.yaml</code> + one <code>questions/&lt;section&gt;.yaml</code> per section.</p>
+      <ul id="file-list" class="file-list"></ul>
+    </section>
+
+    <section class="pilot-card" id="direct-write-card">
+      <h2>2. Write directly to the project folder</h2>
+      <p id="write-hint" class="muted small">Loading…</p>
+      <div class="actions">
+        <button id="write-direct" class="submit-btn" hidden>Write to project</button>
+        <a id="settings-link" href="#" class="reset-btn" hidden>Configure folder…</a>
+        <span id="write-status" class="copy-status"></span>
+      </div>
+    </section>
+
+    <section class="pilot-card">
+      <h2>3. Or run this in your project root</h2>
+      <p class="muted small">Pastes the files into <code>src/data/lessons/&lt;id&gt;/</code> using heredocs (no escaping issues).</p>
+      <pre id="shell-cmd" class="shell-cmd"></pre>
+      <div class="actions">
+        <button id="copy-cmd" class="submit-btn">Copy command</button>
+        <span id="copy-status" class="copy-status"></span>
+      </div>
+    </section>
+
+    <section class="pilot-card">
+      <h2>4. Or download files individually</h2>
+      <p class="muted small">If you'd rather drop them in by hand.</p>
+      <div id="download-list" class="actions"></div>
+    </section>
+
+    <section class="pilot-card warning-card">
+      <h2>⚠ After writing — restart the dev server</h2>
+      <p class="muted small">
+        Astro's <code>getStaticPaths()</code> runs at dev-server startup and caches the lesson list — your new lesson <strong>won't appear in <code>/lesson/&lt;id&gt;</code> until you restart</strong> <code>npm run dev</code> (Ctrl+C then relaunch). Same for prod: <code>npm run build</code> + redeploy.
+      </p>
+    </section>
+
+    <section class="pilot-card">
+      <h2>5. After committing — clean up</h2>
+      <p class="muted small">Once the lesson is built into the repo, you can remove the localStorage import to avoid duplication.</p>
+      <div class="actions">
+        <button id="remove-import" class="reset-btn">Remove from imports</button>
+        <span id="remove-status" class="copy-status"></span>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style is:global>
+  .warning-card {
+    border-color: var(--gold) !important;
+    background: rgba(160, 120, 32, 0.05) !important;
+  }
+  .warning-card h2 { color: var(--gold) !important; }
+  .warning-card code {
+    background: rgba(160, 120, 32, 0.12);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+    font-size: 0.85em;
+  }
+
+  .file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .file-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.85rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .file-list li::before {
+    content: '⌁';
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+  .file-list .file-size {
+    margin-left: auto;
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+  }
+
+  .shell-cmd {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 0.95rem;
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: var(--text);
+    overflow-x: auto;
+    white-space: pre;
+    margin: 0;
+    max-height: 360px;
+  }
+
+  .download-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.85rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+    font-size: 0.78rem;
+    text-decoration: none;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .download-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>
+
+<script>
+  import { getImported, deleteImported, bundleToFiles, bundleToShellCommand } from '../../../scripts/imported-lessons';
+  import {
+    isFsApiSupported,
+    loadProjectRoot,
+    pickProjectRoot,
+    ensurePermission,
+    getLessonDir,
+    writeFiles,
+  } from '../../../scripts/project-folder';
+
+  const BASE = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+  const params = new URLSearchParams(window.location.search);
+  const lessonId = params.get('lesson') || '';
+
+  const backLink = document.getElementById('back-link') as HTMLAnchorElement;
+  backLink.href = `${BASE}/imported/`;
+
+  const notFound = document.getElementById('not-found')!;
+  const content = document.getElementById('content')!;
+
+  const bundle = lessonId ? getImported(lessonId) : null;
+  if (!bundle) {
+    notFound.classList.remove('hidden');
+  } else {
+    content.classList.remove('hidden');
+    const titleEl = document.getElementById('page-title')!;
+    const descEl = document.getElementById('page-desc')!;
+    titleEl.textContent = `Promote: ${bundle.lesson.title}`;
+    descEl.textContent = `Convert "${bundle.lesson.id}" (imported lesson) into permanent YAML files at src/data/lessons/${bundle.lesson.id}/.`;
+
+    const files = bundleToFiles(bundle);
+    const cmd = bundleToShellCommand(bundle);
+
+    // 1. File list
+    const fileListEl = document.getElementById('file-list')!;
+    fileListEl.innerHTML = Object.entries(files).map(([path, content]) => {
+      const bytes = new Blob([content]).size;
+      return `<li>
+        <span>src/data/lessons/${escapeText(bundle.lesson.id)}/${escapeText(path)}</span>
+        <span class="file-size">${bytes} B</span>
+      </li>`;
+    }).join('');
+
+    // 2. Direct write via File System Access API (Chrome/Edge/Brave)
+    const directCard = document.getElementById('direct-write-card')!;
+    const writeBtn = document.getElementById('write-direct') as HTMLButtonElement;
+    const writeHint = document.getElementById('write-hint')!;
+    const writeStatus = document.getElementById('write-status')!;
+    const settingsLink = document.getElementById('settings-link') as HTMLAnchorElement;
+    settingsLink.href = `${BASE}/settings`;
+
+    (async function setupDirectWrite() {
+      if (!isFsApiSupported()) {
+        directCard.classList.add('hidden');
+        return;
+      }
+      const saved = await loadProjectRoot();
+      if (saved) {
+        writeHint.innerHTML = `Configured folder: <code>${escapeText(saved.name)}</code>. <a href="${BASE}/settings">Change…</a>`;
+        writeBtn.textContent = `Write to ${saved.name}`;
+        writeBtn.hidden = false;
+      } else {
+        writeHint.innerHTML = `No project folder configured yet. <a href="${BASE}/settings">Set it up once</a> for one-click writes (Chrome/Edge/Brave only).`;
+        writeBtn.hidden = false;
+        writeBtn.textContent = 'Pick project folder…';
+        settingsLink.hidden = false;
+      }
+    })();
+
+    writeBtn.addEventListener('click', async () => {
+      writeStatus.classList.remove('err');
+      writeStatus.textContent = '';
+      try {
+        let rootHandle = await loadProjectRoot();
+        if (!rootHandle) {
+          rootHandle = await pickProjectRoot();
+        } else {
+          const ok = await ensurePermission(rootHandle);
+          if (!ok) throw new Error('Permission denied for the saved folder.');
+        }
+        const lessonHandle = await getLessonDir(rootHandle, bundle.lesson.id);
+        const written = await writeFiles(lessonHandle, files);
+        writeStatus.textContent = `✓ Wrote ${written} file${written > 1 ? 's' : ''} to ${rootHandle.name}/src/data/lessons/${bundle.lesson.id}/`;
+      } catch (e: any) {
+        writeStatus.classList.add('err');
+        if (e?.name === 'AbortError') {
+          writeStatus.textContent = '✗ Cancelled';
+        } else {
+          writeStatus.textContent = `✗ ${e?.message ?? e}`;
+        }
+      }
+    });
+
+    // 3. Shell command
+    document.getElementById('shell-cmd')!.textContent = cmd;
+    document.getElementById('copy-cmd')!.addEventListener('click', async () => {
+      const status = document.getElementById('copy-status')!;
+      try {
+        await navigator.clipboard.writeText(cmd);
+        status.textContent = '✓ Copied';
+        status.classList.remove('err');
+        setTimeout(() => { status.textContent = ''; }, 2500);
+      } catch (e: any) {
+        status.textContent = `✗ ${e?.message ?? e}`;
+        status.classList.add('err');
+      }
+    });
+
+    // 3. Per-file download
+    const dlList = document.getElementById('download-list')!;
+    dlList.innerHTML = Object.entries(files).map(([path, content]) => {
+      const blob = new Blob([content], { type: 'application/x-yaml' });
+      const url = URL.createObjectURL(blob);
+      // Use the basename as the suggested filename
+      const fname = path.split('/').pop() || path;
+      return `<a class="download-link" href="${url}" download="${escapeText(fname)}">⬇ ${escapeText(fname)}</a>`;
+    }).join('');
+
+    // 4. Remove import
+    document.getElementById('remove-import')!.addEventListener('click', () => {
+      if (!confirm(`Remove imported lesson "${bundle.lesson.id}" from localStorage? (Your committed YAML files in src/data/lessons/ are NOT deleted.)`)) return;
+      deleteImported(bundle.lesson.id);
+      const status = document.getElementById('remove-status')!;
+      status.textContent = '✓ Removed';
+      setTimeout(() => { window.location.href = `${BASE}/imported/`; }, 1000);
+    });
+  }
+
+  function escapeText(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+</script>

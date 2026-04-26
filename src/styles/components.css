@@ -17,6 +17,7 @@
   border: 1px solid var(--border);
   border-radius: 9px;
   color: var(--text-subtle);
+  text-decoration: none;
   cursor: pointer;
   transition: color var(--dur-fast) var(--ease),
               border-color var(--dur-fast) var(--ease),

@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/quiz.css';
+---
+
+<Layout title="Settings">
+  <a href={import.meta.env.BASE_URL} class="back">&larr; Home</a>
+
+  <header class="section-header">
+    <span class="section-number">Project setup</span>
+    <h1>Settings</h1>
+    <p class="description">Configure where Nihongo writes files when promoting imports.</p>
+  </header>
+
+  <section class="pilot-card">
+    <h2>Project folder</h2>
+    <p class="muted small">
+      Used by <code>/imported/promote/</code> to write committed YAML files directly into <code>src/data/lessons/</code>.
+      Pick once — the browser remembers and you'll only need to confirm permission on subsequent writes.
+    </p>
+
+    <div id="folder-status" class="folder-status">
+      <span class="muted small">Loading…</span>
+    </div>
+
+    <div class="actions" id="folder-actions"></div>
+
+    <div id="folder-result" class="result-line hidden"></div>
+
+    <p class="muted small" style="margin-top: 1rem;">
+      <strong>Browser support:</strong> Chrome / Edge / Brave / Opera.
+      Safari and Firefox don't support the File System Access API — you'll need to use the shell command
+      or download files manually from the promote page.
+    </p>
+  </section>
+</Layout>
+
+<style is:global>
+  .folder-status {
+    margin: 0.85rem 0;
+    padding: 0.85rem 1rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.55;
+    word-break: break-word;
+  }
+  .folder-status.set { border-color: var(--success); }
+  .folder-status.unset { color: var(--text-muted); font-style: italic; font-family: inherit; }
+</style>
+
+<script>
+  import {
+    isFsApiSupported,
+    loadProjectRoot,
+    pickProjectRoot,
+    clearProjectRoot,
+    ensurePermission,
+  } from '../scripts/project-folder';
+
+  const statusEl = document.getElementById('folder-status')!;
+  const actionsEl = document.getElementById('folder-actions')!;
+  const resultEl = document.getElementById('folder-result')!;
+
+  function showResult(ok: boolean, msg: string) {
+    resultEl.className = `result-line ${ok ? 'ok' : 'err'}`;
+    resultEl.textContent = msg;
+  }
+
+  async function refresh() {
+    if (!isFsApiSupported()) {
+      statusEl.className = 'folder-status unset';
+      statusEl.textContent = 'File System Access API not supported in this browser. Use Chrome/Edge/Brave/Opera.';
+      actionsEl.innerHTML = '';
+      return;
+    }
+
+    const handle = await loadProjectRoot();
+    if (!handle) {
+      statusEl.className = 'folder-status unset';
+      statusEl.textContent = 'No folder configured.';
+      actionsEl.innerHTML = `<button id="pick-btn" class="submit-btn">Pick project folder…</button>`;
+    } else {
+      statusEl.className = 'folder-status set';
+      const perm = await (handle as any).queryPermission({ mode: 'readwrite' });
+      statusEl.innerHTML = `📁 <strong>${escapeText(handle.name)}</strong><br><span class="muted small">Permission: ${perm}${perm === 'prompt' ? ' (will ask on next write)' : ''}</span>`;
+      actionsEl.innerHTML = `
+        <button id="reverify-btn" class="submit-btn">Verify access</button>
+        <button id="repick-btn" class="reset-btn">Change folder…</button>
+        <button id="clear-btn" class="reset-btn">Clear</button>
+      `;
+    }
+    wireButtons();
+  }
+
+  function wireButtons() {
+    const pickBtn = document.getElementById('pick-btn');
+    if (pickBtn) {
+      pickBtn.addEventListener('click', async () => {
+        try {
+          const handle = await pickProjectRoot();
+          showResult(true, `✓ Project folder set: ${handle.name}`);
+          refresh();
+        } catch (e: any) {
+          if (e?.name === 'AbortError') {
+            showResult(false, '✗ Cancelled');
+          } else {
+            showResult(false, `✗ ${e?.message ?? e}`);
+          }
+        }
+      });
+    }
+    const repickBtn = document.getElementById('repick-btn');
+    if (repickBtn) {
+      repickBtn.addEventListener('click', async () => {
+        try {
+          const handle = await pickProjectRoot();
+          showResult(true, `✓ Project folder updated: ${handle.name}`);
+          refresh();
+        } catch (e: any) {
+          if (e?.name !== 'AbortError') showResult(false, `✗ ${e?.message ?? e}`);
+        }
+      });
+    }
+    const reverifyBtn = document.getElementById('reverify-btn');
+    if (reverifyBtn) {
+      reverifyBtn.addEventListener('click', async () => {
+        const h = await loadProjectRoot();
+        if (!h) return;
+        const ok = await ensurePermission(h);
+        showResult(ok, ok ? '✓ Permission granted, ready to write.' : '✗ Permission denied.');
+        refresh();
+      });
+    }
+    const clearBtn = document.getElementById('clear-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', async () => {
+        if (!confirm('Forget the project folder? You will need to pick it again next time.')) return;
+        await clearProjectRoot();
+        showResult(true, '✓ Cleared.');
+        refresh();
+      });
+    }
+  }
+
+  function escapeText(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  refresh();
+</script>

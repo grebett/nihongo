@@ -1,0 +1,29 @@
+id: test-import
+title: Test — Import
+description: Small lesson to test the importer
+source: Sample
+videoId: ""
+# coverImage: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTEyIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjExMiIgZmlsbD0iI2RjMzIyZiIvPjx0ZXh0IHg9IjEwMCIgeT0iNzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiPnRlc3Q8L3RleHQ+PC9zdmc+
+coverEmoji: "食"
+# number: 1
+sections:
+  - id: vocabulary
+    title: Vocabulary
+    description: Three small exercises to test all 4 question types
+    parts:
+      - id: matching-colors
+        title: Colors (matching)
+        startTime: 0
+        endTime: 0
+      - id: blocks-hello
+        title: Compose (blocks)
+        startTime: 0
+        endTime: 0
+      - id: free-input-days
+        title: Type (free-input)
+        startTime: 0
+        endTime: 0
+      - id: mc-particles
+        title: Multiple choice
+        startTime: 0
+        endTime: 0

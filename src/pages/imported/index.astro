@@ -310,6 +310,7 @@ import '../../styles/quiz.css';
             </div>
             <span class="card-chevron" aria-hidden="true">${icon('chevron-right', 18)}</span>
           </a>
+          <a class="icon-btn" href="${BASE}/imported/promote/?lesson=${encodeURIComponent(lesson.id)}" title="Promote to repo (commit as YAML)">${icon('upload', 16)}</a>
           <button class="icon-btn danger" data-delete-id="${escapeText(lesson.id)}" aria-label="Delete">${icon('trash', 16)}</button>
         </div>`;
       })
