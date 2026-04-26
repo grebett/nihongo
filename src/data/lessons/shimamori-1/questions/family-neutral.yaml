@@ -1,0 +1,94 @@
+family-parents-neutral:
+  - type: matching
+    question: "Match each term to its translation (parents — neutral/modest form)."
+    pairs:
+      - jp: "<ruby>家族<rt>かぞく</rt></ruby>"
+        meaning: "family"
+      - jp: "<ruby>父<rt>ちち</rt></ruby>"
+        meaning: "my father"
+      - jp: "<ruby>母<rt>はは</rt></ruby>"
+        meaning: "my mother"
+      - jp: "<ruby>両親<rt>りょうしん</rt></ruby>"
+        meaning: "my parents"
+      - jp: "<ruby>親<rt>おや</rt></ruby>"
+        meaning: "parent"
+    hint: "Terms used to talk about your own family"
+
+  - type: matching
+    question: "Match each term to its translation (parents — descriptive use)."
+    pairs:
+      - jp: "<ruby>父親<rt>ちちおや</rt></ruby>"
+        meaning: "the father (descriptive)"
+      - jp: "<ruby>母親<rt>ははおや</rt></ruby>"
+        meaning: "the mother (descriptive)"
+      - jp: "<ruby>家族<rt>かぞく</rt></ruby>"
+        meaning: "family"
+      - jp: "<ruby>両親<rt>りょうしん</rt></ruby>"
+        meaning: "parents"
+    hint: "父親 / 母親 are descriptive terms (\"the father\", \"the mother\")"
+
+family-siblings-neutral:
+  - type: matching
+    question: "Match each term to its translation (siblings — neutral form)."
+    pairs:
+      - jp: "<ruby>兄<rt>あに</rt></ruby>"
+        meaning: "my older brother"
+      - jp: "<ruby>姉<rt>あね</rt></ruby>"
+        meaning: "my older sister"
+      - jp: "<ruby>弟<rt>おとうと</rt></ruby>"
+        meaning: "my younger brother"
+      - jp: "<ruby>妹<rt>いもうと</rt></ruby>"
+        meaning: "my younger sister"
+      - jp: "<ruby>兄弟<rt>きょうだい</rt></ruby>"
+        meaning: "siblings"
+    hint: "Words used to talk about your own siblings"
+
+family-spouse-neutral:
+  - type: matching
+    question: "Match each term to its translation (spouse — talking about your own)."
+    pairs:
+      - jp: "<ruby>夫<rt>おっと</rt></ruby>"
+        meaning: "my husband"
+      - jp: "<ruby>主人<rt>しゅじん</rt></ruby>"
+        meaning: "my husband (lit. master of the house)"
+      - jp: "<ruby>妻<rt>つま</rt></ruby>"
+        meaning: "my wife"
+      - jp: "<ruby>家内<rt>かない</rt></ruby>"
+        meaning: "my wife (lit. inside the house)"
+      - jp: "<ruby>夫婦<rt>ふうふ</rt></ruby>"
+        meaning: "married couple"
+    hint: "夫 and 妻 are the most neutral; 主人 and 家内 are more traditional"
+
+family-children-neutral:
+  - type: matching
+    question: "Match each term to its translation (children & grandchildren — neutral form)."
+    pairs:
+      - jp: "<ruby>子<rt>こ</rt></ruby>"
+        meaning: "child"
+      - jp: "<ruby>子<rt>こ</rt></ruby>ども"
+        meaning: "child (common form)"
+      - jp: "<ruby>息子<rt>むすこ</rt></ruby>"
+        meaning: "my son"
+      - jp: "<ruby>娘<rt>むすめ</rt></ruby>"
+        meaning: "my daughter"
+      - jp: "<ruby>孫<rt>まご</rt></ruby>"
+        meaning: "grandchild"
+    hint: "息子 and 娘 are used to talk about your own children"
+
+family-extended-neutral:
+  - type: matching
+    question: "Match each term to its translation (extended family — neutral form)."
+    pairs:
+      - jp: "<ruby>祖父<rt>そふ</rt></ruby>"
+        meaning: "my grandfather"
+      - jp: "<ruby>祖母<rt>そぼ</rt></ruby>"
+        meaning: "my grandmother"
+      - jp: "おじ"
+        meaning: "my uncle"
+      - jp: "おば"
+        meaning: "my aunt"
+      - jp: "<ruby>甥<rt>おい</rt></ruby>"
+        meaning: "my nephew"
+      - jp: "<ruby>姪<rt>めい</rt></ruby>"
+        meaning: "my niece"
+    hint: "祖父 / 祖母 are the neutral terms for your own grandparents"

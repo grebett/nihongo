@@ -3,31 +3,31 @@ import Layout from '../../layouts/Layout.astro';
 import '../../styles/quiz.css';
 ---
 
-<Layout title="Leçons importées">
-  <a href={import.meta.env.BASE_URL} class="back">&larr; Accueil</a>
+<Layout title="Imported lessons">
+  <a href={import.meta.env.BASE_URL} class="back">&larr; Home</a>
 
   <!-- View: import (default) -->
   <div id="view-import" class="view hidden">
     <header class="section-header">
-      <h1>Leçons importées</h1>
-      <p class="description">Importer une leçon au format YAML bundle (voir <code>docs/LLM_PROMPT.md</code>).</p>
+      <h1>Imported lessons</h1>
+      <p class="description">Import a lesson in YAML bundle format (see <code>docs/LLM_PROMPT.md</code>).</p>
     </header>
 
     <section class="import-section">
       <div class="import-controls">
-        <label for="file-input" class="file-label">Choisir un fichier .yaml / .yml / .txt</label>
+        <label for="file-input" class="file-label">Choose a .yaml / .yml / .txt file</label>
         <input id="file-input" type="file" accept=".yaml,.yml,.txt,.json" />
       </div>
-      <textarea id="paste-area" rows="14" placeholder="…ou coller le contenu YAML ici"></textarea>
+      <textarea id="paste-area" rows="14" placeholder="…or paste the YAML content here"></textarea>
       <div class="import-actions">
-        <button id="import-btn" class="submit-btn">Importer</button>
+        <button id="import-btn" class="submit-btn">Import</button>
       </div>
       <div id="import-error" class="import-error hidden"></div>
       <div id="import-success" class="import-success hidden"></div>
     </section>
 
     <section class="imports-list-section">
-      <h2>Leçons actuellement importées</h2>
+      <h2>Currently imported lessons</h2>
       <div id="imports-list"></div>
     </section>
   </div>
@@ -55,7 +55,7 @@ import '../../styles/quiz.css';
   </div>
 </Layout>
 
-<style>
+<style is:global>
   .view.hidden { display: none; }
   .view { display: block; }
 
@@ -278,7 +278,7 @@ import '../../styles/quiz.css';
     const container = document.getElementById('imports-list')!;
     const all = getAllImported();
     if (all.length === 0) {
-      container.innerHTML = '<p class="imports-empty">Aucune leçon importée pour le moment.</p>';
+      container.innerHTML = '<p class="imports-empty">No imported lessons yet.</p>';
       return;
     }
     container.innerHTML = all
@@ -291,7 +291,7 @@ import '../../styles/quiz.css';
               <div class="import-card-meta">${escapeText(lesson.source || '—')} · ${sectionsCount} section${sectionsCount > 1 ? 's' : ''}</div>
             </div>
           </a>
-          <button class="import-card-delete" data-delete-id="${escapeText(lesson.id)}" aria-label="Supprimer">✕</button>
+          <button class="import-card-delete" data-delete-id="${escapeText(lesson.id)}" aria-label="Delete">✕</button>
         </div>`;
       })
       .join('');
@@ -299,7 +299,7 @@ import '../../styles/quiz.css';
     container.querySelectorAll('[data-delete-id]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const id = (btn as HTMLElement).dataset.deleteId!;
-        if (!confirm(`Supprimer la leçon importée "${id}" ?`)) return;
+        if (!confirm(`Delete imported lesson "${id}"?`)) return;
         deleteImported(id);
         renderImportsList();
       });
@@ -319,7 +319,7 @@ import '../../styles/quiz.css';
       return;
     }
     saveImported(result.bundle);
-    okEl.textContent = `Leçon "${result.bundle.lesson.title}" importée !`;
+    okEl.textContent = `Lesson "${result.bundle.lesson.title}" imported!`;
     okEl.classList.remove('hidden');
     (document.getElementById('paste-area') as HTMLTextAreaElement).value = '';
     renderImportsList();
@@ -330,7 +330,7 @@ import '../../styles/quiz.css';
       const text = (document.getElementById('paste-area') as HTMLTextAreaElement).value.trim();
       if (!text) {
         const errEl = document.getElementById('import-error')!;
-        errEl.textContent = 'Le champ est vide.';
+        errEl.textContent = 'The field is empty.';
         errEl.classList.remove('hidden');
         return;
       }
@@ -353,15 +353,15 @@ import '../../styles/quiz.css';
   function renderLessonView(lessonId: string) {
     const bundle = getImported(lessonId);
     if (!bundle) {
-      document.getElementById('lesson-title')!.textContent = 'Leçon introuvable';
-      document.getElementById('lesson-description')!.textContent = `Aucune leçon importée avec l'identifiant "${lessonId}".`;
+      document.getElementById('lesson-title')!.textContent = 'Lesson not found';
+      document.getElementById('lesson-description')!.textContent = `No imported lesson with id "${lessonId}".`;
       return;
     }
     const { lesson, questions } = bundle;
     document.title = `${lesson.title} - Nihongo`;
     document.getElementById('lesson-title')!.textContent = lesson.title;
     document.getElementById('lesson-description')!.textContent = lesson.description;
-    document.getElementById('lesson-source')!.textContent = lesson.source ? `Source : ${lesson.source}` : '';
+    document.getElementById('lesson-source')!.textContent = lesson.source ? `Source: ${lesson.source}` : '';
 
     const grid = document.getElementById('sections-grid')!;
     grid.innerHTML = lesson.sections
@@ -385,13 +385,13 @@ import '../../styles/quiz.css';
   function renderSectionView(lessonId: string, sectionId: string) {
     const bundle = getImported(lessonId);
     if (!bundle) {
-      document.getElementById('section-title')!.textContent = 'Leçon introuvable';
+      document.getElementById('section-title')!.textContent = 'Lesson not found';
       return;
     }
     const { lesson, questions } = bundle;
     const section = lesson.sections.find((s) => s.id === sectionId);
     if (!section) {
-      document.getElementById('section-title')!.textContent = 'Section introuvable';
+      document.getElementById('section-title')!.textContent = 'Section not found';
       return;
     }
     document.title = `${section.title} - ${lesson.title}`;
@@ -401,7 +401,7 @@ import '../../styles/quiz.css';
     document.getElementById('lesson-back-title')!.textContent = lesson.title;
 
     const sectionIdx = lesson.sections.indexOf(section);
-    document.getElementById('section-number')!.textContent = `Section ${sectionIdx + 1} / ${lesson.sections.length}`;
+    document.getElementById('section-number')!.textContent = `Section ${sectionIdx + 1} of ${lesson.sections.length}`;
     document.getElementById('section-title')!.textContent = section.title;
     document.getElementById('section-description')!.textContent = section.description ?? '';
 
@@ -424,7 +424,7 @@ import '../../styles/quiz.css';
         const partQuestions: Question[] = questions[part.id] ?? [];
         if (partQuestions.length === 0) {
           return `<div class="tab-panel ${i === 0 ? 'active' : ''}" data-panel="${escapeText(part.id)}" role="tabpanel">
-            <p class="description">Aucune question pour cette partie.</p>
+            <p class="description">No questions for this part.</p>
           </div>`;
         }
         const cards = partQuestions.map((q, qi) => renderQuestionCard(q, qi)).join('');

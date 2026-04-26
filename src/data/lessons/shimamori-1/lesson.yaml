@@ -1,58 +1,58 @@
 id: shimamori-1
-title: "Shimamori — Chapitre 1 : Famille"
-description: "Vocabulaire de la famille — formes neutres/modestes et formes honorifiques"
-source: "Shimamori (chapitre 1, leçon 2)"
+title: "Shimamori — Chapter 1: Family"
+description: "Family vocabulary — neutral/modest forms and honorific forms"
+source: "Shimamori (chapter 1, lesson 2)"
 videoId: ""
 coverImage: shimamori.png
 number: 1
 
 sections:
-  - id: famille-neutre
-    title: "Famille — forme neutre"
-    description: "Termes utilisés pour parler de sa propre famille (modeste/neutre)"
+  - id: family-neutral
+    title: "Family — neutral form"
+    description: "Terms used to talk about your own family (modest/neutral)"
     parts:
-      - id: famille-parents-neutre
+      - id: family-parents-neutral
         title: "Parents"
         startTime: 0
         endTime: 0
-      - id: famille-freres-soeurs-neutre
-        title: "Frères & sœurs"
+      - id: family-siblings-neutral
+        title: "Siblings"
         startTime: 0
         endTime: 0
-      - id: famille-conjoint-neutre
-        title: "Conjoint"
+      - id: family-spouse-neutral
+        title: "Spouse"
         startTime: 0
         endTime: 0
-      - id: famille-enfants-neutre
-        title: "Enfants & petits-enfants"
+      - id: family-children-neutral
+        title: "Children & grandchildren"
         startTime: 0
         endTime: 0
-      - id: famille-elargie-neutre
-        title: "Grands-parents, oncles, neveux"
+      - id: family-extended-neutral
+        title: "Grandparents, uncles, nephews"
         startTime: 0
         endTime: 0
 
-  - id: famille-honorifique
-    title: "Famille — forme honorifique"
-    description: "Termes utilisés pour parler de la famille d'autrui (御 / お~さん)"
+  - id: family-honorific
+    title: "Family — honorific form"
+    description: "Terms used to talk about someone else's family (御 / お~さん)"
     parts:
-      - id: famille-parents-honorifique
+      - id: family-parents-honorific
         title: "Parents"
         startTime: 0
         endTime: 0
-      - id: famille-freres-soeurs-honorifique
-        title: "Frères & sœurs"
+      - id: family-siblings-honorific
+        title: "Siblings"
         startTime: 0
         endTime: 0
-      - id: famille-conjoint-honorifique
-        title: "Conjoint"
+      - id: family-spouse-honorific
+        title: "Spouse"
         startTime: 0
         endTime: 0
-      - id: famille-enfants-honorifique
-        title: "Enfants & petits-enfants"
+      - id: family-children-honorific
+        title: "Children & grandchildren"
         startTime: 0
         endTime: 0
-      - id: famille-elargie-honorifique
-        title: "Grands-parents, oncles, neveux"
+      - id: family-extended-honorific
+        title: "Grandparents, uncles, nephews"
         startTime: 0
         endTime: 0

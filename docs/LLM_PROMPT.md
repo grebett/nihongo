@@ -1,4 +1,4 @@
-You are generating content for **Nihon**, a Japanese learning web app for a French-speaking learner. Your output is YAML that drops directly into the project's data layer. Follow the schema and rules below precisely — the loader is strict and the app will silently mis-render anything that doesn't match.
+You are generating content for **Nihon**, a Japanese learning web app for an English-speaking learner. Your output is YAML that drops directly into the project's data layer. Follow the schema and rules below precisely — the loader is strict and the app will silently mis-render anything that doesn't match.
 
 ## Output mode — pick ONE of two
 
@@ -60,26 +60,33 @@ questions:
 
 Output ONE fenced code block. The schema for `lesson:` and each `questions[partId]` entry is identical to Mode A — only the packaging differs.
 
-Note: `coverImage` is ignored in bundles (no way to upload the asset). Stick to `number` and `videoId` for visual cues.
+In bundles, `coverImage` MUST be either a full HTTPS URL (e.g. a Wikipedia commons image) or a `data:` URI (small SVG/PNG inline as base64). Plain filenames are ignored in bundles — there's no asset upload. If you don't have a relevant image, omit `coverImage` (the home card falls back to a placeholder with the lesson's first character) or set `videoId` to the YouTube ID if the lesson is built around a video — the YouTube thumbnail will be used.
+
+```yaml
+# Either an URL:
+coverImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/.../torii.jpg"
+# Or a small inline SVG as data URI:
+coverImage: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTEyIj4uLi4="
+```
 
 ## File: `lesson.yaml`
 
 ```yaml
 id: <lesson-id>                        # kebab-case, ASCII, becomes the URL slug
-title: "<short title in French>"
-description: "<one-line description in French>"
-source: "<source attribution>"         # e.g. "Game Gengo (YouTube)" or "Shimamori chapitre 1"
+title: "<short title in English>"
+description: "<one-line description in English>"
+source: "<source attribution>"         # e.g. "Game Gengo (YouTube)" or "Shimamori chapter 1"
 videoId: "<youtube-id-or-empty>"       # 11-char YouTube ID, or "" if no video
 coverImage: <filename>                 # OPTIONAL: image filename inside public/
 number: <integer-or-string>            # OPTIONAL: shown as a badge on the home card
 
 sections:
   - id: <section-id>                   # kebab-case, becomes /lesson/<lesson-id>/<section-id>
-    title: "<French>"
-    description: "<French>"
+    title: "<English>"
+    description: "<English>"
     parts:                             # 1 to N parts; each renders as a tab inside the section
       - id: <part-id>                  # MUST match a key in a questions/*.yaml file
-        title: "<French, short>"
+        title: "<English, short>"
         startTime: <int-seconds>       # video start; use 0 if no video
         endTime: <int-seconds>         # video end; use 0 if no video
 ```
@@ -94,21 +101,21 @@ A questions file is a top-level **map** keyed by `partId`. Each key holds a list
 <part-id>:
   - type: <one of: multiple-choice | free-input | sentence-blocks | matching>
     …type-specific fields…
-    hint: "<French hint, one sentence>"
+    hint: "<English hint, one sentence>"
 ```
 
 ### A) `multiple-choice` — recognition (2–4 options)
 
 ```yaml
 - type: multiple-choice
-  question: "<French prompt; HTML allowed for furigana>"
+  question: "<English prompt; HTML allowed for furigana>"
   options:
     - "<option 1>"
     - "<option 2>"
     - "<option 3>"
     - "<option 4>"
   answer: 0           # zero-indexed: 0 = first option
-  hint: "<French>"
+  hint: "<English>"
 ```
 
 Use for: grammar rules, irregular forms, "which is correct?". Make distractors plausible (real Japanese forms, not gibberish).
@@ -117,22 +124,22 @@ Use for: grammar rules, irregular forms, "which is correct?". Make distractors p
 
 ```yaml
 - type: free-input
-  question: "Comment dit-on « manger » en japonais ?"
+  question: "How do you say \"to eat\" in Japanese?"
   answers:                # all accepted variants
     - 食べる
     - たべる
     - taberu              # romaji is auto-converted to hiragana before comparison
   display: "<ruby>食<rt>た</rt></ruby>べる"   # OPTIONAL: HTML shown when revealing the answer
-  hint: "Verbe ichidan"
+  hint: "Ichidan verb"
 ```
 
-Use for: vocab recall (FR→JP and JP→FR — usually one of each per word), conjugation production. List every plausible spelling (kanji, kana, romaji). Always include `display` when the answer contains kanji, so the reveal shows furigana.
+Use for: vocab recall (EN→JP and JP→EN — usually one of each per word), conjugation production. List every plausible spelling (kanji, kana, romaji). Always include `display` when the answer contains kanji, so the reveal shows furigana.
 
 ### C) `sentence-blocks` — composition
 
 ```yaml
 - type: sentence-blocks
-  question: "Ma femme s'appelle Chloé."
+  question: "My wife's name is Chloé."
   blocks:                          # list IN THE CORRECT ORDER; the UI shuffles
     - text: "<ruby>妻<rt>つま</rt></ruby>"
     - text: "の"
@@ -143,7 +150,7 @@ Use for: vocab recall (FR→JP and JP→FR — usually one of each per word), co
   distractors:                     # OPTIONAL extra wrong-but-plausible blocks
     - text: "が"
     - text: "を"
-  hint: "X の Y は Z です"
+  hint: "X の Y は Z です — introduction structure"
 ```
 
 Use for: particle usage, sentence patterns, word order practice. Keep blocks fine-grained — one word OR one particle per block (don't fuse them). Add 1–3 distractor particles.
@@ -152,13 +159,13 @@ Use for: particle usage, sentence patterns, word order practice. Keep blocks fin
 
 ```yaml
 - type: matching
-  question: "Reliez chaque verbe à sa traduction."
+  question: "Match each verb to its translation."
   pairs:                           # 3–7 pairs; each side is shuffled independently
     - jp: "<ruby>食<rt>た</rt></ruby>べる"
-      meaning: "manger"
+      meaning: "to eat"
     - jp: "<ruby>見<rt>み</rt></ruby>る"
-      meaning: "voir / regarder"
-  hint: "Tous des ichidan"
+      meaning: "to see / to watch"
+  hint: "All ichidan verbs"
 ```
 
 Use for: a set of 5–7 vocabulary items that share a theme/family (verbs of the same group, family members, weather, days of week, etc.). Keep `meaning` short; long explanations go in `hint`.
@@ -184,10 +191,10 @@ Always add furigana to kanji in `question`, `display`, `options`, `blocks[].text
 - All `id:` values: lowercase ASCII, kebab-case, no spaces.
 - HTML inside YAML strings is fine — just keep it on one line.
 
-### French style
+### English style
 
-- Translations and prompts are in **French** (the learner's language).
-- Use `«` and `»` for French quotes around Japanese terms in prompts.
+- Translations and prompts are in **English** (the learner's language).
+- Use straight double quotes (escape with `\"` inside YAML double-quoted strings) around Japanese terms in prompts.
 - Be concise — UI buttons truncate poorly.
 
 ## How to choose the question type from a source

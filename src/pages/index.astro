@@ -50,12 +50,12 @@ const lessons = getAllLessons();
   <section class="imported-section">
     <div class="imported-header">
       <h2>Imported lessons</h2>
-      <a href={`${import.meta.env.BASE_URL}/imported/`} class="import-btn">+ Importer une leçon</a>
+      <a href={`${import.meta.env.BASE_URL}/imported/`} class="import-btn">+ Import a lesson</a>
     </div>
     <div id="imported-list" class="lessons"></div>
   </section>
 
-  <style>
+  <style is:global>
     h1 {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
@@ -213,16 +213,34 @@ const lessons = getAllLessons();
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  function escapeAttr(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  }
+
+  function isExternalImage(s: string | undefined): boolean {
+    return !!s && /^(https?:|data:)/.test(s);
+  }
+
+  function thumbnailHtml(lesson: { title: string; coverImage?: string; videoId?: string }): string {
+    const initial = escapeText(lesson.title.charAt(0));
+    if (isExternalImage(lesson.coverImage)) {
+      return `<img src="${escapeAttr(lesson.coverImage!)}" alt="${escapeAttr(lesson.title)}" class="thumbnail" loading="lazy">`;
+    }
+    if (lesson.videoId) {
+      return `<img src="https://i.ytimg.com/vi/${escapeAttr(lesson.videoId)}/mqdefault.jpg" alt="${escapeAttr(lesson.title)}" class="thumbnail" loading="lazy">`;
+    }
+    return `<div class="thumbnail thumbnail-placeholder" aria-hidden="true"><span>${initial}</span></div>`;
+  }
+
   function renderImported() {
     const container = document.getElementById('imported-list')!;
     const all = getAllImported();
     if (all.length === 0) {
-      container.innerHTML = '<p class="imported-empty">Aucune leçon importée. Cliquez sur « Importer une leçon » pour commencer.</p>';
+      container.innerHTML = '<p class="imported-empty">No imported lessons yet. Click "Import a lesson" to get started.</p>';
       return;
     }
     container.innerHTML = all
       .map(({ lesson }) => {
-        const initial = escapeText(lesson.title.charAt(0));
         const badge = lesson.number !== undefined && lesson.number !== ''
           ? `<svg class="lesson-badge" viewBox="0 0 40 40" aria-hidden="true">
               <circle cx="20" cy="20" r="17"/>
@@ -232,7 +250,7 @@ const lessons = getAllLessons();
         return `<div class="lesson-card-row">
           <a class="lesson-card" href="${BASE}/imported/?lesson=${encodeURIComponent(lesson.id)}" style="flex:1;">
             <div class="thumb-wrap">
-              <div class="thumbnail thumbnail-placeholder" aria-hidden="true"><span>${initial}</span></div>
+              ${thumbnailHtml(lesson)}
               ${badge}
             </div>
             <div class="lesson-info">
@@ -244,7 +262,7 @@ const lessons = getAllLessons();
               </div>
             </div>
           </a>
-          <button class="lesson-delete-btn" data-delete-id="${escapeText(lesson.id)}" aria-label="Supprimer">✕</button>
+          <button class="lesson-delete-btn" data-delete-id="${escapeText(lesson.id)}" aria-label="Delete">✕</button>
         </div>`;
       })
       .join('');
@@ -252,7 +270,7 @@ const lessons = getAllLessons();
     container.querySelectorAll('[data-delete-id]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const id = (btn as HTMLElement).dataset.deleteId!;
-        if (!confirm(`Supprimer la leçon importée "${id}" ?`)) return;
+        if (!confirm(`Delete imported lesson "${id}"?`)) return;
         deleteImported(id);
         renderImported();
       });

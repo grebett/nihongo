@@ -20,24 +20,24 @@ src/data/lessons/
 
 ```yaml
 id: shimamori-1                  # must match the folder name
-title: "Shimamori — Chapitre 1"  # shown in headers
-description: "Vocabulaire de la famille"
-source: "Shimamori (chapitre 1, leçon 2)"
+title: "Shimamori — Chapter 1"   # shown in headers
+description: "Family vocabulary"
+source: "Shimamori (chapter 1, lesson 2)"
 videoId: ""                      # YouTube ID; "" for non-video lessons
 coverImage: shimamori.png        # optional: file in public/, used as cover
 number: 1                        # optional: shown as a badge on the home card
 
 sections:
-  - id: famille-neutre           # URL slug: /lesson/shimamori-1/famille-neutre
-    title: "Famille — forme neutre"
-    description: "Termes pour parler de sa propre famille"
+  - id: family-neutral           # URL slug: /lesson/shimamori-1/family-neutral
+    title: "Family — neutral form"
+    description: "Terms used to talk about your own family"
     parts:
-      - id: famille-parents-neutre  # one tab per part; matches a key in a questions YAML
+      - id: family-parents-neutral  # one tab per part; matches a key in a questions YAML
         title: "Parents"
         startTime: 0               # YouTube seconds; ignored when videoId is empty
         endTime: 0
-      - id: famille-freres-soeurs-neutre
-        title: "Frères & sœurs"
+      - id: family-siblings-neutral
+        title: "Siblings"
         startTime: 0
         endTime: 0
 ```
@@ -55,14 +55,14 @@ Best for: grammar rules, irregular forms, "which conjugation is this?"
 ```yaml
 te-form-irregular:
   - type: multiple-choice
-    question: "Quelle est la forme te de する ?"
+    question: "What is the te-form of する?"
     options:
       - して
       - すって
       - しって
       - すて
     answer: 0                    # zero-indexed: 0 means the first option
-    hint: "する est un verbe irrégulier"
+    hint: "する is an irregular verb"
 ```
 
 - `options`: 2 to 4 strings (HTML allowed: `<ruby>` tags work).
@@ -70,18 +70,18 @@ te-form-irregular:
 
 ### 2. `free-input` — type the answer
 
-Best for: vocab recall (JP↔FR), conjugations to produce, fill-in-the-blank.
+Best for: vocab recall (JP↔EN), conjugations to produce, fill-in-the-blank.
 
 ```yaml
 vocab-ichidan:
   - type: free-input
-    question: "Comment dit-on « manger » en japonais ?"
+    question: "How do you say \"to eat\" in Japanese?"
     answers:                      # any of these counts as correct
       - 食べる
       - たべる
       - taberu                    # romaji is auto-converted to hiragana
     display: "<ruby>食<rt>た</rt></ruby>べる"   # how to show the answer with furigana when revealed
-    hint: "Verbe ichidan (ru-verb)"
+    hint: "Ichidan verb (ru-verb)"
 ```
 
 - `answers`: array of accepted strings. Romaji is converted to hiragana before comparison; comparison is case-insensitive.
@@ -94,7 +94,7 @@ Best for: practising particle usage, sentence patterns, word order.
 ```yaml
 basic-sentences:
   - type: sentence-blocks
-    question: "Ma femme s'appelle Chloé."     # the FR prompt to translate
+    question: "My wife's name is Chloé."        # the EN prompt to translate
     blocks:                                    # list IN THE CORRECT ORDER; the UI shuffles
       - text: "<ruby>妻<rt>つま</rt></ruby>"
       - text: "の"
@@ -105,7 +105,7 @@ basic-sentences:
     distractors:                               # optional: extra wrong-but-plausible blocks
       - text: "が"
       - text: "を"
-    hint: "X の Y は Z です — structure de présentation"
+    hint: "X の Y は Z です — introduction structure"
 ```
 
 - `blocks`: list **in the correct order**. The renderer shuffles them in the UI.
@@ -119,19 +119,19 @@ Best for: vocabulary inside a same family/theme (5–6 related items).
 ```yaml
 family-ichidan-1:
   - type: matching
-    question: "Reliez chaque verbe à sa traduction."
+    question: "Match each verb to its translation."
     pairs:
       - jp: "<ruby>食<rt>た</rt></ruby>べる"
-        meaning: "manger"
+        meaning: "to eat"
       - jp: "<ruby>見<rt>み</rt></ruby>る"
-        meaning: "voir / regarder"
+        meaning: "to see / to watch"
       - jp: "<ruby>起<rt>お</rt></ruby>きる"
-        meaning: "se lever"
+        meaning: "to get up"
       - jp: "<ruby>寝<rt>ね</rt></ruby>る"
-        meaning: "dormir"
+        meaning: "to sleep"
       - jp: "<ruby>着<rt>き</rt></ruby>る"
-        meaning: "porter (vêtement)"
-    hint: "Tous des ichidan"
+        meaning: "to wear (clothing)"
+    hint: "All ichidan verbs"
 ```
 
 - `pairs`: 3 to ~7 items. Both columns get shuffled independently in the UI.

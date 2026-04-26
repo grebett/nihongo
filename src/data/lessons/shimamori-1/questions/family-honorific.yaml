@@ -1,0 +1,81 @@
+family-parents-honorific:
+  - type: matching
+    question: "Match each term to its translation (parents — honorific form)."
+    pairs:
+      - jp: "お<ruby>父<rt>とう</rt></ruby>さん"
+        meaning: "father / dad (honorific)"
+      - jp: "お<ruby>母<rt>かあ</rt></ruby>さん"
+        meaning: "mother / mom (honorific)"
+      - jp: "<ruby>御家族<rt>ごかぞく</rt></ruby>"
+        meaning: "your family (honorific)"
+      - jp: "<ruby>御両親<rt>ごりょうしん</rt></ruby>"
+        meaning: "your parents (honorific)"
+      - jp: "<ruby>親御<rt>おやご</rt></ruby>さん"
+        meaning: "your parent (honorific)"
+    hint: "御 (go-) and お~さん mark respect toward someone else's family"
+
+family-siblings-honorific:
+  - type: matching
+    question: "Match each term to its translation (siblings — honorific form)."
+    pairs:
+      - jp: "お<ruby>兄<rt>にい</rt></ruby>さん"
+        meaning: "your older brother (honorific)"
+      - jp: "お<ruby>姉<rt>ねえ</rt></ruby>さん"
+        meaning: "your older sister (honorific)"
+      - jp: "<ruby>弟<rt>おとうと</rt></ruby>さん"
+        meaning: "your younger brother (honorific)"
+      - jp: "<ruby>妹<rt>いもうと</rt></ruby>さん"
+        meaning: "your younger sister (honorific)"
+      - jp: "<ruby>御兄弟<rt>ごきょうだい</rt></ruby>"
+        meaning: "your siblings (honorific)"
+    hint: "Used to talk about someone else's siblings"
+
+family-spouse-honorific:
+  - type: matching
+    question: "Match each term to its translation (spouse — honorific form)."
+    pairs:
+      - jp: "<ruby>御主人<rt>ごしゅじん</rt></ruby>"
+        meaning: "your husband (honorific)"
+      - jp: "<ruby>奥様<rt>おくさま</rt></ruby>"
+        meaning: "your wife / madam (very formal)"
+      - jp: "<ruby>奥<rt>おく</rt></ruby>さん"
+        meaning: "your wife (honorific)"
+      - jp: "<ruby>御夫婦<rt>ごふうふ</rt></ruby>"
+        meaning: "the couple (honorific)"
+    hint: "奥様 is more formal than 奥さん"
+
+family-children-honorific:
+  - type: matching
+    question: "Match each term to its translation (children & grandchildren — honorific form)."
+    pairs:
+      - jp: "お<ruby>子<rt>こ</rt></ruby>さん"
+        meaning: "your child (honorific)"
+      - jp: "<ruby>息子<rt>むすこ</rt></ruby>さん"
+        meaning: "your son (honorific)"
+      - jp: "<ruby>娘<rt>むすめ</rt></ruby>さん"
+        meaning: "your daughter (honorific)"
+      - jp: "お<ruby>嬢<rt>じょう</rt></ruby>さん"
+        meaning: "your daughter / young lady (honorific)"
+      - jp: "お<ruby>孫<rt>まご</rt></ruby>さん"
+        meaning: "your grandchild (honorific)"
+      - jp: "お<ruby>坊<rt>ぼっ</rt></ruby>ちゃん"
+        meaning: "your son / young boy (honorific)"
+    hint: "お嬢さん and お坊ちゃん are also used to address young strangers"
+
+family-extended-honorific:
+  - type: matching
+    question: "Match each term to its translation (extended family — honorific form)."
+    pairs:
+      - jp: "おじいさん"
+        meaning: "grandfather / older gentleman (honorific)"
+      - jp: "おばあさん"
+        meaning: "grandmother / older lady (honorific)"
+      - jp: "おじさん"
+        meaning: "uncle / middle-aged gentleman (honorific)"
+      - jp: "おばさん"
+        meaning: "aunt / middle-aged lady (honorific)"
+      - jp: "<ruby>甥御<rt>おいご</rt></ruby>さん"
+        meaning: "your nephew (honorific)"
+      - jp: "<ruby>姪御<rt>めいご</rt></ruby>さん"
+        meaning: "your niece (honorific)"
+    hint: "These terms are also used to address strangers of the corresponding age group"

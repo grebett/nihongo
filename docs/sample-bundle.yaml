@@ -5,52 +5,55 @@
 lesson:
   id: test-import
   title: "Test — Import"
-  description: "Petite leçon pour tester l'importeur"
+  description: "Small lesson to test the importer"
   source: "Sample"
   videoId: ""
   number: "?"
+  # coverImage accepts either an HTTPS URL or an inline data URI.
+  # Here a small 200x112 red SVG with "test" as a demo.
+  coverImage: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTEyIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjExMiIgZmlsbD0iI2RjMzIyZiIvPjx0ZXh0IHg9IjEwMCIgeT0iNzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiPnRlc3Q8L3RleHQ+PC9zdmc+"
   sections:
-    - id: vocabulaire
-      title: "Vocabulaire"
-      description: "Trois exercices basiques pour tester les 4 types"
+    - id: vocabulary
+      title: "Vocabulary"
+      description: "Three small exercises to test all 4 question types"
       parts:
-        - id: matching-couleurs
-          title: "Couleurs (matching)"
+        - id: matching-colors
+          title: "Colors (matching)"
           startTime: 0
           endTime: 0
-        - id: blocks-bonjour
-          title: "Composer (blocks)"
+        - id: blocks-hello
+          title: "Compose (blocks)"
           startTime: 0
           endTime: 0
-        - id: free-input-jours
-          title: "Écrire (free-input)"
+        - id: free-input-days
+          title: "Type (free-input)"
           startTime: 0
           endTime: 0
-        - id: mc-particules
-          title: "Choix multiples"
+        - id: mc-particles
+          title: "Multiple choice"
           startTime: 0
           endTime: 0
 
 questions:
-  matching-couleurs:
+  matching-colors:
     - type: matching
-      question: "Reliez chaque couleur à sa traduction."
+      question: "Match each color to its translation."
       pairs:
         - jp: "<ruby>赤<rt>あか</rt></ruby>"
-          meaning: "rouge"
+          meaning: "red"
         - jp: "<ruby>青<rt>あお</rt></ruby>"
-          meaning: "bleu"
+          meaning: "blue"
         - jp: "<ruby>白<rt>しろ</rt></ruby>"
-          meaning: "blanc"
+          meaning: "white"
         - jp: "<ruby>黒<rt>くろ</rt></ruby>"
-          meaning: "noir"
+          meaning: "black"
         - jp: "<ruby>緑<rt>みどり</rt></ruby>"
-          meaning: "vert"
-      hint: "Les couleurs de base"
+          meaning: "green"
+      hint: "Basic colors"
 
-  blocks-bonjour:
+  blocks-hello:
     - type: sentence-blocks
-      question: "Bonjour, je m'appelle Pierre."
+      question: "Hello, my name is Pierre."
       blocks:
         - text: "こんにちは"
         - text: "、"
@@ -61,25 +64,25 @@ questions:
       distractors:
         - text: "が"
         - text: "を"
-      hint: "Salutation + auto-présentation"
+      hint: "Greeting + self-introduction"
 
-  free-input-jours:
+  free-input-days:
     - type: free-input
-      question: "Comment dit-on « lundi » en japonais ?"
+      question: "How do you say \"Monday\" in Japanese?"
       answers:
         - 月曜日
         - げつようび
         - getsuyoubi
       display: "<ruby>月曜日<rt>げつようび</rt></ruby>"
-      hint: "Le jour de la lune"
+      hint: "The day of the moon"
 
-  mc-particules:
+  mc-particles:
     - type: multiple-choice
-      question: "Quelle particule indique le complément d'objet direct ?"
+      question: "Which particle marks the direct object?"
       options:
         - は
         - を
         - が
         - に
       answer: 1
-      hint: "« wo » se prononce « o »"
+      hint: "\"wo\" is pronounced \"o\""

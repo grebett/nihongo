@@ -90,45 +90,45 @@ export function parseImportYaml(text: string): ParseResult {
   try {
     parsed = yaml.load(text);
   } catch (e: any) {
-    return { ok: false, error: `YAML invalide : ${e?.message ?? e}` };
+    return { ok: false, error: `Invalid YAML: ${e?.message ?? e}` };
   }
 
   if (!parsed || typeof parsed !== 'object') {
-    return { ok: false, error: 'Le fichier doit contenir un objet YAML.' };
+    return { ok: false, error: 'The file must contain a YAML object.' };
   }
 
   const lesson = parsed.lesson;
   const questions = parsed.questions;
 
-  if (!lesson || typeof lesson !== 'object') return { ok: false, error: 'Champ "lesson" manquant ou invalide.' };
-  if (!questions || typeof questions !== 'object') return { ok: false, error: 'Champ "questions" manquant ou invalide.' };
+  if (!lesson || typeof lesson !== 'object') return { ok: false, error: 'Missing or invalid "lesson" field.' };
+  if (!questions || typeof questions !== 'object') return { ok: false, error: 'Missing or invalid "questions" field.' };
 
-  if (typeof lesson.id !== 'string' || !lesson.id.trim()) return { ok: false, error: 'lesson.id manquant.' };
-  if (typeof lesson.title !== 'string' || !lesson.title.trim()) return { ok: false, error: 'lesson.title manquant.' };
+  if (typeof lesson.id !== 'string' || !lesson.id.trim()) return { ok: false, error: 'lesson.id is missing.' };
+  if (typeof lesson.title !== 'string' || !lesson.title.trim()) return { ok: false, error: 'lesson.title is missing.' };
   if (!Array.isArray(lesson.sections) || lesson.sections.length === 0) {
-    return { ok: false, error: 'lesson.sections doit être un tableau non vide.' };
+    return { ok: false, error: 'lesson.sections must be a non-empty array.' };
   }
 
   const knownPartIds = new Set<string>();
   for (let si = 0; si < lesson.sections.length; si++) {
     const sec = lesson.sections[si];
-    if (typeof sec !== 'object') return { ok: false, error: `lesson.sections[${si}] doit être un objet.` };
-    if (typeof sec.id !== 'string' || !sec.id.trim()) return { ok: false, error: `lesson.sections[${si}].id manquant.` };
-    if (typeof sec.title !== 'string') return { ok: false, error: `lesson.sections[${si}].title manquant.` };
+    if (typeof sec !== 'object') return { ok: false, error: `lesson.sections[${si}] must be an object.` };
+    if (typeof sec.id !== 'string' || !sec.id.trim()) return { ok: false, error: `lesson.sections[${si}].id is missing.` };
+    if (typeof sec.title !== 'string') return { ok: false, error: `lesson.sections[${si}].title is missing.` };
     if (!Array.isArray(sec.parts) || sec.parts.length === 0) {
-      return { ok: false, error: `lesson.sections[${si}].parts doit être un tableau non vide.` };
+      return { ok: false, error: `lesson.sections[${si}].parts must be a non-empty array.` };
     }
     for (let pi = 0; pi < sec.parts.length; pi++) {
       const p = sec.parts[pi];
-      if (typeof p !== 'object') return { ok: false, error: `lesson.sections[${si}].parts[${pi}] doit être un objet.` };
-      if (typeof p.id !== 'string' || !p.id.trim()) return { ok: false, error: `lesson.sections[${si}].parts[${pi}].id manquant.` };
-      if (typeof p.title !== 'string') return { ok: false, error: `lesson.sections[${si}].parts[${pi}].title manquant.` };
+      if (typeof p !== 'object') return { ok: false, error: `lesson.sections[${si}].parts[${pi}] must be an object.` };
+      if (typeof p.id !== 'string' || !p.id.trim()) return { ok: false, error: `lesson.sections[${si}].parts[${pi}].id is missing.` };
+      if (typeof p.title !== 'string') return { ok: false, error: `lesson.sections[${si}].parts[${pi}].title is missing.` };
       knownPartIds.add(p.id);
     }
   }
 
   for (const [partId, qList] of Object.entries(questions)) {
-    if (!Array.isArray(qList)) return { ok: false, error: `questions["${partId}"] doit être un tableau.` };
+    if (!Array.isArray(qList)) return { ok: false, error: `questions["${partId}"] must be an array.` };
     for (let i = 0; i < qList.length; i++) {
       const err = validateQuestion(qList[i], `questions["${partId}"][${i}]`);
       if (err) return { ok: false, error: err };
