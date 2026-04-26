@@ -1,4 +1,6 @@
 ---
+import '../styles/components.css';
+
 interface Props {
   title: string;
   sakura?: boolean;
@@ -15,7 +17,7 @@ const { title, sakura = false } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
     <title>{title} - Nihongo</title>
     <!-- Prevent flash: apply saved theme before paint -->
     <script is:inline>
@@ -59,105 +61,127 @@ const { title, sakura = false } = Astro.props;
       }
 
       :root {
-        /* Solarized palette constants */
-        --base03:  #002b36;
-        --base02:  #073642;
-        --base01:  #586e75;
-        --base00:  #657b83;
-        --base0:   #839496;
-        --base1:   #93a1a1;
-        --base2:   #eee8d5;
-        --base3:   #fdf6e3;
+        /* Light mode — washi paper + ink */
+        --bg:           #faf7f2;       /* warm off-white, washi feel */
+        --bg-elevated:  #f3ede2;       /* slightly warmer */
+        --bg-card:      #ffffff;
+        --bg-input:     #f7f2e9;
+        --bg-muted:     #ede6d8;
 
-        --sol-red:     #dc322f;
-        --sol-orange:  #cb4b16;
-        --sol-yellow:  #b58900;
-        --sol-green:   #859900;
-        --sol-cyan:    #2aa198;
-        --sol-blue:    #268bd2;
-        --sol-violet:  #6c71c4;
-        --sol-magenta: #d33682;
+        --text:         #1a1714;       /* near-black warm ink */
+        --text-strong:  #0f0c0a;
+        --text-muted:   #6b6258;
+        --text-subtle:  #8e857a;
 
-        /* Light mode (default) */
-        --bg: var(--base3);
-        --bg-elevated: var(--base2);
-        --bg-card: #ffffff;
-        --bg-input: var(--base3);
-        --accent: var(--sol-red);
-        --accent-hover: #c62828;
-        --accent-glow: rgba(220, 50, 47, 0.1);
-        --gold: var(--sol-yellow);
-        --text: var(--base02);
-        --text-muted: var(--base00);
-        --success: var(--sol-cyan);
-        --error: var(--sol-red);
-        --border: #d6ceb5;
-        --border-hover: var(--base1);
-        --card-shadow: rgba(0, 0, 0, 0.04);
-        --card-shadow-hover: rgba(220, 50, 47, 0.08);
-        --wave-opacity: 0.03;
-        --selection-bg: rgba(220, 50, 47, 0.15);
-        --sakura-shadow: rgba(244, 167, 185, 0.4);
+        --accent:       #a8201a;       /* refined vermillon (朱色) */
+        --accent-hover: #8b1612;
+        --accent-soft:  rgba(168, 32, 26, 0.08);
+        --accent-glow:  rgba(168, 32, 26, 0.14);
+
+        --gold:         #a07820;       /* tea gold for "good" results */
+        --success:      #1f7a6a;       /* deep matcha, less neon than Solarized cyan */
+        --error:        #a8201a;
+
+        --border:       #e6decf;
+        --border-hover: #c9bfaa;
+        --border-strong:#9c917f;
+
+        /* Multi-layer shadows for soft depth */
+        --shadow-sm:    0 1px 2px rgba(26, 23, 20, 0.04), 0 1px 1px rgba(26, 23, 20, 0.02);
+        --shadow-md:    0 4px 8px -2px rgba(26, 23, 20, 0.06), 0 2px 4px -2px rgba(26, 23, 20, 0.04);
+        --shadow-lg:    0 16px 32px -12px rgba(26, 23, 20, 0.10), 0 6px 12px -4px rgba(26, 23, 20, 0.05);
+        --shadow-accent:0 8px 24px -8px rgba(168, 32, 26, 0.20);
+
+        /* Misc */
+        --selection-bg: rgba(168, 32, 26, 0.18);
+        --sakura-shadow:rgba(244, 167, 185, 0.35);
+        --wave-opacity: 0.018;
+
+        /* Motion */
+        --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-quick:cubic-bezier(0.4, 0, 0.2, 1);
+        --dur-fast:  0.16s;
+        --dur:       0.24s;
+        --dur-slow:  0.4s;
       }
 
       :root[data-theme="dark"] {
-        --bg: var(--base03);
-        --bg-elevated: var(--base02);
-        --bg-card: #0a3340;
-        --bg-input: var(--base02);
-        --accent: var(--sol-red);
-        --accent-hover: #e04848;
-        --accent-glow: rgba(220, 50, 47, 0.15);
-        --gold: var(--sol-yellow);
-        --text: var(--base1);
-        --text-muted: var(--base0);
-        --success: var(--sol-cyan);
-        --error: var(--sol-red);
-        --border: #0e4452;
-        --border-hover: var(--base01);
-        --card-shadow: rgba(0, 0, 0, 0.15);
-        --card-shadow-hover: rgba(220, 50, 47, 0.12);
-        --wave-opacity: 0.02;
-        --selection-bg: rgba(220, 50, 47, 0.25);
-        --sakura-shadow: rgba(244, 167, 185, 0.3);
+        /* Dark mode — warm dark grey, cards clearly elevated */
+        --bg:           #221e17;       /* warm dark walnut, brighter than near-black */
+        --bg-elevated:  #383125;       /* hover/active backgrounds */
+        --bg-card:      #2d281f;       /* notably lighter than bg so cards pop */
+        --bg-input:     #1d1913;       /* slightly darker for input wells */
+        --bg-muted:     #2a251d;
+
+        --text:         #ebe4d6;       /* warm white */
+        --text-strong:  #f5efe2;
+        --text-muted:   #a39888;
+        --text-subtle:  #7a7163;
+
+        --accent:       #d94a3f;       /* brighter vermillon for dark */
+        --accent-hover: #e8665c;
+        --accent-soft:  rgba(217, 74, 63, 0.12);
+        --accent-glow:  rgba(217, 74, 63, 0.22);
+
+        --gold:         #c89a3e;
+        --success:      #5bc4af;
+        --error:        #d94a3f;
+
+        --border:       #3d362b;       /* clearly visible against bg-card */
+        --border-hover: #5a5043;
+        --border-strong:#7a6f5e;
+
+        --shadow-sm:    0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 1px rgba(0, 0, 0, 0.30);
+        --shadow-md:    0 4px 10px -2px rgba(0, 0, 0, 0.50), 0 2px 4px -2px rgba(0, 0, 0, 0.32);
+        --shadow-lg:    0 16px 36px -12px rgba(0, 0, 0, 0.65), 0 6px 14px -4px rgba(0, 0, 0, 0.40);
+        --shadow-accent:0 8px 24px -8px rgba(217, 74, 63, 0.35);
+
+        --selection-bg: rgba(217, 74, 63, 0.30);
+        --sakura-shadow:rgba(244, 167, 185, 0.20);
+        --wave-opacity: 0.012;
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          'Hiragino Kaku Gothic Pro', 'Yu Gothic', sans-serif;
         background: var(--bg);
         color: var(--text);
         min-height: 100vh;
         line-height: 1.6;
+        font-size: 17px;
+        font-feature-settings: 'cv11', 'ss01', 'ss03';
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
         overflow-x: hidden;
         position: relative;
       }
 
-      /* Subtle warm ambient gradients */
+      /* Very subtle ambient warmth */
       body::before {
         content: '';
         position: fixed;
         inset: 0;
         background-image:
-          radial-gradient(ellipse at 15% 40%, rgba(220, 50, 47, 0.03) 0%, transparent 50%),
-          radial-gradient(ellipse at 80% 15%, rgba(244, 167, 185, 0.03) 0%, transparent 50%),
-          radial-gradient(ellipse at 55% 85%, rgba(181, 137, 0, 0.02) 0%, transparent 50%);
+          radial-gradient(ellipse 60% 40% at 20% 0%, var(--accent-soft) 0%, transparent 60%),
+          radial-gradient(ellipse 50% 50% at 100% 100%, rgba(160, 120, 32, 0.04) 0%, transparent 60%);
         pointer-events: none;
         z-index: 0;
       }
 
-      /* Seigaiha (wave) pattern overlay */
+      /* Whisper-quiet paper grain */
       body::after {
         content: '';
         position: fixed;
         inset: 0;
         opacity: var(--wave-opacity);
-        background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23073642' stroke-width='1'%3E%3Cpath d='M0 40c0-22.09 17.91-40 40-40s40 17.91 40 40'/%3E%3Cpath d='M0 40c0-15.46 12.54-28 28-28s28 12.54 28 28'/%3E%3Cpath d='M0 40c0-8.84 7.16-16 16-16s16 7.16 16 16'/%3E%3C/g%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         pointer-events: none;
         z-index: 0;
       }
 
       :root[data-theme="dark"] body::after {
-        background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2393a1a1' stroke-width='1'%3E%3Cpath d='M0 40c0-22.09 17.91-40 40-40s40 17.91 40 40'/%3E%3Cpath d='M0 40c0-15.46 12.54-28 28-28s28 12.54 28 28'/%3E%3Cpath d='M0 40c0-8.84 7.16-16 16-16s16 7.16 16 16'/%3E%3C/g%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.92 0 0 0 0 0.85 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
       nav {
@@ -167,33 +191,38 @@ const { title, sakura = false } = Astro.props;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0.8rem 2rem;
+        padding: 0.85rem 2rem;
         border-bottom: 1px solid var(--border);
-        background: var(--bg-card);
-        backdrop-filter: blur(12px);
+        background: rgba(250, 247, 242, 0.78);
+        backdrop-filter: saturate(180%) blur(16px);
+        -webkit-backdrop-filter: saturate(180%) blur(16px);
+      }
+      :root[data-theme="dark"] nav {
+        background: rgba(34, 30, 23, 0.78);
       }
 
       .logo {
         display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
+        align-items: baseline;
+        gap: 0.6rem;
         text-decoration: none;
-        transition: opacity 0.2s;
+        transition: opacity var(--dur-fast) var(--ease);
       }
-      .logo:hover { opacity: 0.75; }
+      .logo:hover { opacity: 0.7; }
 
       .logo-kanji {
-        font-size: 1.5rem;
-        font-weight: 800;
+        font-size: 1.45rem;
+        font-weight: 700;
         color: var(--accent);
-        letter-spacing: 0.05em;
+        letter-spacing: 0.04em;
+        font-family: 'Noto Sans JP', sans-serif;
       }
 
       .logo-text {
-        font-size: 1.1rem;
+        font-size: 0.78rem;
         font-weight: 600;
         color: var(--text-muted);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
       }
 
@@ -204,16 +233,19 @@ const { title, sakura = false } = Astro.props;
         justify-content: center;
         width: 36px;
         height: 36px;
-        background: none;
+        background: transparent;
         border: 1px solid var(--border);
-        border-radius: 8px;
+        border-radius: 9px;
         color: var(--text-muted);
         cursor: pointer;
-        transition: color 0.2s, border-color 0.2s;
+        transition: color var(--dur-fast) var(--ease),
+                    border-color var(--dur-fast) var(--ease),
+                    background var(--dur-fast) var(--ease);
       }
       .theme-toggle:hover {
         color: var(--accent);
-        border-color: var(--accent);
+        border-color: var(--border-hover);
+        background: var(--accent-soft);
       }
 
       /* Light mode: show moon, hide sun */
@@ -227,9 +259,9 @@ const { title, sakura = false } = Astro.props;
       main {
         position: relative;
         z-index: 1;
-        max-width: 900px;
+        max-width: 880px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 2.5rem 2rem 4rem;
       }
 
       footer {
@@ -237,17 +269,19 @@ const { title, sakura = false } = Astro.props;
         z-index: 1;
         text-align: center;
         padding: 2rem;
-        margin-top: 3rem;
-        color: var(--text-muted);
-        font-size: 0.75rem;
-        letter-spacing: 0.15em;
-        opacity: 0.4;
+        margin-top: 4rem;
+        color: var(--text-subtle);
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        font-weight: 500;
+        font-family: 'Noto Sans JP', sans-serif;
       }
       .footer-wave {
-        width: 60px;
+        width: 32px;
         height: 1px;
-        background: var(--border);
-        margin: 0 auto 1rem;
+        background: var(--border-hover);
+        margin: 0 auto 1.2rem;
+        opacity: 0.6;
       }
 
       /* Sakura petals */
@@ -288,27 +322,49 @@ const { title, sakura = false } = Astro.props;
         }
       }
 
+      /* Japanese characters render through the body font stack
+         (Inter has no kana/kanji, so Noto Sans JP picks them up) */
+
       /* Furigana */
-      ruby { ruby-align: center; }
+      ruby {
+        ruby-align: center;
+        ruby-position: over;
+      }
       ruby rt {
-        font-size: 0.55em;
+        font-size: 0.62em;
         font-weight: 400;
         color: var(--text-muted);
+        letter-spacing: 0.02em;
+        line-height: 1;
       }
 
       /* Scrollbar */
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: var(--bg); }
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
       ::-webkit-scrollbar-thumb {
-        background: var(--border);
-        border-radius: 3px;
+        background: var(--border-hover);
+        border-radius: 4px;
+        border: 2px solid var(--bg);
       }
-      ::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+      ::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
 
       /* Selection */
       ::selection {
         background: var(--selection-bg);
-        color: var(--text);
+        color: var(--text-strong);
+      }
+
+      /* Focus ring (accessibility) */
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline-offset: 3px;
       }
     </style>
 

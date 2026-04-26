@@ -1,0 +1,246 @@
+/* === Icon system === */
+
+.icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Icon-only buttons */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text-subtle);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease);
+}
+.icon-btn:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+  background: var(--bg-elevated);
+}
+.icon-btn.danger:hover {
+  color: var(--error);
+  border-color: var(--error);
+  background: var(--accent-soft);
+}
+.icon-btn.sm { width: 30px; height: 30px; border-radius: 8px; }
+.icon-btn.lg { width: 42px; height: 42px; border-radius: 10px; }
+
+
+/* === Chip / tag system === */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.7rem;
+  background: var(--bg-elevated);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease);
+}
+.chip .icon { width: 12px; height: 12px; }
+
+.chip-accent {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.chip-success {
+  background: rgba(31, 122, 106, 0.10);
+  color: var(--success);
+}
+.chip-warning {
+  background: rgba(160, 120, 32, 0.12);
+  color: var(--gold);
+}
+.chip-ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+/* Larger chip for headers (score badge, pct) */
+.chip-lg {
+  padding: 0.42rem 0.95rem;
+  font-size: 0.85rem;
+}
+
+
+/* === Score pill with progress fill === */
+
+.score-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.95rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease);
+}
+.score-pill::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--progress, 0%);
+  background: var(--accent-soft);
+  z-index: -1;
+  transition: width var(--dur) var(--ease);
+}
+.score-pill[data-state="progress"] {
+  color: var(--accent);
+  border-color: transparent;
+}
+.score-pill[data-state="perfect"] {
+  color: var(--success);
+  border-color: transparent;
+  background: rgba(31, 122, 106, 0.10);
+}
+.score-pill[data-state="perfect"]::before {
+  background: rgba(31, 122, 106, 0.18);
+}
+
+
+/* === Hard mode toggle === */
+
+.hard-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  transition: all var(--dur-fast) var(--ease);
+}
+.hard-toggle .icon { width: 13px; height: 13px; opacity: 0.6; }
+.hard-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.hard-toggle:hover .icon { opacity: 1; }
+.hard-toggle.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.hard-toggle.active .icon { opacity: 1; }
+
+
+/* === Card chevron === */
+
+.card-chevron {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-subtle);
+  margin-left: auto;
+  align-self: center;
+  transition: transform var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+}
+.card-chevron .icon { width: 18px; height: 18px; }
+
+a.lesson-card:hover .card-chevron,
+a.section-card:hover .card-chevron,
+a.import-card:hover .card-chevron {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+
+/* === Meta row with icons === */
+
+.meta-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.85rem;
+  align-items: center;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text-subtle);
+  letter-spacing: 0.02em;
+}
+.meta-row .meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.meta-row .meta-item .icon {
+  width: 13px;
+  height: 13px;
+  opacity: 0.7;
+}
+.meta-row .meta-source {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+
+/* === Question card answered state — left edge accent === */
+
+.question-card {
+  position: relative;
+  overflow: hidden;
+}
+.question-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background var(--dur) var(--ease);
+}
+.question-card.answered-correct::before { background: var(--success); }
+.question-card.answered-incorrect::before { background: var(--error); }
+
+
+/* === Card hover accent (Linear-style) === */
+
+a.lesson-card,
+a.section-card,
+a.import-card {
+  position: relative;
+}

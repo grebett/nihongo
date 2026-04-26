@@ -8,7 +8,7 @@ lesson:
   description: "Small lesson to test the importer"
   source: "Sample"
   videoId: ""
-  number: "?"
+  number: 99
   # coverImage accepts either an HTTPS URL or an inline data URI.
   # Here a small 200x112 red SVG with "test" as a demo.
   coverImage: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTEyIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjExMiIgZmlsbD0iI2RjMzIyZiIvPjx0ZXh0IHg9IjEwMCIgeT0iNzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiPnRlc3Q8L3RleHQ+PC9zdmc+"

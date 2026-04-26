@@ -12,6 +12,53 @@ export function shuffleChildren(container: Element) {
   arr.forEach((c) => container.appendChild(c));
 }
 
+// FLIP animation helper — measures positions before/after, then animates
+// elements from their old visual position to their new layout position.
+const FLIP_EASING = 'cubic-bezier(0.16, 1, 0.3, 1)';
+const FLIP_DURATION = 280;
+
+function flipMove(elements: HTMLElement[], doMoves: () => void) {
+  const firsts = elements.map((el) => el.getBoundingClientRect());
+  doMoves();
+  const moved: boolean[] = [];
+  let anyMoved = false;
+  elements.forEach((el, i) => {
+    const last = el.getBoundingClientRect();
+    const dx = firsts[i].left - last.left;
+    const dy = firsts[i].top - last.top;
+    if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
+      moved.push(false);
+      return;
+    }
+    moved.push(true);
+    anyMoved = true;
+    // Use individual `translate` property so it composes with `rotate` (wobble)
+    el.style.transition = 'none';
+    el.style.translate = `${dx}px ${dy}px`;
+    el.style.zIndex = '5';
+  });
+  if (!anyMoved) return;
+  // Force reflow so the instant translate is committed before transitioning back
+  void elements[0].offsetWidth;
+  requestAnimationFrame(() => {
+    elements.forEach((el, i) => {
+      if (!moved[i]) return;
+      el.style.transition = `translate ${FLIP_DURATION}ms ${FLIP_EASING}`;
+      el.style.translate = '0 0';
+      el.classList.add('block-wobbling');
+    });
+  });
+  setTimeout(() => {
+    elements.forEach((el, i) => {
+      if (!moved[i]) return;
+      el.style.transition = '';
+      el.style.translate = '';
+      el.style.zIndex = '';
+      el.classList.remove('block-wobbling');
+    });
+  }, FLIP_DURATION + 40);
+}
+
 export function initInteractiveCards(panel: Element) {
   panel.querySelectorAll('.question-card[data-type="sentence-blocks"]').forEach((card) => {
     const pool = card.querySelector('.blocks-pool');
@@ -27,9 +74,25 @@ export function initInteractiveCards(panel: Element) {
   panel.querySelectorAll('.question-card[data-type="matching"]').forEach((card) => {
     card.querySelectorAll('.match-item').forEach((i) => {
       i.classList.remove('selected', 'matched', 'shake');
+      (i as HTMLElement).style.height = '';
     });
+    // Clear any existing ropes
+    const ropesSvg = card.querySelector('.match-ropes');
+    if (ropesSvg) ropesSvg.innerHTML = '';
     card.querySelectorAll('.match-col').forEach((col) => shuffleChildren(col));
     (card as HTMLElement).dataset.matched = '0';
+
+    // Equalize match-item heights — JP side is naturally taller because of
+    // furigana (<ruby><rt>) annotations. Measure the tallest, apply to all.
+    requestAnimationFrame(() => {
+      if ((card as HTMLElement).offsetParent === null) return;
+      const items = card.querySelectorAll<HTMLElement>('.match-item');
+      let maxH = 0;
+      items.forEach((it) => {
+        if (it.offsetHeight > maxH) maxH = it.offsetHeight;
+      });
+      if (maxH > 0) items.forEach((it) => { it.style.height = `${maxH}px`; });
+    });
   });
 }
 
@@ -147,10 +210,22 @@ export function setupQuiz(panel: Element) {
   const quizSection = panel.querySelector('.quiz-section');
   const hardToggle = panel.querySelector('.hard-mode-toggle') as HTMLElement;
 
-  if (scoreEl) scoreEl.textContent = `0 / ${total}`;
+  function setScore(c: number, t: number) {
+    if (!scoreEl) return;
+    scoreEl.textContent = `${c} / ${t}`;
+    const pct = t > 0 ? (c / t) * 100 : 0;
+    (scoreEl as HTMLElement).style.setProperty('--progress', `${pct}%`);
+    let state = '';
+    if (c === t && t > 0) state = 'perfect';
+    else if (c > 0) state = 'progress';
+    if (state) (scoreEl as HTMLElement).dataset.state = state;
+    else delete (scoreEl as HTMLElement).dataset.state;
+  }
+
+  setScore(0, total);
 
   function updateScore() {
-    if (scoreEl) scoreEl.textContent = `${correct} / ${total}`;
+    setScore(correct, total);
   }
 
   function checkComplete() {
@@ -179,7 +254,7 @@ export function setupQuiz(panel: Element) {
       answered++;
     } else if (attemptsUsed >= MAX_ATTEMPTS) {
       const answer = correctAnswer || getCorrectAnswerText(card as HTMLElement);
-      fb.innerHTML = `Answer: ${answer}`;
+      fb.innerHTML = `Answer: <span class="feedback-answer">${answer}</span>`;
       fb.className = 'feedback incorrect';
       card.classList.add('answered-incorrect');
       const questionText = card.querySelector('.question-text')?.innerHTML || '';
@@ -275,12 +350,14 @@ export function setupQuiz(panel: Element) {
       const target = (e.target as HTMLElement).closest('.block') as HTMLButtonElement | null;
       if (!target || isLocked(card) || target.disabled) return;
       const parentSlot = target.parentElement;
-      if (parentSlot && parentSlot.classList.contains('block-slot')) {
-        pool.appendChild(target);
-      } else {
-        const emptySlot = card.querySelector('.block-slot:empty') as HTMLElement | null;
-        if (emptySlot) emptySlot.appendChild(target);
-      }
+      flipMove([target], () => {
+        if (parentSlot && parentSlot.classList.contains('block-slot')) {
+          pool.appendChild(target);
+        } else {
+          const emptySlot = card.querySelector('.block-slot:empty') as HTMLElement | null;
+          if (emptySlot) emptySlot.appendChild(target);
+        }
+      });
     });
 
     const checkBtn = card.querySelector('.check-blocks-btn') as HTMLButtonElement | null;
@@ -322,21 +399,101 @@ export function setupQuiz(panel: Element) {
     if (resetBlocksBtn) {
       resetBlocksBtn.addEventListener('click', () => {
         if (isLocked(card)) return;
-        card.querySelectorAll('.block-slot .block').forEach((b) => pool.appendChild(b));
+        const blocks = Array.from(card.querySelectorAll<HTMLElement>('.block-slot .block'));
+        if (blocks.length === 0) return;
+        flipMove(blocks, () => {
+          blocks.forEach((b) => pool.appendChild(b));
+        });
       });
     }
   });
 
-  panel.querySelectorAll('.question-card[data-type="matching"]').forEach((card) => {
+  panel.querySelectorAll('.question-card[data-type="matching"]').forEach((cardEl) => {
+    const card = cardEl as HTMLElement;
+    const grid = card.querySelector('.match-grid') as HTMLElement | null;
+    const svg = grid?.querySelector('.match-ropes') as SVGElement | null;
+    if (!grid || !svg) return;
+
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+
     let selectedJp: HTMLElement | null = null;
+    let dragSource: HTMLElement | null = null;
+    let dragSourceX = 0, dragSourceY = 0;
+    let pointerStartX = 0, pointerStartY = 0;
+    let activeRope: SVGPathElement | null = null;
+    let dragMoved = false;
 
-    card.addEventListener('click', (e) => {
-      const item = (e.target as HTMLElement).closest('.match-item') as HTMLElement | null;
-      if (!item || isLocked(card) || item.classList.contains('matched')) return;
+    function getEdge(item: HTMLElement, side: 'right' | 'left') {
+      const r = item.getBoundingClientRect();
+      const g = grid!.getBoundingClientRect();
+      return {
+        x: side === 'right' ? r.right - g.left : r.left - g.left,
+        y: r.top + r.height / 2 - g.top,
+      };
+    }
 
+    function ropeD(x1: number, y1: number, x2: number, y2: number) {
+      const dx = x2 - x1;
+      const sag = Math.max(6, Math.min(22, Math.abs(dx) * 0.16));
+      const cy1 = y1 + sag;
+      const cy2 = y2 + sag;
+      return `M ${x1} ${y1} C ${x1 + dx * 0.4} ${cy1}, ${x2 - dx * 0.4} ${cy2}, ${x2} ${y2}`;
+    }
+
+    function checkComplete() {
+      const matched = card.querySelectorAll('.match-item[data-side="jp"].matched').length;
+      const totalPairs = parseInt(card.dataset.answer || '0');
+      if (matched >= totalPairs) showFeedback(card, true, 1);
+    }
+
+    function lockMatch(source: HTMLElement, target: HTMLElement, rope: SVGPathElement) {
+      source.classList.remove('selected');
+      source.classList.add('matched');
+      target.classList.add('matched');
+      rope.classList.remove('rope-active');
+      rope.classList.add('rope-matched');
+      rope.dataset.pairId = source.dataset.pairId || '';
+      checkComplete();
+    }
+
+    function snapBack(rope: SVGPathElement, srcX: number, srcY: number) {
+      const m = rope.getAttribute('d')?.match(/([\d.-]+)\s+([\d.-]+)\s*$/);
+      if (!m) { rope.remove(); return; }
+      const endX = parseFloat(m[1]);
+      const endY = parseFloat(m[2]);
+      const start = performance.now();
+      const dur = 260;
+      rope.classList.add('rope-snapback');
+      function tick(now: number) {
+        const t = Math.min(1, (now - start) / dur);
+        const e = 1 - Math.pow(1 - t, 3);
+        const cx = endX + (srcX - endX) * e;
+        const cy = endY + (srcY - endY) * e;
+        rope.setAttribute('d', ropeD(srcX, srcY, cx, cy));
+        if (t < 1) requestAnimationFrame(tick);
+        else rope.remove();
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function handleWrongPair(source: HTMLElement, target: HTMLElement) {
+      const attempts = getAttempts(card) + 1;
+      setAttempts(card, attempts);
+      source.classList.add('shake');
+      target.classList.add('shake');
+      setTimeout(() => {
+        source.classList.remove('shake', 'selected');
+        target.classList.remove('shake');
+      }, 350);
+      if (attempts >= MAX_ATTEMPTS) {
+        card.querySelectorAll('.match-item').forEach((i) => i.classList.add('matched'));
+        showFeedback(card, false, attempts);
+      }
+    }
+
+    function tapToPair(item: HTMLElement) {
       const side = item.dataset.side;
       const pairId = item.dataset.pairId;
-
       if (side === 'jp') {
         if (selectedJp === item) {
           item.classList.remove('selected');
@@ -348,39 +505,127 @@ export function setupQuiz(panel: Element) {
         }
         return;
       }
-
       if (side !== 'meaning' || !selectedJp) return;
-
       if (selectedJp.dataset.pairId === pairId) {
-        selectedJp.classList.remove('selected');
-        selectedJp.classList.add('matched');
-        item.classList.add('matched');
+        const sx = getEdge(selectedJp, 'right');
+        const tx = getEdge(item, 'left');
+        const rope = document.createElementNS(SVG_NS, 'path') as SVGPathElement;
+        rope.setAttribute('class', 'rope');
+        rope.setAttribute('d', ropeD(sx.x, sx.y, tx.x, tx.y));
+        svg!.appendChild(rope);
+        lockMatch(selectedJp, item, rope);
         selectedJp = null;
-
-        const matched = (card.querySelectorAll('.match-item[data-side="jp"].matched')).length;
-        const totalPairs = parseInt((card as HTMLElement).dataset.answer || '0');
-        if (matched >= totalPairs) {
-          showFeedback(card, true, 1);
-        }
       } else {
-        const attempts = getAttempts(card) + 1;
-        setAttempts(card, attempts);
-
-        const wrongLeft = selectedJp;
-        wrongLeft.classList.add('shake');
-        item.classList.add('shake');
-        setTimeout(() => {
-          wrongLeft.classList.remove('shake', 'selected');
-          item.classList.remove('shake');
-        }, 350);
+        const wrong = selectedJp;
         selectedJp = null;
-
-        if (attempts >= MAX_ATTEMPTS) {
-          card.querySelectorAll('.match-item').forEach((i) => i.classList.add('matched'));
-          showFeedback(card, false, attempts);
-        }
+        handleWrongPair(wrong, item);
       }
-    });
+    }
+
+    function onPointerDown(e: PointerEvent) {
+      const item = (e.target as HTMLElement).closest('.match-item') as HTMLElement | null;
+      if (!item || isLocked(card) || item.classList.contains('matched')) return;
+      e.preventDefault();
+
+      dragSource = item;
+      pointerStartX = e.clientX;
+      pointerStartY = e.clientY;
+      dragMoved = false;
+      activeRope = null;
+
+      const edge = getEdge(item, item.dataset.side === 'jp' ? 'right' : 'left');
+      dragSourceX = edge.x;
+      dragSourceY = edge.y;
+
+      // Suppress scroll/zoom for the duration of the gesture (touch fallback)
+      document.body.style.touchAction = 'none';
+      document.addEventListener('pointermove', onPointerMove, { passive: false });
+      document.addEventListener('pointerup', onPointerUp);
+      document.addEventListener('pointercancel', onPointerUp);
+    }
+
+    function onPointerMove(e: PointerEvent) {
+      if (!dragSource) return;
+      const dx = e.clientX - pointerStartX;
+      const dy = e.clientY - pointerStartY;
+      if (!dragMoved && Math.hypot(dx, dy) < 5) return;
+      dragMoved = true;
+      e.preventDefault();
+
+      if (!activeRope) {
+        activeRope = document.createElementNS(SVG_NS, 'path') as SVGPathElement;
+        activeRope.setAttribute('class', 'rope rope-active');
+        svg!.appendChild(activeRope);
+        dragSource.classList.add('selected');
+      }
+
+      const g = grid!.getBoundingClientRect();
+      const x = e.clientX - g.left;
+      const y = e.clientY - g.top;
+      activeRope.setAttribute('d', ropeD(dragSourceX, dragSourceY, x, y));
+    }
+
+    function onPointerUp(e: PointerEvent) {
+      document.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('pointerup', onPointerUp);
+      document.removeEventListener('pointercancel', onPointerUp);
+      document.body.style.touchAction = '';
+
+      const source = dragSource;
+      const rope = activeRope;
+      dragSource = null;
+      activeRope = null;
+      if (!source) return;
+
+      if (!dragMoved) {
+        if (rope) rope.remove();
+        tapToPair(source);
+        return;
+      }
+      if (!rope) return;
+
+      const targetEl = (document.elementFromPoint(e.clientX, e.clientY) as HTMLElement | null)
+        ?.closest('.match-item') as HTMLElement | null;
+
+      const validTarget = !!(
+        targetEl &&
+        targetEl !== source &&
+        targetEl.dataset.side !== source.dataset.side &&
+        !targetEl.classList.contains('matched')
+      );
+
+      if (validTarget && targetEl!.dataset.pairId === source.dataset.pairId) {
+        const targetSide = targetEl!.dataset.side === 'jp' ? 'right' : 'left';
+        const t = getEdge(targetEl!, targetSide as 'right' | 'left');
+        rope.classList.remove('rope-active');
+        rope.setAttribute('d', ropeD(dragSourceX, dragSourceY, t.x, t.y));
+        lockMatch(source, targetEl!, rope);
+      } else {
+        source.classList.remove('selected');
+        if (validTarget) handleWrongPair(source, targetEl!);
+        snapBack(rope, dragSourceX, dragSourceY);
+      }
+    }
+
+    card.addEventListener('pointerdown', onPointerDown);
+
+    // Recompute matched rope endpoints if the grid resizes (window resize, etc.)
+    function redrawMatchedRopes() {
+      svg!.querySelectorAll<SVGPathElement>('.rope-matched').forEach((rope) => {
+        const pairId = rope.dataset.pairId;
+        if (!pairId) return;
+        const jp = card.querySelector(`.match-item[data-side="jp"][data-pair-id="${pairId}"]`) as HTMLElement | null;
+        const meaning = card.querySelector(`.match-item[data-side="meaning"][data-pair-id="${pairId}"]`) as HTMLElement | null;
+        if (!jp || !meaning) return;
+        const a = getEdge(jp, 'right');
+        const b = getEdge(meaning, 'left');
+        rope.setAttribute('d', ropeD(a.x, a.y, b.x, b.y));
+      });
+    }
+    if (typeof ResizeObserver !== 'undefined') {
+      const ro = new ResizeObserver(redrawMatchedRopes);
+      ro.observe(grid);
+    }
   });
 
   panel.querySelectorAll('.hint-btn').forEach((btn) => {
@@ -418,14 +663,14 @@ export function setupQuiz(panel: Element) {
     visibleCards.length = 0;
     visibleCards.push(...newVisible);
     total = newVisible.length;
-    if (scoreEl) scoreEl.textContent = `0 / ${total}`;
+    setScore(0, total);
   }
 
   if (hardToggle) {
     hardToggle.addEventListener('click', () => {
       hardMode = !hardMode;
       hardToggle.classList.toggle('active', hardMode);
-      hardToggle.textContent = hardMode ? 'Hard' : 'Hard';
+      // (label stays "Hard" — only the active class changes)
       resetQuiz();
     });
   }

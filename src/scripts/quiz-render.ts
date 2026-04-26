@@ -68,6 +68,7 @@ export function renderQuestionCard(q: Question, index: number): string {
       )
       .join('');
     inner = `<div class="match-grid">
+      <svg class="match-ropes" aria-hidden="true"></svg>
       <div class="match-col" data-side="jp">${jpCol}</div>
       <div class="match-col" data-side="meaning">${meaningCol}</div>
     </div>`;
