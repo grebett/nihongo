@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "astro": "^6.1.5",
-    "js-yaml": "^4.1.1"
+    "js-yaml": "^4.1.1",
+    "pitchfinder": "^2.3.4",
+    "wavesurfer.js": "^7.12.6"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9"

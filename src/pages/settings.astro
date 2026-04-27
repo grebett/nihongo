@@ -33,6 +33,56 @@ import '../styles/quiz.css';
       or download files manually from the promote page.
     </p>
   </section>
+
+  <section class="pilot-card">
+    <h2>Shadow — XML lessons folder</h2>
+    <p class="muted small">
+      Pour la page <a href={`${import.meta.env.BASE_URL}/shadow`}>/shadow</a>. Pickes une fois le dossier
+      qui contient les fichiers XML de leçons (ex. <code>L001.xml</code>, <code>L002.xml</code>…). Quand tu
+      pickes ensuite une leçon audio sur /shadow, le XML correspondant est trouvé automatiquement ici.
+    </p>
+
+    <div id="shadow-folder-status" class="folder-status">
+      <span class="muted small">Loading…</span>
+    </div>
+
+    <div class="actions" id="shadow-folder-actions"></div>
+
+    <div id="shadow-folder-result" class="result-line hidden"></div>
+
+    <h3 style="margin-top: 1.4rem; font-size: 0.95rem; font-weight: 700; color: var(--text-strong);">Nom de fichier XML</h3>
+    <p class="muted small">
+      Template utilisé pour trouver le XML d'une leçon. <code>{'{lesson}'}</code> est remplacé par l'ID
+      de leçon (= nom du dossier audio pické, typiquement <code>L001</code>).
+    </p>
+
+    <div style="display: grid; gap: 0.7rem; margin-top: 0.6rem;">
+      <label>
+        <span class="field-label">Template</span>
+        <input id="cfg-xml-filename" type="text" class="answer-input" placeholder="{lesson}.xml" />
+      </label>
+    </div>
+    <div class="actions" style="margin-top: 0.85rem;">
+      <button id="cfg-save" class="submit-btn">Enregistrer</button>
+      <button id="cfg-reset" class="reset-btn">Restaurer le template par défaut</button>
+    </div>
+    <div id="cfg-result" class="result-line hidden"></div>
+
+    <h3 style="margin-top: 1.4rem; font-size: 0.95rem; font-weight: 700; color: var(--text-strong);">Chemins de référence (Assimil sur Mac)</h3>
+    <p class="muted small">
+      Pour t'aider à trouver les bons dossiers dans le picker.
+    </p>
+    <div style="margin-top: 0.5rem; display: grid; gap: 0.5rem;">
+      <div class="folder-status" style="font-size: 0.78rem;">
+        <strong>Audio (par leçon)</strong><br />
+        <code id="ref-path-audio"></code>
+      </div>
+      <div class="folder-status" style="font-size: 0.78rem;">
+        <strong>XML (toutes les leçons)</strong><br />
+        <code id="ref-path-xml"></code>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style is:global>
@@ -151,4 +201,133 @@ import '../styles/quiz.css';
   }
 
   refresh();
+</script>
+
+<script>
+  // ─── Shadow library settings ───
+  import {
+    isFsApiSupported as isShadowFsApi,
+    loadXmlDirHandle, clearXmlDirHandle, pickXmlDirHandle, ensurePermission as ensureShadowPerm,
+    getConfig as getShadowConfig, setConfig as setShadowConfig, resetConfig as resetShadowConfig,
+    REFERENCE_PATHS,
+  } from '../scripts/shadow-library';
+
+  const shadowStatus = document.getElementById('shadow-folder-status')!;
+  const shadowActions = document.getElementById('shadow-folder-actions')!;
+  const shadowResult = document.getElementById('shadow-folder-result')!;
+
+  function showShadowResult(ok: boolean, msg: string) {
+    shadowResult.className = `result-line ${ok ? 'ok' : 'err'}`;
+    shadowResult.textContent = msg;
+  }
+
+  function escapeText2(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  async function refreshShadow() {
+    if (!isShadowFsApi()) {
+      shadowStatus.className = 'folder-status unset';
+      shadowStatus.textContent = 'File System Access API non supportée — utilise Chrome/Edge/Brave. Sur Safari/Firefox la page /shadow ne pourra pas auto-charger les XMLs.';
+      shadowActions.innerHTML = '';
+      return;
+    }
+    const handle = await loadXmlDirHandle();
+    if (!handle) {
+      shadowStatus.className = 'folder-status unset';
+      shadowStatus.textContent = 'Aucun dossier XML configuré.';
+      shadowActions.innerHTML = `<button id="shadow-pick-btn" class="submit-btn">Pickes le dossier XML…</button>`;
+    } else {
+      shadowStatus.className = 'folder-status set';
+      const perm = await (handle as any).queryPermission({ mode: 'read' });
+      shadowStatus.innerHTML = `📄 <strong>${escapeText2(handle.name)}</strong><br><span class="muted small">Permission: ${perm}${perm === 'prompt' ? ' (sera redemandée à l\'usage)' : ''}</span>`;
+      shadowActions.innerHTML = `
+        <button id="shadow-reverify-btn" class="submit-btn">Vérifier l'accès</button>
+        <button id="shadow-repick-btn" class="reset-btn">Changer de dossier…</button>
+        <button id="shadow-clear-btn" class="reset-btn">Oublier</button>
+      `;
+    }
+    wireShadowButtons();
+  }
+
+  function wireShadowButtons() {
+    const pickBtn = document.getElementById('shadow-pick-btn');
+    if (pickBtn) {
+      pickBtn.addEventListener('click', async () => {
+        try {
+          const h = await pickXmlDirHandle();
+          showShadowResult(true, `✓ Dossier XML défini : ${h.name}`);
+          refreshShadow();
+        } catch (e: any) {
+          if (e?.name === 'AbortError') showShadowResult(false, '✗ Annulé');
+          else showShadowResult(false, `✗ ${e?.message ?? e}`);
+        }
+      });
+    }
+    const repick = document.getElementById('shadow-repick-btn');
+    if (repick) {
+      repick.addEventListener('click', async () => {
+        try {
+          const h = await pickXmlDirHandle();
+          showShadowResult(true, `✓ Dossier XML mis à jour : ${h.name}`);
+          refreshShadow();
+        } catch (e: any) {
+          if (e?.name !== 'AbortError') showShadowResult(false, `✗ ${e?.message ?? e}`);
+        }
+      });
+    }
+    const reverify = document.getElementById('shadow-reverify-btn');
+    if (reverify) {
+      reverify.addEventListener('click', async () => {
+        const h = await loadXmlDirHandle();
+        if (!h) return;
+        const ok = await ensureShadowPerm(h);
+        showShadowResult(ok, ok ? '✓ Permission accordée.' : '✗ Permission refusée.');
+        refreshShadow();
+      });
+    }
+    const clearBtn = document.getElementById('shadow-clear-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', async () => {
+        if (!confirm('Oublier le dossier XML ?')) return;
+        await clearXmlDirHandle();
+        showShadowResult(true, '✓ Oublié.');
+        refreshShadow();
+      });
+    }
+  }
+
+  function loadCfgInputs() {
+    const cfg = getShadowConfig();
+    (document.getElementById('cfg-xml-filename') as HTMLInputElement).value = cfg.xmlFilenameTemplate;
+  }
+
+  document.getElementById('cfg-save')!.addEventListener('click', () => {
+    const filename = (document.getElementById('cfg-xml-filename') as HTMLInputElement).value.trim();
+    const r = document.getElementById('cfg-result')!;
+    if (!filename) {
+      r.className = 'result-line err';
+      r.textContent = '✗ Le template ne peut pas être vide.';
+      return;
+    }
+    setShadowConfig({ xmlFilenameTemplate: filename });
+    r.className = 'result-line ok';
+    r.textContent = '✓ Enregistré.';
+  });
+
+  document.getElementById('cfg-reset')!.addEventListener('click', () => {
+    if (!confirm('Restaurer le template par défaut ?')) return;
+    resetShadowConfig();
+    loadCfgInputs();
+    const r = document.getElementById('cfg-result')!;
+    r.className = 'result-line ok';
+    r.textContent = '✓ Restauré.';
+  });
+
+  // Reference paths for the user (helps them navigate in the FS picker)
+  (document.getElementById('ref-path-audio') as HTMLElement).textContent = REFERENCE_PATHS.audioLesson;
+  (document.getElementById('ref-path-xml') as HTMLElement).textContent = REFERENCE_PATHS.xmlLessons;
+
+  loadCfgInputs();
+  refreshShadow();
 </script>

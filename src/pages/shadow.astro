@@ -1,0 +1,2177 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Shadow">
+  <a href={import.meta.env.BASE_URL} class="back">&larr; Home</a>
+
+  <header class="section-header">
+    <span class="section-number">Spike</span>
+    <h1>Shadow — pronunciation lab</h1>
+    <p class="description">
+      Charge un audio de référence (ou enregistre-le), puis enregistre ta voix et compare : waveform,
+      spectrogramme et courbe de pitch (F0). Tout reste local au navigateur.
+    </p>
+  </header>
+
+  <div id="defaults-banner" class="defaults-banner hidden">
+    <span class="banner-icon">📌</span>
+    <span class="banner-text" id="defaults-text"></span>
+    <div class="banner-actions" id="defaults-actions"></div>
+    <button id="defaults-dismiss" class="btn-icon" title="Fermer">×</button>
+  </div>
+
+  <section class="shadow-card">
+    <div class="card-head">
+      <h2>Référence</h2>
+      <div class="card-actions">
+        <label class="btn small">
+          Upload audio
+          <input id="ref-file" type="file" accept="audio/*" hidden />
+        </label>
+        <button id="ref-library" class="btn small" title="Choisir le dossier audio d'une leçon (XML auto-trouvé via /settings)">📁 Lesson</button>
+        <label class="btn small fallback-only" hidden>
+          📁 Lesson
+          <input id="ref-folder" type="file" hidden webkitdirectory multiple />
+        </label>
+        <button id="ref-play" class="btn small" disabled>▶ Play</button>
+        <button id="ref-loop" class="btn small loop-btn" disabled title="Loop la sélection">↻</button>
+      </div>
+    </div>
+    <div id="xml-status" class="xml-status hidden"></div>
+    <div id="ref-folder-panel" class="folder-panel hidden">
+      <div class="folder-meta">
+        <span class="folder-icon">📂</span>
+        <span id="ref-folder-name" class="folder-name"></span>
+        <span id="ref-folder-count" class="folder-count"></span>
+        <button id="ref-folder-clear" class="btn-icon" title="Fermer le dossier">×</button>
+      </div>
+      <div id="ref-file-list" class="file-list"></div>
+    </div>
+    <div id="ref-phrases-list" class="phrases-list hidden">
+      <div class="phrases-list-head">
+        <span class="phrases-list-title" id="phrases-list-title"></span>
+        <span class="phrases-list-count" id="phrases-list-count"></span>
+      </div>
+      <div id="phrases-list-body"></div>
+    </div>
+
+    <div id="ref-phrase" class="phrase-panel hidden">
+      <div class="phrase-meta" id="phrase-meta"></div>
+      <div class="phrase-jp" id="phrase-jp"></div>
+      <div class="phrase-ph" id="phrase-ph"></div>
+      <div class="phrase-fr" id="phrase-fr"></div>
+    </div>
+    <div id="ref-wave" class="wave"></div>
+    <canvas id="ref-pitch" class="pitch-canvas" height="120"></canvas>
+    <div id="ref-status" class="status muted small">Pas de fichier chargé. <span class="hint-inline">Astuce : glisse pour sélectionner une portion à looper.</span></div>
+  </section>
+
+  <div id="countdown-overlay" class="countdown-overlay hidden" aria-hidden="true">
+    <div class="countdown-num" id="countdown-num">3</div>
+  </div>
+
+  <section class="shadow-card">
+    <div class="card-head">
+      <h2>Ta voix</h2>
+      <div class="card-actions">
+        <button id="rec-start" class="btn small accent">🎙 Record</button>
+        <button id="rec-stop" class="btn small" disabled>■ Stop</button>
+        <button id="rec-play" class="btn small" disabled>▶ Play</button>
+        <button id="rec-loop" class="btn small loop-btn" disabled title="Loop la sélection">↻</button>
+      </div>
+    </div>
+    <div id="rec-wave" class="wave"></div>
+    <canvas id="rec-pitch" class="pitch-canvas" height="120"></canvas>
+    <div id="rec-status" class="status muted small">Clique "Record" pour commencer.</div>
+  </section>
+
+  <section class="shadow-card">
+    <div class="card-head">
+      <h2>Comparaison pitch</h2>
+      <div class="card-actions">
+        <button id="compare-btn" class="btn small" disabled>Superposer les 2 courbes</button>
+        <button id="auto-align-btn" class="btn small" disabled title="Cross-corrélation des pitches">Auto-align</button>
+        <button id="reset-align-btn" class="btn small" disabled>Reset</button>
+      </div>
+    </div>
+    <canvas id="compare-pitch" class="pitch-canvas tall" height="220"></canvas>
+    <div class="align-controls">
+      <label class="align-row">
+        <span>Tempo (×<span id="scale-val">1.00</span>)</span>
+        <input id="scale-slider" type="range" min="0.5" max="2.0" step="0.01" value="1" disabled />
+      </label>
+      <span class="hint">Glisse la courbe rouge horizontalement pour caler le décalage. Offset : <span id="offset-val">0.00</span>s</span>
+    </div>
+    <div class="legend">
+      <span><i class="dot ref"></i> Référence</span>
+      <span><i class="dot rec"></i> Ta voix (déplaçable)</span>
+    </div>
+
+    <div id="analysis" class="analysis hidden">
+      <h3>Analyse</h3>
+      <div class="metrics-grid">
+        <div class="metric">
+          <span class="metric-label">Corrélation contour</span>
+          <span class="metric-value" id="m-corr">—</span>
+          <span class="metric-tag" id="m-corr-tag"></span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Direction (montée/descente)</span>
+          <span class="metric-value" id="m-dir">—</span>
+          <span class="metric-tag" id="m-dir-tag"></span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Écart RMS (registre normalisé)</span>
+          <span class="metric-value" id="m-rms">—</span>
+          <span class="metric-tag" id="m-rms-tag"></span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Plage de pitch</span>
+          <span class="metric-value" id="m-range">—</span>
+          <span class="metric-tag" id="m-range-tag"></span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">F0 moyen</span>
+          <span class="metric-value" id="m-f0">—</span>
+          <span class="metric-tag muted-tag">informatif</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Voicing</span>
+          <span class="metric-value" id="m-voicing">—</span>
+          <span class="metric-tag" id="m-voicing-tag"></span>
+        </div>
+      </div>
+      <div class="verdict" id="verdict"></div>
+    </div>
+  </section>
+
+  <style>
+    .back {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .back:hover { color: var(--accent); }
+
+    .section-header { margin-bottom: 2rem; }
+    .section-number {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .section-header h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-strong);
+      margin-bottom: 0.6rem;
+    }
+    .description {
+      color: var(--text-muted);
+      max-width: 60ch;
+      line-height: 1.55;
+    }
+
+    .shadow-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.4rem 1.4rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .card-head h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-strong);
+    }
+    .card-actions { display: inline-flex; gap: 0.45rem; align-items: center; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color var(--dur-fast) var(--ease),
+                  background var(--dur-fast) var(--ease),
+                  color var(--dur-fast) var(--ease);
+    }
+    .btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn.small { font-size: 0.78rem; padding: 0.4rem 0.75rem; }
+    .btn.accent {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    .btn.accent:hover:not(:disabled) {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: white;
+    }
+
+    .wave {
+      width: 100%;
+      min-height: 80px;
+      background: var(--bg-input);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .pitch-canvas {
+      display: block;
+      width: 100%;
+      height: 120px;
+      margin-top: 0.6rem;
+      background: var(--bg-input);
+      border-radius: 8px;
+    }
+    .pitch-canvas.tall { height: 220px; }
+
+    .status {
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .legend {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .legend .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    .legend .dot.ref { background: #4a8eb5; }
+    .legend .dot.rec { background: var(--accent); }
+
+    .align-controls {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      margin-top: 0.7rem;
+      flex-wrap: wrap;
+    }
+    .align-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .align-row input[type="range"] {
+      width: 180px;
+      accent-color: var(--accent);
+    }
+    .align-row input[type="range"]:disabled { opacity: 0.4; }
+    .align-controls .hint {
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+    }
+    #compare-pitch { cursor: grab; touch-action: none; }
+    #compare-pitch.dragging { cursor: grabbing; }
+
+    .analysis {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .analysis.hidden { display: none; }
+    .analysis h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.7rem;
+    }
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding: 0.65rem 0.8rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    .metric-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-strong);
+      font-variant-numeric: tabular-nums;
+    }
+    .metric-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .metric-tag.good     { color: var(--success); }
+    .metric-tag.warn     { color: var(--gold); }
+    .metric-tag.bad      { color: var(--error); }
+    .metric-tag.muted-tag{ color: var(--text-subtle); }
+
+    .verdict {
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.9rem;
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .countdown-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      pointer-events: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .countdown-overlay.hidden { display: none; }
+    .countdown-num {
+      font-size: 14rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.04em;
+      text-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+    .countdown-num.go {
+      color: #ffffff;
+      font-size: 9rem;
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 40px var(--accent), 0 8px 40px rgba(0, 0, 0, 0.55);
+    }
+    .countdown-num.rec {
+      color: var(--accent);
+      font-size: 7rem;
+    }
+
+    .folder-panel {
+      margin-bottom: 0.9rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .folder-panel.hidden { display: none; }
+    .folder-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.7rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+      font-size: 0.78rem;
+    }
+    .folder-icon { opacity: 0.8; }
+    .folder-name {
+      font-weight: 600;
+      color: var(--text-strong);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .folder-count {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      flex: 1;
+    }
+    .btn-icon {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+    }
+    .btn-icon:hover { background: var(--bg-muted); color: var(--accent); }
+
+    .file-list {
+      max-height: 280px;
+      overflow-y: auto;
+      padding: 0.25rem 0;
+    }
+
+    .loop-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    .loop-btn.active:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: white;
+    }
+
+    .hint-inline {
+      color: var(--text-subtle);
+      font-style: italic;
+    }
+
+    .xml-status {
+      margin-bottom: 0.7rem;
+      padding: 0.4rem 0.7rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .xml-status.hidden { display: none; }
+    .xml-status .ok { color: var(--success); font-weight: 600; }
+
+    .phrase-panel {
+      margin-bottom: 0.9rem;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(180deg, var(--bg-input) 0%, var(--bg-card) 100%);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+    }
+    .phrase-panel.hidden { display: none; }
+    .phrase-meta {
+      font-size: 0.7rem;
+      color: var(--text-subtle);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .phrase-jp {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.9;
+      color: var(--text-strong);
+      margin-bottom: 0.4rem;
+    }
+    .phrase-jp ruby rt {
+      font-size: 0.55em;
+      color: var(--text-muted);
+    }
+    .phrase-ph {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .phrase-ph:empty { display: none; }
+    .phrase-fr {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .phrase-fr:empty { display: none; }
+
+    .phrases-list {
+      margin-bottom: 0.9rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .phrases-list.hidden { display: none; }
+    .phrases-list-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0.6rem 0.95rem;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+    }
+    .phrases-list-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-strong);
+    }
+    .phrases-list-count {
+      font-size: 0.7rem;
+      color: var(--text-subtle);
+      font-variant-numeric: tabular-nums;
+    }
+    #phrases-list-body { max-height: 460px; overflow-y: auto; }
+
+    /* Note: phrase-row* styles live in the is:global block below — those rows
+       are created in JS and don't get Astro's scope hash. */
+
+    .defaults-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      padding: 0.6rem 0.9rem;
+      margin-bottom: 1.2rem;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+    .defaults-banner.hidden { display: none; }
+    .banner-icon { font-size: 1rem; }
+    .banner-text { flex: 1; }
+    .banner-actions {
+      display: inline-flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .star-active {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: white !important;
+    }
+    .default-tag {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      vertical-align: middle;
+    }
+
+    /* ─── Mobile (≤ 720px) ─── */
+    @media (max-width: 720px) {
+      .section-header { margin-bottom: 1.4rem; }
+      .section-header h1 { font-size: 1.4rem; }
+      .description { font-size: 0.88rem; }
+
+      .shadow-card {
+        padding: 1rem 0.9rem 1.1rem;
+        border-radius: 12px;
+      }
+
+      /* Stack the card head: title above, actions below as a wrapping row.
+         Long action rows (Record/Stop/Play/Loop) overflowed the screen otherwise. */
+      .card-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .card-head h2 { font-size: 1rem; }
+      .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        width: 100%;
+      }
+      .btn.small {
+        padding: 0.5rem 0.7rem;     /* slightly bigger tap targets */
+        font-size: 0.78rem;
+        flex: 0 1 auto;
+      }
+      .loop-btn { min-width: 38px; }
+
+      /* Folder panel — list takes more vertical room since it's the main interaction */
+      .file-list { max-height: 220px; }
+      .folder-name { font-size: 0.78rem; }
+
+      /* Pitch canvases — keep them readable, not too tall */
+      .pitch-canvas { height: 100px; }
+      .pitch-canvas.tall { height: 180px; }
+
+      /* Comparison controls stack */
+      .align-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .align-row input[type="range"] { width: 100%; max-width: 280px; }
+      .align-controls .hint { font-size: 0.74rem; }
+
+      /* Analysis grid: one column for legibility */
+      .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+      }
+      .metric { padding: 0.55rem 0.7rem; }
+      .metric-value { font-size: 0.95rem; }
+      .verdict { font-size: 0.82rem; }
+
+      /* Countdown — scale the giant numbers down so they fit on small screens */
+      .countdown-num { font-size: 8rem; }
+      .countdown-num.go { font-size: 5.5rem; }
+      .countdown-num.rec { font-size: 4.5rem; }
+    }
+
+    /* ─── Tighter still (≤ 420px) ─── */
+    @media (max-width: 420px) {
+      main { padding: 1.5rem 1rem 3rem; }
+      .shadow-card { padding: 0.85rem 0.75rem 1rem; }
+      .btn.small { font-size: 0.74rem; padding: 0.45rem 0.6rem; }
+      .countdown-num { font-size: 6.5rem; }
+      .countdown-num.go { font-size: 4.5rem; }
+    }
+  </style>
+
+  <!-- Global styles: tree rows are created in script (after Astro scope-hashing),
+       so they need un-scoped selectors. -->
+  <style is:global>
+    .tree-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      padding: 0.18rem 0.55rem;
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: var(--text);
+      transition: background var(--dur-fast) var(--ease);
+      user-select: none;
+      line-height: 1.4;
+    }
+    .tree-row:hover { background: var(--bg-muted); }
+    .tree-row.is-dir { color: var(--text-strong); font-weight: 600; }
+    .tree-row.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .tree-row .indent {
+      font-family: 'SF Mono', 'JetBrains Mono', Menlo, Monaco, Consolas, ui-monospace, monospace;
+      white-space: pre;
+      color: var(--text-subtle);
+      font-size: 0.8rem;
+      letter-spacing: 0;
+      flex-shrink: 0;
+    }
+    .tree-row.is-dir .indent { color: var(--text-muted); }
+    .tree-row.active .indent { color: var(--accent); opacity: 0.6; }
+    .tree-row .name {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .tree-row .meta {
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .tree-row.active .meta { color: var(--accent); opacity: 0.7; }
+
+    /* Hide the Assimil <trlit> romaji embedded inside <ruby> elements — we already
+       expose romaji separately via the <ph> field, so showing it inline with the
+       kanji renders as "早くhayaku行きましょう…" which is unreadable. */
+    trlit { display: none !important; }
+
+    /* Phrase rows (rendered dynamically — must live in is:global). */
+    .phrase-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 0.85rem;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background var(--dur-fast) var(--ease);
+      position: relative;
+    }
+    .phrase-row:last-child { border-bottom: none; }
+    .phrase-row:hover { background: var(--bg-muted); }
+    .phrase-row.active {
+      background: var(--accent-soft);
+      box-shadow: inset 4px 0 0 var(--accent);
+    }
+    .phrase-row.no-audio {
+      cursor: default;
+      opacity: 0.5;
+    }
+    .phrase-row.no-audio:hover { background: transparent; }
+
+    .phrase-row-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      margin-top: 0.2rem;
+      transition: background var(--dur-fast) var(--ease),
+                  color var(--dur-fast) var(--ease),
+                  border-color var(--dur-fast) var(--ease);
+    }
+    .phrase-row:hover .phrase-row-badge {
+      border-color: var(--border-hover);
+    }
+    .phrase-row.active .phrase-row-badge {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .phrase-row-content {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .phrase-row-jp {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--text-strong);
+      letter-spacing: 0.01em;
+    }
+    .phrase-row-jp ruby rt {
+      font-size: 0.55em;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .phrase-row-meta {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 0.35rem 0.85rem;
+      font-size: 0.85rem;
+      align-items: baseline;
+    }
+    .phrase-row-meta .meta-label {
+      color: var(--text-subtle);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      align-self: baseline;
+    }
+    .phrase-row-meta .meta-value {
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .phrase-row-meta .meta-value.empty {
+      color: var(--text-subtle);
+      font-style: italic;
+    }
+
+    .phrase-row-missing {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-style: italic;
+    }
+    .phrase-row-playing {
+      position: absolute;
+      top: 0.85rem;
+      right: 1rem;
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .phrase-row-playing::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+  </style>
+</Layout>
+
+<script>
+  import WaveSurfer from 'wavesurfer.js';
+  import Spectrogram from 'wavesurfer.js/dist/plugins/spectrogram.esm.js';
+  import RegionsPlugin from 'wavesurfer.js/dist/plugins/regions.esm.js';
+  import type { Region } from 'wavesurfer.js/dist/plugins/regions.esm.js';
+  import { YIN } from 'pitchfinder';
+  import * as ShadowLib from '../scripts/shadow-library';
+
+  type PitchPoint = { time: number; freq: number | null };
+  type Slot = {
+    blob: Blob | null;
+    buffer: AudioBuffer | null;
+    pitch: PitchPoint[];
+    ws: WaveSurfer | null;
+    regions: any | null;
+    region: Region | null;
+    loop: boolean;
+  };
+
+  const slots: Record<'ref' | 'rec', Slot> = {
+    ref: { blob: null, buffer: null, pitch: [], ws: null, regions: null, region: null, loop: false },
+    rec: { blob: null, buffer: null, pitch: [], ws: null, regions: null, region: null, loop: false },
+  };
+
+  const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+
+  // Theme-aware colors (read from CSS vars at script eval time)
+  const cssVar = (name: string) =>
+    getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+  const colors = {
+    ref: '#4a8eb5',
+    rec: cssVar('--accent') || '#a8201a',
+    grid: cssVar('--border') || '#e6decf',
+    axis: cssVar('--text-muted') || '#888',
+  };
+
+  function buildWave(containerId: string, blob: Blob, slotKey: 'ref' | 'rec'): { ws: WaveSurfer; regions: any } {
+    const url = URL.createObjectURL(blob);
+    const ws = WaveSurfer.create({
+      container: `#${containerId}`,
+      url,
+      waveColor: cssVar('--text-subtle') || '#888',
+      progressColor: cssVar('--accent') || '#a8201a',
+      cursorColor: cssVar('--text-strong') || '#000',
+      height: 80,
+      normalize: true,
+    });
+    ws.registerPlugin(
+      Spectrogram.create({
+        labels: true,
+        height: 140,
+        splitChannels: false,
+        scale: 'mel',
+        frequencyMax: 4000,
+        frequencyMin: 0,
+        fftSamples: 1024,
+        labelsBackground: 'rgba(0,0,0,0.05)',
+      })
+    );
+    const regionColor = slotKey === 'ref'
+      ? 'rgba(74, 142, 181, 0.18)'
+      : 'rgba(168, 32, 26, 0.18)';
+    const regions = ws.registerPlugin(RegionsPlugin.create());
+    regions.enableDragSelection({ color: regionColor });
+    return { ws, regions };
+  }
+
+  async function decode(blob: Blob): Promise<AudioBuffer> {
+    const arr = await blob.arrayBuffer();
+    return audioCtx.decodeAudioData(arr.slice(0));
+  }
+
+  function extractPitch(buffer: AudioBuffer): PitchPoint[] {
+    const detector = YIN({ sampleRate: buffer.sampleRate });
+    const channel = buffer.getChannelData(0);
+    const windowSize = 2048;
+    const hopSize = 512;
+    const out: PitchPoint[] = [];
+    for (let i = 0; i + windowSize < channel.length; i += hopSize) {
+      // pitchfinder expects a Float32Array
+      const window = channel.subarray(i, i + windowSize);
+      const freq = detector(window);
+      out.push({ time: i / buffer.sampleRate, freq: freq && freq > 60 && freq < 600 ? freq : null });
+    }
+    return out;
+  }
+
+  function fitCanvas(canvas: HTMLCanvasElement) {
+    const ratio = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    if (canvas.width !== w * ratio || canvas.height !== h * ratio) {
+      canvas.width = w * ratio;
+      canvas.height = h * ratio;
+      const ctx = canvas.getContext('2d')!;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+  }
+
+  type Series = {
+    points: PitchPoint[];
+    color: string;
+    offset?: number; // seconds, added to each point's time
+    scale?: number;  // multiplier on time
+    label?: string;
+  };
+
+  // Cached layout from the last draw on the compare canvas — used by the drag handler
+  // to convert pixel deltas to seconds without recomputing tMax mid-drag.
+  let lastCompareLayout: { tMax: number; w: number; padX: number } | null = null;
+
+  function transformedTime(p: PitchPoint, s: Series) {
+    return p.time * (s.scale ?? 1) + (s.offset ?? 0);
+  }
+
+  function seriesTimeMax(s: Series): number {
+    const last = s.points[s.points.length - 1];
+    return last ? transformedTime(last, s) : 0;
+  }
+
+  function drawPitchCurve(
+    canvas: HTMLCanvasElement,
+    series: Series[],
+    opts: { fMin?: number; fMax?: number; tMax?: number; cacheLayout?: boolean } = {}
+  ) {
+    fitCanvas(canvas);
+    const ctx = canvas.getContext('2d')!;
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    const padX = 36;
+    ctx.clearRect(0, 0, w, h);
+
+    // Auto-range based on actual pitch values found, with sensible defaults
+    const allFreqs = series.flatMap((s) => s.points.filter((p) => p.freq).map((p) => p.freq!));
+    if (allFreqs.length === 0) {
+      ctx.fillStyle = colors.axis;
+      ctx.font = '12px Inter, sans-serif';
+      ctx.fillText('Pas de pitch détecté', 10, 20);
+      return;
+    }
+    const fMin = opts.fMin ?? Math.max(60, Math.min(...allFreqs) - 20);
+    const fMax = opts.fMax ?? Math.min(500, Math.max(...allFreqs) + 20);
+    const tMax = opts.tMax ?? Math.max(0.1, ...series.map(seriesTimeMax));
+    if (tMax === 0) return;
+
+    if (opts.cacheLayout) lastCompareLayout = { tMax, w, padX };
+
+    // Grid
+    ctx.strokeStyle = colors.grid;
+    ctx.lineWidth = 1;
+    ctx.font = '10px Inter, sans-serif';
+    ctx.fillStyle = colors.axis;
+    const fSteps = 4;
+    for (let i = 0; i <= fSteps; i++) {
+      const f = fMin + (i / fSteps) * (fMax - fMin);
+      const y = h - ((f - fMin) / (fMax - fMin)) * (h - 20) - 10;
+      ctx.beginPath();
+      ctx.moveTo(padX, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+      ctx.fillText(`${Math.round(f)} Hz`, 2, y + 3);
+    }
+
+    // Curves — gap-aware (don't connect unvoiced regions)
+    for (const s of series) {
+      ctx.strokeStyle = s.color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      let pen = false;
+      for (const p of s.points) {
+        if (p.freq == null) {
+          pen = false;
+          continue;
+        }
+        const t = transformedTime(p, s);
+        if (t < 0) {
+          pen = false;
+          continue;
+        }
+        const x = padX + (t / tMax) * (w - padX);
+        const y = h - ((p.freq - fMin) / (fMax - fMin)) * (h - 20) - 10;
+        if (!pen) {
+          ctx.moveTo(x, y);
+          pen = true;
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+    }
+  }
+
+  async function loadIntoSlot(slotKey: 'ref' | 'rec', blob: Blob, opts: { autoplay?: boolean } = {}) {
+    const slot = slots[slotKey];
+    if (slot.ws) {
+      slot.ws.destroy();
+      slot.ws = null;
+      slot.regions = null;
+      slot.region = null;
+    }
+    slot.blob = blob;
+
+    const waveContainerId = slotKey === 'ref' ? 'ref-wave' : 'rec-wave';
+    const pitchCanvas = document.getElementById(
+      slotKey === 'ref' ? 'ref-pitch' : 'rec-pitch'
+    ) as HTMLCanvasElement;
+    const status = document.getElementById(slotKey === 'ref' ? 'ref-status' : 'rec-status')!;
+    const playBtn = document.getElementById(slotKey === 'ref' ? 'ref-play' : 'rec-play') as HTMLButtonElement;
+    const loopBtn = document.getElementById(slotKey === 'ref' ? 'ref-loop' : 'rec-loop') as HTMLButtonElement;
+
+    status.textContent = 'Décodage…';
+
+    const built = buildWave(waveContainerId, blob, slotKey);
+    slot.ws = built.ws;
+    slot.regions = built.regions;
+
+    // Single-region mode: any new region replaces the previous one.
+    slot.regions.on('region-created', (region: Region) => {
+      for (const r of slot.regions.getRegions()) if (r !== region) r.remove();
+      slot.region = region;
+      loopBtn.disabled = false;
+    });
+    slot.regions.on('region-updated', (region: Region) => {
+      slot.region = region;
+    });
+    slot.regions.on('region-removed', () => {
+      slot.region = null;
+      // Disable loop only if no region remains
+      if (!slot.regions.getRegions().length) {
+        loopBtn.disabled = true;
+        slot.loop = false;
+        loopBtn.classList.remove('active');
+      }
+    });
+    // When playback exits the region: loop back if loop is on, else stop.
+    slot.regions.on('region-out', (region: Region) => {
+      if (slot.region === region && slot.loop) {
+        region.play();
+      } else if (slot.region === region) {
+        slot.ws!.pause();
+      }
+    });
+
+    slot.ws.on('ready', () => {
+      playBtn.disabled = false;
+      if (opts.autoplay && slot.ws) {
+        slot.ws.play();
+        playBtn.textContent = '❚❚ Pause';
+      }
+    });
+    slot.ws.on('finish', () => {
+      playBtn.textContent = '▶ Play';
+    });
+
+    slot.buffer = await decode(blob);
+    status.textContent = 'Extraction du pitch…';
+    slot.pitch = extractPitch(slot.buffer);
+
+    drawPitchCurve(pitchCanvas, [
+      { points: slot.pitch, color: slotKey === 'ref' ? colors.ref : colors.rec },
+    ]);
+
+    const voiced = slot.pitch.filter((p) => p.freq).length;
+    status.textContent = `Durée ${slot.buffer.duration.toFixed(2)}s · ${voiced}/${slot.pitch.length} frames voicées · glisse sur la waveform pour sélectionner une portion`;
+
+    // Enable compare button if both loaded
+    if (slots.ref.pitch.length && slots.rec.pitch.length) {
+      (document.getElementById('compare-btn') as HTMLButtonElement).disabled = false;
+    }
+  }
+
+  function setupPlayLoop(slotKey: 'ref' | 'rec') {
+    const slot = slots[slotKey];
+    const playBtn = document.getElementById(slotKey === 'ref' ? 'ref-play' : 'rec-play') as HTMLButtonElement;
+    const loopBtn = document.getElementById(slotKey === 'ref' ? 'ref-loop' : 'rec-loop') as HTMLButtonElement;
+
+    playBtn.addEventListener('click', () => {
+      const ws = slot.ws;
+      if (!ws) return;
+      if (ws.isPlaying()) {
+        ws.pause();
+        playBtn.textContent = '▶ Play';
+        return;
+      }
+      if (slot.region) {
+        slot.region.play();
+      } else {
+        ws.play();
+      }
+      playBtn.textContent = '❚❚ Pause';
+    });
+
+    loopBtn.addEventListener('click', () => {
+      slot.loop = !slot.loop;
+      loopBtn.classList.toggle('active', slot.loop);
+      // If loop just enabled and a region exists but nothing is playing, kick it off.
+      if (slot.loop && slot.region && slot.ws && !slot.ws.isPlaying()) {
+        slot.region.play();
+        playBtn.textContent = '❚❚ Pause';
+      }
+    });
+  }
+
+  // ─── Reference: file upload + folder browser ───
+  document.getElementById('ref-file')!.addEventListener('change', async (e) => {
+    const f = (e.target as HTMLInputElement).files?.[0];
+    if (!f) return;
+    folderState.activeName = null; // upload bypasses any folder selection
+    renderTree();
+    renderPhrasePanel(null);
+    await loadIntoSlot('ref', f);
+  });
+
+  setupPlayLoop('ref');
+  setupPlayLoop('rec');
+
+  // Folder browser — tree state
+  type TreeNode = {
+    name: string;
+    path: string;       // joined webkitRelativePath up to this node
+    isDir: boolean;
+    children?: TreeNode[];
+    file?: File;
+  };
+
+  const folderState: {
+    tree: TreeNode | null;
+    activeName: string | null;
+    rootName: string;
+    totalFiles: number;
+  } = { tree: null, activeName: null, rootName: '', totalFiles: 0 };
+
+  const expanded = new Set<string>();
+  const AUDIO_EXT_RE = /\.(mp3|wav|m4a|aac|ogg|opus|webm|flac)$/i;
+
+  function fmtSize(bytes: number): string {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + ' KB';
+    return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+  }
+
+  function buildTree(files: File[]): TreeNode {
+    const root: TreeNode = { name: '', path: '', isDir: true, children: [] };
+    for (const f of files) {
+      const parts = f.webkitRelativePath.split('/');
+      let cur = root;
+      for (let i = 0; i < parts.length; i++) {
+        const isLast = i === parts.length - 1;
+        const name = parts[i];
+        const path = parts.slice(0, i + 1).join('/');
+        let node = cur.children!.find((c) => c.name === name);
+        if (!node) {
+          node = isLast
+            ? { name, path, isDir: false, file: f }
+            : { name, path, isDir: true, children: [] };
+          cur.children!.push(node);
+        }
+        cur = node;
+      }
+    }
+    // Sort: folders before files, then numeric-aware alphabetical
+    const sortRec = (node: TreeNode) => {
+      if (!node.children) return;
+      node.children.sort((a, b) => {
+        if (a.isDir !== b.isDir) return a.isDir ? -1 : 1;
+        return a.name.localeCompare(b.name, undefined, { numeric: true });
+      });
+      node.children.forEach(sortRec);
+    };
+    sortRec(root);
+    return root;
+  }
+
+  function countAudioFiles(node: TreeNode): number {
+    if (!node.isDir) return 1;
+    return (node.children || []).reduce((s, c) => s + countAudioFiles(c), 0);
+  }
+
+  function renderTree() {
+    const list = document.getElementById('ref-file-list')!;
+    list.innerHTML = '';
+    if (!folderState.tree) return;
+    const children = folderState.tree.children || [];
+    children.forEach((c, i) => renderNode(c, list, '', i === children.length - 1));
+  }
+
+  // Renders one node with `tree(1)`-style box-drawing prefix.
+  //   prefix : the accumulated indentation built up through ancestors
+  //            ('│   ' for ancestor levels with more siblings, '    ' otherwise)
+  //   isLast : whether this node is the last child of its parent
+  function renderNode(node: TreeNode, parent: HTMLElement, prefix: string, isLast: boolean) {
+    const branch = isLast ? '└── ' : '├── ';
+    const marker = node.isDir ? (expanded.has(node.path) ? '▾ ' : '▸ ') : '♪ ';
+
+    const row = document.createElement('div');
+    row.className = 'tree-row ' + (node.isDir ? 'is-dir' : 'is-file');
+    if (!node.isDir && folderState.activeName === node.path) row.classList.add('active');
+
+    row.innerHTML = '<span class="indent"></span><span class="name"></span><span class="meta"></span>';
+    (row.querySelector('.indent') as HTMLElement).textContent = prefix + branch + marker;
+    (row.querySelector('.name') as HTMLElement).textContent = node.name;
+    (row.querySelector('.meta') as HTMLElement).textContent = node.isDir
+      ? String(countAudioFiles(node))
+      : fmtSize(node.file!.size);
+
+    if (node.isDir) {
+      row.addEventListener('click', () => {
+        if (expanded.has(node.path)) expanded.delete(node.path);
+        else expanded.add(node.path);
+        renderTree();
+      });
+    } else {
+      row.addEventListener('click', async () => {
+        folderState.activeName = node.path;
+        renderTree();
+        // First check the in-memory map (Safari fallback path). If empty and we
+        // have a library xmlDir, lazy-load the corresponding XML now.
+        let phrase = findPhraseFor(node.file!);
+        if (!phrase && libState.xmlDir) {
+          await lazyLoadXmlForFile(node.file!);
+          phrase = findPhraseFor(node.file!);
+        }
+        renderPhrasePanel(phrase);
+        renderPhrasesList(); // refresh active highlight in the phrases list
+        await loadIntoSlot('ref', node.file!);
+      });
+    }
+    parent.appendChild(row);
+
+    if (node.isDir && expanded.has(node.path)) {
+      const childPrefix = prefix + (isLast ? '    ' : '│   ');
+      const children = node.children || [];
+      children.forEach((c, i) => renderNode(c, parent, childPrefix, i === children.length - 1));
+    }
+  }
+
+  function loadAudioFolderFromFiles(audioInput: File[], rootName?: string) {
+    const audio = audioInput.filter((f) => AUDIO_EXT_RE.test(f.name));
+    if (!audio.length) {
+      alert('Aucun fichier audio trouvé dans ce dossier.');
+      return;
+    }
+    folderState.tree = buildTree(audio);
+    folderState.activeName = null;
+    folderState.totalFiles = audio.length;
+    folderState.rootName = rootName || audio[0].webkitRelativePath.split('/')[0];
+
+    expanded.clear();
+    const topChildren = folderState.tree.children || [];
+    if (topChildren.length === 1 && topChildren[0].isDir) {
+      expanded.add(topChildren[0].path);
+    }
+
+    const panel = document.getElementById('ref-folder-panel')!;
+    panel.classList.remove('hidden');
+    (document.getElementById('ref-folder-name') as HTMLElement).textContent = folderState.rootName;
+    (document.getElementById('ref-folder-count') as HTMLElement).textContent =
+      `${audio.length} audio${audio.length > 1 ? 's' : ''}`;
+    renderTree();
+  }
+
+  // Note: the ref-folder input is now wired only as the Safari/Firefox fallback
+  // for the 📚 Library button (see the FS API detection block lower down).
+
+  document.getElementById('ref-folder-clear')!.addEventListener('click', () => {
+    folderState.tree = null;
+    folderState.activeName = null;
+    folderState.rootName = '';
+    folderState.totalFiles = 0;
+    expanded.clear();
+    document.getElementById('ref-folder-panel')!.classList.add('hidden');
+    document.getElementById('ref-phrase')!.classList.add('hidden');
+    (document.getElementById('ref-folder') as HTMLInputElement).value = '';
+  });
+
+  // ─── XML phrase index (Assimil lessons) ───
+  type PhraseData = {
+    lessonId: string;   // from <lesson id="...">
+    num: string;        // <phrase num="...">
+    audioFile: string;  // value of <tt audio="...">
+    jpHtml: string;     // raw innerHTML of <tt> (preserves <ruby>/<rt>)
+    ph: string;         // <ph> content (often phonetic transliteration)
+    trlat: string;      // <trlat> content (translation)
+  };
+
+  // Map keyed by `${lessonId}/${audioFile}` → phrase data
+  const phraseMap = new Map<string, PhraseData>();
+
+  function parseLessonXml(xmlString: string): PhraseData[] {
+    const doc = new DOMParser().parseFromString(xmlString, 'application/xml');
+    if (doc.querySelector('parsererror')) return [];
+    const lessonId = doc.querySelector('lesson')?.getAttribute('id') || '';
+    if (!lessonId) return [];
+
+    const out: PhraseData[] = [];
+    for (const phrase of Array.from(doc.querySelectorAll('phrase'))) {
+      const tt = phrase.querySelector('tt');
+      if (!tt) continue;
+      const audioFile = tt.getAttribute('audio');
+      if (!audioFile) continue;
+      out.push({
+        lessonId,
+        num: phrase.getAttribute('num') || '',
+        audioFile,
+        jpHtml: tt.innerHTML,
+        ph: phrase.querySelector('ph')?.textContent?.trim() || '',
+        trlat: phrase.querySelector('trlat')?.textContent?.trim() || '',
+      });
+    }
+    return out;
+  }
+
+  async function indexXmls(files: File[]) {
+    const xmls = files.filter((f) => f.name.toLowerCase().endsWith('.xml'));
+    if (!xmls.length) {
+      alert('Aucun fichier .xml trouvé.');
+      return;
+    }
+    phraseMap.clear();
+    let lessonsParsed = 0;
+    for (const f of xmls) {
+      try {
+        const text = await f.text();
+        const phrases = parseLessonXml(text);
+        if (phrases.length === 0) continue;
+        lessonsParsed++;
+        for (const p of phrases) {
+          phraseMap.set(`${p.lessonId}/${p.audioFile}`, p);
+        }
+      } catch (err) {
+        console.warn('XML parse failed', f.name, err);
+      }
+    }
+    const status = document.getElementById('xml-status')!;
+    status.classList.remove('hidden');
+    status.innerHTML = `<span class="ok">✓</span> ${phraseMap.size} phrases indexées (${lessonsParsed} leçon${lessonsParsed > 1 ? 's' : ''}, ${xmls.length} fichier${xmls.length > 1 ? 's' : ''} XML)`;
+
+    if (folderState.activeName) {
+      const active = findActiveFile();
+      if (active) renderPhrasePanel(findPhraseFor(active));
+    }
+  }
+
+  // (XML files are no longer picked separately — they're discovered via the library
+  // root + xmlSubpath config, either upfront in the Safari fallback or lazily on
+  // audio click in the Chromium FS API path.)
+
+  function findActiveFile(): File | null {
+    if (!folderState.tree || !folderState.activeName) return null;
+    const target = folderState.activeName;
+    function walk(node: TreeNode): File | null {
+      if (!node.isDir) {
+        return node.path === target ? node.file! : null;
+      }
+      for (const c of node.children || []) {
+        const f = walk(c);
+        if (f) return f;
+      }
+      return null;
+    }
+    return walk(folderState.tree);
+  }
+
+  function findPhraseFor(file: File): PhraseData | null {
+    if (!file.webkitRelativePath) return null;
+    const parts = file.webkitRelativePath.split('/');
+    if (parts.length < 2) return null;
+    // Audio file's parent directory name = lesson ID (Assimil convention: L001/N1.mp3)
+    const lessonId = parts[parts.length - 2];
+    const fileName = parts[parts.length - 1];
+    return phraseMap.get(`${lessonId}/${fileName}`) || null;
+  }
+
+  // Look up the lesson ID from the file's path (parent directory),
+  // load the matching XML on demand from the library's xmlDir, parse it,
+  // and merge results into phraseMap so subsequent clicks are instant.
+  async function lazyLoadXmlForFile(file: File): Promise<void> {
+    if (!libState.xmlDir || !file.webkitRelativePath) return;
+    const parts = file.webkitRelativePath.split('/');
+    if (parts.length < 2) return;
+    const lessonId = parts[parts.length - 2];
+    // Skip if we already have any phrase for this lesson
+    for (const key of phraseMap.keys()) {
+      if (key.startsWith(lessonId + '/')) return;
+    }
+    const xmlText = await ShadowLib.readXmlByLessonId(
+      libState.xmlDir,
+      lessonId,
+      libState.xmlFilenameTemplate,
+    );
+    if (!xmlText) return;
+    const phrases = parseLessonXml(xmlText);
+    for (const p of phrases) phraseMap.set(`${p.lessonId}/${p.audioFile}`, p);
+  }
+
+  function renderPhrasePanel(phrase: PhraseData | null) {
+    const panel = document.getElementById('ref-phrase')!;
+    if (!phrase) {
+      panel.classList.add('hidden');
+      return;
+    }
+    panel.classList.remove('hidden');
+    const meta = document.getElementById('phrase-meta')!;
+    const jp = document.getElementById('phrase-jp')!;
+    const ph = document.getElementById('phrase-ph')!;
+    const fr = document.getElementById('phrase-fr')!;
+    meta.textContent = `${phrase.lessonId} · phrase ${phrase.num}`;
+    jp.innerHTML = phrase.jpHtml; // trusted: comes from local XML files the user picked
+    ph.textContent = phrase.ph;
+    fr.textContent = phrase.trlat;
+  }
+
+  // ─── Recording ───
+  let mediaRecorder: MediaRecorder | null = null;
+  let chunks: Blob[] = [];
+  const recStart = document.getElementById('rec-start') as HTMLButtonElement;
+  const recStop = document.getElementById('rec-stop') as HTMLButtonElement;
+  const recStatus = document.getElementById('rec-status')!;
+
+  // Short beeps for the countdown — 880 Hz "tic" + 1320 Hz "go".
+  function beep(freq: number, duration = 0.12, volume = 0.18) {
+    const t = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.frequency.value = freq;
+    osc.type = 'sine';
+    gain.gain.setValueAtTime(volume, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + duration);
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start(t);
+    osc.stop(t + duration + 0.02);
+  }
+
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  async function runCountdown() {
+    const overlay = document.getElementById('countdown-overlay')!;
+    const num = document.getElementById('countdown-num')!;
+    overlay.classList.remove('hidden');
+    const popAnim = () =>
+      num.animate(
+        [
+          { transform: 'scale(0.7)', opacity: 0 },
+          { transform: 'scale(1.1)', opacity: 1, offset: 0.55 },
+          { transform: 'scale(1)', opacity: 1 },
+        ],
+        { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+      );
+    for (const n of [3, 2, 1]) {
+      num.className = 'countdown-num';
+      num.textContent = String(n);
+      popAnim();
+      beep(880);
+      await sleep(1000);
+    }
+    num.className = 'countdown-num go';
+    num.textContent = 'GO';
+    popAnim();
+    beep(1320, 0.18, 0.22);
+    await sleep(450);
+    overlay.classList.add('hidden');
+  }
+
+  recStart.addEventListener('click', async () => {
+    let stream: MediaStream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch (err: any) {
+      recStatus.textContent = `Erreur micro : ${err.message || err}`;
+      return;
+    }
+    // Resume AudioContext if it was suspended (Safari/Chrome autoplay policy).
+    if (audioCtx.state === 'suspended') await audioCtx.resume();
+
+    recStart.disabled = true;
+    recStatus.textContent = 'Préparation…';
+
+    await runCountdown();
+
+    chunks = [];
+    const mimeCandidates = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'];
+    const mime = mimeCandidates.find((m) => MediaRecorder.isTypeSupported(m)) || '';
+    mediaRecorder = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
+    mediaRecorder.ondataavailable = (e) => {
+      if (e.data.size > 0) chunks.push(e.data);
+    };
+    mediaRecorder.onstop = async () => {
+      stream.getTracks().forEach((t) => t.stop());
+      const blob = new Blob(chunks, { type: mediaRecorder!.mimeType || 'audio/webm' });
+      await loadIntoSlot('rec', blob);
+    };
+    mediaRecorder.start();
+    recStop.disabled = false;
+    recStatus.textContent = '🔴 Enregistrement…';
+  });
+
+  recStop.addEventListener('click', () => {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+    }
+    recStart.disabled = false;
+    recStop.disabled = true;
+  });
+
+  // ─── Compare + manual alignment ───
+  let recOffset = 0; // seconds
+  let recScale = 1;
+  let comparedOnce = false;
+
+  const compareCanvas = document.getElementById('compare-pitch') as HTMLCanvasElement;
+  const scaleSlider = document.getElementById('scale-slider') as HTMLInputElement;
+  const scaleVal = document.getElementById('scale-val')!;
+  const offsetVal = document.getElementById('offset-val')!;
+  const resetBtn = document.getElementById('reset-align-btn') as HTMLButtonElement;
+  const autoBtn = document.getElementById('auto-align-btn') as HTMLButtonElement;
+
+  function redrawCompare() {
+    if (!comparedOnce) return;
+    drawPitchCurve(
+      compareCanvas,
+      [
+        { points: slots.ref.pitch, color: colors.ref },
+        { points: slots.rec.pitch, color: colors.rec, offset: recOffset, scale: recScale },
+      ],
+      { cacheLayout: true }
+    );
+    offsetVal.textContent = recOffset.toFixed(2);
+    scaleVal.textContent = recScale.toFixed(2);
+    renderAnalysis();
+  }
+
+  // ─── Analysis ───
+  type Analysis = {
+    correlation: number;          // Pearson on log-pitch (overlap, voiced both)
+    directionAgreement: number;   // 0..1
+    rmsSemitones: number;         // RMS distance after centering each by its own mean log-F0
+    refRangeSt: number;           // pitch range in semitones
+    recRangeSt: number;
+    refMeanF0: number;
+    recMeanF0: number;
+    refVoicedRatio: number;
+    recVoicedRatio: number;
+    overlapFrames: number;
+  };
+
+  function pitchAnalysis(): Analysis | null {
+    const ref = slots.ref.pitch;
+    const rec = slots.rec.pitch;
+    if (!ref.length || !rec.length) return null;
+
+    const refHop = ref.length > 1 ? ref[1].time - ref[0].time : 0.0116;
+
+    // Resample rec onto ref's time grid using current offset+scale.
+    // For each ref frame, find the nearest rec frame whose transformed time matches.
+    const recHop = rec.length > 1 ? rec[1].time - rec[0].time : 0.0116;
+    const aligned: { ref: number | null; rec: number | null }[] = [];
+    for (let i = 0; i < ref.length; i++) {
+      const tRef = ref[i].time;
+      // Inverse transform: rec_idx such that rec_idx * recHop * recScale + recOffset = tRef
+      const recOriginalT = (tRef - recOffset) / recScale;
+      const j = Math.round(recOriginalT / recHop);
+      const recVal = j >= 0 && j < rec.length ? rec[j].freq : null;
+      aligned.push({ ref: ref[i].freq, rec: recVal });
+    }
+
+    // Per-speaker stats from the original (untransformed) data
+    const refVoiced = ref.filter((p) => p.freq).map((p) => p.freq!);
+    const recVoiced = rec.filter((p) => p.freq).map((p) => p.freq!);
+    const refVoicedRatio = refVoiced.length / ref.length;
+    const recVoicedRatio = recVoiced.length / rec.length;
+    const refMeanF0 = refVoiced.length ? refVoiced.reduce((a, b) => a + b, 0) / refVoiced.length : 0;
+    const recMeanF0 = recVoiced.length ? recVoiced.reduce((a, b) => a + b, 0) / recVoiced.length : 0;
+
+    // Pitch range in semitones = 12 * log2(maxF0 / minF0), using 5th–95th percentile
+    // to avoid outliers from octave errors in YIN.
+    const pct = (xs: number[], p: number) => {
+      const s = [...xs].sort((a, b) => a - b);
+      return s[Math.min(s.length - 1, Math.floor((p / 100) * s.length))];
+    };
+    const refRangeSt = refVoiced.length >= 2
+      ? 12 * Math.log2(pct(refVoiced, 95) / pct(refVoiced, 5))
+      : 0;
+    const recRangeSt = recVoiced.length >= 2
+      ? 12 * Math.log2(pct(recVoiced, 95) / pct(recVoiced, 5))
+      : 0;
+
+    // Overlap stats — only frames where BOTH are voiced
+    const overlap = aligned.filter((a) => a.ref != null && a.rec != null) as { ref: number; rec: number }[];
+    if (overlap.length < 5) {
+      return {
+        correlation: 0,
+        directionAgreement: 0,
+        rmsSemitones: 0,
+        refRangeSt,
+        recRangeSt,
+        refMeanF0,
+        recMeanF0,
+        refVoicedRatio,
+        recVoicedRatio,
+        overlapFrames: overlap.length,
+      };
+    }
+
+    const refLog = overlap.map((p) => Math.log(p.ref));
+    const recLog = overlap.map((p) => Math.log(p.rec));
+    const refMu = refLog.reduce((a, b) => a + b, 0) / refLog.length;
+    const recMu = recLog.reduce((a, b) => a + b, 0) / recLog.length;
+
+    let num = 0;
+    let denR = 0;
+    let denC = 0;
+    for (let i = 0; i < overlap.length; i++) {
+      const dr = refLog[i] - refMu;
+      const dc = recLog[i] - recMu;
+      num += dr * dc;
+      denR += dr * dr;
+      denC += dc * dc;
+    }
+    const correlation = denR > 0 && denC > 0 ? num / Math.sqrt(denR * denC) : 0;
+
+    // Direction agreement: sign of frame-to-frame derivative
+    let agree = 0;
+    let total = 0;
+    for (let i = 1; i < overlap.length; i++) {
+      const dr = Math.sign(refLog[i] - refLog[i - 1]);
+      const dc = Math.sign(recLog[i] - recLog[i - 1]);
+      if (dr === 0 || dc === 0) continue;
+      total++;
+      if (dr === dc) agree++;
+    }
+    const directionAgreement = total > 0 ? agree / total : 0;
+
+    // RMS distance after centering each by its mean (so registre absolu doesn't matter),
+    // converted to semitones (12/ln(2)).
+    let sumSq = 0;
+    for (let i = 0; i < overlap.length; i++) {
+      const d = (refLog[i] - refMu) - (recLog[i] - recMu);
+      sumSq += d * d;
+    }
+    const rmsSemitones = Math.sqrt(sumSq / overlap.length) * (12 / Math.LN2);
+
+    return {
+      correlation,
+      directionAgreement,
+      rmsSemitones,
+      refRangeSt,
+      recRangeSt,
+      refMeanF0,
+      recMeanF0,
+      refVoicedRatio,
+      recVoicedRatio,
+      overlapFrames: overlap.length,
+    };
+  }
+
+  function renderAnalysis() {
+    const panel = document.getElementById('analysis')!;
+    const a = pitchAnalysis();
+    if (!a) {
+      panel.classList.add('hidden');
+      return;
+    }
+    panel.classList.remove('hidden');
+
+    const set = (id: string, val: string, tagId?: string, tag?: { text: string; cls: string }) => {
+      document.getElementById(id)!.textContent = val;
+      if (tagId) {
+        const el = document.getElementById(tagId)!;
+        el.className = 'metric-tag' + (tag ? ' ' + tag.cls : '');
+        el.textContent = tag?.text ?? '';
+      }
+    };
+
+    if (a.overlapFrames < 5) {
+      set('m-corr', '—', 'm-corr-tag', { text: 'pas assez de chevauchement', cls: 'warn' });
+      set('m-dir', '—', 'm-dir-tag', { text: '', cls: 'muted-tag' });
+      set('m-rms', '—', 'm-rms-tag', { text: '', cls: 'muted-tag' });
+    } else {
+      const corrTag =
+        a.correlation > 0.7 ? { text: 'forte', cls: 'good' } :
+        a.correlation > 0.4 ? { text: 'moyenne', cls: 'warn' } :
+        a.correlation > 0.1 ? { text: 'faible', cls: 'bad' } :
+                              { text: 'décorrélée', cls: 'bad' };
+      set('m-corr', a.correlation.toFixed(2), 'm-corr-tag', corrTag);
+
+      const dirPct = Math.round(a.directionAgreement * 100);
+      const dirTag =
+        dirPct > 75 ? { text: 'bon suivi', cls: 'good' } :
+        dirPct > 55 ? { text: 'partiel', cls: 'warn' } :
+                      { text: 'inversé', cls: 'bad' };
+      set('m-dir', `${dirPct}%`, 'm-dir-tag', dirTag);
+
+      const rmsTag =
+        a.rmsSemitones < 1.5 ? { text: 'proche', cls: 'good' } :
+        a.rmsSemitones < 3.0 ? { text: 'écart modéré', cls: 'warn' } :
+                               { text: 'écart fort', cls: 'bad' };
+      set('m-rms', `${a.rmsSemitones.toFixed(1)} st`, 'm-rms-tag', rmsTag);
+    }
+
+    const rangeRatio = a.refRangeSt > 0 ? a.recRangeSt / a.refRangeSt : 0;
+    const rangeTag =
+      rangeRatio === 0 ? { text: '', cls: 'muted-tag' } :
+      rangeRatio < 0.6 ? { text: '×' + rangeRatio.toFixed(2) + ' — trop plat', cls: 'bad' } :
+      rangeRatio < 0.85 ? { text: '×' + rangeRatio.toFixed(2) + ' — un peu plat', cls: 'warn' } :
+      rangeRatio <= 1.25 ? { text: '×' + rangeRatio.toFixed(2) + ' — équilibré', cls: 'good' } :
+      rangeRatio <= 1.6 ? { text: '×' + rangeRatio.toFixed(2) + ' — un peu exagéré', cls: 'warn' } :
+                          { text: '×' + rangeRatio.toFixed(2) + ' — exagéré', cls: 'bad' };
+    set('m-range', `ref ${a.refRangeSt.toFixed(1)} st · toi ${a.recRangeSt.toFixed(1)} st`, 'm-range-tag', rangeTag);
+
+    set('m-f0', `ref ${Math.round(a.refMeanF0)} Hz · toi ${Math.round(a.recMeanF0)} Hz`);
+
+    const refVp = Math.round(a.refVoicedRatio * 100);
+    const recVp = Math.round(a.recVoicedRatio * 100);
+    const voicingDiff = Math.abs(refVp - recVp);
+    const voicingTag =
+      voicingDiff < 10 ? { text: 'similaire', cls: 'good' } :
+      voicingDiff < 25 ? { text: 'un peu différent', cls: 'warn' } :
+                         { text: 'très différent', cls: 'bad' };
+    set('m-voicing', `ref ${refVp}% · toi ${recVp}%`, 'm-voicing-tag', voicingTag);
+
+    // Verdict — combine the most actionable signals
+    const verdict = document.getElementById('verdict')!;
+    const bits: string[] = [];
+    if (a.overlapFrames < 5) {
+      bits.push('Pas assez de zones voicées en commun pour analyser — vérifie l\'alignement.');
+    } else {
+      if (a.correlation > 0.7) bits.push('Le contour mélodique suit bien la référence.');
+      else if (a.correlation > 0.4) bits.push('Le contour mélodique est globalement proche, avec quelques écarts.');
+      else if (a.correlation > 0.1) bits.push('Le contour est faiblement corrélé — vérifie l\'alignement (offset/tempo) avant de juger.');
+      else bits.push('Le contour est décorrélé : intonation très différente, ou alignement incorrect.');
+
+      if (rangeRatio > 0 && rangeRatio < 0.6) bits.push('Ton intonation est nettement plus plate que la référence — accentue les montées/descentes.');
+      else if (rangeRatio > 1.6) bits.push('Tu exagères les variations de pitch par rapport à la référence.');
+
+      if (a.directionAgreement < 0.55 && a.correlation > 0.1) bits.push('Beaucoup de montées/descentes vont dans la mauvaise direction — concentre-toi sur la direction du pitch accent.');
+
+      if (a.rmsSemitones > 3 && a.correlation > 0.5) bits.push('Forme proche mais écart notable même registre normalisé — sans doute des moments précis qui décrochent.');
+    }
+    verdict.textContent = bits.join(' ');
+  }
+
+  document.getElementById('compare-btn')!.addEventListener('click', () => {
+    comparedOnce = true;
+    redrawCompare();
+    scaleSlider.disabled = false;
+    resetBtn.disabled = false;
+    autoBtn.disabled = false;
+  });
+
+  scaleSlider.addEventListener('input', () => {
+    recScale = parseFloat(scaleSlider.value);
+    redrawCompare();
+  });
+
+  resetBtn.addEventListener('click', () => {
+    recOffset = 0;
+    recScale = 1;
+    scaleSlider.value = '1';
+    redrawCompare();
+  });
+
+  // Drag-to-offset on the compare canvas
+  let dragState: { startX: number; startOffset: number; tMax: number; w: number; padX: number } | null = null;
+
+  compareCanvas.addEventListener('pointerdown', (e) => {
+    if (!comparedOnce || !lastCompareLayout) return;
+    compareCanvas.setPointerCapture(e.pointerId);
+    compareCanvas.classList.add('dragging');
+    dragState = {
+      startX: e.clientX,
+      startOffset: recOffset,
+      tMax: lastCompareLayout.tMax,
+      w: lastCompareLayout.w,
+      padX: lastCompareLayout.padX,
+    };
+  });
+
+  compareCanvas.addEventListener('pointermove', (e) => {
+    if (!dragState) return;
+    const pixelsPerSec = (dragState.w - dragState.padX) / dragState.tMax;
+    recOffset = dragState.startOffset + (e.clientX - dragState.startX) / pixelsPerSec;
+    redrawCompare();
+  });
+
+  function endDrag(e: PointerEvent) {
+    if (!dragState) return;
+    compareCanvas.releasePointerCapture(e.pointerId);
+    compareCanvas.classList.remove('dragging');
+    dragState = null;
+  }
+  compareCanvas.addEventListener('pointerup', endDrag);
+  compareCanvas.addEventListener('pointercancel', endDrag);
+
+  // Auto-align: cross-correlate the voiced pitch contours over a ±2s offset window
+  // and pick the offset that maximizes correlation. Operates on log-Hz to be
+  // independent of speaker pitch range.
+  autoBtn.addEventListener('click', () => {
+    const ref = slots.ref.pitch;
+    const rec = slots.rec.pitch;
+    if (!ref.length || !rec.length) return;
+
+    const hop = ref.length > 1 ? ref[1].time - ref[0].time : 0.0116; // ~512/44100
+    const range = 2.0; // seconds
+    const stepSec = hop;
+    let bestOffset = 0;
+    let bestScore = -Infinity;
+
+    // Pre-compute log-pitch arrays at uniform time steps (using the existing hop grid)
+    const refLog = ref.map((p) => (p.freq ? Math.log(p.freq) : null));
+    const recLog = rec.map((p) => (p.freq ? Math.log(p.freq) : null));
+    const refMean = mean(refLog);
+    const recMean = mean(recLog);
+
+    for (let off = -range; off <= range; off += stepSec) {
+      let sum = 0;
+      let n = 0;
+      // For each rec frame, find the closest ref frame at time recTime*scale + off
+      for (let i = 0; i < recLog.length; i++) {
+        const r = recLog[i];
+        if (r == null) continue;
+        const t = i * hop * recScale + off;
+        const j = Math.round(t / hop);
+        if (j < 0 || j >= refLog.length) continue;
+        const ref_v = refLog[j];
+        if (ref_v == null) continue;
+        sum += (ref_v - refMean) * (r - recMean);
+        n++;
+      }
+      if (n < 5) continue;
+      const score = sum / n;
+      if (score > bestScore) {
+        bestScore = score;
+        bestOffset = off;
+      }
+    }
+    recOffset = bestOffset;
+    redrawCompare();
+  });
+
+  function mean(xs: (number | null)[]): number {
+    let s = 0;
+    let n = 0;
+    for (const x of xs) {
+      if (x != null) {
+        s += x;
+        n++;
+      }
+    }
+    return n ? s / n : 0;
+  }
+
+  // Redraw on resize so canvases stay sharp
+  window.addEventListener('resize', () => {
+    if (slots.ref.pitch.length) {
+      drawPitchCurve(document.getElementById('ref-pitch') as HTMLCanvasElement, [
+        { points: slots.ref.pitch, color: colors.ref },
+      ]);
+    }
+    if (slots.rec.pitch.length) {
+      drawPitchCurve(document.getElementById('rec-pitch') as HTMLCanvasElement, [
+        { points: slots.rec.pitch, color: colors.rec },
+      ]);
+    }
+    redrawCompare();
+  });
+
+  // ─── Lesson loading + auto XML lookup ───
+  // Uses ../scripts/shadow-library.ts. The XML lessons folder is set up once
+  // via /settings; here we just pick a single audio lesson folder and look up
+  // its matching <lesson>.xml in the saved xmlDir handle.
+
+  const libState: {
+    xmlDir: FileSystemDirectoryHandle | null;
+    xmlFilenameTemplate: string;
+  } = { xmlDir: null, xmlFilenameTemplate: '{lesson}.xml' };
+
+  // Refresh in-memory xmlDir state from the saved handle. If `requestIfPrompt`
+  // is true, will actively prompt for permission when needed (must be called
+  // inside a user gesture).
+  async function refreshXmlDirState(opts: { requestIfPrompt?: boolean } = {}) {
+    libState.xmlFilenameTemplate = ShadowLib.getConfig().xmlFilenameTemplate;
+    if (!ShadowLib.isFsApiSupported()) {
+      libState.xmlDir = null;
+      return;
+    }
+    const h = await ShadowLib.loadXmlDirHandle();
+    if (!h) {
+      libState.xmlDir = null;
+      return;
+    }
+    let perm = await (h as any).queryPermission({ mode: 'read' });
+    if (perm !== 'granted' && opts.requestIfPrompt) {
+      perm = await (h as any).requestPermission({ mode: 'read' });
+    }
+    libState.xmlDir = perm === 'granted' ? h : null;
+  }
+
+  // Per-lesson state — populated when a lesson is picked. Used to render the
+  // sequential phrases list and to look up files by their bare name (e.g. S01.mp3)
+  // when matching against XML <tt audio="..."> attributes.
+  const lessonState: {
+    lessonId: string;
+    files: File[];
+    filesByName: Map<string, File>;
+    phrases: PhraseData[];
+  } = { lessonId: '', files: [], filesByName: new Map(), phrases: [] };
+
+  // Activate a picked lesson handle: walk audio, populate tree, update status,
+  // eagerly load + render the lesson XML phrases list.
+  async function activateLesson(lessonHandle: FileSystemDirectoryHandle, opts: { quiet?: boolean } = {}) {
+    const audioFiles = await ShadowLib.walkFiles(lessonHandle, AUDIO_EXT_RE);
+    if (!audioFiles.length) {
+      if (!opts.quiet) alert('Aucun fichier audio dans ce dossier.');
+      return false;
+    }
+    // Reset state from previous lesson
+    phraseMap.clear();
+    document.getElementById('ref-phrase')!.classList.add('hidden');
+    document.getElementById('ref-phrases-list')!.classList.add('hidden');
+
+    lessonState.lessonId = lessonHandle.name;
+    lessonState.files = audioFiles;
+    lessonState.filesByName = new Map(audioFiles.map((f) => [f.name, f]));
+    lessonState.phrases = [];
+
+    loadAudioFolderFromFiles(audioFiles, lessonHandle.name);
+    // We're inside a user gesture (the click that opened the picker), so we can
+    // request xmlDir permission too without an extra confirmation.
+    await refreshXmlDirState({ requestIfPrompt: true });
+    await loadAndRenderLessonPhrases();
+    updateLessonStatus(lessonHandle.name);
+    return true;
+  }
+
+  // Load the lesson's XML upfront and render the list of all its phrases.
+  async function loadAndRenderLessonPhrases() {
+    if (!libState.xmlDir || !lessonState.lessonId) return;
+    const xmlText = await ShadowLib.readXmlByLessonId(
+      libState.xmlDir,
+      lessonState.lessonId,
+      libState.xmlFilenameTemplate,
+    );
+    if (!xmlText) return;
+    const phrases = parseLessonXml(xmlText);
+    lessonState.phrases = phrases;
+    for (const p of phrases) phraseMap.set(`${p.lessonId}/${p.audioFile}`, p);
+    renderPhrasesList();
+  }
+
+  function renderPhrasesList() {
+    const panel = document.getElementById('ref-phrases-list')!;
+    const title = document.getElementById('phrases-list-title')!;
+    const count = document.getElementById('phrases-list-count')!;
+    const body = document.getElementById('phrases-list-body')!;
+    if (!lessonState.phrases.length) {
+      panel.classList.add('hidden');
+      return;
+    }
+    panel.classList.remove('hidden');
+    title.textContent = `Leçon ${lessonState.lessonId}`;
+    const withAudio = lessonState.phrases.filter((p) => lessonState.filesByName.has(p.audioFile)).length;
+    count.textContent = withAudio === lessonState.phrases.length
+      ? `${lessonState.phrases.length} phrases`
+      : `${withAudio} / ${lessonState.phrases.length} phrases (audio dispo)`;
+    body.innerHTML = '';
+
+    for (const p of lessonState.phrases) {
+      const file = lessonState.filesByName.get(p.audioFile);
+      const isActive = !!(file && folderState.activeName === file.webkitRelativePath);
+
+      const row = document.createElement('div');
+      row.className = 'phrase-row' + (file ? '' : ' no-audio') + (isActive ? ' active' : '');
+
+      // Build meta rows only when there's content
+      const metaRows: string[] = [];
+      if (p.ph) {
+        metaRows.push(`<span class="meta-label">Romaji</span><span class="meta-value">${escapeText(p.ph)}</span>`);
+      }
+      if (p.trlat) {
+        metaRows.push(`<span class="meta-label">Français</span><span class="meta-value">${escapeText(p.trlat)}</span>`);
+      }
+      if (!file) {
+        metaRows.push(`<span class="meta-label">Audio</span><span class="meta-value"><span class="phrase-row-missing">${escapeText(p.audioFile)} introuvable</span></span>`);
+      }
+
+      row.innerHTML = `
+        ${isActive ? '<span class="phrase-row-playing">playing</span>' : ''}
+        <span class="phrase-row-badge"></span>
+        <div class="phrase-row-content">
+          <div class="phrase-row-jp"></div>
+          ${metaRows.length ? `<div class="phrase-row-meta">${metaRows.join('')}</div>` : ''}
+        </div>
+      `;
+      (row.querySelector('.phrase-row-badge') as HTMLElement).textContent = p.num || '·';
+      (row.querySelector('.phrase-row-jp') as HTMLElement).innerHTML = p.jpHtml;
+
+      if (file) {
+        row.addEventListener('click', async () => {
+          folderState.activeName = file.webkitRelativePath;
+          renderTree();
+          renderPhrasesList();
+          renderPhrasePanel(p);
+          await loadIntoSlot('ref', file, { autoplay: true });
+        });
+      }
+      body.appendChild(row);
+    }
+  }
+
+  function escapeText(s: string): string {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  async function updateLessonStatus(lessonName: string) {
+    const status = document.getElementById('xml-status')!;
+    status.classList.remove('hidden');
+    const audioCount = lessonState.files.length;
+    const cfgLink = `<a href="${(import.meta as any).env.BASE_URL || ''}/settings">/settings</a>`;
+    const savedXml = ShadowLib.isFsApiSupported() ? await ShadowLib.loadXmlDirHandle() : null;
+
+    if (!savedXml) {
+      status.innerHTML = `<span style="color: var(--gold);">⚠</span> Leçon <strong>${lessonName}</strong> · ${audioCount} audio${audioCount > 1 ? 's' : ''} — pas de dossier XML configuré (voir ${cfgLink})`;
+      return;
+    }
+    if (!libState.xmlDir) {
+      status.innerHTML = `<span style="color: var(--gold);">⚠</span> Leçon <strong>${lessonName}</strong> · permission XML refusée <button id="xml-grant" class="btn small" style="margin-left:0.5rem;">Réessayer</button>`;
+      document.getElementById('xml-grant')?.addEventListener('click', async () => {
+        await refreshXmlDirState({ requestIfPrompt: true });
+        await loadAndRenderLessonPhrases();
+        await updateLessonStatus(lessonName);
+      });
+      return;
+    }
+    if (lessonState.phrases.length === 0) {
+      const expectedFile = libState.xmlFilenameTemplate.replace('{lesson}', lessonName);
+      status.innerHTML = `<span style="color: var(--gold);">⚠</span> Leçon <strong>${lessonName}</strong> · ${audioCount} audio${audioCount > 1 ? 's' : ''} — <code>${expectedFile}</code> introuvable dans <strong>${libState.xmlDir.name}/</strong>`;
+      return;
+    }
+    status.innerHTML = `<span class="ok">✓</span> Leçon <strong>${lessonName}</strong> · ${audioCount} audios · ${lessonState.phrases.length} phrases (XML : <strong>${libState.xmlDir.name}/</strong>)`;
+  }
+
+  // 📁 Lesson button
+  if (ShadowLib.isFsApiSupported()) {
+    document.getElementById('ref-library')!.addEventListener('click', async () => {
+      try {
+        const h = await ShadowLib.pickLessonHandle();
+        await activateLesson(h);
+      } catch (e: any) {
+        if (e?.name !== 'AbortError') alert(`Erreur : ${e?.message ?? e}`);
+      }
+    });
+    (document.querySelector('label.fallback-only') as HTMLElement | null)?.remove();
+  } else {
+    // Safari / Firefox fallback: webkitdirectory on the lesson folder.
+    // No XML auto-lookup (no persistent handle to the XML dir).
+    document.getElementById('ref-library')!.addEventListener('click', () => {
+      (document.getElementById('ref-folder') as HTMLInputElement).click();
+    });
+    document.getElementById('ref-folder')!.addEventListener('change', (e) => {
+      const all = Array.from((e.target as HTMLInputElement).files || []);
+      const audio = all.filter((f) => AUDIO_EXT_RE.test(f.name));
+      if (!audio.length) {
+        alert('Aucun audio dans ce dossier.');
+        return;
+      }
+      phraseMap.clear();
+      document.getElementById('ref-phrase')!.classList.add('hidden');
+      const rootName = audio[0].webkitRelativePath.split('/')[0];
+      loadAudioFolderFromFiles(audio, rootName);
+      const status = document.getElementById('xml-status')!;
+      status.classList.remove('hidden');
+      status.innerHTML = `<span style="color: var(--gold);">⚠</span> Leçon <strong>${rootName}</strong> · auto-XML indisponible sur ce navigateur (utilise Chrome/Edge pour la version complète)`;
+    });
+  }
+
+  // Auto-restore on page load (Chromium only). Both the xmlDir and the last lesson
+  // can be restored — we update the in-memory state silently if permission is still
+  // granted, and show a banner if a permission re-grant is needed.
+  if (ShadowLib.isFsApiSupported()) {
+    (async () => {
+      // Refresh xmlDir state (silent if perm still granted, null otherwise).
+      await refreshXmlDirState();
+
+      const lessonHandle = await ShadowLib.loadLastLessonHandle();
+      if (!lessonHandle) return;
+      const lessonPerm = await (lessonHandle as any).queryPermission({ mode: 'read' });
+      const xmlNeedsGrant =
+        (await ShadowLib.loadXmlDirHandle()) !== null && libState.xmlDir === null;
+
+      if (lessonPerm === 'granted' && !xmlNeedsGrant) {
+        await activateLesson(lessonHandle, { quiet: true });
+        return;
+      }
+
+      // Need a user gesture for at least one permission — show banner.
+      const banner = document.getElementById('defaults-banner')!;
+      const text = document.getElementById('defaults-text')!;
+      const actions = document.getElementById('defaults-actions')!;
+      banner.classList.remove('hidden');
+      const parts: string[] = [];
+      if (lessonHandle) parts.push(`📁 ${lessonHandle.name}`);
+      if (xmlNeedsGrant) parts.push('📄 dossier XML');
+      text.textContent = `Restaurer la session précédente : ${parts.join(' · ')}`;
+      actions.innerHTML = '';
+      const restoreBtn = document.createElement('button');
+      restoreBtn.className = 'btn small accent';
+      restoreBtn.textContent = '↻ Restaurer';
+      restoreBtn.addEventListener('click', async () => {
+        // Re-grant XML dir first (so the lesson activation already sees it).
+        if (xmlNeedsGrant) {
+          const xmlH = await ShadowLib.loadXmlDirHandle();
+          if (xmlH) await ShadowLib.ensurePermission(xmlH);
+        }
+        await refreshXmlDirState();
+        const okLesson = await ShadowLib.ensurePermission(lessonHandle);
+        if (!okLesson) {
+          alert('Permission refusée pour la leçon.');
+          return;
+        }
+        const loaded = await activateLesson(lessonHandle);
+        if (loaded) banner.classList.add('hidden');
+      });
+      actions.appendChild(restoreBtn);
+    })();
+
+    document.getElementById('defaults-dismiss')!.addEventListener('click', () => {
+      document.getElementById('defaults-banner')!.classList.add('hidden');
+    });
+  }
+</script>
