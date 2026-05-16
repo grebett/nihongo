@@ -21,8 +21,8 @@ import Layout from '../layouts/Layout.astro';
     <button id="defaults-dismiss" class="btn-icon" title="Fermer">×</button>
   </div>
 
-  <section class="shadow-card">
-    <div class="card-head">
+  <section class="shadow-card shadow-card--reference">
+    <div class="card-head reference-head">
       <h2>Référence</h2>
       <div class="card-actions">
         <label class="btn small">
@@ -35,118 +35,149 @@ import Layout from '../layouts/Layout.astro';
           <input id="ref-folder" type="file" hidden webkitdirectory multiple />
         </label>
         <button id="ref-play" class="btn small" disabled>▶ Play</button>
-        <button id="ref-loop" class="btn small loop-btn" disabled title="Loop la sélection">↻</button>
+        <button id="ref-loop" class="btn small loop-btn" disabled aria-pressed="false" title="Loop la sélection">↻</button>
       </div>
-    </div>
-    <div id="xml-status" class="xml-status hidden"></div>
-    <div id="ref-folder-panel" class="folder-panel hidden">
-      <div class="folder-meta">
-        <span class="folder-icon">📂</span>
-        <span id="ref-folder-name" class="folder-name"></span>
-        <span id="ref-folder-count" class="folder-count"></span>
-        <button id="ref-folder-clear" class="btn-icon" title="Fermer le dossier">×</button>
-      </div>
-      <div id="ref-file-list" class="file-list"></div>
-    </div>
-    <div id="ref-phrases-list" class="phrases-list hidden">
-      <div class="phrases-list-head">
-        <span class="phrases-list-title" id="phrases-list-title"></span>
-        <span class="phrases-list-count" id="phrases-list-count"></span>
-      </div>
-      <div id="phrases-list-body"></div>
     </div>
 
-    <div id="ref-phrase" class="phrase-panel hidden">
-      <div class="phrase-meta" id="phrase-meta"></div>
-      <div class="phrase-jp" id="phrase-jp"></div>
-      <div class="phrase-ph" id="phrase-ph"></div>
-      <div class="phrase-fr" id="phrase-fr"></div>
+    <div class="reference-grid">
+      <div class="reference-list-column">
+        <div id="xml-status" class="xml-status hidden"></div>
+
+        <div class="reference-tabs" role="tablist" aria-label="Sources de référence">
+          <button id="ref-tab-files" class="reference-tab active" type="button" role="tab" aria-selected="true" aria-controls="ref-tab-panel-files" data-reference-tab="files">Fichiers</button>
+          <button id="ref-tab-phrases" class="reference-tab" type="button" role="tab" aria-selected="false" aria-controls="ref-tab-panel-phrases" data-reference-tab="phrases">Phrases</button>
+        </div>
+
+        <div id="ref-tab-panel-files" class="reference-tab-panel active" role="tabpanel" aria-labelledby="ref-tab-files" data-reference-tab-panel="files">
+          <div id="ref-folder-panel" class="folder-panel hidden">
+            <div class="folder-meta">
+              <span class="folder-icon">📂</span>
+              <span id="ref-folder-name" class="folder-name"></span>
+              <span id="ref-folder-count" class="folder-count"></span>
+              <button id="ref-folder-clear" class="btn-icon" title="Fermer le dossier">×</button>
+            </div>
+            <div id="ref-file-list" class="file-list"></div>
+          </div>
+          <div id="ref-files-empty" class="tab-empty">Charge une leçon ou un dossier audio pour afficher les fichiers.</div>
+        </div>
+
+        <div id="ref-tab-panel-phrases" class="reference-tab-panel" role="tabpanel" aria-labelledby="ref-tab-phrases" data-reference-tab-panel="phrases">
+          <div id="ref-phrases-list" class="phrases-list hidden">
+            <div class="phrases-list-head">
+              <span class="phrases-list-title" id="phrases-list-title"></span>
+              <span class="phrases-list-count" id="phrases-list-count"></span>
+            </div>
+            <div id="phrases-list-body"></div>
+          </div>
+          <div id="ref-phrases-empty" class="tab-empty">Aucune phrase indexée pour le moment.</div>
+        </div>
+      </div>
+
+      <div class="reference-detail-column">
+        <div id="ref-phrase" class="phrase-panel hidden">
+          <div class="phrase-meta" id="phrase-meta"></div>
+          <div class="phrase-jp" id="phrase-jp"></div>
+          <div class="phrase-ph" id="phrase-ph"></div>
+          <div class="phrase-fr" id="phrase-fr"></div>
+        </div>
+        <div id="ref-wave" class="wave"></div>
+        <canvas id="ref-pitch" class="pitch-canvas" height="120"></canvas>
+        <div id="ref-status" class="status muted small">Pas de fichier chargé. <span class="hint-inline">Astuce : glisse pour sélectionner une portion à looper. Espace lance/met en pause le dernier audio sélectionné.</span></div>
+        <section class="reference-subcard reference-subcard--recording">
+          <div class="card-head">
+            <h2>Ta voix</h2>
+            <div class="card-actions">
+              <button id="rec-start" class="btn small accent">🎙 Record</button>
+              <button id="rec-stop" class="btn small" disabled>■ Stop</button>
+              <button id="rec-play" class="btn small" disabled>▶ Play</button>
+              <button id="rec-loop" class="btn small loop-btn" disabled aria-pressed="false" title="Loop la sélection">↻</button>
+            </div>
+          </div>
+          <div id="rec-wave" class="wave"></div>
+          <canvas id="rec-pitch" class="pitch-canvas" height="120"></canvas>
+          <div id="rec-status" class="status muted small">Clique "Record" pour commencer.</div>
+        </section>
+
+        <section class="reference-subcard reference-subcard--compare">
+          <div class="card-head">
+            <h2>Comparaison pitch</h2>
+            <div class="card-actions">
+              <button id="compare-btn" class="btn small" disabled>Superposer les 2 courbes</button>
+              <button id="auto-align-btn" class="btn small" disabled title="Cross-corrélation des pitches">Auto-align</button>
+              <button id="reset-align-btn" class="btn small" disabled>Reset</button>
+            </div>
+          </div>
+          <canvas id="compare-pitch" class="pitch-canvas tall" height="220"></canvas>
+          <div class="align-controls">
+            <label class="align-row">
+              <span>Tempo (×<span id="scale-val">1.00</span>)</span>
+              <input id="scale-slider" type="range" min="0.5" max="2.0" step="0.01" value="1" disabled />
+            </label>
+            <label class="align-row">
+              <span>Pitch (<span id="pitch-shift-val">+0.0</span> st)</span>
+              <input id="pitch-shift-slider" type="range" min="-24" max="24" step="0.1" value="0" disabled />
+            </label>
+            <span class="hint">Glisse la courbe rouge horizontalement pour caler le timing, verticalement pour ajuster le pitch. Offset : <span id="offset-val">0.00</span>s</span>
+          </div>
+          <div class="legend">
+            <span><i class="dot ref"></i> Référence</span>
+            <span><i class="dot rec"></i> Ta voix (déplaçable)</span>
+          </div>
+
+          <div id="analysis" class="analysis hidden">
+            <h3>Analyse</h3>
+            <div class="metrics-grid">
+              <div class="metric">
+                <span class="metric-label">Corrélation contour</span>
+                <span class="metric-value" id="m-corr">—</span>
+                <span class="metric-tag" id="m-corr-tag"></span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Direction (montée/descente)</span>
+                <span class="metric-value" id="m-dir">—</span>
+                <span class="metric-tag" id="m-dir-tag"></span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Écart RMS (registre normalisé)</span>
+                <span class="metric-value" id="m-rms">—</span>
+                <span class="metric-tag" id="m-rms-tag"></span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Plage de pitch</span>
+                <span class="metric-value" id="m-range">—</span>
+                <span class="metric-tag" id="m-range-tag"></span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">F0 moyen</span>
+                <span class="metric-value" id="m-f0">—</span>
+                <span class="metric-tag muted-tag">informatif</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Voicing</span>
+                <span class="metric-value" id="m-voicing">—</span>
+                <span class="metric-tag" id="m-voicing-tag"></span>
+              </div>
+            </div>
+            <div class="verdict" id="verdict"></div>
+          </div>
+        </section>
+      </div>
     </div>
-    <div id="ref-wave" class="wave"></div>
-    <canvas id="ref-pitch" class="pitch-canvas" height="120"></canvas>
-    <div id="ref-status" class="status muted small">Pas de fichier chargé. <span class="hint-inline">Astuce : glisse pour sélectionner une portion à looper.</span></div>
   </section>
 
   <div id="countdown-overlay" class="countdown-overlay hidden" aria-hidden="true">
     <div class="countdown-num" id="countdown-num">3</div>
   </div>
 
-  <section class="shadow-card">
-    <div class="card-head">
-      <h2>Ta voix</h2>
-      <div class="card-actions">
-        <button id="rec-start" class="btn small accent">🎙 Record</button>
-        <button id="rec-stop" class="btn small" disabled>■ Stop</button>
-        <button id="rec-play" class="btn small" disabled>▶ Play</button>
-        <button id="rec-loop" class="btn small loop-btn" disabled title="Loop la sélection">↻</button>
-      </div>
-    </div>
-    <div id="rec-wave" class="wave"></div>
-    <canvas id="rec-pitch" class="pitch-canvas" height="120"></canvas>
-    <div id="rec-status" class="status muted small">Clique "Record" pour commencer.</div>
-  </section>
-
-  <section class="shadow-card">
-    <div class="card-head">
-      <h2>Comparaison pitch</h2>
-      <div class="card-actions">
-        <button id="compare-btn" class="btn small" disabled>Superposer les 2 courbes</button>
-        <button id="auto-align-btn" class="btn small" disabled title="Cross-corrélation des pitches">Auto-align</button>
-        <button id="reset-align-btn" class="btn small" disabled>Reset</button>
-      </div>
-    </div>
-    <canvas id="compare-pitch" class="pitch-canvas tall" height="220"></canvas>
-    <div class="align-controls">
-      <label class="align-row">
-        <span>Tempo (×<span id="scale-val">1.00</span>)</span>
-        <input id="scale-slider" type="range" min="0.5" max="2.0" step="0.01" value="1" disabled />
-      </label>
-      <span class="hint">Glisse la courbe rouge horizontalement pour caler le décalage. Offset : <span id="offset-val">0.00</span>s</span>
-    </div>
-    <div class="legend">
-      <span><i class="dot ref"></i> Référence</span>
-      <span><i class="dot rec"></i> Ta voix (déplaçable)</span>
-    </div>
-
-    <div id="analysis" class="analysis hidden">
-      <h3>Analyse</h3>
-      <div class="metrics-grid">
-        <div class="metric">
-          <span class="metric-label">Corrélation contour</span>
-          <span class="metric-value" id="m-corr">—</span>
-          <span class="metric-tag" id="m-corr-tag"></span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Direction (montée/descente)</span>
-          <span class="metric-value" id="m-dir">—</span>
-          <span class="metric-tag" id="m-dir-tag"></span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Écart RMS (registre normalisé)</span>
-          <span class="metric-value" id="m-rms">—</span>
-          <span class="metric-tag" id="m-rms-tag"></span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Plage de pitch</span>
-          <span class="metric-value" id="m-range">—</span>
-          <span class="metric-tag" id="m-range-tag"></span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">F0 moyen</span>
-          <span class="metric-value" id="m-f0">—</span>
-          <span class="metric-tag muted-tag">informatif</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Voicing</span>
-          <span class="metric-value" id="m-voicing">—</span>
-          <span class="metric-tag" id="m-voicing-tag"></span>
-        </div>
-      </div>
-      <div class="verdict" id="verdict"></div>
-    </div>
-  </section>
-
   <style>
+    :root {
+      --shadow-waveform-height: 120px;
+      --shadow-spectrogram-height: 280px;
+      --shadow-audio-display-height: calc(
+        var(--shadow-waveform-height) + var(--shadow-spectrogram-height)
+      );
+    }
+
     .back {
       display: inline-block;
       margin-bottom: 1rem;
@@ -187,6 +218,14 @@ import Layout from '../layouts/Layout.astro';
       margin-bottom: 1.2rem;
       box-shadow: var(--shadow-sm);
     }
+    .reference-grid {
+      display: block;
+    }
+    .reference-list-column,
+    .reference-detail-column {
+      min-width: 0;
+    }
+
     .card-head {
       display: flex;
       align-items: center;
@@ -236,8 +275,10 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .wave {
+      position: relative;
       width: 100%;
-      min-height: 80px;
+      height: var(--shadow-audio-display-height);
+      min-height: var(--shadow-audio-display-height);
       background: var(--bg-input);
       border-radius: 8px;
       overflow: hidden;
@@ -295,6 +336,7 @@ import Layout from '../layouts/Layout.astro';
       width: 180px;
       accent-color: var(--accent);
     }
+    #pitch-shift-slider { accent-color: var(--gold); }
     .align-row input[type="range"]:disabled { opacity: 0.4; }
     .align-controls .hint {
       font-size: 0.78rem;
@@ -448,15 +490,18 @@ import Layout from '../layouts/Layout.astro';
       padding: 0.25rem 0;
     }
 
+    .loop-btn {
+      color: var(--text-muted);
+    }
     .loop-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
+      background: color-mix(in srgb, var(--gold) 18%, var(--bg-input));
+      border-color: var(--gold);
+      color: var(--gold);
     }
     .loop-btn.active:hover {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
-      color: white;
+      background: color-mix(in srgb, var(--gold) 26%, var(--bg-input));
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
     .hint-inline {
@@ -591,8 +636,323 @@ import Layout from '../layouts/Layout.astro';
       vertical-align: middle;
     }
 
+    .reference-tabs {
+      display: flex;
+      gap: 0.35rem;
+      padding: 0.25rem;
+      margin-bottom: 0.75rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .reference-tab {
+      flex: 1;
+      padding: 0.48rem 0.7rem;
+      background: transparent;
+      border: 0;
+      border-radius: 7px;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--dur-fast) var(--ease),
+                  color var(--dur-fast) var(--ease);
+    }
+    .reference-tab:hover {
+      color: var(--accent);
+    }
+    .reference-tab.active {
+      background: var(--bg-card);
+      color: var(--text-strong);
+      box-shadow: var(--shadow-sm);
+    }
+    .reference-tab-panel {
+      display: none;
+      min-width: 0;
+      min-height: 0;
+    }
+    .reference-tab-panel.active {
+      display: block;
+    }
+    .tab-empty {
+      padding: 0.85rem 0.95rem;
+      background: var(--bg-input);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      color: var(--text-subtle);
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+    #ref-folder-panel:not(.hidden) + #ref-files-empty {
+      display: none;
+    }
+    #ref-phrases-list:not(.hidden) + #ref-phrases-empty {
+      display: none;
+    }
+
+    .reference-subcard {
+      min-width: 0;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .reference-subcard > .card-head {
+      margin-bottom: 0.85rem;
+    }
+    .reference-subcard .card-actions {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .reference-subcard .wave,
+    .reference-subcard .pitch-canvas {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    /* ─── Desktop reference layout ─── */
+    @media (min-width: 900px) {
+      :root {
+        --shadow-reference-max-width: 1760px;
+        --shadow-reference-left-col: 460px;
+        --shadow-reference-gap: 1.4rem;
+      }
+
+      :global(body) {
+        overflow: hidden;
+      }
+
+      /* Make this page behave like a compact app shell on desktop. */
+      :global(main) {
+        display: flex;
+        flex-direction: column;
+        max-width: var(--shadow-reference-max-width);
+        width: min(var(--shadow-reference-max-width), calc(100vw - 3rem));
+        height: 95vh;
+        min-height: 0;
+        overflow: hidden;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      :global(footer) {
+        display: none !important;
+      }
+
+      .back {
+        display: none;
+      }
+
+      .section-header {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: baseline;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .section-number {
+        margin-bottom: 0;
+        font-size: 0.62rem;
+      }
+
+      .section-header h1 {
+        margin-bottom: 0;
+        font-size: 1rem;
+      }
+
+      .description {
+        display: none;
+      }
+
+      .defaults-banner {
+        flex: 0 0 auto;
+        margin-bottom: 0.75rem;
+      }
+
+      .shadow-card--reference {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        min-height: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .shadow-card--reference > .card-head {
+        position: relative;
+        z-index: 30;
+        flex: 0 0 auto;
+        margin-bottom: 0;
+        padding: 0.85rem 1.2rem;
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border);
+        border-radius: 14px 14px 0 0;
+      }
+
+      .shadow-card--reference .card-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .reference-grid {
+        display: grid;
+        flex: 1 1 auto;
+        grid-template-columns:
+          minmax(340px, var(--shadow-reference-left-col))
+          minmax(0, 1fr);
+        gap: var(--shadow-reference-gap);
+        align-items: stretch;
+        min-height: 0;
+        padding: 1rem 1.2rem 1.2rem;
+        width: 100%;
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .reference-list-column,
+      .reference-detail-column {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .reference-list-column {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .reference-detail-column {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 0;
+        min-width: 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding-right: 0.25rem;
+      }
+
+      .reference-tab-panel.active {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .reference-list-column .folder-panel,
+      .reference-list-column .phrases-list {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        min-height: 0;
+        margin-bottom: 0;
+      }
+
+      .reference-list-column .folder-panel.hidden,
+      .reference-list-column .phrases-list.hidden {
+        display: none;
+      }
+
+      .reference-list-column .file-list,
+      .reference-list-column #phrases-list-body {
+        flex: 1 1 auto;
+        min-height: 0;
+        max-height: none;
+        overflow-y: auto;
+      }
+
+      .reference-detail-column > .wave,
+      .reference-subcard--recording .wave {
+        height: var(--shadow-audio-display-height);
+        min-height: var(--shadow-audio-display-height);
+      }
+
+      /*
+        WaveSurfer creates internal wrappers/canvases.
+        These rules prevent them from forcing the column wider than the card.
+      */
+      .reference-detail-column .wave > *,
+      .reference-detail-column .wave canvas,
+      .reference-detail-column .wave wave {
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
+
+      .reference-detail-column > .pitch-canvas {
+        height: 150px;
+      }
+
+      .reference-subcard--recording .pitch-canvas {
+        height: 140px;
+      }
+
+      .reference-subcard--compare .pitch-canvas.tall {
+        height: 240px;
+      }
+
+      .reference-detail-column .status {
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      :root {
+        --shadow-reference-left-col: 500px;
+      }
+
+      .reference-grid {
+        grid-template-columns:
+          minmax(400px, var(--shadow-reference-left-col))
+          minmax(0, 1fr);
+      }
+    }
+
+    @media (min-width: 1500px) {
+      :root {
+        --shadow-reference-max-width: 1880px;
+        --shadow-reference-left-col: 540px;
+      }
+
+      :global(main) {
+        width: min(var(--shadow-reference-max-width), calc(100vw - 4rem));
+      }
+
+      .reference-grid {
+        grid-template-columns:
+          minmax(440px, var(--shadow-reference-left-col))
+          minmax(0, 1fr);
+        gap: 1.6rem;
+      }
+
+      .reference-detail-column > .wave,
+      .reference-subcard--recording .wave {
+        height: var(--shadow-audio-display-height);
+        min-height: var(--shadow-audio-display-height);
+      }
+
+      .reference-detail-column > .pitch-canvas {
+        height: 170px;
+      }
+
+      .reference-subcard--compare .pitch-canvas.tall {
+        height: 260px;
+      }
+    }
+
     /* ─── Mobile (≤ 720px) ─── */
     @media (max-width: 720px) {
+      :root {
+        --shadow-waveform-height: 72px;
+        --shadow-spectrogram-height: 140px;
+      }
+
       .section-header { margin-bottom: 1.4rem; }
       .section-header h1 { font-size: 1.4rem; }
       .description { font-size: 0.88rem; }
@@ -868,11 +1228,19 @@ import Layout from '../layouts/Layout.astro';
     rec: { blob: null, buffer: null, pitch: [], ws: null, regions: null, region: null, loop: false },
   };
 
+  let lastSelectedSlot: 'ref' | 'rec' = 'ref';
+
   const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
 
   // Theme-aware colors (read from CSS vars at script eval time)
   const cssVar = (name: string) =>
     getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+  function pxVar(name: string, fallback: number): number {
+    const raw = cssVar(name);
+    const parsed = Number.parseFloat(raw);
+    return Number.isFinite(parsed) ? parsed : fallback;
+  }
 
   const colors = {
     ref: '#4a8eb5',
@@ -880,6 +1248,32 @@ import Layout from '../layouts/Layout.astro';
     grid: cssVar('--border') || '#e6decf',
     axis: cssVar('--text-muted') || '#888',
   };
+
+  const regionColors = {
+    ref: {
+      idle: 'rgba(74, 142, 181, 0.18)',
+      loop: 'rgba(234, 179, 8, 0.32)',
+    },
+    rec: {
+      idle: 'rgba(168, 32, 26, 0.18)',
+      loop: 'rgba(234, 179, 8, 0.32)',
+    },
+  } satisfies Record<'ref' | 'rec', { idle: string; loop: string }>;
+
+  function regionColor(slotKey: 'ref' | 'rec') {
+    return slots[slotKey].loop ? regionColors[slotKey].loop : regionColors[slotKey].idle;
+  }
+
+  function updateRegionVisual(slotKey: 'ref' | 'rec') {
+    const region = slots[slotKey].region as any;
+    if (!region) return;
+    const color = regionColor(slotKey);
+    if (typeof region.setOptions === 'function') {
+      region.setOptions({ color });
+    } else if (region.element) {
+      region.element.style.backgroundColor = color;
+    }
+  }
 
   function buildWave(containerId: string, blob: Blob, slotKey: 'ref' | 'rec'): { ws: WaveSurfer; regions: any } {
     const url = URL.createObjectURL(blob);
@@ -889,13 +1283,13 @@ import Layout from '../layouts/Layout.astro';
       waveColor: cssVar('--text-subtle') || '#888',
       progressColor: cssVar('--accent') || '#a8201a',
       cursorColor: cssVar('--text-strong') || '#000',
-      height: 80,
+      height: pxVar('--shadow-waveform-height', 80),
       normalize: true,
     });
     ws.registerPlugin(
       Spectrogram.create({
         labels: true,
-        height: 140,
+        height: pxVar('--shadow-spectrogram-height', 180),
         splitChannels: false,
         scale: 'mel',
         frequencyMax: 4000,
@@ -904,11 +1298,8 @@ import Layout from '../layouts/Layout.astro';
         labelsBackground: 'rgba(0,0,0,0.05)',
       })
     );
-    const regionColor = slotKey === 'ref'
-      ? 'rgba(74, 142, 181, 0.18)'
-      : 'rgba(168, 32, 26, 0.18)';
     const regions = ws.registerPlugin(RegionsPlugin.create());
-    regions.enableDragSelection({ color: regionColor });
+    regions.enableDragSelection({ color: regionColors[slotKey].idle });
     return { ws, regions };
   }
 
@@ -947,17 +1338,38 @@ import Layout from '../layouts/Layout.astro';
   type Series = {
     points: PitchPoint[];
     color: string;
-    offset?: number; // seconds, added to each point's time
-    scale?: number;  // multiplier on time
+    offset?: number;       // seconds, added to each point's time
+    scale?: number;        // multiplier on time
+    pitchShiftSt?: number; // vertical pitch offset in semitones
     label?: string;
   };
 
   // Cached layout from the last draw on the compare canvas — used by the drag handler
-  // to convert pixel deltas to seconds without recomputing tMax mid-drag.
-  let lastCompareLayout: { tMax: number; w: number; padX: number } | null = null;
+  // to convert pixel deltas to seconds and vertical pixel movement to semitones.
+  let lastCompareLayout: {
+    tMax: number;
+    w: number;
+    h: number;
+    padX: number;
+    usableH: number;
+    pitchRangeSt: number;
+  } | null = null;
+
+  function clamp(n: number, min: number, max: number): number {
+    return Math.max(min, Math.min(max, n));
+  }
+
+  function semitoneFactor(st: number): number {
+    return Math.pow(2, st / 12);
+  }
 
   function transformedTime(p: PitchPoint, s: Series) {
     return p.time * (s.scale ?? 1) + (s.offset ?? 0);
+  }
+
+  function transformedFreq(p: PitchPoint, s: Series): number | null {
+    if (p.freq == null) return null;
+    return p.freq * semitoneFactor(s.pitchShiftSt ?? 0);
   }
 
   function seriesTimeMax(s: Series): number {
@@ -975,22 +1387,40 @@ import Layout from '../layouts/Layout.astro';
     const w = canvas.clientWidth;
     const h = canvas.clientHeight;
     const padX = 36;
+    const padY = 10;
+    const usableH = Math.max(1, h - padY * 2);
     ctx.clearRect(0, 0, w, h);
 
-    // Auto-range based on actual pitch values found, with sensible defaults
-    const allFreqs = series.flatMap((s) => s.points.filter((p) => p.freq).map((p) => p.freq!));
+    // Auto-range based on transformed pitch values. Y is logarithmic/semitone-based,
+    // so +12 st is an octave everywhere, instead of a fixed number of Hz.
+    const allFreqs = series.flatMap((s) =>
+      s.points
+        .map((p) => transformedFreq(p, s))
+        .filter((f): f is number => f != null && Number.isFinite(f) && f > 0)
+    );
     if (allFreqs.length === 0) {
       ctx.fillStyle = colors.axis;
       ctx.font = '12px Inter, sans-serif';
       ctx.fillText('Pas de pitch détecté', 10, 20);
       return;
     }
-    const fMin = opts.fMin ?? Math.max(60, Math.min(...allFreqs) - 20);
-    const fMax = opts.fMax ?? Math.min(500, Math.max(...allFreqs) + 20);
+
+    const rawMin = Math.min(...allFreqs);
+    const rawMax = Math.max(...allFreqs);
+    const fMin = opts.fMin ?? Math.max(50, rawMin / semitoneFactor(2));
+    const fMax = opts.fMax ?? Math.min(900, rawMax * semitoneFactor(2));
+    const logMin = Math.log2(fMin);
+    const logMax = Math.log2(Math.max(fMax, fMin * 1.01));
+    const pitchRangeSt = Math.max(1, 12 * (logMax - logMin));
     const tMax = opts.tMax ?? Math.max(0.1, ...series.map(seriesTimeMax));
     if (tMax === 0) return;
 
-    if (opts.cacheLayout) lastCompareLayout = { tMax, w, padX };
+    if (opts.cacheLayout) lastCompareLayout = { tMax, w, h, padX, usableH, pitchRangeSt };
+
+    const yForFreq = (freq: number) => {
+      const normalized = (Math.log2(freq) - logMin) / (logMax - logMin);
+      return h - normalized * usableH - padY;
+    };
 
     // Grid
     ctx.strokeStyle = colors.grid;
@@ -999,8 +1429,9 @@ import Layout from '../layouts/Layout.astro';
     ctx.fillStyle = colors.axis;
     const fSteps = 4;
     for (let i = 0; i <= fSteps; i++) {
-      const f = fMin + (i / fSteps) * (fMax - fMin);
-      const y = h - ((f - fMin) / (fMax - fMin)) * (h - 20) - 10;
+      const logF = logMin + (i / fSteps) * (logMax - logMin);
+      const f = Math.pow(2, logF);
+      const y = yForFreq(f);
       ctx.beginPath();
       ctx.moveTo(padX, y);
       ctx.lineTo(w, y);
@@ -1015,7 +1446,8 @@ import Layout from '../layouts/Layout.astro';
       ctx.beginPath();
       let pen = false;
       for (const p of s.points) {
-        if (p.freq == null) {
+        const freq = transformedFreq(p, s);
+        if (freq == null) {
           pen = false;
           continue;
         }
@@ -1025,7 +1457,7 @@ import Layout from '../layouts/Layout.astro';
           continue;
         }
         const x = padX + (t / tMax) * (w - padX);
-        const y = h - ((p.freq - fMin) / (fMax - fMin)) * (h - 20) - 10;
+        const y = yForFreq(freq);
         if (!pen) {
           ctx.moveTo(x, y);
           pen = true;
@@ -1055,6 +1487,13 @@ import Layout from '../layouts/Layout.astro';
     const playBtn = document.getElementById(slotKey === 'ref' ? 'ref-play' : 'rec-play') as HTMLButtonElement;
     const loopBtn = document.getElementById(slotKey === 'ref' ? 'ref-loop' : 'rec-loop') as HTMLButtonElement;
 
+    playBtn.disabled = true;
+    playBtn.textContent = '▶ Play';
+    slot.loop = false;
+    loopBtn.disabled = true;
+    loopBtn.classList.remove('active');
+    loopBtn.setAttribute('aria-pressed', 'false');
+
     status.textContent = 'Décodage…';
 
     const built = buildWave(waveContainerId, blob, slotKey);
@@ -1066,6 +1505,7 @@ import Layout from '../layouts/Layout.astro';
       for (const r of slot.regions.getRegions()) if (r !== region) r.remove();
       slot.region = region;
       loopBtn.disabled = false;
+      updateRegionVisual(slotKey);
     });
     slot.regions.on('region-updated', (region: Region) => {
       slot.region = region;
@@ -1077,27 +1517,27 @@ import Layout from '../layouts/Layout.astro';
         loopBtn.disabled = true;
         slot.loop = false;
         loopBtn.classList.remove('active');
+        loopBtn.setAttribute('aria-pressed', 'false');
       }
     });
-    // When playback exits the region: loop back if loop is on, else stop.
+    // Only the loop mode owns region playback.
+    // When loop is off, Play should ignore the selection and play the full audio.
     slot.regions.on('region-out', (region: Region) => {
       if (slot.region === region && slot.loop) {
         region.play();
-      } else if (slot.region === region) {
-        slot.ws!.pause();
       }
     });
 
     slot.ws.on('ready', () => {
       playBtn.disabled = false;
       if (opts.autoplay && slot.ws) {
-        slot.ws.play();
-        playBtn.textContent = '❚❚ Pause';
+        void slot.ws.play();
+        setPlayButtonPlaying(slotKey, true);
       }
     });
-    slot.ws.on('finish', () => {
-      playBtn.textContent = '▶ Play';
-    });
+    slot.ws.on('play', () => setPlayButtonPlaying(slotKey, true));
+    slot.ws.on('pause', () => setPlayButtonPlaying(slotKey, false));
+    slot.ws.on('finish', () => setPlayButtonPlaying(slotKey, false));
 
     slot.buffer = await decode(blob);
     status.textContent = 'Extraction du pitch…';
@@ -1116,35 +1556,89 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
+  function playButtonFor(slotKey: 'ref' | 'rec'): HTMLButtonElement {
+    return document.getElementById(slotKey === 'ref' ? 'ref-play' : 'rec-play') as HTMLButtonElement;
+  }
+
+  function setPlayButtonPlaying(slotKey: 'ref' | 'rec', playing: boolean) {
+    playButtonFor(slotKey).textContent = playing ? '❚❚ Pause' : '▶ Play';
+  }
+
+  async function toggleSlotPlayback(slotKey: 'ref' | 'rec') {
+    const slot = slots[slotKey];
+    const ws = slot.ws;
+    if (!ws) return;
+
+    lastSelectedSlot = slotKey;
+    if (audioCtx.state === 'suspended') await audioCtx.resume();
+
+    if (ws.isPlaying()) {
+      ws.pause();
+      setPlayButtonPlaying(slotKey, false);
+      return;
+    }
+
+    if (slot.loop && slot.region) {
+      slot.region.play();
+    } else {
+      void ws.play();
+    }
+    setPlayButtonPlaying(slotKey, true);
+  }
+
+  function shouldIgnorePlaybackShortcut(target: EventTarget | null): boolean {
+    const el = target as HTMLElement | null;
+    return !!el?.closest('input, textarea, select, button, a, [contenteditable="true"]');
+  }
+
+  function setupSpacePlaybackShortcut() {
+    document.addEventListener('keydown', (e) => {
+      if (e.code !== 'Space' || e.repeat) return;
+      if (shouldIgnorePlaybackShortcut(e.target)) return;
+      if (!slots[lastSelectedSlot].ws) return;
+      e.preventDefault();
+      void toggleSlotPlayback(lastSelectedSlot);
+    });
+  }
+
+  type ReferenceTab = 'files' | 'phrases';
+
+  function setReferenceTab(tab: ReferenceTab) {
+    document.querySelectorAll<HTMLButtonElement>('[data-reference-tab]').forEach((btn) => {
+      const active = btn.dataset.referenceTab === tab;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-reference-tab-panel]').forEach((panel) => {
+      panel.classList.toggle('active', panel.dataset.referenceTabPanel === tab);
+    });
+  }
+
+  function setupReferenceTabs() {
+    document.querySelectorAll<HTMLButtonElement>('[data-reference-tab]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.referenceTab as ReferenceTab | undefined;
+        if (tab) setReferenceTab(tab);
+      });
+    });
+  }
+
   function setupPlayLoop(slotKey: 'ref' | 'rec') {
     const slot = slots[slotKey];
-    const playBtn = document.getElementById(slotKey === 'ref' ? 'ref-play' : 'rec-play') as HTMLButtonElement;
+    const playBtn = playButtonFor(slotKey);
     const loopBtn = document.getElementById(slotKey === 'ref' ? 'ref-loop' : 'rec-loop') as HTMLButtonElement;
 
     playBtn.addEventListener('click', () => {
-      const ws = slot.ws;
-      if (!ws) return;
-      if (ws.isPlaying()) {
-        ws.pause();
-        playBtn.textContent = '▶ Play';
-        return;
-      }
-      if (slot.region) {
-        slot.region.play();
-      } else {
-        ws.play();
-      }
-      playBtn.textContent = '❚❚ Pause';
+      void toggleSlotPlayback(slotKey);
     });
 
     loopBtn.addEventListener('click', () => {
+      lastSelectedSlot = slotKey;
       slot.loop = !slot.loop;
       loopBtn.classList.toggle('active', slot.loop);
-      // If loop just enabled and a region exists but nothing is playing, kick it off.
-      if (slot.loop && slot.region && slot.ws && !slot.ws.isPlaying()) {
-        slot.region.play();
-        playBtn.textContent = '❚❚ Pause';
-      }
+      loopBtn.setAttribute('aria-pressed', slot.loop ? 'true' : 'false');
+      updateRegionVisual(slotKey);
     });
   }
 
@@ -1153,6 +1647,7 @@ import Layout from '../layouts/Layout.astro';
     const f = (e.target as HTMLInputElement).files?.[0];
     if (!f) return;
     folderState.activeName = null; // upload bypasses any folder selection
+    lastSelectedSlot = 'ref';
     renderTree();
     renderPhrasePanel(null);
     await loadIntoSlot('ref', f);
@@ -1160,6 +1655,8 @@ import Layout from '../layouts/Layout.astro';
 
   setupPlayLoop('ref');
   setupPlayLoop('rec');
+  setupSpacePlaybackShortcut();
+  setupReferenceTabs();
 
   // Folder browser — tree state
   type TreeNode = {
@@ -1259,6 +1756,7 @@ import Layout from '../layouts/Layout.astro';
     } else {
       row.addEventListener('click', async () => {
         folderState.activeName = node.path;
+        lastSelectedSlot = 'ref';
         renderTree();
         // First check the in-memory map (Safari fallback path). If empty and we
         // have a library xmlDir, lazy-load the corresponding XML now.
@@ -1304,6 +1802,7 @@ import Layout from '../layouts/Layout.astro';
     (document.getElementById('ref-folder-count') as HTMLElement).textContent =
       `${audio.length} audio${audio.length > 1 ? 's' : ''}`;
     renderTree();
+    setReferenceTab('files');
   }
 
   // Note: the ref-folder input is now wired only as the Safari/Firefox fallback
@@ -1318,6 +1817,7 @@ import Layout from '../layouts/Layout.astro';
     document.getElementById('ref-folder-panel')!.classList.add('hidden');
     document.getElementById('ref-phrase')!.classList.add('hidden');
     (document.getElementById('ref-folder') as HTMLInputElement).value = '';
+    setReferenceTab('files');
   });
 
   // ─── XML phrase index (Assimil lessons) ───
@@ -1552,14 +2052,30 @@ import Layout from '../layouts/Layout.astro';
   // ─── Compare + manual alignment ───
   let recOffset = 0; // seconds
   let recScale = 1;
+  let recPitchShiftSt = 0; // semitones, applied multiplicatively to rec F0
   let comparedOnce = false;
 
   const compareCanvas = document.getElementById('compare-pitch') as HTMLCanvasElement;
   const scaleSlider = document.getElementById('scale-slider') as HTMLInputElement;
+  const pitchShiftSlider = document.getElementById('pitch-shift-slider') as HTMLInputElement;
   const scaleVal = document.getElementById('scale-val')!;
+  const pitchShiftVal = document.getElementById('pitch-shift-val')!;
   const offsetVal = document.getElementById('offset-val')!;
   const resetBtn = document.getElementById('reset-align-btn') as HTMLButtonElement;
   const autoBtn = document.getElementById('auto-align-btn') as HTMLButtonElement;
+
+  function formatSigned(n: number, digits = 1): string {
+    const sign = n > 0 ? '+' : '';
+    return sign + n.toFixed(digits);
+  }
+
+  function syncCompareControls() {
+    offsetVal.textContent = recOffset.toFixed(2);
+    scaleVal.textContent = recScale.toFixed(2);
+    pitchShiftVal.textContent = formatSigned(recPitchShiftSt, 1);
+    if (scaleSlider.value !== String(recScale)) scaleSlider.value = String(recScale);
+    if (pitchShiftSlider.value !== String(recPitchShiftSt)) pitchShiftSlider.value = recPitchShiftSt.toFixed(1);
+  }
 
   function redrawCompare() {
     if (!comparedOnce) return;
@@ -1567,12 +2083,17 @@ import Layout from '../layouts/Layout.astro';
       compareCanvas,
       [
         { points: slots.ref.pitch, color: colors.ref },
-        { points: slots.rec.pitch, color: colors.rec, offset: recOffset, scale: recScale },
+        {
+          points: slots.rec.pitch,
+          color: colors.rec,
+          offset: recOffset,
+          scale: recScale,
+          pitchShiftSt: recPitchShiftSt,
+        },
       ],
       { cacheLayout: true }
     );
-    offsetVal.textContent = recOffset.toFixed(2);
-    scaleVal.textContent = recScale.toFixed(2);
+    syncCompareControls();
     renderAnalysis();
   }
 
@@ -1585,6 +2106,7 @@ import Layout from '../layouts/Layout.astro';
     recRangeSt: number;
     refMeanF0: number;
     recMeanF0: number;
+    recMeanF0Raw: number;
     refVoicedRatio: number;
     recVoicedRatio: number;
     overlapFrames: number;
@@ -1606,16 +2128,20 @@ import Layout from '../layouts/Layout.astro';
       // Inverse transform: rec_idx such that rec_idx * recHop * recScale + recOffset = tRef
       const recOriginalT = (tRef - recOffset) / recScale;
       const j = Math.round(recOriginalT / recHop);
-      const recVal = j >= 0 && j < rec.length ? rec[j].freq : null;
+      const recVal = j >= 0 && j < rec.length && rec[j].freq
+        ? rec[j].freq! * semitoneFactor(recPitchShiftSt)
+        : null;
       aligned.push({ ref: ref[i].freq, rec: recVal });
     }
 
     // Per-speaker stats from the original (untransformed) data
     const refVoiced = ref.filter((p) => p.freq).map((p) => p.freq!);
-    const recVoiced = rec.filter((p) => p.freq).map((p) => p.freq!);
+    const recVoicedRaw = rec.filter((p) => p.freq).map((p) => p.freq!);
+    const recVoiced = recVoicedRaw.map((f) => f * semitoneFactor(recPitchShiftSt));
     const refVoicedRatio = refVoiced.length / ref.length;
-    const recVoicedRatio = recVoiced.length / rec.length;
+    const recVoicedRatio = recVoicedRaw.length / rec.length;
     const refMeanF0 = refVoiced.length ? refVoiced.reduce((a, b) => a + b, 0) / refVoiced.length : 0;
+    const recMeanF0Raw = recVoicedRaw.length ? recVoicedRaw.reduce((a, b) => a + b, 0) / recVoicedRaw.length : 0;
     const recMeanF0 = recVoiced.length ? recVoiced.reduce((a, b) => a + b, 0) / recVoiced.length : 0;
 
     // Pitch range in semitones = 12 * log2(maxF0 / minF0), using 5th–95th percentile
@@ -1642,6 +2168,7 @@ import Layout from '../layouts/Layout.astro';
         recRangeSt,
         refMeanF0,
         recMeanF0,
+        recMeanF0Raw,
         refVoicedRatio,
         recVoicedRatio,
         overlapFrames: overlap.length,
@@ -1694,6 +2221,7 @@ import Layout from '../layouts/Layout.astro';
       recRangeSt,
       refMeanF0,
       recMeanF0,
+      recMeanF0Raw,
       refVoicedRatio,
       recVoicedRatio,
       overlapFrames: overlap.length,
@@ -1754,7 +2282,10 @@ import Layout from '../layouts/Layout.astro';
                           { text: '×' + rangeRatio.toFixed(2) + ' — exagéré', cls: 'bad' };
     set('m-range', `ref ${a.refRangeSt.toFixed(1)} st · toi ${a.recRangeSt.toFixed(1)} st`, 'm-range-tag', rangeTag);
 
-    set('m-f0', `ref ${Math.round(a.refMeanF0)} Hz · toi ${Math.round(a.recMeanF0)} Hz`);
+    const f0Text = Math.abs(recPitchShiftSt) >= 0.05
+      ? `ref ${Math.round(a.refMeanF0)} Hz · toi ${Math.round(a.recMeanF0Raw)} Hz → ${Math.round(a.recMeanF0)} Hz`
+      : `ref ${Math.round(a.refMeanF0)} Hz · toi ${Math.round(a.recMeanF0)} Hz`;
+    set('m-f0', f0Text);
 
     const refVp = Math.round(a.refVoicedRatio * 100);
     const recVp = Math.round(a.recVoicedRatio * 100);
@@ -1790,6 +2321,7 @@ import Layout from '../layouts/Layout.astro';
     comparedOnce = true;
     redrawCompare();
     scaleSlider.disabled = false;
+    pitchShiftSlider.disabled = false;
     resetBtn.disabled = false;
     autoBtn.disabled = false;
   });
@@ -1799,15 +2331,34 @@ import Layout from '../layouts/Layout.astro';
     redrawCompare();
   });
 
-  resetBtn.addEventListener('click', () => {
-    recOffset = 0;
-    recScale = 1;
-    scaleSlider.value = '1';
+  pitchShiftSlider.addEventListener('input', () => {
+    recPitchShiftSt = parseFloat(pitchShiftSlider.value);
     redrawCompare();
   });
 
-  // Drag-to-offset on the compare canvas
-  let dragState: { startX: number; startOffset: number; tMax: number; w: number; padX: number } | null = null;
+  resetBtn.addEventListener('click', () => {
+    recOffset = 0;
+    recScale = 1;
+    recPitchShiftSt = 0;
+    scaleSlider.value = '1';
+    pitchShiftSlider.value = '0';
+    redrawCompare();
+  });
+
+  // Drag on the compare canvas:
+  // - horizontal movement adjusts timing offset
+  // - vertical movement adjusts rec pitch in semitones
+  let dragState: {
+    startX: number;
+    startY: number;
+    startOffset: number;
+    startPitchShiftSt: number;
+    tMax: number;
+    w: number;
+    padX: number;
+    usableH: number;
+    pitchRangeSt: number;
+  } | null = null;
 
   compareCanvas.addEventListener('pointerdown', (e) => {
     if (!comparedOnce || !lastCompareLayout) return;
@@ -1815,17 +2366,27 @@ import Layout from '../layouts/Layout.astro';
     compareCanvas.classList.add('dragging');
     dragState = {
       startX: e.clientX,
+      startY: e.clientY,
       startOffset: recOffset,
+      startPitchShiftSt: recPitchShiftSt,
       tMax: lastCompareLayout.tMax,
       w: lastCompareLayout.w,
       padX: lastCompareLayout.padX,
+      usableH: lastCompareLayout.usableH,
+      pitchRangeSt: lastCompareLayout.pitchRangeSt,
     };
   });
 
   compareCanvas.addEventListener('pointermove', (e) => {
     if (!dragState) return;
     const pixelsPerSec = (dragState.w - dragState.padX) / dragState.tMax;
+    const pixelsPerSemitone = dragState.usableH / dragState.pitchRangeSt;
     recOffset = dragState.startOffset + (e.clientX - dragState.startX) / pixelsPerSec;
+    recPitchShiftSt = clamp(
+      dragState.startPitchShiftSt - (e.clientY - dragState.startY) / pixelsPerSemitone,
+      Number(pitchShiftSlider.min),
+      Number(pitchShiftSlider.max),
+    );
     redrawCompare();
   });
 
@@ -1838,51 +2399,80 @@ import Layout from '../layouts/Layout.astro';
   compareCanvas.addEventListener('pointerup', endDrag);
   compareCanvas.addEventListener('pointercancel', endDrag);
 
-  // Auto-align: cross-correlate the voiced pitch contours over a ±2s offset window
-  // and pick the offset that maximizes correlation. Operates on log-Hz to be
-  // independent of speaker pitch range.
+  // Auto-align: maximize normalized Pearson correlation over the current tempo.
+  // This uses actual frame timestamps and recomputes the mean per overlap window,
+  // which avoids the edge-case false positives of the old covariance-only version.
   autoBtn.addEventListener('click', () => {
     const ref = slots.ref.pitch;
     const rec = slots.rec.pitch;
     if (!ref.length || !rec.length) return;
 
-    const hop = ref.length > 1 ? ref[1].time - ref[0].time : 0.0116; // ~512/44100
-    const range = 2.0; // seconds
-    const stepSec = hop;
-    let bestOffset = 0;
+    const refDuration = ref[ref.length - 1]?.time ?? 0;
+    const recDuration = (rec[rec.length - 1]?.time ?? 0) * recScale;
+    const searchRange = Math.min(6, Math.max(2, Math.max(refDuration, recDuration) * 0.8));
+
+    const coarse = findBestOffset(searchRange, 0.02, 0);
+    const refined = findBestOffset(0.18, 0.003, coarse.offset);
+    recOffset = Number.isFinite(refined.offset) ? refined.offset : coarse.offset;
+    redrawCompare();
+  });
+
+  function findBestOffset(range: number, stepSec: number, center: number): { offset: number; score: number } {
+    let bestOffset = center;
     let bestScore = -Infinity;
-
-    // Pre-compute log-pitch arrays at uniform time steps (using the existing hop grid)
-    const refLog = ref.map((p) => (p.freq ? Math.log(p.freq) : null));
-    const recLog = rec.map((p) => (p.freq ? Math.log(p.freq) : null));
-    const refMean = mean(refLog);
-    const recMean = mean(recLog);
-
-    for (let off = -range; off <= range; off += stepSec) {
-      let sum = 0;
-      let n = 0;
-      // For each rec frame, find the closest ref frame at time recTime*scale + off
-      for (let i = 0; i < recLog.length; i++) {
-        const r = recLog[i];
-        if (r == null) continue;
-        const t = i * hop * recScale + off;
-        const j = Math.round(t / hop);
-        if (j < 0 || j >= refLog.length) continue;
-        const ref_v = refLog[j];
-        if (ref_v == null) continue;
-        sum += (ref_v - refMean) * (r - recMean);
-        n++;
-      }
-      if (n < 5) continue;
-      const score = sum / n;
+    for (let off = center - range; off <= center + range; off += stepSec) {
+      const score = alignmentScore(off);
       if (score > bestScore) {
         bestScore = score;
         bestOffset = off;
       }
     }
-    recOffset = bestOffset;
-    redrawCompare();
-  });
+    return { offset: bestOffset, score: bestScore };
+  }
+
+  function alignmentScore(offset: number): number {
+    const ref = slots.ref.pitch;
+    const rec = slots.rec.pitch;
+    if (!ref.length || !rec.length) return -Infinity;
+
+    const recHop = rec.length > 1 ? rec[1].time - rec[0].time : 0.0116;
+    let n = 0;
+    let sx = 0;
+    let sy = 0;
+    let sx2 = 0;
+    let sy2 = 0;
+    let sxy = 0;
+
+    for (const refPoint of ref) {
+      if (!refPoint.freq) continue;
+      const recOriginalT = (refPoint.time - offset) / recScale;
+      const j = Math.round(recOriginalT / recHop);
+      if (j < 0 || j >= rec.length) continue;
+      const recFreq = rec[j].freq;
+      if (!recFreq) continue;
+
+      const x = Math.log(refPoint.freq);
+      // Vertical pitch shift is constant in log space, so correlation would be
+      // the same with or without it. Keeping it here makes the scoring match the display.
+      const y = Math.log(recFreq * semitoneFactor(recPitchShiftSt));
+      n++;
+      sx += x;
+      sy += y;
+      sx2 += x * x;
+      sy2 += y * y;
+      sxy += x * y;
+    }
+
+    if (n < 8) return -Infinity;
+    const cov = n * sxy - sx * sy;
+    const denX = n * sx2 - sx * sx;
+    const denY = n * sy2 - sy * sy;
+    if (denX <= 0 || denY <= 0) return -Infinity;
+
+    const corr = cov / Math.sqrt(denX * denY);
+    const overlapWeight = Math.min(1, n / 35);
+    return corr * overlapWeight;
+  }
 
   function mean(xs: (number | null)[]): number {
     let s = 0;
@@ -1992,6 +2582,7 @@ import Layout from '../layouts/Layout.astro';
     lessonState.phrases = phrases;
     for (const p of phrases) phraseMap.set(`${p.lessonId}/${p.audioFile}`, p);
     renderPhrasesList();
+    setReferenceTab('phrases');
   }
 
   function renderPhrasesList() {
@@ -2044,6 +2635,7 @@ import Layout from '../layouts/Layout.astro';
       if (file) {
         row.addEventListener('click', async () => {
           folderState.activeName = file.webkitRelativePath;
+          lastSelectedSlot = 'ref';
           renderTree();
           renderPhrasesList();
           renderPhrasePanel(p);
