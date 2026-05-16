@@ -117,6 +117,10 @@ import Layout from '../layouts/Layout.astro';
               <span>Pitch (<span id="pitch-shift-val">+0.0</span> st)</span>
               <input id="pitch-shift-slider" type="range" min="-24" max="24" step="0.1" value="0" disabled />
             </label>
+            <label class="compare-toggle" title="Affiche les enveloppes waveform de la référence et de ta voix sur le graphe de comparaison">
+              <input id="show-waveform-overlay" type="checkbox" disabled />
+              <span>Waveforms</span>
+            </label>
             <span class="hint">Glisse la courbe rouge horizontalement pour caler le timing, verticalement pour ajuster le pitch. Offset : <span id="offset-val">0.00</span>s</span>
           </div>
           <div class="legend">
@@ -171,8 +175,8 @@ import Layout from '../layouts/Layout.astro';
 
   <style>
     :root {
-      --shadow-waveform-height: 120px;
-      --shadow-spectrogram-height: 280px;
+      --shadow-waveform-height: 80px;
+      --shadow-spectrogram-height: 180px;
       --shadow-audio-display-height: calc(
         var(--shadow-waveform-height) + var(--shadow-spectrogram-height)
       );
@@ -338,6 +342,40 @@ import Layout from '../layouts/Layout.astro';
     }
     #pitch-shift-slider { accent-color: var(--gold); }
     .align-row input[type="range"]:disabled { opacity: 0.4; }
+    .compare-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.38rem 0.65rem;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: border-color var(--dur-fast) var(--ease),
+                  color var(--dur-fast) var(--ease),
+                  background var(--dur-fast) var(--ease);
+    }
+    .compare-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .compare-toggle input {
+      margin: 0;
+      accent-color: var(--accent);
+    }
+    .compare-toggle:has(input:checked) {
+      background: color-mix(in srgb, var(--accent) 14%, var(--bg-input));
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .compare-toggle:has(input:disabled) {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
     .align-controls .hint {
       font-size: 0.78rem;
       color: var(--text-subtle);
@@ -731,7 +769,7 @@ import Layout from '../layouts/Layout.astro';
         flex-direction: column;
         max-width: var(--shadow-reference-max-width);
         width: min(var(--shadow-reference-max-width), calc(100vw - 3rem));
-        height: 95vh;
+        height: 100vh;
         min-height: 0;
         overflow: hidden;
         padding-top: 1rem;
@@ -1212,7 +1250,13 @@ import Layout from '../layouts/Layout.astro';
   import { YIN } from 'pitchfinder';
   import * as ShadowLib from '../scripts/shadow-library';
 
-  type PitchPoint = { time: number; freq: number | null };
+  type PitchPoint = {
+    time: number;
+    freq: number | null;
+    rawFreq?: number | null;
+    rms?: number;
+    confidence?: number;
+  };
   type Slot = {
     blob: Blob | null;
     buffer: AudioBuffer | null;
@@ -1308,19 +1352,259 @@ import Layout from '../layouts/Layout.astro';
     return audioCtx.decodeAudioData(arr.slice(0));
   }
 
-  function extractPitch(buffer: AudioBuffer): PitchPoint[] {
-    const detector = YIN({ sampleRate: buffer.sampleRate });
-    const channel = buffer.getChannelData(0);
-    const windowSize = 2048;
-    const hopSize = 512;
-    const out: PitchPoint[] = [];
-    for (let i = 0; i + windowSize < channel.length; i += hopSize) {
-      // pitchfinder expects a Float32Array
-      const window = channel.subarray(i, i + windowSize);
-      const freq = detector(window);
-      out.push({ time: i / buffer.sampleRate, freq: freq && freq > 60 && freq < 600 ? freq : null });
+  const PITCH_MIN_HZ = 55;
+  const PITCH_MAX_HZ = 650;
+
+  type RawPitchFrame = PitchPoint & {
+    candidates?: { yin: number | null; acf: number | null; acfConfidence: number };
+  };
+
+  function percentile(xs: number[], p: number): number {
+    if (!xs.length) return 0;
+    const sorted = [...xs].sort((a, b) => a - b);
+    const idx = clamp(Math.round((p / 100) * (sorted.length - 1)), 0, sorted.length - 1);
+    return sorted[idx];
+  }
+
+  function median(xs: number[]): number {
+    return percentile(xs, 50);
+  }
+
+  function rmsOf(window: Float32Array): number {
+    let sumSq = 0;
+    for (let i = 0; i < window.length; i++) sumSq += window[i] * window[i];
+    return Math.sqrt(sumSq / Math.max(1, window.length));
+  }
+
+  function copyWindowWithoutDc(channel: Float32Array, start: number, size: number): Float32Array {
+    const out = new Float32Array(size);
+    let mean = 0;
+    for (let i = 0; i < size; i++) mean += channel[start + i] || 0;
+    mean /= size;
+    for (let i = 0; i < size; i++) out[i] = (channel[start + i] || 0) - mean;
+    return out;
+  }
+
+  function autocorrelationPitch(window: Float32Array, sampleRate: number): { freq: number | null; confidence: number } {
+    const minLag = Math.max(2, Math.floor(sampleRate / PITCH_MAX_HZ));
+    const maxLag = Math.min(window.length - 2, Math.ceil(sampleRate / PITCH_MIN_HZ));
+    let bestLag = 0;
+    let bestCorr = -Infinity;
+
+    // Normalized autocorrelation. It is slower than YIN but useful as a fallback
+    // for mic recordings where browser processing or low register makes YIN sparse.
+    for (let lag = minLag; lag <= maxLag; lag++) {
+      let xy = 0;
+      let xx = 0;
+      let yy = 0;
+      for (let i = 0; i + lag < window.length; i++) {
+        const x = window[i];
+        const y = window[i + lag];
+        xy += x * y;
+        xx += x * x;
+        yy += y * y;
+      }
+      if (xx <= 0 || yy <= 0) continue;
+      const corr = xy / Math.sqrt(xx * yy);
+      if (corr > bestCorr) {
+        bestCorr = corr;
+        bestLag = lag;
+      }
+    }
+
+    if (!bestLag || bestCorr < 0.38) return { freq: null, confidence: Math.max(0, bestCorr) };
+
+    // Parabolic interpolation around the best lag for a slightly smoother curve.
+    let refinedLag = bestLag;
+    if (bestLag > minLag && bestLag < maxLag) {
+      const corrAt = (lag: number) => {
+        let xy = 0;
+        let xx = 0;
+        let yy = 0;
+        for (let i = 0; i + lag < window.length; i++) {
+          const x = window[i];
+          const y = window[i + lag];
+          xy += x * y;
+          xx += x * x;
+          yy += y * y;
+        }
+        return xx > 0 && yy > 0 ? xy / Math.sqrt(xx * yy) : 0;
+      };
+      const left = corrAt(bestLag - 1);
+      const center = bestCorr;
+      const right = corrAt(bestLag + 1);
+      const denom = left - 2 * center + right;
+      if (Math.abs(denom) > 1e-6) {
+        refinedLag = bestLag + 0.5 * (left - right) / denom;
+      }
+    }
+
+    const freq = sampleRate / refinedLag;
+    return {
+      freq: freq >= PITCH_MIN_HZ && freq <= PITCH_MAX_HZ ? freq : null,
+      confidence: Math.max(0, Math.min(1, bestCorr)),
+    };
+  }
+
+  function nearestVoiced(points: PitchPoint[], from: number, dir: -1 | 1, maxSteps: number): number | null {
+    for (let i = from + dir, steps = 0; i >= 0 && i < points.length && steps < maxSteps; i += dir, steps++) {
+      if (points[i].freq != null) return points[i].freq!;
+    }
+    return null;
+  }
+
+  function octaveCorrect(points: PitchPoint[]): PitchPoint[] {
+    const out = points.map((p) => ({ ...p }));
+    for (let i = 0; i < out.length; i++) {
+      const freq = out[i].freq;
+      if (freq == null) continue;
+      const prev = nearestVoiced(out, i, -1, 8);
+      const next = nearestVoiced(out, i, 1, 8);
+      const anchor = prev != null && next != null ? Math.sqrt(prev * next) : prev ?? next;
+      if (!anchor) continue;
+
+      let corrected = freq;
+      let best = corrected;
+      let bestDiff = Math.abs(12 * Math.log2(corrected / anchor));
+      for (const factor of [0.25, 0.5, 1, 2, 4]) {
+        const candidate = freq * factor;
+        if (candidate < PITCH_MIN_HZ || candidate > PITCH_MAX_HZ) continue;
+        const diff = Math.abs(12 * Math.log2(candidate / anchor));
+        if (diff < bestDiff) {
+          best = candidate;
+          bestDiff = diff;
+        }
+      }
+      corrected = best;
+
+      // Drop isolated impossible jumps that octave correction cannot rescue.
+      const jumpSt = Math.abs(12 * Math.log2(corrected / anchor));
+      out[i].freq = jumpSt > 14 ? null : corrected;
     }
     return out;
+  }
+
+  function removeIsolatedVoicing(points: PitchPoint[]): PitchPoint[] {
+    return points.map((p, i) => {
+      if (p.freq == null) return p;
+      const hasPrev = nearestVoiced(points, i, -1, 3) != null;
+      const hasNext = nearestVoiced(points, i, 1, 3) != null;
+      return hasPrev || hasNext ? p : { ...p, freq: null };
+    });
+  }
+
+  function medianSmoothPitch(points: PitchPoint[], radius = 2): PitchPoint[] {
+    return points.map((p, i) => {
+      if (p.freq == null) return p;
+      const vals: number[] = [];
+      for (let j = Math.max(0, i - radius); j <= Math.min(points.length - 1, i + radius); j++) {
+        if (points[j].freq != null) vals.push(points[j].freq!);
+      }
+      if (vals.length < 3) return p;
+      return { ...p, freq: median(vals) };
+    });
+  }
+
+  function fillShortPitchGaps(points: PitchPoint[], maxGapFrames = 5, maxJumpSt = 7): PitchPoint[] {
+    const out = points.map((p) => ({ ...p }));
+    let i = 0;
+    while (i < out.length) {
+      if (out[i].freq != null) {
+        i++;
+        continue;
+      }
+      const gapStart = i;
+      while (i < out.length && out[i].freq == null) i++;
+      const gapEnd = i - 1;
+      const left = gapStart - 1;
+      const right = gapEnd + 1;
+      const gapLen = gapEnd - gapStart + 1;
+      if (
+        gapLen <= maxGapFrames &&
+        left >= 0 &&
+        right < out.length &&
+        out[left].freq != null &&
+        out[right].freq != null
+      ) {
+        const f1 = out[left].freq!;
+        const f2 = out[right].freq!;
+        const jumpSt = Math.abs(12 * Math.log2(f2 / f1));
+        if (jumpSt <= maxJumpSt) {
+          const log1 = Math.log(f1);
+          const log2 = Math.log(f2);
+          for (let k = 1; k <= gapLen; k++) {
+            const alpha = k / (gapLen + 1);
+            out[left + k].freq = Math.exp(log1 + alpha * (log2 - log1));
+          }
+        }
+      }
+    }
+    return out;
+  }
+
+  function extractPitch(buffer: AudioBuffer): PitchPoint[] {
+    const sampleRate = buffer.sampleRate;
+    const detector = YIN({ sampleRate, threshold: 0.12 } as any);
+    const channel = buffer.getChannelData(0);
+
+    // Longer windows help low male voices and browser-recorded audio. Hop stays
+    // short enough to keep visible timing detail for shadowing.
+    const windowSize = Math.min(4096, Math.max(2048, Math.round(sampleRate * 0.085)));
+    const hopSize = Math.max(256, Math.round(sampleRate * 0.01));
+
+    const windows: { start: number; time: number; window: Float32Array; rms: number }[] = [];
+    for (let start = 0; start + windowSize < channel.length; start += hopSize) {
+      const window = copyWindowWithoutDc(channel, start, windowSize);
+      windows.push({
+        start,
+        time: (start + windowSize / 2) / sampleRate,
+        window,
+        rms: rmsOf(window),
+      });
+    }
+
+    const rmsValues = windows.map((w) => w.rms).filter((v) => Number.isFinite(v));
+    const rmsP90 = percentile(rmsValues, 90);
+    const rmsP15 = percentile(rmsValues, 15);
+    const rmsGate = Math.max(rmsP90 * 0.025, rmsP15 * 2.0, 0.0008);
+
+    const raw: RawPitchFrame[] = windows.map(({ time, window, rms }) => {
+      if (rms < rmsGate) return { time, freq: null, rawFreq: null, rms, confidence: 0 };
+
+      const yinRaw = detector(window);
+      const yin = yinRaw && yinRaw >= PITCH_MIN_HZ && yinRaw <= PITCH_MAX_HZ ? yinRaw : null;
+      const acf = autocorrelationPitch(window, sampleRate);
+
+      // Prefer YIN when available; otherwise use ACF as a conservative fallback.
+      // If they disagree by almost an octave, the post-processor will correct it.
+      const freq = yin ?? acf.freq;
+      const confidence = yin ? Math.max(0.62, acf.confidence) : acf.confidence;
+      return {
+        time,
+        freq,
+        rawFreq: freq,
+        rms,
+        confidence,
+        candidates: { yin, acf: acf.freq, acfConfidence: acf.confidence },
+      };
+    });
+
+    let cleaned: PitchPoint[] = raw.map(({ time, freq, rawFreq, rms, confidence }) => ({
+      time,
+      freq,
+      rawFreq,
+      rms,
+      confidence,
+    }));
+
+    cleaned = octaveCorrect(cleaned);
+    cleaned = removeIsolatedVoicing(cleaned);
+    cleaned = fillShortPitchGaps(cleaned, 5, 7);
+    cleaned = medianSmoothPitch(cleaned, 2);
+    cleaned = octaveCorrect(cleaned);
+    cleaned = removeIsolatedVoicing(cleaned);
+
+    return cleaned;
   }
 
   function fitCanvas(canvas: HTMLCanvasElement) {
@@ -1341,6 +1625,15 @@ import Layout from '../layouts/Layout.astro';
     offset?: number;       // seconds, added to each point's time
     scale?: number;        // multiplier on time
     pitchShiftSt?: number; // vertical pitch offset in semitones
+    label?: string;
+  };
+
+  type WaveformOverlay = {
+    buffer: AudioBuffer | null;
+    color: string;
+    offset?: number;
+    scale?: number;
+    lane: 'top' | 'bottom';
     label?: string;
   };
 
@@ -1380,7 +1673,13 @@ import Layout from '../layouts/Layout.astro';
   function drawPitchCurve(
     canvas: HTMLCanvasElement,
     series: Series[],
-    opts: { fMin?: number; fMax?: number; tMax?: number; cacheLayout?: boolean } = {}
+    opts: {
+      fMin?: number;
+      fMax?: number;
+      tMax?: number;
+      cacheLayout?: boolean;
+      waveformOverlays?: WaveformOverlay[];
+    } = {}
   ) {
     fitCanvas(canvas);
     const ctx = canvas.getContext('2d')!;
@@ -1421,6 +1720,10 @@ import Layout from '../layouts/Layout.astro';
       const normalized = (Math.log2(freq) - logMin) / (logMax - logMin);
       return h - normalized * usableH - padY;
     };
+
+    if (opts.waveformOverlays?.length) {
+      drawWaveformOverlays(ctx, opts.waveformOverlays, { w, h, padX, tMax });
+    }
 
     // Grid
     ctx.strokeStyle = colors.grid;
@@ -1467,6 +1770,87 @@ import Layout from '../layouts/Layout.astro';
       }
       ctx.stroke();
     }
+  }
+
+  function drawWaveformOverlays(
+    ctx: CanvasRenderingContext2D,
+    overlays: WaveformOverlay[],
+    layout: { w: number; h: number; padX: number; tMax: number }
+  ) {
+    const { w, h, padX, tMax } = layout;
+    const plotW = Math.max(1, w - padX);
+    const laneCenter = {
+      top: h * 0.22,
+      bottom: h * 0.78,
+    } satisfies Record<WaveformOverlay['lane'], number>;
+    const laneAmp = Math.max(14, Math.min(34, h * 0.12));
+
+    ctx.save();
+    ctx.lineWidth = 1;
+
+    for (const overlay of overlays) {
+      const buffer = overlay.buffer;
+      if (!buffer || buffer.duration <= 0) continue;
+      const channel = buffer.getChannelData(0);
+      const sampleRate = buffer.sampleRate;
+      const offset = overlay.offset ?? 0;
+      const scale = overlay.scale ?? 1;
+      if (!Number.isFinite(scale) || scale <= 0) continue;
+
+      const baseY = laneCenter[overlay.lane];
+
+      ctx.globalAlpha = 0.12;
+      ctx.strokeStyle = overlay.color;
+      ctx.beginPath();
+      ctx.moveTo(padX, baseY);
+      ctx.lineTo(w, baseY);
+      ctx.stroke();
+
+      if (overlay.label) {
+        ctx.globalAlpha = 0.42;
+        ctx.font = '10px Inter, sans-serif';
+        ctx.fillStyle = overlay.color;
+        ctx.fillText(overlay.label, padX + 6, baseY - laneAmp - 4);
+      }
+
+      ctx.globalAlpha = 0.28;
+      ctx.strokeStyle = overlay.color;
+      ctx.beginPath();
+
+      let hasLine = false;
+      for (let x = Math.floor(padX); x <= Math.floor(w); x++) {
+        const displayT0 = ((x - padX) / plotW) * tMax;
+        const displayT1 = ((x + 1 - padX) / plotW) * tMax;
+        const audioT0 = (displayT0 - offset) / scale;
+        const audioT1 = (displayT1 - offset) / scale;
+        const fromT = Math.min(audioT0, audioT1);
+        const toT = Math.max(audioT0, audioT1);
+        if (toT < 0 || fromT > buffer.duration) continue;
+
+        const start = clamp(Math.floor(Math.max(0, fromT) * sampleRate), 0, channel.length - 1);
+        const end = clamp(Math.ceil(Math.min(buffer.duration, toT) * sampleRate), start + 1, channel.length);
+        const span = Math.max(1, end - start);
+        const sampleStep = Math.max(1, Math.floor(span / 80));
+        let min = 1;
+        let max = -1;
+        for (let i = start; i < end; i += sampleStep) {
+          const v = channel[i];
+          if (v < min) min = v;
+          if (v > max) max = v;
+        }
+
+        if (min > max) continue;
+        const yMin = baseY - max * laneAmp;
+        const yMax = baseY - min * laneAmp;
+        ctx.moveTo(x, yMin);
+        ctx.lineTo(x, yMax);
+        hasLine = true;
+      }
+
+      if (hasLine) ctx.stroke();
+    }
+
+    ctx.restore();
   }
 
   async function loadIntoSlot(slotKey: 'ref' | 'rec', blob: Blob, opts: { autoplay?: boolean } = {}) {
@@ -2011,10 +2395,25 @@ import Layout from '../layouts/Layout.astro';
   recStart.addEventListener('click', async () => {
     let stream: MediaStream;
     try {
-      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    } catch (err: any) {
-      recStatus.textContent = `Erreur micro : ${err.message || err}`;
-      return;
+      stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: false,
+          noiseSuppression: false,
+          autoGainControl: false,
+          channelCount: 1,
+        },
+      });
+    } catch (primaryErr: any) {
+      // Some browsers/devices reject specific audio constraints. Fall back to
+      // the default mic so recording still works, but prefer the clean path above
+      // because browser voice processing can break F0 tracking.
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        console.warn('Falling back to default mic constraints', primaryErr);
+      } catch (err: any) {
+        recStatus.textContent = `Erreur micro : ${err.message || err}`;
+        return;
+      }
     }
     // Resume AudioContext if it was suspended (Safari/Chrome autoplay policy).
     if (audioCtx.state === 'suspended') await audioCtx.resume();
@@ -2053,11 +2452,13 @@ import Layout from '../layouts/Layout.astro';
   let recOffset = 0; // seconds
   let recScale = 1;
   let recPitchShiftSt = 0; // semitones, applied multiplicatively to rec F0
+  let showWaveformOverlay = false;
   let comparedOnce = false;
 
   const compareCanvas = document.getElementById('compare-pitch') as HTMLCanvasElement;
   const scaleSlider = document.getElementById('scale-slider') as HTMLInputElement;
   const pitchShiftSlider = document.getElementById('pitch-shift-slider') as HTMLInputElement;
+  const waveformOverlayToggle = document.getElementById('show-waveform-overlay') as HTMLInputElement;
   const scaleVal = document.getElementById('scale-val')!;
   const pitchShiftVal = document.getElementById('pitch-shift-val')!;
   const offsetVal = document.getElementById('offset-val')!;
@@ -2075,6 +2476,7 @@ import Layout from '../layouts/Layout.astro';
     pitchShiftVal.textContent = formatSigned(recPitchShiftSt, 1);
     if (scaleSlider.value !== String(recScale)) scaleSlider.value = String(recScale);
     if (pitchShiftSlider.value !== String(recPitchShiftSt)) pitchShiftSlider.value = recPitchShiftSt.toFixed(1);
+    waveformOverlayToggle.checked = showWaveformOverlay;
   }
 
   function redrawCompare() {
@@ -2091,7 +2493,22 @@ import Layout from '../layouts/Layout.astro';
           pitchShiftSt: recPitchShiftSt,
         },
       ],
-      { cacheLayout: true }
+      {
+        cacheLayout: true,
+        waveformOverlays: showWaveformOverlay
+          ? [
+              { buffer: slots.ref.buffer, color: colors.ref, lane: 'top', label: 'Réf' },
+              {
+                buffer: slots.rec.buffer,
+                color: colors.rec,
+                offset: recOffset,
+                scale: recScale,
+                lane: 'bottom',
+                label: 'Voix',
+              },
+            ]
+          : undefined,
+      }
     );
     syncCompareControls();
     renderAnalysis();
@@ -2322,6 +2739,7 @@ import Layout from '../layouts/Layout.astro';
     redrawCompare();
     scaleSlider.disabled = false;
     pitchShiftSlider.disabled = false;
+    waveformOverlayToggle.disabled = false;
     resetBtn.disabled = false;
     autoBtn.disabled = false;
   });
@@ -2333,6 +2751,11 @@ import Layout from '../layouts/Layout.astro';
 
   pitchShiftSlider.addEventListener('input', () => {
     recPitchShiftSt = parseFloat(pitchShiftSlider.value);
+    redrawCompare();
+  });
+
+  waveformOverlayToggle.addEventListener('change', () => {
+    showWaveformOverlay = waveformOverlayToggle.checked;
     redrawCompare();
   });
 
@@ -2399,9 +2822,8 @@ import Layout from '../layouts/Layout.astro';
   compareCanvas.addEventListener('pointerup', endDrag);
   compareCanvas.addEventListener('pointercancel', endDrag);
 
-  // Auto-align: maximize normalized Pearson correlation over the current tempo.
-  // This uses actual frame timestamps and recomputes the mean per overlap window,
-  // which avoids the edge-case false positives of the old covariance-only version.
+  // Auto-align: maximize contour similarity over the current tempo, then estimate
+  // the vertical pitch shift in semitones from the matched voiced frames.
   autoBtn.addEventListener('click', () => {
     const ref = slots.ref.pitch;
     const rec = slots.rec.pitch;
@@ -2411,10 +2833,18 @@ import Layout from '../layouts/Layout.astro';
     const recDuration = (rec[rec.length - 1]?.time ?? 0) * recScale;
     const searchRange = Math.min(6, Math.max(2, Math.max(refDuration, recDuration) * 0.8));
 
-    const coarse = findBestOffset(searchRange, 0.02, 0);
-    const refined = findBestOffset(0.18, 0.003, coarse.offset);
-    recOffset = Number.isFinite(refined.offset) ? refined.offset : coarse.offset;
-    redrawCompare();
+    const coarse = findBestOffset(searchRange, 0.025, 0);
+    const refined = findBestOffset(0.22, 0.005, coarse.offset);
+    const best = Number.isFinite(refined.score) && refined.score >= coarse.score ? refined : coarse;
+
+    if (Number.isFinite(best.offset)) {
+      recOffset = best.offset;
+      const estimatedShift = estimatePitchShiftSt(recOffset);
+      if (estimatedShift != null) {
+        recPitchShiftSt = clamp(estimatedShift, Number(pitchShiftSlider.min), Number(pitchShiftSlider.max));
+      }
+      redrawCompare();
+    }
   });
 
   function findBestOffset(range: number, stepSec: number, center: number): { offset: number; score: number } {
@@ -2430,48 +2860,101 @@ import Layout from '../layouts/Layout.astro';
     return { offset: bestOffset, score: bestScore };
   }
 
-  function alignmentScore(offset: number): number {
-    const ref = slots.ref.pitch;
-    const rec = slots.rec.pitch;
-    if (!ref.length || !rec.length) return -Infinity;
+  function samplePitchAt(points: PitchPoint[], t: number, maxGapSec = 0.06): number | null {
+    if (!points.length || t < points[0].time || t > points[points.length - 1].time) return null;
 
-    const recHop = rec.length > 1 ? rec[1].time - rec[0].time : 0.0116;
-    let n = 0;
+    let lo = 0;
+    let hi = points.length - 1;
+    while (lo <= hi) {
+      const mid = (lo + hi) >> 1;
+      if (points[mid].time < t) lo = mid + 1;
+      else hi = mid - 1;
+    }
+
+    const right = clamp(lo, 0, points.length - 1);
+    const left = clamp(right - 1, 0, points.length - 1);
+    const leftPoint = points[left];
+    const rightPoint = points[right];
+
+    if (leftPoint.freq == null && rightPoint.freq == null) return null;
+    if (leftPoint.freq != null && rightPoint.freq != null) {
+      const gap = Math.abs(rightPoint.time - leftPoint.time);
+      if (gap > maxGapSec) return null;
+      if (gap <= 1e-6) return leftPoint.freq;
+      const alpha = clamp((t - leftPoint.time) / gap, 0, 1);
+      return Math.exp(Math.log(leftPoint.freq) + alpha * (Math.log(rightPoint.freq) - Math.log(leftPoint.freq)));
+    }
+
+    const candidate = leftPoint.freq != null ? leftPoint : rightPoint;
+    return Math.abs(candidate.time - t) <= maxGapSec ? candidate.freq! : null;
+  }
+
+  function alignedLogPairs(offset: number, pitchShiftSt = 0): { ref: number; rec: number }[] {
+    const pairs: { ref: number; rec: number }[] = [];
+    for (const refPoint of slots.ref.pitch) {
+      if (refPoint.freq == null) continue;
+      const recOriginalT = (refPoint.time - offset) / recScale;
+      const recFreq = samplePitchAt(slots.rec.pitch, recOriginalT);
+      if (recFreq == null) continue;
+      pairs.push({
+        ref: Math.log(refPoint.freq),
+        rec: Math.log(recFreq * semitoneFactor(pitchShiftSt)),
+      });
+    }
+    return pairs;
+  }
+
+  function pearson(xs: number[], ys: number[]): number | null {
+    if (xs.length !== ys.length || xs.length < 3) return null;
     let sx = 0;
     let sy = 0;
     let sx2 = 0;
     let sy2 = 0;
     let sxy = 0;
-
-    for (const refPoint of ref) {
-      if (!refPoint.freq) continue;
-      const recOriginalT = (refPoint.time - offset) / recScale;
-      const j = Math.round(recOriginalT / recHop);
-      if (j < 0 || j >= rec.length) continue;
-      const recFreq = rec[j].freq;
-      if (!recFreq) continue;
-
-      const x = Math.log(refPoint.freq);
-      // Vertical pitch shift is constant in log space, so correlation would be
-      // the same with or without it. Keeping it here makes the scoring match the display.
-      const y = Math.log(recFreq * semitoneFactor(recPitchShiftSt));
-      n++;
+    for (let i = 0; i < xs.length; i++) {
+      const x = xs[i];
+      const y = ys[i];
       sx += x;
       sy += y;
       sx2 += x * x;
       sy2 += y * y;
       sxy += x * y;
     }
-
-    if (n < 8) return -Infinity;
+    const n = xs.length;
     const cov = n * sxy - sx * sy;
     const denX = n * sx2 - sx * sx;
     const denY = n * sy2 - sy * sy;
-    if (denX <= 0 || denY <= 0) return -Infinity;
+    if (denX <= 0 || denY <= 0) return null;
+    return cov / Math.sqrt(denX * denY);
+  }
 
-    const corr = cov / Math.sqrt(denX * denY);
-    const overlapWeight = Math.min(1, n / 35);
-    return corr * overlapWeight;
+  function alignmentScore(offset: number): number {
+    const pairs = alignedLogPairs(offset, 0);
+    if (pairs.length < 10) return -Infinity;
+
+    const ref = pairs.map((p) => p.ref);
+    const rec = pairs.map((p) => p.rec);
+    const contourCorr = pearson(ref, rec);
+    if (contourCorr == null) return -Infinity;
+
+    const dRef: number[] = [];
+    const dRec: number[] = [];
+    for (let i = 1; i < pairs.length; i++) {
+      dRef.push(pairs[i].ref - pairs[i - 1].ref);
+      dRec.push(pairs[i].rec - pairs[i - 1].rec);
+    }
+    const derivativeCorr = pearson(dRef, dRec) ?? 0;
+
+    // Favor offsets with enough overlap, but do not let overlap alone dominate.
+    const overlapWeight = Math.min(1, pairs.length / 45);
+    return (0.78 * contourCorr + 0.22 * derivativeCorr) * overlapWeight;
+  }
+
+  function estimatePitchShiftSt(offset: number): number | null {
+    const pairs = alignedLogPairs(offset, 0);
+    if (pairs.length < 8) return null;
+    const diffs = pairs.map((p) => 12 * (p.ref - p.rec) / Math.LN2);
+    return median(diffs);
   }
 
   function mean(xs: (number | null)[]): number {
